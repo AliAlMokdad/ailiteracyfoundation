@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Memoer · AI Literacy Foundation</title>
+<meta name="description" content="Arbejdsmemoer fra AI Literacy Foundation om AI-læsefærdighed, EU AI-forordningen, AI-governance og hvordan arbejdet skrider frem.">
+<meta name="theme-color" content="#F7F4EE">
+<meta name="keywords" content="AI Literacy Foundation memoer, AI-læsefærdighed memo, EU AI-forordning memo, AI governance memo, grundlæggelsesmemo, Ali Al Mokdad memoer">
+<meta name="author" content="AI Literacy Foundation">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://ailiteracyfoundation.eu/da/memos.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ailiteracyfoundation.eu/da/memos.html">
+<meta property="og:title" content="Memoer · AI Literacy Foundation">
+<meta property="og:description" content="Arbejdsmemoer fra AI Literacy Foundation. Læs dem. Brug dem. Send rettelser.">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="AI Literacy Foundation">
+<meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ailiteracyfoundation.eu/og-image.png">
+
+<link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/memos.html">
+<link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/memos.html">
+<link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/memos.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+<link rel="apple-touch-icon" href="/favicon.svg?v=2">
+<link rel="mask-icon" href="/favicon.svg?v=2" color="#B05433">
+
+<style>
+  .memo-list { list-style: none; counter-reset: memo; padding: 0; margin: 0; }
+  .memo-list > li { counter-increment: memo; border-top: 1px solid var(--line); padding: 0; margin: 0; }
+  .memo-list > li:last-child { border-bottom: 1px solid var(--line); }
+  .memo-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: clamp(1rem, 3vw, 2rem);
+    align-items: baseline;
+    padding: clamp(1.25rem, 3vw, 2rem) 0;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 200ms var(--ease), padding-left 200ms var(--ease);
+    border-radius: 4px;
+  }
+  .memo-item:hover {
+    background: var(--bg-elev);
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .memo-item:hover h3 { color: var(--accent); }
+  .memo-num { font-family: var(--mono); font-size: var(--fs-sm); color: var(--ink-quiet); letter-spacing: 0.04em; min-width: 2.5rem; }
+  .memo-body h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.35rem, 2.6vw, 1.75rem); line-height: 1.18; letter-spacing: -0.015em; margin: 0 0 0.5rem 0; transition: color 200ms var(--ease); }
+  .memo-body p { font-family: var(--serif); font-size: var(--fs-md); color: var(--ink-quiet); line-height: 1.55; margin: 0 0 0.5rem 0; max-width: 60ch; }
+  .memo-meta { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-quiet); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  .memo-arrow { font-family: var(--serif); color: var(--accent); font-style: italic; font-size: var(--fs-md); align-self: center; white-space: nowrap; }
+  .memo-item:hover .memo-arrow { transform: translateX(4px); }
+  .memo-lang-note { font-family: var(--mono); font-size: var(--fs-xs); color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-left: 0.5rem; }
+  @media (max-width: 640px) {
+    .memo-item { grid-template-columns: auto 1fr; }
+    .memo-arrow { grid-column: 2; padding-top: 0.5rem; }
+    .memo-meta { grid-column: 2; padding-top: 0.25rem; }
+  }
+</style>
+
+<meta name="google-site-verification" content="VERIFY_CODE">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ELL147GRCZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ELL147GRCZ', { anonymize_ip: true });
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Spring til indhold</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand"><span class="dot" aria-hidden="true"></span>AI Literacy Foundation</a>
+    <nav class="nav" id="nav" aria-label="Hovednavigation">
+      <a href="index.html">Forside</a>
+      <a href="roadmap.html">AI-køreplanen</a>
+      <a href="work.html">Det vi gør</a>
+      <a href="memos.html" aria-current="page">Memoer</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="donate.html" class="cta-donate">Støt os</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-mark hero-fade"><span class="signal" aria-hidden="true"></span><span>Memoer</span></div>
+      <h1 class="hero-fade hero-fade--2">Vi <span class="rotator" data-words='["tænker","reflekterer","argumenterer","beslutter","forpligter","spørger","udgiver","bygger","arbejder","planlægger"]'>tænker</span> offentligt.</h1>
+      <p class="lede hero-fade hero-fade--3">Foreningen udgiver sine tanker åbent. Det er arbejdsmemoer om AI-læsefærdighed, EU AI-forordningen, AI-governance og hvordan arbejdet skrider frem. Læs dem. Brug dem. Send rettelser.</p>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap--narrow">
+      <div class="section-label">Serien</div>
+      <h2>Memoer.</h2>
+
+      <ol class="memo-list" aria-label="Liste af memoer">
+        <li>
+          <a href="memos/01-founding-memo.html" class="memo-item">
+            <span class="memo-num">01</span>
+            <div class="memo-body">
+              <h3>Grundlæggelsesmemo <span class="memo-lang-note">EN</span></h3>
+              <p>Hvorfor foreningen findes, hvem den tjener, hvad den vil gøre i år 1, og hvor arbejdet kommer fra. Det dokument, alle læser først, når de vil forstå, hvad dette er.</p>
+              <span class="memo-meta">København · Maj 2026</span>
+            </div>
+            <span class="memo-arrow" aria-hidden="true">Læs →</span>
+          </a>
+        </li>
+      </ol>
+
+      <p class="lede" style="margin-top:2.5rem;color:var(--ink-quiet);font-size:var(--fs-md);">
+        Flere memoer vil komme her, efterhånden som arbejdet skrider frem. Vil du have besked, når et nyt udgives, så <a href="work.html#contact" style="color:var(--accent)">skriv til os</a>.
+      </p>
+      <p style="font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-quiet);letter-spacing:0.06em;margin-top:1.5rem;">
+        Bemærk: Memoer udgives først på engelsk. Dansk oversættelse følger.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap--wide">
+    <div class="site-footer__grid">
+      <div>
+        <h3 class="site-footer__heading">Foreningen</h3>
+        <div class="site-footer__addr">
+          <strong>AI Literacy Foundation</strong>
+          <span class="site-footer__city">København, Danmark</span><br><br>
+          <span class="mono" style="font-size:var(--fs-xs);">CVR · 46487869</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="site-footer__heading">Side</h3>
+        <ul>
+          <li><a href="index.html">Forside</a></li>
+          <li><a href="roadmap.html">AI-køreplanen</a></li>
+          <li><a href="work.html">Det vi gør</a></li>
+          <li><a href="memos.html">Memoer</a></li>
+          <li><a href="donate.html">Støt os</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="site-footer__heading">Kontakt</h3>
+        <ul>
+          <li><a href="work.html#contact">Kontaktformular <span aria-hidden="true">→</span></a></li>
+          <li><a href="mailto:hello@ailiteracyfoundation.eu">hello@ailiteracyfoundation.eu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <div>© 2026 AI Literacy Foundation · CVR 46487869</div>
+      <div class="lang-toggle">
+        <a href="../memos.html">EN</a>
+        <a href="memos.html" class="active">DA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+</script>
+<script src="../motion.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Memos · AI Literacy Foundation</title>
+<meta name="description" content="Working memos from the AI Literacy Foundation on AI literacy, the EU AI Act, AI governance, and how the work is going. Read them. Use them. Send corrections.">
+<meta name="theme-color" content="#F7F4EE">
+<meta name="keywords" content="AI Literacy Foundation memos, AI literacy memo, EU AI Act memo, AI governance memo, founding memo, AI Literacy Foundation publications, Ali Al Mokdad memos">
+<meta name="author" content="AI Literacy Foundation">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://ailiteracyfoundation.eu/memos.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ailiteracyfoundation.eu/memos.html">
+<meta property="og:title" content="Memos · AI Literacy Foundation">
+<meta property="og:description" content="Working memos from the AI Literacy Foundation. Read them. Use them. Send corrections.">
+<meta property="og:site_name" content="AI Literacy Foundation">
+<meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ailiteracyfoundation.eu/og-image.png">
+
+<link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/memos.html">
+<link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/memos.html">
+<link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/memos.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+<link rel="apple-touch-icon" href="/favicon.svg?v=2">
+<link rel="mask-icon" href="/favicon.svg?v=2" color="#B05433">
+
+<style>
+  .memo-list { list-style: none; counter-reset: memo; padding: 0; margin: 0; }
+  .memo-list > li { counter-increment: memo; border-top: 1px solid var(--line); padding: 0; margin: 0; }
+  .memo-list > li:last-child { border-bottom: 1px solid var(--line); }
+  .memo-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: clamp(1rem, 3vw, 2rem);
+    align-items: baseline;
+    padding: clamp(1.25rem, 3vw, 2rem) 0;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 200ms var(--ease), padding-left 200ms var(--ease);
+    border-radius: 4px;
+  }
+  .memo-item:hover {
+    background: var(--bg-elev);
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .memo-item:hover h3 { color: var(--accent); }
+  .memo-num {
+    font-family: var(--mono);
+    font-size: var(--fs-sm);
+    color: var(--ink-quiet);
+    letter-spacing: 0.04em;
+    min-width: 2.5rem;
+  }
+  .memo-body h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.5rem 0;
+    transition: color 200ms var(--ease);
+  }
+  .memo-body p {
+    font-family: var(--serif);
+    font-size: var(--fs-md);
+    color: var(--ink-quiet);
+    line-height: 1.55;
+    margin: 0 0 0.5rem 0;
+    max-width: 60ch;
+  }
+  .memo-meta {
+    font-family: var(--mono);
+    font-size: var(--fs-xs);
+    color: var(--ink-quiet);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .memo-arrow {
+    font-family: var(--serif);
+    color: var(--accent);
+    font-style: italic;
+    font-size: var(--fs-md);
+    align-self: center;
+    white-space: nowrap;
+  }
+  .memo-item:hover .memo-arrow { transform: translateX(4px); }
+  @media (max-width: 640px) {
+    .memo-item { grid-template-columns: auto 1fr; }
+    .memo-arrow { grid-column: 2; padding-top: 0.5rem; }
+    .memo-meta { grid-column: 2; padding-top: 0.25rem; }
+  }
+</style>
+
+<meta name="google-site-verification" content="VERIFY_CODE">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ELL147GRCZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ELL147GRCZ', { anonymize_ip: true });
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand"><span class="dot" aria-hidden="true"></span>AI Literacy Foundation</a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="roadmap.html">The AI Roadmap</a>
+      <a href="work.html">What We Do</a>
+      <a href="memos.html" aria-current="page">Memos</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="donate.html" class="cta-donate">Support us</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-mark hero-fade"><span class="signal" aria-hidden="true"></span><span>Memos</span></div>
+      <h1 class="hero-fade hero-fade--2">We <span class="rotator" data-words='["think","reflect","argue","decide","commit","question","publish","build","work","plan"]'>think</span> in public.</h1>
+      <p class="lede hero-fade hero-fade--3">The Foundation publishes its thinking openly. These are working memos on AI literacy, the EU AI Act, AI governance, and how the work is going. Read them. Use them. Send corrections.</p>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap--narrow">
+      <div class="section-label">The series</div>
+      <h2>Memos.</h2>
+
+      <ol class="memo-list" aria-label="List of memos">
+        <li>
+          <a href="memos/01-founding-memo.html" class="memo-item">
+            <span class="memo-num">01</span>
+            <div class="memo-body">
+              <h3>Founding Memo</h3>
+              <p>Why the Foundation exists, who it serves, what it will do in Year 1, and where the work comes from. The document anyone reads first when they want to understand what this is.</p>
+              <span class="memo-meta">Copenhagen · May 2026</span>
+            </div>
+            <span class="memo-arrow" aria-hidden="true">Read →</span>
+          </a>
+        </li>
+      </ol>
+
+      <p class="lede" style="margin-top:2.5rem;color:var(--ink-quiet);font-size:var(--fs-md);">
+        More memos will appear here as the work continues. If you want to be notified when a new one is published, <a href="work.html#contact" style="color:var(--accent)">write to us</a>.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap--wide">
+    <div class="site-footer__grid">
+      <div>
+        <h3 class="site-footer__heading">The Foundation</h3>
+        <div class="site-footer__addr">
+          <strong>AI Literacy Foundation</strong>
+          <span class="site-footer__city">Copenhagen, Denmark</span><br><br>
+          <span class="mono" style="font-size:var(--fs-xs);">CVR · 46487869</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="site-footer__heading">Site</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="roadmap.html">The AI Roadmap</a></li>
+          <li><a href="work.html">What We Do</a></li>
+          <li><a href="memos.html">Memos</a></li>
+          <li><a href="donate.html">Support us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="site-footer__heading">Contact</h3>
+        <ul>
+          <li><a href="work.html#contact">Contact form <span aria-hidden="true">→</span></a></li>
+          <li><a href="mailto:hello@ailiteracyfoundation.eu">hello@ailiteracyfoundation.eu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <div>© 2026 AI Literacy Foundation · CVR 46487869</div>
+      <div class="lang-toggle">
+        <a href="memos.html" class="active">EN</a>
+        <a href="da/memos.html">DA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+</script>
+<script src="motion.js" defer></script>
+
+</body>
+</html>
