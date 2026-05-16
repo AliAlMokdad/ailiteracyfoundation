@@ -3,12 +3,34 @@
    - Count-up for status numbers
    - Rotating word in hero headlines
    - Header scroll-state toggle
+   - Mobile nav: close on link click + close on Escape
    - Respects prefers-reduced-motion
 */
 (function () {
   'use strict';
 
   var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Mobile nav extras: close menu when a nav link is tapped, close on Escape
+  var navEl = document.getElementById('nav');
+  var navToggle = document.getElementById('navToggle');
+  if (navEl && navToggle) {
+    navEl.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (navEl.classList.contains('is-open')) {
+          navEl.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && navEl.classList.contains('is-open')) {
+        navEl.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.focus();
+      }
+    });
+  }
 
   // Header scroll state + scroll progress bar + chapter indicator
   var header = document.querySelector('.site-header');
