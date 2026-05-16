@@ -1666,3 +1666,76 @@ a.inline-link:hover {
   font-size: var(--fs-lg);
   margin-bottom: 2rem;
 }
+
+/* ===== MEMO SHARE BUTTONS ===== */
+.memo-share {
+  margin: 3rem 0 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.memo-share__label {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+.memo-share__icons {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.memo-share__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-quiet);
+  cursor: pointer;
+  transition: color 220ms var(--ease), border-color 220ms var(--ease), background 220ms var(--ease), transform 220ms var(--ease);
+  position: relative;
+  text-decoration: none;
+  padding: 0;
+}
+.memo-share__link:hover,
+.memo-share__link:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: #F4E2DE;
+  transform: translateY(-1px);
+  outline: none;
+}
+.memo-share__link svg {
+  width: 17px;
+  height: 17px;
+  display: block;
+  fill: currentColor;
+}
+.memo-share__tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  padding: 4px 9px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms var(--ease);
+}
+.memo-share__tooltip.is-visible {
+  opacity: 1;
+}

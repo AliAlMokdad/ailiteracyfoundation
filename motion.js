@@ -269,3 +269,30 @@
   }, { threshold: 0.5 });
   countTargets.forEach(function (el) { countObserver.observe(el); });
 })();
+
+/* ===== MEMO SHARE: copy-link fallback for Instagram (and anywhere) ===== */
+(function () {
+  'use strict';
+  document.querySelectorAll('.memo-share__link[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var url = btn.getAttribute('data-copy');
+      var tip = btn.querySelector('.memo-share__tooltip');
+      var done = function () {
+        if (!tip) return;
+        tip.classList.add('is-visible');
+        setTimeout(function () { tip.classList.remove('is-visible'); }, 1800);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(done).catch(function () { /* silent */ });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = url; ta.setAttribute('readonly', '');
+        ta.style.position = 'absolute'; ta.style.left = '-9999px';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (err) { /* silent */ }
+        document.body.removeChild(ta);
+      }
+    });
+  });
+})();
