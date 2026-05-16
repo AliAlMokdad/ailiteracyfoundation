@@ -73,7 +73,45 @@
 
 <main id="main">
 
-  <section class="hero">
+  <!-- Mobile-only landing: phone gets its own focused launch screen -->
+  <section class="mobile-landing" aria-label="Welcome">
+    <div class="mobile-landing__inner">
+      <div class="mobile-landing__mark">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Copenhagen · Voluntary association</span>
+      </div>
+      <h1 class="mobile-landing__title">AI Literacy<br><em>Foundation</em></h1>
+      <p class="mobile-landing__tag">We work with <span class="rotator" data-words='["teachers","students","parents","workers","doctors","artists","neighbors","citizens","families","people"]'>teachers</span>.</p>
+      <nav class="mobile-landing__nav" aria-label="Quick navigation">
+        <a href="roadmap.html" class="quick-button">
+          <span class="quick-button__num">01</span>
+          <span class="quick-button__body">
+            <span class="quick-button__title">The AI Roadmap</span>
+            <span class="quick-button__sub">Issues, positions, frameworks</span>
+          </span>
+          <span class="quick-button__arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="work.html" class="quick-button">
+          <span class="quick-button__num">02</span>
+          <span class="quick-button__body">
+            <span class="quick-button__title">What We Do</span>
+            <span class="quick-button__sub">Programs, founder, contact</span>
+          </span>
+          <span class="quick-button__arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="donate.html" class="quick-button">
+          <span class="quick-button__num">03</span>
+          <span class="quick-button__body">
+            <span class="quick-button__title">Support us</span>
+            <span class="quick-button__sub">Donations, partnerships, grants</span>
+          </span>
+          <span class="quick-button__arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="hero hide-on-mobile">
     <div class="wrap">
       <div class="hero-mark hero-fade"><span class="signal" aria-hidden="true"></span><span>AI Literacy Foundation · Copenhagen</span></div>
       <h1 class="hero-fade hero-fade--2">Working on what artificial intelligence will mean for the people the technology <em>touches</em>.</h1>
@@ -85,7 +123,7 @@
     </div>
   </section>
 
-  <section class="section section--statement" data-reveal>
+  <section class="section section--statement hide-on-mobile" data-reveal>
     <div class="wrap--narrow">
       <p class="audience-line">Accountable to <span class="rotator" data-words='["teachers","students","parents","workers","doctors","artists","neighbors","citizens","families","people"]'>teachers</span>.</p>
     </div>
@@ -147,7 +185,7 @@
     </div>
   </section>
 
-  <section class="section" data-reveal>
+  <section class="section hide-on-mobile" data-reveal>
     <div class="wrap">
       <div class="grid-2">
         <div>
@@ -188,7 +226,7 @@
     </div>
   </section>
 
-  <section class="section" data-reveal>
+  <section class="section hide-on-mobile" data-reveal>
     <div class="wrap">
       <div class="section-label">Three ways in</div>
       <h2>Pick the door that fits.</h2>
@@ -213,7 +251,7 @@
     </div>
   </section>
 
-  <section class="section" data-reveal>
+  <section class="section hide-on-mobile" data-reveal>
     <div class="wrap--narrow">
       <div class="section-label">A working principle</div>
       <p class="pullout">"The benefits of artificial intelligence should not belong only to large companies, technical experts, or wealthy institutions. They should be understood, questioned, shaped, and used by people, communities, civil society, public institutions, educators, and organizations of every size."</p>

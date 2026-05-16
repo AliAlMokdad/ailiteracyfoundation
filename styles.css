@@ -1158,6 +1158,162 @@ a.inline-link:hover {
   [data-reveal] { opacity: 1; transform: none; }
 }
 
+/* ===== MOBILE LANDING (home page only, ≤640px) ===== */
+.mobile-landing { display: none; }
+@media (max-width: 640px) {
+  .mobile-landing {
+    display: block;
+    padding: 1.5rem 0 2rem;
+  }
+  .mobile-landing__inner { padding: 0 var(--gutter); }
+  .mobile-landing__mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin-bottom: 1.5rem;
+  }
+  .mobile-landing__mark .dot {
+    position: relative;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(176, 84, 51, 0.4);
+    animation: hero-pulse 2.6s var(--ease-out) infinite;
+  }
+  .mobile-landing__title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 12vw, 3.75rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    text-wrap: balance;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: hero-rise 700ms 100ms var(--ease-out) forwards;
+  }
+  .mobile-landing__title em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+    display: block;
+    position: relative;
+  }
+  .mobile-landing__tag {
+    font-family: var(--serif);
+    font-size: var(--fs-lg);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: hero-rise 700ms 320ms var(--ease-out) forwards;
+  }
+  .mobile-landing__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: hero-rise 700ms 540ms var(--ease-out) forwards;
+  }
+  .quick-button {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.05rem 1.125rem 1.05rem 1.25rem;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 240ms var(--ease), transform 200ms var(--ease), box-shadow 240ms var(--ease);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .quick-button::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-soft));
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform 320ms var(--ease-out);
+  }
+  .quick-button:hover, .quick-button:focus-visible {
+    border-color: var(--accent-soft);
+    box-shadow: 0 8px 20px -16px rgba(176, 84, 51, 0.25);
+  }
+  .quick-button:hover::before, .quick-button:focus-visible::before {
+    transform: scaleY(1);
+  }
+  .quick-button:active {
+    transform: scale(0.985);
+    border-color: var(--accent);
+  }
+  .quick-button:active::before { transform: scaleY(1); }
+  .quick-button__num {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    font-weight: 500;
+  }
+  .quick-button__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+  .quick-button__title {
+    font-family: var(--serif);
+    font-size: 1.1875rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+  .quick-button__sub {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    color: var(--ink-quiet);
+    letter-spacing: 0.01em;
+    line-height: 1.35;
+  }
+  .quick-button__arrow {
+    font-family: var(--sans);
+    color: var(--accent);
+    font-size: 1.25rem;
+    font-weight: 400;
+    transition: transform 240ms var(--ease);
+  }
+  .quick-button:hover .quick-button__arrow,
+  .quick-button:focus-visible .quick-button__arrow,
+  .quick-button:active .quick-button__arrow {
+    transform: translateX(3px);
+  }
+  /* Reduced motion respect */
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-landing__title,
+    .mobile-landing__tag,
+    .mobile-landing__nav {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+  /* Mobile-only: hide desktop home sections */
+  .hide-on-mobile { display: none !important; }
+}
+
 /* ===== MOBILE POLISH (≤640px) ===== */
 @media (max-width: 640px) {
   /* Hero: tighter top padding, smaller hero mark spacing */
