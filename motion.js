@@ -23,6 +23,30 @@
   var navEl = document.getElementById('nav');
   var navToggle = document.getElementById('navToggle');
   if (navEl && navToggle) {
+    // Inject EN/DA language toggle into the mobile nav (only visible when nav opens on mobile)
+    try {
+      var path = window.location.pathname;
+      var isDa = path.indexOf('/da/') === 0 || path === '/da' || path.indexOf('/da/') !== -1;
+      // Compute partner URL: EN <-> DA mirror
+      var partnerHref;
+      if (isDa) {
+        partnerHref = path.replace('/da/', '/');
+        if (partnerHref === '/') partnerHref = '/index.html';
+      } else {
+        // EN -> DA. Strip leading slash, prepend /da/
+        var rel = path.replace(/^\//, '');
+        if (rel === '' || rel === 'index.html') rel = 'index.html';
+        partnerHref = '/da/' + rel;
+      }
+      var langWrap = document.createElement('div');
+      langWrap.className = 'nav-lang-mobile';
+      langWrap.setAttribute('aria-label', 'Language');
+      langWrap.innerHTML = isDa
+        ? '<a href="' + partnerHref + '">EN</a><span aria-hidden="true">·</span><a href="#" class="active" aria-current="true">DA</a>'
+        : '<a href="#" class="active" aria-current="true">EN</a><span aria-hidden="true">·</span><a href="' + partnerHref + '">DA</a>';
+      navEl.appendChild(langWrap);
+    } catch (e) { /* ignore */ }
+
     navEl.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         if (navEl.classList.contains('is-open')) {

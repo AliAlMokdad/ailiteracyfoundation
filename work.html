@@ -215,7 +215,7 @@
       <h2>Get in touch.</h2>
       <p>We aim to reply within five working days. For donations, partnerships, or general questions, use the form below.</p>
 
-      <div id="cf-error" class="form-status" role="alert" hidden style="background:#F4E2DE;border-color:#B05433;display:block;margin-bottom:1rem">Something went wrong sending your message. Please try again, or write directly to <a href="mailto:hello@ailiteracyfoundation.eu" style="color:var(--accent)">hello@ailiteracyfoundation.eu</a>.</div>
+      <div id="cf-error" class="form-status" role="alert" style="margin-bottom:1rem">Something went wrong sending your message. Please try again, or write directly to <a href="mailto:hello@ailiteracyfoundation.eu" style="color:var(--accent)">hello@ailiteracyfoundation.eu</a>.</div>
 
       <form id="contactForm" class="contact-form" action="https://alialmokdadleadership.com/alf-mail.php" method="POST">
         <input type="hidden" name="lang" value="en">
@@ -258,7 +258,7 @@
         </div>
         <div class="legal-row">
           <span class="legal-label">Legal form</span>
-          <span class="legal-value">Frivillig forening</span>
+          <span class="legal-value">Voluntary association <span style="color:var(--ink-quiet)">(Frivillig forening)</span></span>
         </div>
         <div class="legal-row">
           <span class="legal-label">Email</span>
@@ -320,7 +320,7 @@
 
   if (location.search.indexOf('send=error') >= 0) {
     var err = document.getElementById('cf-error');
-    if (err) { err.hidden = false; }
+    if (err) { err.classList.add('error'); err.scrollIntoView({behavior:'smooth',block:'center'}); }
   }
 </script>
 <script src="motion.js" defer></script>

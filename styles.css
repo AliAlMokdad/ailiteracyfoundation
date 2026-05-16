@@ -247,6 +247,36 @@ body {
   .nav a:last-child { border-bottom: none; }
   .nav a::after { display: none; }
   .cta-donate { font-size: var(--fs-sm); padding: 0.55rem 1rem; }
+  /* Language toggle injected by motion.js into the mobile nav */
+  .nav-lang-mobile {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--line-soft);
+    font-family: var(--mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+  }
+  .nav-lang-mobile a {
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    border-bottom: none;
+    font-size: var(--fs-xs);
+    color: var(--ink-quiet);
+    font-weight: 500;
+  }
+  .nav-lang-mobile a.active {
+    background: var(--ink);
+    color: var(--bg);
+  }
+}
+/* Hide injected mobile lang toggle on desktop (it lives inside the .nav which is desktop-visible too) */
+@media (min-width: 761px) {
+  .nav-lang-mobile { display: none !important; }
 }
 
 /* HERO */
