@@ -11,6 +11,14 @@
 
   var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Welcome / full-view toggle: when ?view=full is in the URL on mobile,
+  // hide the mobile-landing and show the rich desktop-home content.
+  try {
+    if ((new URLSearchParams(window.location.search)).get('view') === 'full') {
+      document.body.classList.add('view-full');
+    }
+  } catch (e) { /* old browser, ignore */ }
+
   // Mobile nav extras: close menu when a nav link is tapped, close on Escape
   var navEl = document.getElementById('nav');
   var navToggle = document.getElementById('navToggle');
