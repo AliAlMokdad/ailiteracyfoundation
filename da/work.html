@@ -215,12 +215,11 @@
       <h2>Kom i kontakt.</h2>
       <p>Vi tilstræber at svare inden for fem arbejdsdage. Til donationer, partnerskaber eller generelle spørgsmål, brug formularen nedenfor.</p>
 
-      <form id="contactForm" class="contact-form" action="https://formsubmit.co/hello@ailiteracyfoundation.eu" method="POST" novalidate>
-        <input type="hidden" name="_subject" value="Ny besked via ailiteracyfoundation.eu">
-        <input type="hidden" name="_cc" value="almokdadali1@gmail.com">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://ailiteracyfoundation.eu/da/work.html?sent=1#contact">
+      <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value="WEB3FORMS_KEY_PLACEHOLDER">
+        <input type="hidden" name="subject" value="Ny besked via ailiteracyfoundation.eu">
+        <input type="hidden" name="from_name" value="AI Literacy Foundation website">
+        <input type="hidden" name="botcheck" id="cf-botcheck">
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
         <div class="form-row">
           <label for="cf-name">Navn</label>
@@ -343,7 +342,8 @@
   }
 
   if (form) {
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
       const name = form.name.value.trim();
       const email = form.email.value.trim();
       const subject = form.subject.value;
@@ -351,16 +351,43 @@
       const honey = form._honey ? form._honey.value : '';
       if (honey) return;
       if (!name || !email || !subject || !message) {
-        e.preventDefault();
         status.className = 'form-status error';
         status.textContent = 'Udfyld venligst alle felter, før du sender.';
         return;
       }
-      const subjectInput = form.querySelector('input[name="_subject"]');
-      if (subjectInput) subjectInput.value = '[' + subject + '] ' + name + ' — ailiteracyfoundation.eu';
       submitBtn.disabled = true;
       submitBtn.classList.add('is-sending');
       submitBtn.innerHTML = 'Sender…';
+      status.className = 'form-status';
+      status.textContent = '';
+      try {
+        const fd = new FormData(form);
+        fd.set('subject', '[' + subject + '] ' + name + ' — ailiteracyfoundation.eu');
+        fd.set('to', 'hello@ailiteracyfoundation.eu, almokdadali1@gmail.com');
+        const payload = {};
+        fd.forEach(function(v, k){ payload[k] = v; });
+        const resp = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json().catch(() => ({}));
+        if (resp.ok && data.success) {
+          form.hidden = true;
+          successPanel.hidden = false;
+          successPanel.querySelector('.form-success__title').textContent = 'Tak, ' + name.split(' ')[0] + '.';
+          successPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          if (window.gtag) window.gtag('event', 'contact_form_submit', { event_category: 'engagement', event_label: subject });
+        } else {
+          throw new Error((data && data.message) || 'Submission failed');
+        }
+      } catch (err) {
+        status.className = 'form-status error';
+        status.innerHTML = 'Kunne ikke sende lige nu. Skriv direkte til <a href="mailto:hello@ailiteracyfoundation.eu" style="color:var(--accent);">hello@ailiteracyfoundation.eu</a>.';
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-sending');
+        submitBtn.innerHTML = 'Send besked <span class="arrow">→</span>';
+      }
     });
   }
 </script>
