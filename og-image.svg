@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="bgGlow" cx="100%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#B05433" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#F7F4EE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bgGlow2" cx="0%" cy="100%" r="60%">
+      <stop offset="0%" stop-color="#B05433" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#F7F4EE" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#F7F4EE"/>
+  <rect width="1200" height="630" fill="url(#bgGlow)"/>
+  <rect width="1200" height="630" fill="url(#bgGlow2)"/>
+
+  <!-- top eyebrow row -->
+  <g transform="translate(80,80)">
+    <circle cx="6" cy="10" r="6" fill="#B05433"/>
+    <text x="24" y="16" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="16" letter-spacing="3" fill="#87827A">AI LITERACY FOUNDATION  ·  COPENHAGEN</text>
+  </g>
+
+  <!-- big wordmark -->
+  <g transform="translate(80,260)">
+    <text font-family="'Source Serif 4', 'Source Serif Pro', Georgia, serif" font-size="120" font-weight="400" fill="#15140F">
+      <tspan x="0" y="0">Working on what AI</tspan>
+      <tspan x="0" y="135">will mean for the people</tspan>
+      <tspan x="0" y="270" font-style="italic" fill="#B05433">the technology touches.</tspan>
+    </text>
+  </g>
+
+  <!-- bottom row: small CVR + URL -->
+  <g transform="translate(80,560)">
+    <text font-family="'JetBrains Mono', monospace" font-size="18" letter-spacing="2" fill="#87827A">ailiteracyfoundation.eu  ·  CVR 46487869  ·  Voluntary association, Denmark</text>
+  </g>
+</svg>

@@ -16,26 +16,71 @@
 <meta property="og:title" content="AI Literacy Foundation">
 <meta property="og:description" content="A Danish voluntary association working on AI literacy and responsible artificial intelligence for civil society, the public sector, and the communities they serve.">
 <meta property="og:locale" content="en_DK">
+<meta property="og:locale:alternate" content="da_DK">
 <meta property="og:site_name" content="AI Literacy Foundation">
+<meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI Literacy Foundation — Working on what AI will mean for the people the technology touches.">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI Literacy Foundation">
 <meta name="twitter:description" content="A Danish voluntary association working on AI literacy and responsible artificial intelligence.">
+<meta name="twitter:image" content="https://ailiteracyfoundation.eu/og-image.png">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "NonprofitOrganization",
-  "name": "AI Literacy Foundation",
-  "url": "https://ailiteracyfoundation.eu",
-  "description": "A Danish voluntary association advancing AI literacy and responsible artificial intelligence.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Copenhagen",
-    "addressCountry": "DK"
-  },
-  "founder": { "@type": "Person", "name": "Ali Al Mokdad" },
-  "identifier": { "@type": "PropertyValue", "propertyID": "CVR", "value": "46487869" }
+  "@graph": [
+    {
+      "@type": "NonprofitOrganization",
+      "@id": "https://ailiteracyfoundation.eu/#organization",
+      "name": "AI Literacy Foundation",
+      "alternateName": ["AI Literacy Foundation Denmark", "Foreningen AI Literacy Foundation"],
+      "url": "https://ailiteracyfoundation.eu",
+      "logo": "https://ailiteracyfoundation.eu/favicon.svg",
+      "description": "A Danish voluntary association advancing AI literacy and responsible artificial intelligence for civil society, the public sector, small and medium-sized enterprises, and the communities they serve.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Copenhagen",
+        "addressCountry": "DK"
+      },
+      "areaServed": [{"@type": "Country", "name": "Denmark"}, {"@type": "Place", "name": "Europe"}],
+      "knowsAbout": ["AI literacy", "responsible AI", "AI governance", "AI ethics", "EU AI Act", "Article 4 EU AI Act", "GDPR", "civil society", "public sector AI", "AI training", "AI policy"],
+      "founder": { "@id": "https://ailiteracyfoundation.eu/#founder" },
+      "identifier": { "@type": "PropertyValue", "propertyID": "CVR", "value": "46487869" },
+      "email": "hello@ailiteracyfoundation.eu",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "general inquiries",
+        "email": "hello@ailiteracyfoundation.eu",
+        "availableLanguage": ["English", "Danish"]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://ailiteracyfoundation.eu/#founder",
+      "name": "Ali Al Mokdad",
+      "givenName": "Ali",
+      "familyName": "Al Mokdad",
+      "alternateName": "Ali Almokdad",
+      "jobTitle": "Founder and Executive Chairperson",
+      "worksFor": { "@id": "https://ailiteracyfoundation.eu/#organization" },
+      "url": "https://ailiteracyfoundation.eu/work.html#about",
+      "description": "Strategic senior leader with extensive cross-functional experience in governance, organizational psychology, AI ethics, and strategic nonprofit management. Founder of the AI Literacy Foundation. Author and researcher on intelligent and inclusive governance, responsible use of artificial intelligence, science diplomacy, institutional accountability, and the future of public-benefit and development sectors.",
+      "nationality": "Lebanese-Danish",
+      "knowsAbout": ["AI literacy", "responsible AI", "AI governance", "AI ethics", "intelligent and inclusive governance", "organizational transformation", "international leadership", "science diplomacy", "nonprofit management"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ailiteracyfoundation.eu/#website",
+      "url": "https://ailiteracyfoundation.eu",
+      "name": "AI Literacy Foundation",
+      "description": "A Danish voluntary association advancing AI literacy and responsible AI.",
+      "publisher": { "@id": "https://ailiteracyfoundation.eu/#organization" },
+      "inLanguage": ["en", "da"]
+    }
+  ]
 }
 </script>
 
@@ -47,7 +92,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23F7F4EE'/%3E%3Ccircle cx='50' cy='50' r='12' fill='%23B05433'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="mask-icon" href="/favicon.svg" color="#B05433">
+
+<!-- Google Search Console verification (replace VERIFY_CODE once verified) -->
+<meta name="google-site-verification" content="VERIFY_CODE">
+
+<!-- Google Analytics (gtag) — replace G-XXXXXXXXXX with measurement ID once GA4 property exists -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
+</script>
+-->
 </head>
 <body>
 
