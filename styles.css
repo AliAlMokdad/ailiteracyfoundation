@@ -1047,6 +1047,56 @@ a.inline-link:hover {
 .donate-block:hover::before { height: 100%; }
 .donate-block h3 { color: var(--ink); margin-bottom: 0.75rem; }
 
+/* BACK TO TOP — appears after scrolling, smooth return */
+.scroll-top {
+  position: fixed;
+  bottom: clamp(1rem, 3vh, 1.75rem);
+  right: clamp(1rem, 3vw, 1.75rem);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  transition: opacity 320ms var(--ease), transform 320ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease), box-shadow 220ms var(--ease);
+  z-index: 95;
+  box-shadow: 0 4px 14px -4px rgba(21, 20, 15, 0.18);
+  pointer-events: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.scroll-top.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.scroll-top:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 8px 22px -6px rgba(176, 84, 51, 0.35);
+}
+.scroll-top:active { transform: scale(0.94); }
+.scroll-top:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.scroll-top svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 240ms var(--ease);
+}
+.scroll-top:hover svg { transform: translateY(-2px); }
+@media print { .scroll-top { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .scroll-top { transition: opacity 0.01ms; transform: none !important; }
+  .scroll-top svg { transition: none; }
+}
+
 /* SCROLL PROGRESS — thin terracotta bar at top of viewport */
 .scroll-progress {
   position: fixed;
@@ -1112,7 +1162,7 @@ a.inline-link:hover {
   font-size: var(--fs-xs);
   font-weight: 500;
 }
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .chapter-indicator { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {

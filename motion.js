@@ -40,7 +40,21 @@
     });
   }
 
-  // Header scroll state + scroll progress bar + chapter indicator
+  // Inject back-to-top button (no per-page HTML needed)
+  var scrollTopBtn = null;
+  (function() {
+    scrollTopBtn = document.createElement('button');
+    scrollTopBtn.className = 'scroll-top';
+    scrollTopBtn.type = 'button';
+    scrollTopBtn.setAttribute('aria-label', 'Back to top');
+    scrollTopBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+    document.body.appendChild(scrollTopBtn);
+    scrollTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+    });
+  })();
+
+  // Header scroll state + scroll progress bar + chapter indicator + back-to-top
   var header = document.querySelector('.site-header');
   var progressBar = document.querySelector('.scroll-progress');
   var chapter = document.querySelector('.chapter-indicator');
@@ -59,6 +73,10 @@
       progressBar.style.width = Math.max(0, Math.min(100, pct)) + '%';
       if (window.scrollY > 80) progressBar.classList.add('is-active');
       else progressBar.classList.remove('is-active');
+    }
+    if (scrollTopBtn) {
+      if (window.scrollY > 600) scrollTopBtn.classList.add('is-visible');
+      else scrollTopBtn.classList.remove('is-visible');
     }
     if (chapter && chapterSections.length) {
       var trigger = window.innerHeight * 0.4;
