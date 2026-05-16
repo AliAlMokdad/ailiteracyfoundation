@@ -215,7 +215,13 @@
       <h2>Kom i kontakt.</h2>
       <p>Vi tilstræber at svare inden for fem arbejdsdage. Til donationer, partnerskaber eller generelle spørgsmål, brug formularen nedenfor.</p>
 
-      <form id="contactForm" class="contact-form" novalidate>
+      <form id="contactForm" class="contact-form" action="https://formsubmit.co/hello@ailiteracyfoundation.eu" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Ny besked via ailiteracyfoundation.eu">
+        <input type="hidden" name="_cc" value="almokdadali1@gmail.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://ailiteracyfoundation.eu/da/work.html?sent=1#contact">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
         <div class="form-row">
           <label for="cf-name">Navn</label>
           <input type="text" id="cf-name" name="name" autocomplete="name" required>
@@ -237,9 +243,17 @@
           <label for="cf-message">Besked</label>
           <textarea id="cf-message" name="message" rows="6" required></textarea>
         </div>
-        <button type="submit" class="btn btn--primary">Send besked <span class="arrow">→</span></button>
+        <button type="submit" class="btn btn--primary" id="cf-submit">Send besked <span class="arrow">→</span></button>
         <div id="cf-status" class="form-status" role="status" aria-live="polite"></div>
       </form>
+      <div id="contactSuccess" class="form-success" hidden>
+        <div class="form-success__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="14"/><path d="M9 16l5 5 9-11"/></svg>
+        </div>
+        <h3 class="form-success__title">Tak.</h3>
+        <p class="form-success__lede">Din besked er nået frem til <strong>hello@ailiteracyfoundation.eu</strong>. Vi tilstræber at svare inden for fem arbejdsdage.</p>
+        <p class="form-success__note">For noget hastende eller fortroligt kan du også skrive direkte til os.</p>
+      </div>
 
       <div class="legal-block" aria-label="Juridiske og registreringsoplysninger">
         <div class="legal-row">
@@ -318,27 +332,35 @@
 
   const form = document.getElementById('contactForm');
   const status = document.getElementById('cf-status');
+  const successPanel = document.getElementById('contactSuccess');
+  const submitBtn = document.getElementById('cf-submit');
+
+  if (new URLSearchParams(location.search).get('sent') === '1' && successPanel && form) {
+    form.hidden = true;
+    successPanel.hidden = false;
+    setTimeout(function(){ successPanel.scrollIntoView({behavior: 'smooth', block: 'center'}); }, 250);
+    if (window.gtag) window.gtag('event', 'contact_form_submit', { event_category: 'engagement' });
+  }
+
   if (form) {
     form.addEventListener('submit', function(e) {
-      e.preventDefault();
       const name = form.name.value.trim();
       const email = form.email.value.trim();
       const subject = form.subject.value;
       const message = form.message.value.trim();
+      const honey = form._honey ? form._honey.value : '';
+      if (honey) return;
       if (!name || !email || !subject || !message) {
-        status.className = 'form-status';
+        e.preventDefault();
+        status.className = 'form-status error';
         status.textContent = 'Udfyld venligst alle felter, før du sender.';
-        status.style.display = 'block';
-        status.style.background = '#F4E2DE';
-        status.style.borderColor = '#B05433';
         return;
       }
-      const mailSubject = '[' + subject + '] fra ' + name;
-      const mailBody = 'Fra: ' + name + ' (' + email + ')\n\nEmne: ' + subject + '\n\n' + message;
-      const href = 'mailto:hello@ailiteracyfoundation.eu,almokdadali1@gmail.com?subject=' + encodeURIComponent(mailSubject) + '&body=' + encodeURIComponent(mailBody);
-      window.location.href = href;
-      status.className = 'form-status success';
-      status.textContent = 'Åbner din e-mailklient. Send beskeden derfra.';
+      const subjectInput = form.querySelector('input[name="_subject"]');
+      if (subjectInput) subjectInput.value = '[' + subject + '] ' + name + ' — ailiteracyfoundation.eu';
+      submitBtn.disabled = true;
+      submitBtn.classList.add('is-sending');
+      submitBtn.innerHTML = 'Sender…';
     });
   }
 </script>
