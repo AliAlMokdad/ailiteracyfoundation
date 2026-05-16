@@ -2,47 +2,282 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>AI Literacy Foundation</title>
-<meta name="description" content="AI Literacy Foundation. A Danish nonprofit in formation.">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    font-family:'JetBrains Mono',ui-monospace,monospace;
-    background:#0a0a0a;color:#f5f5f3;
-    display:flex;align-items:center;justify-content:center;
-    padding:2rem;text-align:center;
-    -webkit-font-smoothing:antialiased;
-    animation:fadeIn 1.2s ease;
-  }
-  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-  .wrap{max-width:560px}
-  .status{
-    display:inline-flex;align-items:center;gap:.5rem;
-    font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
-    color:#8a8a85;margin-bottom:3rem;
-    padding:.4rem .8rem;border:1px solid #1f1f1f;border-radius:999px;
-  }
-  .dot{width:6px;height:6px;background:#fbbf24;border-radius:50%;
-    box-shadow:0 0 8px rgba(251,191,36,.6);
-    animation:pulse 2s ease-in-out infinite}
-  @keyframes pulse{50%{opacity:.4}}
-  h1{font-weight:500;font-size:clamp(1.5rem,5vw,2.5rem);
-    letter-spacing:-.02em;margin-bottom:1.5rem;line-height:1.1}
-  h1 .c{color:#fbbf24;animation:blink 1.2s step-end infinite}
-  @keyframes blink{50%{opacity:0}}
-  p{color:#8a8a85;font-size:.95rem;line-height:1.6;max-width:420px;margin:0 auto}
-  .small{margin-top:3rem;font-size:.7rem;letter-spacing:.1em;color:#555}
-</style>
+<meta name="description" content="A Danish voluntary association advancing AI literacy and responsible artificial intelligence for civil society, the public sector, small and medium-sized enterprises, and the communities they serve.">
+<meta name="theme-color" content="#F7F4EE">
+<meta name="keywords" content="AI literacy, AI Literacy Foundation, EU AI Act Article 4, responsible AI Denmark, AI nonprofit Copenhagen, AI governance civil society, AI training nonprofit, AI ethics Europe, AI policy Denmark">
+<meta name="author" content="AI Literacy Foundation">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://ailiteracyfoundation.eu/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ailiteracyfoundation.eu/">
+<meta property="og:title" content="AI Literacy Foundation">
+<meta property="og:description" content="A Danish voluntary association working on AI literacy and responsible artificial intelligence for civil society, the public sector, and the communities they serve.">
+<meta property="og:locale" content="en_DK">
+<meta property="og:site_name" content="AI Literacy Foundation">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Literacy Foundation">
+<meta name="twitter:description" content="A Danish voluntary association working on AI literacy and responsible artificial intelligence.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NonprofitOrganization",
+  "name": "AI Literacy Foundation",
+  "url": "https://ailiteracyfoundation.eu",
+  "description": "A Danish voluntary association advancing AI literacy and responsible artificial intelligence.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Copenhagen",
+    "addressCountry": "DK"
+  },
+  "founder": { "@type": "Person", "name": "Ali Al Mokdad" },
+  "identifier": { "@type": "PropertyValue", "propertyID": "CVR", "value": "46487869" }
+}
+</script>
+
+<link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/index.html">
+<link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/index.html">
+<link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/index.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23F7F4EE'/%3E%3Ccircle cx='50' cy='50' r='12' fill='%23B05433'/%3E%3C/svg%3E">
 </head>
 <body>
-<div class="wrap">
-  <div class="status"><span class="dot"></span>Under development</div>
-  <h1>AI Literacy Foundation<span class="c">_</span></h1>
-  <p>A Danish nonprofit in formation.<br>Foreningen AI Literacy Foundation. Building soon.</p>
-  <div class="small">v0.1 · 2026 · Copenhagen, Denmark</div>
-</div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand"><span class="dot" aria-hidden="true"></span>AI Literacy Foundation</a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="roadmap.html">The AI Roadmap</a>
+      <a href="work.html">What We Do</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="donate.html" class="cta-donate">Support us</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-mark hero-fade"><span class="signal" aria-hidden="true"></span><span>AI Literacy Foundation · Copenhagen</span></div>
+      <h1 class="hero-fade hero-fade--2">Working on what artificial intelligence will mean for the people the technology <em>touches</em>.</h1>
+      <p class="lede hero-fade hero-fade--3">A Danish voluntary association. We work with and for people. We advance AI literacy and responsible AI use in the public sector, in civil society, in small and medium-sized enterprises, and in the communities AI touches. From Denmark, we contribute to the broader public conversation on how AI should be built, deployed, and governed.</p>
+      <div class="hero-cta hero-fade hero-fade--4">
+        <a href="roadmap.html" class="btn btn--primary">Read the AI Roadmap <span class="arrow">→</span></a>
+        <a href="work.html" class="btn btn--ghost">What we do</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--statement" data-reveal>
+    <div class="wrap--narrow">
+      <p class="audience-line">Accountable to <span class="rotator" data-words='["teachers","students","parents","workers","doctors","artists","neighbors","citizens","families","people"]'>teachers</span>.</p>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap--data">
+      <div class="section-label">Foundation status</div>
+      <h2>The foundation, in the open.</h2>
+      <p style="margin-bottom:2rem">We commit to publishing our state honestly. Counters move only when the work is real and verifiable.</p>
+
+      <div class="status">
+        <div class="status__title">
+          <span>Live status</span>
+          <span class="pulse" aria-hidden="true"></span>
+        </div>
+        <div class="status__row">
+          <span class="status__label">Legal form</span>
+          <span class="status__leader" aria-hidden="true"></span>
+          <span class="status__value">Voluntary association, Denmark</span>
+        </div>
+        <div class="status__row">
+          <span class="status__label">CVR number</span>
+          <span class="status__leader" aria-hidden="true"></span>
+          <span class="status__value status__value--accent">46487869</span>
+        </div>
+        <div class="status__row">
+          <span class="status__label">Municipality</span>
+          <span class="status__leader" aria-hidden="true"></span>
+          <span class="status__value">Copenhagen</span>
+        </div>
+        <div class="status__row">
+          <span class="status__label">Active programs</span>
+          <span class="status__leader" aria-hidden="true"></span>
+          <span class="status__value" data-count="6">6</span>
+        </div>
+        <div class="status__row">
+          <span class="status__label">People trained in AI literacy</span>
+          <span class="status__leader" aria-hidden="true"></span>
+          <span class="status__value" data-count="327">327</span>
+        </div>
+        <div class="status__row">
+          <span class="status__label">AI tool reviews completed</span>
+          <span class="status__leader" aria-hidden="true"></span>
+          <span class="status__value" data-count="0">0</span>
+        </div>
+        <div class="status__row">
+          <span class="status__label">Public guides published</span>
+          <span class="status__leader" aria-hidden="true"></span>
+          <span class="status__value" data-count="4">4</span>
+        </div>
+        <div class="status__row">
+          <span class="status__label">Public corrections logged</span>
+          <span class="status__leader" aria-hidden="true"></span>
+          <span class="status__value" data-count="128">128</span>
+        </div>
+        <div class="status__foot">Last updated · 15 May 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="grid-2">
+        <div>
+          <div class="section-label">Where we sit</div>
+          <h2>A peer in the AI conversation, not a downstream observer.</h2>
+        </div>
+        <div class="prose">
+          <p>The work of the AI Literacy Foundation is part of the broader conversation about how artificial intelligence should be built, deployed, and governed. We engage with the major regulatory and ethical frameworks shaping that conversation, including the EU AI Act, the General Data Protection Regulation, the OECD AI Principles, and the UNESCO Recommendation on the Ethics of AI.</p>
+          <p>We do not aim to replicate the work of large institutions. We aim to bring the principles those frameworks articulate into a specific context: Danish civil society, the public sector, and the communities most affected by AI deployment. Our contribution is to make these principles practically actionable for organizations and people who do not have direct access to the rooms where standards are written.</p>
+          <div class="frameworks" aria-label="Frameworks we engage with">
+            <div class="framework">
+              <strong>EU AI Act</strong>
+              <span>European Union Artificial Intelligence Act</span>
+            </div>
+            <div class="framework">
+              <strong>GDPR</strong>
+              <span>General Data Protection Regulation</span>
+            </div>
+            <div class="framework">
+              <strong>OECD AI Principles</strong>
+              <span>Organisation for Economic Co-operation and Development</span>
+            </div>
+            <div class="framework">
+              <strong>UNESCO Ethics of AI</strong>
+              <span>United Nations Educational, Scientific and Cultural Organization</span>
+            </div>
+            <div class="framework">
+              <strong>CoE AI Convention</strong>
+              <span>Council of Europe Framework Convention on Artificial Intelligence</span>
+            </div>
+            <div class="framework">
+              <strong>Article 4 · EU AI Act</strong>
+              <span>AI literacy obligation for organizations deploying AI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="section-label">Three ways in</div>
+      <h2>Pick the door that fits.</h2>
+
+      <div class="cards-3">
+        <a href="roadmap.html" class="card" data-reveal data-reveal-delay="1">
+          <h3>The AI Roadmap</h3>
+          <p>The issues we work on, the positions we hold, the alignment we share. The intellectual home of the foundation.</p>
+          <span class="arrow-link">Read it <span aria-hidden="true">→</span></span>
+        </a>
+        <a href="work.html" class="card" data-reveal data-reveal-delay="2">
+          <h3>What we do</h3>
+          <p>Our services, our team, our partners, and how to reach us. The practical part.</p>
+          <span class="arrow-link">See the work <span aria-hidden="true">→</span></span>
+        </a>
+        <a href="donate.html" class="card" data-reveal data-reveal-delay="3">
+          <h3>Support the work</h3>
+          <p>Donations, partnerships, and grants. Every contribution funds AI literacy delivered free at the point of access.</p>
+          <span class="arrow-link">Donate <span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-reveal>
+    <div class="wrap--narrow">
+      <div class="section-label">A working principle</div>
+      <p class="pullout">"The benefits of artificial intelligence should not belong only to large companies, technical experts, or wealthy institutions. They should be understood, questioned, shaped, and used by people, communities, civil society, public institutions, educators, and organizations of every size."</p>
+      <p class="muted mono" style="font-size:var(--fs-xs);letter-spacing:0.08em;text-transform:uppercase;">Founding mandate. AI Literacy Foundation.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap--wide">
+    <div class="site-footer__grid">
+      <div>
+        <h5>The Foundation</h5>
+        <div class="site-footer__addr">
+          <strong>AI Literacy Foundation</strong>
+          Copenhagen, Denmark<br><br>
+          <span class="mono" style="font-size:var(--fs-xs);">CVR · 46487869</span>
+        </div>
+      </div>
+      <div>
+        <h5>Site</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="roadmap.html">The AI Roadmap</a></li>
+          <li><a href="work.html">What We Do</a></li>
+          <li><a href="donate.html">Support us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="work.html#contact">Contact form <span aria-hidden="true">→</span></a></li>
+          <li><a href="mailto:hello@ailiteracyfoundation.eu">hello@ailiteracyfoundation.eu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <div>© 2026 AI Literacy Foundation · CVR 46487869</div>
+      <div class="lang-toggle">
+        <a href="index.html" class="active">EN</a>
+        <a href="da/index.html">DA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !toggle.contains(e.target) && nav.classList.contains('is-open')) {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
+<script src="motion.js" defer></script>
+
 </body>
 </html>
