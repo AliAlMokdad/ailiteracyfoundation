@@ -1,0 +1,7 @@
+# Local-only helpers that are uploaded elsewhere (e.g. Namecheap cPanel)
+_namecheap/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

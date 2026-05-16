@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Besked modtaget · AI Literacy Foundation</title>
+<meta name="description" content="Din besked er nået frem. Vi læser hver henvendelse selv og svarer inden for få dage.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#F7F4EE">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="mask-icon" href="/favicon.svg" color="#B05433">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Spring til indhold</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand"><span class="dot" aria-hidden="true"></span>AI Literacy Foundation</a>
+    <nav class="nav" id="nav" aria-label="Hovednavigation">
+      <a href="index.html">Forside</a>
+      <a href="roadmap.html">AI-køreplanen</a>
+      <a href="work.html">Det vi gør</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="donate.html" class="cta-donate">Støt os</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="error-page wrap--narrow">
+    <div class="hero-mark hero-fade"><span class="signal" aria-hidden="true"></span><span>Besked modtaget</span></div>
+    <h1 class="hero-fade hero-fade--2">Tak. Din besked er nået frem.</h1>
+    <p class="lede hero-fade hero-fade--3">En rigtig person læser hver henvendelse, der kommer ind via denne formular. Du hører fra os inden for få dage, oftest fra Ali selv. Haster det, så skriv direkte til <a href="mailto:hello@ailiteracyfoundation.eu">hello@ailiteracyfoundation.eu</a>.</p>
+    <div class="hero-cta hero-fade hero-fade--4" style="margin-top:1.5rem">
+      <a href="index.html" class="btn btn--primary">Tilbage til forsiden <span class="arrow">→</span></a>
+      <a href="roadmap.html" class="btn btn--ghost">Læs AI-køreplanen</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap--wide">
+    <div class="site-footer__grid">
+      <div>
+        <h3 class="site-footer__heading">Foreningen</h3>
+        <div class="site-footer__addr">
+          <strong>AI Literacy Foundation</strong>
+          <span class="site-footer__city">København, Danmark</span><br><br>
+          <span class="mono" style="font-size:var(--fs-xs);">CVR · 46487869</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="site-footer__heading">Side</h3>
+        <ul>
+          <li><a href="index.html">Forside</a></li>
+          <li><a href="roadmap.html">AI-køreplanen</a></li>
+          <li><a href="work.html">Det vi gør</a></li>
+          <li><a href="donate.html">Støt os</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="site-footer__heading">Kontakt</h3>
+        <ul>
+          <li><a href="work.html#contact">Kontaktformular <span aria-hidden="true">→</span></a></li>
+          <li><a href="mailto:hello@ailiteracyfoundation.eu">hello@ailiteracyfoundation.eu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <div>© 2026 AI Literacy Foundation · CVR 46487869</div>
+      <div class="lang-toggle">
+        <a href="../thanks.html">EN</a>
+        <a href="thanks.html" class="active">DA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+</script>
+<script src="../motion.js" defer></script>
+
+</body>
+</html>

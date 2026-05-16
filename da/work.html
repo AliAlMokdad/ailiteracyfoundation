@@ -215,14 +215,17 @@
       <h2>Kom i kontakt.</h2>
       <p>Vi tilstræber at svare inden for fem arbejdsdage. Til donationer, partnerskaber eller generelle spørgsmål, brug formularen nedenfor.</p>
 
-      <form id="contactForm" class="contact-form" novalidate>
+      <div id="cf-error" class="form-status" role="alert" hidden style="background:#F4E2DE;border-color:#B05433;display:block;margin-bottom:1rem">Noget gik galt ved afsendelsen. Prøv igen, eller skriv direkte til <a href="mailto:hello@ailiteracyfoundation.eu" style="color:var(--accent)">hello@ailiteracyfoundation.eu</a>.</div>
+
+      <form id="contactForm" class="contact-form" action="https://alialmokdadleadership.com/alf-mail.php" method="POST">
+        <input type="hidden" name="lang" value="da">
         <div class="form-row">
           <label for="cf-name">Navn</label>
-          <input type="text" id="cf-name" name="name" autocomplete="name" required>
+          <input type="text" id="cf-name" name="name" autocomplete="name" required maxlength="200">
         </div>
         <div class="form-row">
           <label for="cf-email">E-mail</label>
-          <input type="email" id="cf-email" name="email" autocomplete="email" required>
+          <input type="email" id="cf-email" name="email" autocomplete="email" required maxlength="200">
         </div>
         <div class="form-row">
           <label for="cf-subject">Emne</label>
@@ -235,10 +238,9 @@
         </div>
         <div class="form-row">
           <label for="cf-message">Besked</label>
-          <textarea id="cf-message" name="message" rows="6" required></textarea>
+          <textarea id="cf-message" name="message" rows="6" required maxlength="8000"></textarea>
         </div>
         <button type="submit" class="btn btn--primary">Send besked <span class="arrow">→</span></button>
-        <div id="cf-status" class="form-status" role="status" aria-live="polite"></div>
       </form>
 
       <div class="legal-block" aria-label="Juridiske og registreringsoplysninger">
@@ -316,30 +318,9 @@
     });
   }
 
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('cf-status');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const subject = form.subject.value;
-      const message = form.message.value.trim();
-      if (!name || !email || !subject || !message) {
-        status.className = 'form-status';
-        status.textContent = 'Udfyld venligst alle felter, før du sender.';
-        status.style.display = 'block';
-        status.style.background = '#F4E2DE';
-        status.style.borderColor = '#B05433';
-        return;
-      }
-      const mailSubject = '[' + subject + '] fra ' + name;
-      const mailBody = 'Fra: ' + name + ' (' + email + ')\n\nEmne: ' + subject + '\n\n' + message;
-      const href = 'mailto:hello@ailiteracyfoundation.eu,almokdadali1@gmail.com?subject=' + encodeURIComponent(mailSubject) + '&body=' + encodeURIComponent(mailBody);
-      window.location.href = href;
-      status.className = 'form-status success';
-      status.textContent = 'Åbner din e-mailklient. Send beskeden derfra.';
-    });
+  if (location.search.indexOf('send=error') >= 0) {
+    var err = document.getElementById('cf-error');
+    if (err) { err.hidden = false; }
   }
 </script>
 <script src="../motion.js" defer></script>

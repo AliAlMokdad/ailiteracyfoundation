@@ -215,14 +215,17 @@
       <h2>Get in touch.</h2>
       <p>We aim to reply within five working days. For donations, partnerships, or general questions, use the form below.</p>
 
-      <form id="contactForm" class="contact-form" novalidate>
+      <div id="cf-error" class="form-status" role="alert" hidden style="background:#F4E2DE;border-color:#B05433;display:block;margin-bottom:1rem">Something went wrong sending your message. Please try again, or write directly to <a href="mailto:hello@ailiteracyfoundation.eu" style="color:var(--accent)">hello@ailiteracyfoundation.eu</a>.</div>
+
+      <form id="contactForm" class="contact-form" action="https://alialmokdadleadership.com/alf-mail.php" method="POST">
+        <input type="hidden" name="lang" value="en">
         <div class="form-row">
           <label for="cf-name">Name</label>
-          <input type="text" id="cf-name" name="name" autocomplete="name" required>
+          <input type="text" id="cf-name" name="name" autocomplete="name" required maxlength="200">
         </div>
         <div class="form-row">
           <label for="cf-email">Email</label>
-          <input type="email" id="cf-email" name="email" autocomplete="email" required>
+          <input type="email" id="cf-email" name="email" autocomplete="email" required maxlength="200">
         </div>
         <div class="form-row">
           <label for="cf-subject">Subject</label>
@@ -235,10 +238,9 @@
         </div>
         <div class="form-row">
           <label for="cf-message">Message</label>
-          <textarea id="cf-message" name="message" rows="6" required></textarea>
+          <textarea id="cf-message" name="message" rows="6" required maxlength="8000"></textarea>
         </div>
         <button type="submit" class="btn btn--primary">Send message <span class="arrow">→</span></button>
-        <div id="cf-status" class="form-status" role="status" aria-live="polite"></div>
       </form>
 
       <div class="legal-block" aria-label="Legal and registration information">
@@ -316,30 +318,9 @@
     });
   }
 
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('cf-status');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const subject = form.subject.value;
-      const message = form.message.value.trim();
-      if (!name || !email || !subject || !message) {
-        status.className = 'form-status';
-        status.textContent = 'Please fill in all fields before sending.';
-        status.style.display = 'block';
-        status.style.background = '#F4E2DE';
-        status.style.borderColor = '#B05433';
-        return;
-      }
-      const mailSubject = '[' + subject + '] from ' + name;
-      const mailBody = 'From: ' + name + ' (' + email + ')\n\nSubject: ' + subject + '\n\n' + message;
-      const href = 'mailto:hello@ailiteracyfoundation.eu,almokdadali1@gmail.com?subject=' + encodeURIComponent(mailSubject) + '&body=' + encodeURIComponent(mailBody);
-      window.location.href = href;
-      status.className = 'form-status success';
-      status.textContent = 'Opening your email client. Send the message from there.';
-    });
+  if (location.search.indexOf('send=error') >= 0) {
+    var err = document.getElementById('cf-error');
+    if (err) { err.hidden = false; }
   }
 </script>
 <script src="motion.js" defer></script>
