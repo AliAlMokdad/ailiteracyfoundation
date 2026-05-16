@@ -117,7 +117,7 @@ body {
 .brand {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: var(--fs-sm);
+  font-size: 0.95rem;
   letter-spacing: -0.005em;
   white-space: nowrap;
   display: flex;
