@@ -1705,34 +1705,48 @@ a.inline-link:hover {
   padding: 0;
 }
 .memo-share__link svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   display: block;
   fill: currentColor;
   transition: transform 220ms var(--ease);
 }
+/* Default state: monochrome, matches the visual identity (no brand colors shown by default) */
+.memo-share__link {
+  color: var(--ink-quiet);
+}
+/* Hover / focus / press: each platform reveals its brand color (icon fills with brand color
+   AND circle gets a soft brand-tinted background). No layout shift. */
 .memo-share__link:hover,
-.memo-share__link:focus-visible {
+.memo-share__link:focus-visible,
+.memo-share__link:active {
   transform: translateY(-2px);
   outline: none;
 }
-/* Default: each platform shows in its OWN brand color so it's instantly recognizable */
-.memo-share__link--linkedin   { color: #0A66C2; }
-.memo-share__link--x          { color: #15140F; }
-.memo-share__link--facebook   { color: #1877F2; }
-.memo-share__link--whatsapp   { color: #25D366; }
-.memo-share__link--instagram  { color: #E1306C; }
-/* Hover: invert (white glyph on filled brand circle) */
 .memo-share__link--linkedin:hover,
-.memo-share__link--linkedin:focus-visible   { background: #0A66C2; color: #FFFFFF; }
+.memo-share__link--linkedin:focus-visible,
+.memo-share__link--linkedin:active     { color: #0A66C2; background: rgba(10, 102, 194, 0.10); }
 .memo-share__link--x:hover,
-.memo-share__link--x:focus-visible          { background: #15140F; color: #FFFFFF; }
+.memo-share__link--x:focus-visible,
+.memo-share__link--x:active            { color: #15140F; background: rgba(21, 20, 15, 0.08); }
 .memo-share__link--facebook:hover,
-.memo-share__link--facebook:focus-visible   { background: #1877F2; color: #FFFFFF; }
-.memo-share__link--whatsapp:hover,
-.memo-share__link--whatsapp:focus-visible   { background: #25D366; color: #FFFFFF; }
+.memo-share__link--facebook:focus-visible,
+.memo-share__link--facebook:active     { color: #1877F2; background: rgba(24, 119, 242, 0.10); }
 .memo-share__link--instagram:hover,
-.memo-share__link--instagram:focus-visible  { background: linear-gradient(45deg, #F58529 0%, #DD2A7B 50%, #8134AF 100%); color: #FFFFFF; }
+.memo-share__link--instagram:focus-visible,
+.memo-share__link--instagram:active    { color: #E1306C; background: rgba(225, 48, 108, 0.10); }
+.memo-share__link--whatsapp:hover,
+.memo-share__link--whatsapp:focus-visible,
+.memo-share__link--whatsapp:active     { color: #25D366; background: rgba(37, 211, 102, 0.10); }
+.memo-share__link--telegram:hover,
+.memo-share__link--telegram:focus-visible,
+.memo-share__link--telegram:active     { color: #229ED9; background: rgba(34, 158, 217, 0.10); }
+.memo-share__link--signal:hover,
+.memo-share__link--signal:focus-visible,
+.memo-share__link--signal:active       { color: #3A76F0; background: rgba(58, 118, 240, 0.10); }
+.memo-share__link--copy:hover,
+.memo-share__link--copy:focus-visible,
+.memo-share__link--copy:active         { color: var(--accent); background: #F4E2DE; }
 .memo-share__tooltip {
   position: absolute;
   bottom: calc(100% + 8px);
