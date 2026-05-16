@@ -820,7 +820,7 @@ a.inline-link:hover {
 @media (max-width: 760px) {
   .site-footer__grid { grid-template-columns: 1fr 1fr; row-gap: 2.25rem; }
 }
-.site-footer h5 {
+.site-footer__heading {
   font-size: var(--fs-xs);
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -1452,7 +1452,7 @@ a.inline-link:hover {
      since the mobile-landing buttons are gone */
   body.view-full .site-footer__grid > div:nth-child(1) { display: block; }
   body.view-full .site-footer__grid > div:nth-child(2) { display: block; }
-  body.view-full .site-footer__grid > div:nth-child(3) h5 { display: block; }
+  body.view-full .site-footer__grid > div:nth-child(3) .site-footer__heading { display: block; }
 }
 
 /* ===== MOBILE POLISH (≤640px) ===== */
@@ -1510,7 +1510,7 @@ a.inline-link:hover {
   /* Hide Site column (nav already in buttons + hamburger) */
   .site-footer__grid > div:nth-child(2) { display: none; }
   /* Contact column: hide the "Contact" heading and the email line */
-  .site-footer__grid > div:nth-child(3) h5 { display: none; }
+  .site-footer__grid > div:nth-child(3) .site-footer__heading { display: none; }
   .site-footer__grid > div:nth-child(3) ul li:nth-child(2) { display: none; }
   .site-footer__grid > div:nth-child(3) ul li { margin-bottom: 0; }
   .site-footer__grid > div:nth-child(3) a {
