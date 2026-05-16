@@ -109,4 +109,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/memos/03-what-ai-literacy-means.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/memos/03-what-ai-literacy-means.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/memos/03-what-ai-literacy-means.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/memos/03-what-ai-literacy-means.html"/>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
 </urlset>
