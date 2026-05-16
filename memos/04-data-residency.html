@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Where does your data go? AI tools, EU data residency, and GDPR in plain language · AI Literacy Foundation</title>
+<meta name="description" content="What happens to your data when your team uses ChatGPT, Microsoft Copilot, Claude, or Gemini. Plain-language guide to AI data residency under GDPR: what the law actually requires, where the major AI tools store data, where it goes wrong, and what good-faith practice looks like for a small organization.">
+<meta name="theme-color" content="#F7F4EE">
+<meta name="keywords" content="EU data residency AI, GDPR ChatGPT, Microsoft Copilot data residency, AI tools GDPR compliance, data residency Denmark, EU-US Data Privacy Framework AI, AI literacy data residency, AI GDPR Article 4, Azure OpenAI EU, Anthropic Claude EU, Vertex AI EU region, AI Literacy Foundation memo">
+<meta name="author" content="AI Literacy Foundation">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://ailiteracyfoundation.eu/memos/04-data-residency.html">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ailiteracyfoundation.eu/memos/04-data-residency.html">
+<meta property="og:title" content="Where does your data go? AI tools, EU data residency, and GDPR · AI Literacy Foundation">
+<meta property="og:description" content="A plain-language guide to AI data residency under GDPR. Where the major AI tools store data, where it goes wrong, and what good-faith practice looks like for a small organization.">
+<meta property="og:site_name" content="AI Literacy Foundation">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="da_DK">
+<meta property="og:image" content="https://ailiteracyfoundation.eu/og/memo-04.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Memo 04 · Where does your data go? AI tools, EU data residency, and GDPR in plain language. AI Literacy Foundation.">
+<meta property="article:published_time" content="2026-05-16">
+<meta property="article:modified_time" content="2026-05-16">
+<meta property="article:author" content="Ali Al Mokdad">
+<meta property="article:section" content="Memos">
+<meta property="article:tag" content="EU data residency">
+<meta property="article:tag" content="GDPR">
+<meta property="article:tag" content="AI compliance">
+<meta property="article:tag" content="ChatGPT">
+<meta property="article:tag" content="Microsoft Copilot">
+<meta property="article:tag" content="EU-US Data Privacy Framework">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Where does your data go? AI tools, EU data residency, and GDPR · AI Literacy Foundation">
+<meta name="twitter:description" content="A plain-language guide to AI data residency under GDPR. Where the major AI tools store data, where it goes wrong, and what good-faith practice looks like.">
+<meta name="twitter:image" content="https://ailiteracyfoundation.eu/og/memo-04.png">
+<meta name="twitter:image:alt" content="Memo 04 · Where does your data go? AI tools, EU data residency, and GDPR in plain language.">
+
+<link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/memos/04-data-residency.html">
+<link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/memos/04-data-residency.html">
+<link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/memos/04-data-residency.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://ailiteracyfoundation.eu/memos/04-data-residency.html#article",
+      "headline": "Where does your data go? AI tools, EU data residency, and GDPR in plain language",
+      "alternativeHeadline": "A plain-language guide to AI data residency under GDPR for small organizations",
+      "description": "What happens to your data when your team uses ChatGPT, Microsoft Copilot, Claude, or Gemini. Plain-language guide to AI data residency under GDPR: what the law actually requires, where the major AI tools store data, where it goes wrong, and what good-faith practice looks like for a small organization.",
+      "datePublished": "2026-05-16",
+      "dateModified": "2026-05-16",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://ailiteracyfoundation.eu/#website" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://ailiteracyfoundation.eu/memos/04-data-residency.html" },
+      "url": "https://ailiteracyfoundation.eu/memos/04-data-residency.html",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://ailiteracyfoundation.eu/og/memo-04.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Ali Al Mokdad",
+        "url": "https://ailiteracyfoundation.eu/work.html#founder",
+        "sameAs": ["https://ailiteracyfoundation.eu/work.html#founder"]
+      },
+      "publisher": {
+        "@type": "NonprofitOrganization",
+        "name": "AI Literacy Foundation",
+        "url": "https://ailiteracyfoundation.eu",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ailiteracyfoundation.eu/favicon.svg",
+          "width": 100,
+          "height": 100
+        }
+      },
+      "about": [
+        { "@type": "Thing", "name": "EU data residency" },
+        { "@type": "Thing", "name": "General Data Protection Regulation", "sameAs": "https://eur-lex.europa.eu/eli/reg/2016/679/oj" },
+        { "@type": "Thing", "name": "EU-US Data Privacy Framework" },
+        { "@type": "Thing", "name": "EU AI Act", "sameAs": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" },
+        { "@type": "Thing", "name": "AI compliance" }
+      ],
+      "keywords": "EU data residency AI, GDPR ChatGPT, Microsoft Copilot data residency, AI tools GDPR compliance, EU-US Data Privacy Framework, AI literacy data residency, Article 4 AI Act, Azure OpenAI EU, Anthropic Claude EU residency",
+      "articleSection": "Memos"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://ailiteracyfoundation.eu/memos/04-data-residency.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ailiteracyfoundation.eu/" },
+        { "@type": "ListItem", "position": 2, "name": "Memos", "item": "https://ailiteracyfoundation.eu/memos.html" },
+        { "@type": "ListItem", "position": 3, "name": "Where does your data go? AI tools, EU data residency, and GDPR", "item": "https://ailiteracyfoundation.eu/memos/04-data-residency.html" }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+<link rel="apple-touch-icon" href="/favicon.svg?v=2">
+<link rel="mask-icon" href="/favicon.svg?v=2" color="#B05433">
+
+<style>
+  .memo-page { padding-top: clamp(2.5rem, 8vh, 5rem); padding-bottom: clamp(3rem, 8vh, 6rem); }
+  .memo-page .wrap { max-width: 720px; margin: 0 auto; padding: 0 var(--gutter); }
+  .memo-page__back { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; }
+  .memo-page__back:hover { color: var(--accent); }
+  .memo-page__eyebrow { font-family: var(--mono); font-size: var(--fs-sm); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 0.75rem; }
+  .memo-page h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 0.6rem 0; }
+  .memo-page__sub { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--ink-quiet); margin: 0 0 0.6rem 0; }
+  .memo-page__meta { font-family: var(--mono); font-size: var(--fs-sm); color: var(--ink-quiet); letter-spacing: 0.04em; padding-bottom: 1.25rem; border-bottom: 1px solid var(--accent-soft); margin-bottom: 2.5rem; }
+
+  .memo-page h2 { font-family: var(--serif); font-weight: 500; color: var(--accent); font-size: clamp(1.5rem, 3vw, 1.9rem); letter-spacing: -0.015em; margin: 2.5rem 0 1rem 0; }
+  .memo-page h3 { font-family: var(--serif); font-weight: 500; font-style: italic; font-size: clamp(1.2rem, 2.4vw, 1.4rem); color: var(--ink); margin: 1.75rem 0 0.5rem 0; }
+  .memo-page p { font-family: var(--serif); font-size: clamp(1.05rem, 1.8vw, 1.15rem); line-height: 1.6; color: var(--ink); margin: 0 0 1rem 0; }
+  .memo-page ul, .memo-page ol { padding: 0; margin: 0 0 1.25rem 0; }
+  .memo-page ul { list-style: none; }
+  .memo-page ol { list-style: none; counter-reset: stepcount; }
+  .memo-page ul li, .memo-page ol li { font-family: var(--serif); font-size: clamp(1.05rem, 1.8vw, 1.15rem); line-height: 1.55; color: var(--ink); padding-left: 1.75rem; position: relative; margin-bottom: 0.65rem; }
+  .memo-page ul li::before { content: "·"; position: absolute; left: 0.25rem; color: var(--accent); font-weight: 700; }
+  .memo-page ol li { counter-increment: stepcount; }
+  .memo-page ol li::before { content: counter(stepcount); position: absolute; left: 0; font-family: var(--mono); font-size: var(--fs-sm); color: var(--accent); font-weight: 500; top: 0.15em; }
+  .memo-page blockquote { font-family: var(--serif); font-style: italic; font-size: clamp(1.1rem, 1.9vw, 1.2rem); line-height: 1.55; color: var(--ink); border-left: 3px solid var(--accent); padding: 0.25rem 0 0.25rem 1.25rem; margin: 1.5rem 0; background: var(--bg-elev); padding-right: 1.25rem; padding-top: 0.9rem; padding-bottom: 0.9rem; }
+  .memo-page .pullout { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2.1vw, 1.3rem); color: var(--accent); line-height: 1.4; margin: 1.5rem 0; }
+  .memo-page__divider { border: 0; height: 1px; background: var(--line); margin: 2.5rem 0; }
+  .memo-page__footer { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-quiet); letter-spacing: 0.06em; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--accent-soft); }
+  .memo-page__sig { font-family: var(--serif); font-style: italic; color: var(--accent); font-size: clamp(1.1rem, 2vw, 1.25rem); margin: 2rem 0 0.5rem 0; }
+  .memo-page__contact { font-family: var(--serif); font-size: clamp(1.05rem, 1.8vw, 1.15rem); color: var(--ink); margin: 0 0 0.25rem 0; }
+  .memo-page__contact a { color: var(--accent); text-decoration: none; }
+  .memo-page__contact a:hover { text-decoration: underline; }
+  .memo-page__disclaimer { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-quiet); letter-spacing: 0.04em; line-height: 1.55; margin-top: 2rem; padding: 1rem; background: var(--bg-elev); border-left: 2px solid var(--line); }
+  .vendor-block { padding: 1rem 0; border-top: 1px solid var(--accent-soft); }
+  .vendor-block:last-child { border-bottom: 1px solid var(--accent-soft); }
+  .vendor-block strong { font-family: var(--serif); font-weight: 600; color: var(--ink); }
+</style>
+
+<meta name="google-site-verification" content="VERIFY_CODE">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ELL147GRCZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ELL147GRCZ', { anonymize_ip: true });
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="brand"><span class="dot" aria-hidden="true"></span>AI Literacy Foundation</a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../roadmap.html">The AI Roadmap</a>
+      <a href="../work.html">What We Do</a>
+      <a href="../memos.html" aria-current="page">Memos</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="../donate.html" class="cta-donate">Support us</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <article class="memo-page">
+    <div class="wrap">
+      <a href="../memos.html" class="memo-page__back">← All memos</a>
+
+      <div class="memo-page__eyebrow">Memo 04 · Data residency</div>
+      <h1>Where does your data go?</h1>
+      <p class="memo-page__sub">AI tools, EU data residency, and GDPR in plain language.</p>
+      <p class="memo-page__meta">Copenhagen · 16 May 2026</p>
+
+      <h2>The short version</h2>
+      <p>Every time you paste a document into ChatGPT, every time Copilot suggests text in your Outlook, every time your team uses an AI summarizer, that data leaves your computer. Where it goes matters. Under GDPR, it can matter a lot.</p>
+      <p>This memo explains, in plain language: what data residency actually is, where your data goes when you use the most common AI tools, which EU rules apply, what good-faith practice looks like for a small organization, and what to do when an AI tool you actually need stores data outside the EU.</p>
+      <p>If you run a school, a clinic, a nonprofit, a public office, a law firm, or any organization that handles personal data in Europe, this applies to you. Read it.</p>
+      <p class="memo-page__disclaimer">This memo is plain-language explanation. It is not legal advice. For obligations specific to your organization, consult a qualified lawyer or your Data Protection Officer.</p>
+
+      <h2>Why this matters now</h2>
+      <p>Three things happened in the last two years.</p>
+      <p>First, AI tools became ordinary office software. ChatGPT, Microsoft Copilot, Google Gemini, Anthropic Claude, and dozens of smaller tools are now embedded in everyday work. Many of them send data outside the European Union by default.</p>
+      <p>Second, EU regulators made it clear that AI use does not get a pass under the General Data Protection Regulation. The Italian data protection authority, the French CNIL, German DPAs, and the European Data Protection Board have all issued opinions or enforcement actions on generative AI, training data, and cross-border transfers.</p>
+      <p>Third, the EU AI Act came into force. Article 4 requires organizations using AI to ensure that the people using it have sufficient AI literacy, including knowing what the tool does with their data. (See <a href="02-article-4.html" style="color:var(--accent)">Memo 02</a>.)</p>
+      <p>The combination matters. If your team is pasting client data into a tool you have no legal basis to use, you have a GDPR problem, an Article 4 problem, and a professional-conduct problem. Most organizations have not stopped to check.</p>
+
+      <h2>What "data residency" actually means</h2>
+      <p>Data residency is the question of where, geographically, your data is stored and processed. It is not a single rule. It is the answer to four practical questions.</p>
+      <ol>
+        <li><strong>Where is the data physically held?</strong> Which datacenter, in which country?</li>
+        <li><strong>Where is it processed?</strong> Where does the actual computation happen?</li>
+        <li><strong>Who can access it?</strong> Which staff of the vendor, in which jurisdiction, under which laws?</li>
+        <li><strong>Where do logs and metadata live?</strong> These are often in a different region than the data itself.</li>
+      </ol>
+      <p>A tool can be "EU-hosted" for storage and still process data in the United States. A tool can keep the main payload in Europe and ship the diagnostic logs to a global cloud. A tool can promise "EU data residency" while subcontracting parts of its operation to providers outside the EU. The marketing label is not enough. Read the details.</p>
+      <p class="pullout">A tool can be "EU-hosted" and still send your data to the United States. The marketing label is not enough.</p>
+
+      <h2>The legal frame, in plain language</h2>
+      <p>Under the General Data Protection Regulation (GDPR), personal data of people in the EU can move outside the EU only under specific conditions. The Regulation calls this "international transfers" and covers it in Chapter V (Articles 44 to 50).</p>
+      <p>There are three main lawful bases for transferring personal data outside the EU/EEA.</p>
+      <ul>
+        <li><strong>Adequacy decision.</strong> The European Commission has formally decided that the receiving country provides "essentially equivalent" data protection. As of mid-2026, adequacy decisions exist for Andorra, Argentina, Canada (commercial organizations), the Faroe Islands, Guernsey, Israel, Isle of Man, Japan, Jersey, New Zealand, the Republic of Korea, Switzerland, the United Kingdom, Uruguay, and the United States under the EU-US Data Privacy Framework. The US adequacy is conditional on the receiving organization being self-certified under the Framework.</li>
+        <li><strong>Appropriate safeguards.</strong> The most common in practice are Standard Contractual Clauses (SCCs) and Binding Corporate Rules (BCRs). These are contractual mechanisms that commit the receiving organization to GDPR-equivalent protection.</li>
+        <li><strong>Derogations.</strong> Narrow exceptions, such as explicit consent for a specific transfer, or where the transfer is genuinely necessary for performing a contract with the data subject. These are not a general-purpose route for routine transfers.</li>
+      </ul>
+      <p>The default position is that personal data should stay in the EU/EEA, or move only to a country with adequacy, or move only with proper safeguards in place. The burden of proof is on the organization sending the data, not on the person whose data it is.</p>
+      <p>The EU AI Act does not change these rules. It sits on top of them. When you use AI tools that handle personal data, both GDPR and the AI Act apply.</p>
+
+      <h2>Where the major AI tools actually send your data</h2>
+      <p>What follows is the general picture for the most common AI tools as of mid-2026. Vendor policies change. Always verify against the current Data Processing Addendum or trust-center page of the tool you actually use.</p>
+
+      <div class="vendor-block">
+        <p><strong>ChatGPT (free and Plus).</strong> Conversations are sent to OpenAI's infrastructure, primarily in the United States. On the free and Plus tiers, OpenAI may retain conversations and, depending on user settings, use them to improve its models. OpenAI is self-certified under the EU-US Data Privacy Framework, but the enterprise-grade controls (no training, EU data residency, audit logs, contractual DPA) are not available on these consumer tiers.</p>
+      </div>
+
+      <div class="vendor-block">
+        <p><strong>ChatGPT Team and Enterprise.</strong> OpenAI offers EU data residency for these tiers. Conversation data is not used to train models by default. A Data Processing Addendum is available. For most Danish organizations that want to use ChatGPT lawfully on real work data, this is the minimum tier to consider.</p>
+      </div>
+
+      <div class="vendor-block">
+        <p><strong>OpenAI API.</strong> Data is not used to train models by default. Customers can request zero data retention for eligible endpoints. Region selection is available for certain configurations. Suitable for organizations with technical capacity to integrate the API directly.</p>
+      </div>
+
+      <div class="vendor-block">
+        <p><strong>Microsoft 365 Copilot.</strong> Data is processed within your Microsoft 365 tenant boundary. For EU tenants, this typically means EU data residency, though the precise behaviour depends on your Microsoft licensing, your tenant configuration, and the specific Copilot feature. Your Microsoft administrator can verify the current setting in the Microsoft 365 admin centre.</p>
+      </div>
+
+      <div class="vendor-block">
+        <p><strong>Azure OpenAI Service.</strong> You choose the region. EU regions such as West Europe, Sweden Central, and France Central keep data within the EU. Microsoft offers stronger contractual protections than the public ChatGPT consumer product. This is often the cleanest commercial route to a US-built model with EU residency.</p>
+      </div>
+
+      <div class="vendor-block">
+        <p><strong>Anthropic Claude (claude.ai, consumer).</strong> Conversations are processed on Anthropic's primary infrastructure, based in the United States. Anthropic is self-certified under the EU-US Data Privacy Framework. Enterprise and API customers can negotiate data handling terms.</p>
+      </div>
+
+      <div class="vendor-block">
+        <p><strong>Anthropic Claude via Amazon Bedrock or Google Cloud Vertex AI.</strong> Claude is available through major cloud providers, and you can select an EU region for processing. For organizations already using AWS or Google Cloud, this is often the cleanest path to Claude with EU residency.</p>
+      </div>
+
+      <div class="vendor-block">
+        <p><strong>Google Gemini (consumer).</strong> Data flows into Google's global infrastructure, with handling subject to Google's general consumer privacy practices. Suitable for personal use; not generally appropriate for work data containing personal information about others.</p>
+      </div>
+
+      <div class="vendor-block">
+        <p><strong>Google Workspace Gemini.</strong> Data handling follows your Workspace data region and data-processing settings. Workspace Business and Enterprise customers can configure EU data regions.</p>
+      </div>
+
+      <div class="vendor-block">
+        <p><strong>Vertex AI (Gemini, Gemma, Claude, partner models).</strong> Region selectable, including EU regions. Provides the contractual and operational controls most enterprises need.</p>
+      </div>
+
+      <div class="vendor-block">
+        <p><strong>Translation tools.</strong> DeepL (German company) offers a Pro tier with strict no-retention guarantees and EU hosting. Free tiers of any translation service (DeepL Free, Google Translate, Microsoft Translator) typically retain data and may use it for product improvement. Not suitable for confidential or personal content.</p>
+      </div>
+
+      <div class="vendor-block">
+        <p><strong>Open-source models you self-host (Mistral, Llama, Qwen, Whisper, and similar).</strong> The data goes wherever you put the server. Self-hosted on EU infrastructure is the cleanest path to true data residency, with the trade-off of requiring technical capacity to deploy and maintain.</p>
+      </div>
+
+      <div class="vendor-block">
+        <p><strong>Smaller AI productivity tools.</strong> Note-takers, transcribers, AI scheduling assistants, AI CRM enrichment. Highly variable. Many small AI startups use OpenAI, Anthropic, or Google under the hood and forward your data to those providers. Some have no Data Processing Addendum at all. Always check, and ask the vendor directly if the documentation is unclear.</p>
+      </div>
+
+      <p>This list is a snapshot. Vendor policies, regional options, and certifications shift continuously. Treat any specific claim above as a starting point for verification, not a final answer.</p>
+
+      <h2>Where it goes wrong</h2>
+      <p>Four patterns we see repeatedly in small organizations.</p>
+
+      <h3>1. Free tier in production</h3>
+      <p>A staff member starts experimenting with free ChatGPT, finds it useful, and quietly begins using it on real work, including documents containing personal data. The organization has no awareness, no contract, no audit trail, and no legal basis for the transfer. This is the single most common GDPR exposure in small organizations.</p>
+
+      <h3>2. EU residency on the front, US logs on the back</h3>
+      <p>A vendor markets "EU data residency" but ships diagnostic logs, error reports, or telemetry to its global infrastructure. The main data sits in Frankfurt; the logs sit in Virginia. The transfer still happens, often with metadata that includes personal data.</p>
+
+      <h3>3. The integration nobody mapped</h3>
+      <p>Your CRM has an AI feature. Your email has a writing assistant. Your meeting tool has an AI note-taker. Each one was approved separately, by a different person, at a different time. Nobody mapped the combined picture, so nobody noticed that confidential client meetings end up summarized on three different US clouds.</p>
+
+      <h3>4. The "this is just for me" tool</h3>
+      <p>A senior leader uses a personal subscription to a consumer AI tool to summarize board papers, including personal data of staff, donors, or service users. The organization is still the controller for that personal data. A personal subscription is not a defense.</p>
+
+      <p>If any of these sound familiar, you have a data residency problem worth taking seriously.</p>
+
+      <h2>What good-faith practice looks like</h2>
+      <p>A small organization cannot have a Chief Data Officer and a fifty-page transfer impact assessment for every tool. GDPR does not require that. It requires reasonable, documented care, proportionate to the data and the risk.</p>
+      <p>Six concrete steps that cover most small organizations.</p>
+      <ol>
+        <li><strong>Inventory.</strong> List every AI tool your team is actually using. Include the ones embedded in software you already pay for (Microsoft 365, Google Workspace, your CRM, your accounting platform, your applicant tracking system).</li>
+        <li><strong>Classify the data.</strong> For each tool, write down what kind of data goes into it. Personal data of staff? Personal data of clients or service users? Health data? Children's data? Financial data? Confidential commercial information? Or only public, non-personal information? This shapes the risk.</li>
+        <li><strong>Locate.</strong> For each tool that handles personal data, find out where the data is processed. Check the vendor's Data Processing Addendum, sub-processor list, or trust-centre page. Where the answer is unclear, ask the vendor in writing and keep the reply.</li>
+        <li><strong>Decide.</strong> For each tool, decide whether the current setup is acceptable. The question is not whether the tool says "EU-hosted" in marketing materials. The question is whether your specific use, with your specific data, satisfies GDPR.</li>
+        <li><strong>Switch or document.</strong> If a tool is not acceptable, switch to one that is. If it is acceptable, write a short note (one paragraph) explaining why the transfer is lawful, which mechanism applies (adequacy, SCCs, etc.), and keep it on file.</li>
+        <li><strong>Tell your team.</strong> A one-page internal policy stating which tools are approved, what kinds of data can go into them, and what cannot. This is also part of Article 4 compliance under the EU AI Act.</li>
+      </ol>
+      <p>Done in good faith with documentation you can show, this is reasonable. Done with no inventory and no policy, it is not.</p>
+      <p class="pullout">You do not need a compliance officer to fix this. You need an hour of attention, a one-page inventory, and a one-page policy.</p>
+
+      <h2>The Article 4 connection</h2>
+      <p>Memo 02 explained Article 4 of the EU AI Act: organizations using AI must ensure that their staff have sufficient AI literacy. Knowing where your data goes is part of that literacy.</p>
+      <p>A staff member who is AI-literate can answer three questions about any tool they use at work:</p>
+      <ul>
+        <li>Which AI tools am I allowed to use for which kinds of work?</li>
+        <li>What kind of data can I put into each tool, and what cannot?</li>
+        <li>Where does that data go when I use the tool?</li>
+      </ul>
+      <p>If a substantial portion of your team cannot answer those three questions, you are not yet Article 4 compliant on the data dimension. The fix is not difficult. It is mostly a question of doing it.</p>
+
+      <h2>A short practical checklist</h2>
+      <p>For the person who wants to know what to do this week.</p>
+      <ol>
+        <li>List the AI tools your team actually uses.</li>
+        <li>For each, write down what data goes in.</li>
+        <li>For each, find out where that data is processed.</li>
+        <li>Where personal data is involved, check the legal basis for any transfer outside the EU.</li>
+        <li>Write a one-page internal policy and brief the team.</li>
+        <li>Review every six months.</li>
+      </ol>
+
+      <h2>What the Foundation will do</h2>
+      <p>Data residency is part of every AI tool review the AI Literacy Foundation runs. When we evaluate a tool for a Danish organization, we document where the data goes, which legal basis applies, what the residency posture is, and any known risks. The review is free at the point of access.</p>
+      <p>We include data residency questions in our Article 4 compliance training so that the people who finish a cohort can answer the three core questions for their own organization: which AI tools are in use, what data goes into them, and where that data is processed.</p>
+      <p>We do not sell AI tools. We do not have a preferred vendor. We help people make informed decisions.</p>
+      <p>If you are unsure where to start, <a href="../work.html#contact" style="color:var(--accent)">write to us</a>.</p>
+
+      <h2>Closing</h2>
+      <p>Data residency is one of the most concrete intersections of AI and the law. It is also one of the most ignored. Most small organizations using AI in 2026 have no inventory, no policy, and no clear answer to the question "where does our data actually go."</p>
+      <p>The legal exposure is real. The fix is reasonable. The difference between a compliant organization and a non-compliant one is rarely sophistication. It is usually attention.</p>
+      <p style="font-style:italic;font-size:1.2rem;color:var(--accent);">That is what this foundation is for.</p>
+
+      <p class="memo-page__sig">Ali Al Mokdad</p>
+      <p class="memo-page__contact">Founder, AI Literacy Foundation</p>
+      <p class="memo-page__contact"><a href="mailto:hello@ailiteracyfoundation.eu">hello@ailiteracyfoundation.eu</a></p>
+      <p class="memo-page__contact"><a href="https://ailiteracyfoundation.eu">ailiteracyfoundation.eu</a></p>
+
+      <hr class="memo-page__divider">
+      <p class="memo-page__disclaimer">This memo is plain-language explanation. It is not legal advice. Vendor policies, regional options, and adequacy decisions change continuously. For obligations specific to your organization, consult a qualified lawyer or your Data Protection Officer, and verify every specific vendor claim above against the current documentation of the tool you actually use.</p>
+
+      <aside class="memo-share" aria-label="Share this memo">
+        <span class="memo-share__label">Share this memo</span>
+        <div class="memo-share__icons">
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Failiteracyfoundation.eu%2Fmemos%2F04-data-residency.html" target="_blank" rel="noopener noreferrer" class="memo-share__link memo-share__link--linkedin" aria-label="Share on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://x.com/intent/post?text=Where%20does%20your%20data%20go%3F%20AI%20tools%2C%20EU%20data%20residency%2C%20and%20GDPR%20%C2%B7%20AI%20Literacy%20Foundation&url=https%3A%2F%2Failiteracyfoundation.eu%2Fmemos%2F04-data-residency.html" target="_blank" rel="noopener noreferrer" class="memo-share__link memo-share__link--x" aria-label="Share on X">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Failiteracyfoundation.eu%2Fmemos%2F04-data-residency.html" target="_blank" rel="noopener noreferrer" class="memo-share__link memo-share__link--facebook" aria-label="Share on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+          </a>
+          <a href="https://api.whatsapp.com/send?text=Where%20does%20your%20data%20go%3F%20AI%20tools%2C%20EU%20data%20residency%2C%20and%20GDPR%20%C2%B7%20AI%20Literacy%20Foundation%20https%3A%2F%2Failiteracyfoundation.eu%2Fmemos%2F04-data-residency.html" target="_blank" rel="noopener noreferrer" class="memo-share__link memo-share__link--whatsapp" aria-label="Share on WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          </a>
+          <button type="button" class="memo-share__link memo-share__link--instagram" aria-label="Copy link for Instagram" data-copy="https://ailiteracyfoundation.eu/memos/04-data-residency.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            <span class="memo-share__tooltip">Link copied</span>
+          </button>
+        </div>
+      </aside>
+
+      <div class="memo-page__footer">
+        AI Literacy Foundation · CVR 46487869 · Copenhagen, Denmark · Published 16 May 2026
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap--wide">
+    <div class="site-footer__grid">
+      <div>
+        <h3 class="site-footer__heading">The Foundation</h3>
+        <div class="site-footer__addr">
+          <strong>AI Literacy Foundation</strong>
+          <span class="site-footer__city">Copenhagen, Denmark</span><br><br>
+          <span class="mono" style="font-size:var(--fs-xs);">CVR · 46487869</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="site-footer__heading">Site</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../roadmap.html">The AI Roadmap</a></li>
+          <li><a href="../work.html">What We Do</a></li>
+          <li><a href="../memos.html">Memos</a></li>
+          <li><a href="../donate.html">Support us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="site-footer__heading">Contact</h3>
+        <ul>
+          <li><a href="../work.html#contact">Contact form <span aria-hidden="true">→</span></a></li>
+          <li><a href="mailto:hello@ailiteracyfoundation.eu">hello@ailiteracyfoundation.eu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <div>© 2026 AI Literacy Foundation · CVR 46487869</div>
+      <div class="lang-toggle">
+        <a href="04-data-residency.html" class="active">EN</a>
+        <a href="../da/memos/04-data-residency.html">DA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+</script>
+<script src="../motion.js" defer></script>
+
+</body>
+</html>
