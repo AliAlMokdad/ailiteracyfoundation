@@ -100,4 +100,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/memos/02-article-4.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/memos/02-article-4.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/memos/02-article-4.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/memos/02-article-4.html"/>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
 </urlset>
