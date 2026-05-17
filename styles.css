@@ -1634,7 +1634,6 @@ a.inline-link:hover {
   .site-footer__grid > div:nth-child(2) { display: none; }
   /* Contact column: hide the "Contact" heading and the email line */
   .site-footer__grid > div:nth-child(3) .site-footer__heading { display: none; }
-  .site-footer__grid > div:nth-child(3) ul li:nth-child(2) { display: none; }
   .site-footer__grid > div:nth-child(3) ul li { margin-bottom: 0; }
   .site-footer__grid > div:nth-child(3) a {
     font-family: var(--sans);
