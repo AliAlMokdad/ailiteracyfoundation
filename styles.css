@@ -1883,3 +1883,13 @@ a.inline-link:hover {
     color: rgb(105, 100, 92);
   }
 }
+
+/* A11y pass 1 (re-applied 2026-05-17): small UI text contrast
+   .muted, .section-label, .status__label, .status__foot were rgb(135,130,122)
+   on bg #F7F4EE = 3.48:1, failing WCAG AA. rgb(105,100,92) = 4.96:1. */
+.muted,
+.section-label,
+.status__label,
+.status__foot {
+  color: rgb(105, 100, 92);
+}
