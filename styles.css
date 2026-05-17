@@ -1792,3 +1792,53 @@ a.inline-link:hover {
 .memo-share__tooltip.is-visible {
   opacity: 1;
 }
+
+/* ===================================================================
+   MOBILE TAP-TARGET FIXES (2026-05-17)
+   Apple HIG and WCAG 2.5.5 want ≥44x44 px for interactive elements.
+   Audit at 390x844 showed these falling short:
+   - .lang-toggle a (footer): 38x24
+   - .site-footer ul a: 122x17
+   - .nav-lang-mobile a (injected by motion.js): 45x31
+   - .scroll-top: 42x42 (border-box quirk)
+   - .skip-link: 43px
+   =================================================================== */
+@media (max-width: 760px) {
+  .lang-toggle a {
+    padding: 0.7rem 1rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
+  .site-footer ul a,
+  .site-footer ul li > a,
+  footer .site-footer__addr a {
+    padding: 0.55rem 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.35;
+  }
+  .site-footer ul li { margin-bottom: 0; }
+  .nav-lang-mobile a {
+    padding: 0.75rem 1.1rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .scroll-top {
+    width: 48px;
+    height: 48px;
+  }
+  .scroll-top svg {
+    width: 20px;
+    height: 20px;
+  }
+  .skip-link {
+    padding: 0.9rem 1.15rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
