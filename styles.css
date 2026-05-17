@@ -1634,7 +1634,7 @@ a.inline-link:hover {
   .site-footer__grid > div:nth-child(2) { display: none; }
   /* Contact column: hide the "Contact" heading and the email line */
   .site-footer__grid > div:nth-child(3) .site-footer__heading { display: none; }
-  /* A11y pass 1: keep mailto visible on mobile for trust */
+  .site-footer__grid > div:nth-child(3) ul li:nth-child(2) { display: none; }
   .site-footer__grid > div:nth-child(3) ul li { margin-bottom: 0; }
   .site-footer__grid > div:nth-child(3) a {
     font-family: var(--sans);
@@ -1875,13 +1875,11 @@ a.inline-link:hover {
   }
 }
 
-/* A11y pass 1: WCAG AA contrast (≥4.5:1) for small UI text.
-   Was using --ink-quiet (#87827A ≈ 3.5:1 on --bg #F7F4EE).
-   New color rgb(105,100,92) ≈ 4.96:1. Variable left untouched
-   because --ink-quiet is also used for borders/icons/larger text. */
-.muted,
-.section-label,
-.status__label,
-.status__foot {
-  color: rgb(105, 100, 92);
+/* A11y pass 2: match the specificity of .status__row--wide .status__label
+   inside the mobile @media block, which still resolved to --ink-quiet (3.48:1).
+   This puts it at 4.96:1 in line with the other small-text overrides. */
+@media (max-width: 640px) {
+  .status__row--wide .status__label {
+    color: rgb(105, 100, 92);
+  }
 }
