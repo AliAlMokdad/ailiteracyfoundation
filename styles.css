@@ -1055,11 +1055,19 @@ a.inline-link:hover {
 .pullout:hover::before { transform: scale(1.08) translateY(-2px); opacity: 0.32; }
 
 /* FRAMEWORKS */
+/* Section heading anchoring a multi-column body below */
+.section-heading {
+  max-width: 32ch;
+  margin-bottom: 2.5rem;
+  text-wrap: balance;
+}
+.grid-2--top { align-items: start; }
+
 .frameworks {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin-top: 2.25rem;
+  margin-top: 0;
 }
 @media (max-width: 640px) { .frameworks { grid-template-columns: 1fr; } }
 .framework {
