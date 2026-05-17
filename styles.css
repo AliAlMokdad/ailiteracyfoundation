@@ -380,6 +380,29 @@ body {
 }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; }
 
+/* Hero two-column composition (desktop): headline left, lede beside it on the right */
+@media (min-width: 960px) {
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    column-gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+    grid-template-areas:
+      "mark  mark"
+      "title lede"
+      "ctas  .   ";
+  }
+  .hero .wrap > .hero-mark { grid-area: mark; }
+  .hero .wrap > h1         { grid-area: title; }
+  .hero .wrap > .lede {
+    grid-area: lede;
+    margin-bottom: 0;
+    max-width: 30rem;
+    padding-top: 0.65em;
+  }
+  .hero .wrap > .hero-cta  { grid-area: ctas; }
+}
+
 .btn {
   font-family: var(--sans);
   font-size: var(--fs-sm);
