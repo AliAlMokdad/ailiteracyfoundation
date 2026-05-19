@@ -614,6 +614,20 @@ a.inline-link:hover {
   transition: color 240ms var(--ease);
 }
 .status__value--accent { color: var(--accent); }
+/* Stacked value: multiple verifiers shown on their own lines */
+.status__value--stacked {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  white-space: normal;
+  line-height: 1.55;
+  gap: 0.15rem;
+}
+@media (max-width: 640px) {
+  .status__value--stacked {
+    align-items: flex-start;
+  }
+}
 .status__row { transition: background 240ms var(--ease); border-radius: 2px; }
 .status__row:hover { background: rgba(176, 84, 51, 0.04); }
 .status__row:hover .status__value { color: var(--accent); }
