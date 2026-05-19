@@ -620,9 +620,13 @@ a.inline-link:hover {
   flex-direction: column;
   align-items: flex-end;
   white-space: normal;
-  line-height: 1.55;
-  gap: 0.15rem;
+  line-height: 1.35;
+  gap: 0;
 }
+/* Center the row's children vertically when value is stacked, so the dotted
+   leader and label sit between the two value lines instead of at the top. */
+.status__row--stacked { align-items: center; }
+.status__row--stacked .status__leader { transform: none; }
 @media (max-width: 640px) {
   .status__value--stacked {
     align-items: flex-start;
