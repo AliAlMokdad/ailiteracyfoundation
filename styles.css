@@ -261,7 +261,8 @@ body {
     text-transform: uppercase;
     color: var(--ink-quiet);
   }
-  .nav-lang-mobile a {
+  .nav-lang-mobile a,
+  .nav-lang-mobile span.active {
     padding: 0.35rem 0.85rem;
     border-radius: 999px;
     border-bottom: none;
@@ -269,7 +270,7 @@ body {
     color: var(--ink-quiet);
     font-weight: 500;
   }
-  .nav-lang-mobile a.active {
+  .nav-lang-mobile .active {
     background: var(--ink);
     color: var(--bg);
   }
@@ -1838,7 +1839,8 @@ a.inline-link:hover {
     line-height: 1.35;
   }
   .site-footer ul li { margin-bottom: 0; }
-  .nav-lang-mobile a {
+  .nav-lang-mobile a,
+  .nav-lang-mobile span.active {
     padding: 0.75rem 1.1rem;
     min-height: 44px;
     display: inline-flex;

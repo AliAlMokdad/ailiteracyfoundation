@@ -41,9 +41,11 @@
       var langWrap = document.createElement('div');
       langWrap.className = 'nav-lang-mobile';
       langWrap.setAttribute('aria-label', 'Language');
+      // Active language is a <span>, not a dead-link <a href="#">. Prevents browser navigation,
+      // hash-pollution in the URL, and a confusing focus target for keyboard users.
       langWrap.innerHTML = isDa
-        ? '<a href="' + partnerHref + '">EN</a><span aria-hidden="true">·</span><a href="#" class="active" aria-current="true">DA</a>'
-        : '<a href="#" class="active" aria-current="true">EN</a><span aria-hidden="true">·</span><a href="' + partnerHref + '">DA</a>';
+        ? '<a href="' + partnerHref + '">EN</a><span aria-hidden="true">·</span><span class="active" aria-current="page">DA</span>'
+        : '<span class="active" aria-current="page">EN</span><span aria-hidden="true">·</span><a href="' + partnerHref + '">DA</a>';
       navEl.appendChild(langWrap);
     } catch (e) { /* ignore */ }
 
