@@ -43,5 +43,7 @@ The full site is available in English and Danish. Each English memo has a Danish
 
 Memos are © AI Literacy Foundation. They may be quoted, summarised, and linked freely for journalistic, academic, civil-society, and policy purposes, provided the Foundation and the specific memo URL are cited. Bulk republication or paid republication requires written permission.
 
-Preferred citation form:
-> AI Literacy Foundation (2026). "<Memo title>." <https://ailiteracyfoundation.eu/memos/0X-slug.html>. Accessed <date>.
+Preferred citation form (concrete example):
+> AI Literacy Foundation (2026). "What 'AI literacy' actually means: a working definition for adults with jobs." https://ailiteracyfoundation.eu/memos/03-what-ai-literacy-means.html. Accessed 25 May 2026.
+
+For other memos substitute the corresponding `/memos/0N-<slug>.html` URL from the list above.
