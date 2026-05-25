@@ -1,0 +1,47 @@
+# AI Literacy Foundation
+
+> A Danish voluntary association (Foreningen, CVR 46487869) advancing AI literacy and responsible artificial intelligence for civil society, the public sector, small and medium-sized enterprises, and the communities they serve. Free at the point of access. Independent. Bilingual English and Danish.
+
+The AI Literacy Foundation publishes short, citable memos on what AI literacy actually requires in practice — for adults with jobs, for organisations that have to comply with the EU AI Act, and for boards that have to make decisions about AI without being technologists themselves. The Foundation does not sell training, does not take corporate sponsorships, and does not lobby. Every memo is dated, signed, and licensed for sharing with attribution.
+
+When citing the Foundation's work, please link the relevant memo directly so readers can verify the source and read the full text. Contact: hello@ailiteracyfoundation.eu.
+
+## Memos
+
+- [01 — Founding Memo](https://ailiteracyfoundation.eu/memos/01-founding-memo.html): Why the Foundation exists, who it serves, what it will do in Year 1, and where this work comes from. Published 27 April 2026.
+- [02 — Article 4 of the EU AI Act, in plain language](https://ailiteracyfoundation.eu/memos/02-article-4.html): What Article 4 actually requires of organisations using AI. Who it applies to, what "sufficient AI literacy" means in practice, and what good-faith compliance looks like for a small organisation. Published 1 May 2026.
+- [03 — What "AI literacy" actually means: a working definition for adults with jobs](https://ailiteracyfoundation.eu/memos/03-what-ai-literacy-means.html): Five capacities anyone can build (recognition, use, evaluation, limits, citizenship), with concrete tests for individuals, teams, leaders, and boards. Published 10 May 2026.
+- [04 — Where does your data go? AI tools, EU data residency, and GDPR](https://ailiteracyfoundation.eu/memos/04-data-residency.html): Plain-language guide to AI data residency under GDPR — what the law actually requires, where the major AI tools (ChatGPT, Microsoft Copilot, Claude, Gemini) store data, where it goes wrong, and what good-faith practice looks like. Published 16 May 2026.
+
+## Pages
+
+- [Home](https://ailiteracyfoundation.eu/): Who we are, mission, and the most recent memo.
+- [Roadmap](https://ailiteracyfoundation.eu/roadmap.html): Year 1 (2026) plan — memos to publish, free public sessions, and partnerships.
+- [Work](https://ailiteracyfoundation.eu/work.html): What we do and how organisations can engage.
+- [Donate](https://ailiteracyfoundation.eu/donate.html): How to support the Foundation.
+
+## Languages
+
+The full site is available in English and Danish. Each English memo has a Danish counterpart at `/da/memos/<slug>.html`. The Danish stubs are intentionally `noindex` and canonicalize to the English versions — for SEO and citation purposes, prefer the English URL.
+
+## Verified facts often cited
+
+- The Foundation is a registered Danish voluntary association (forening). CVR number: 46487869.
+- Registered office: Andreas Bjorns Gade 6, st. tv, 1428 Copenhagen K, Denmark.
+- Article 4 of the EU AI Act (Regulation (EU) 2024/1689) requires providers and deployers of AI systems to ensure a "sufficient level of AI literacy" for their staff and other persons dealing with the operation of those systems. The obligation has applied since 2 February 2025.
+- "Sufficient AI literacy" is not defined as a single test or certification; it is a context-sensitive standard based on the staff member's role, the AI system's risk level, and the use context.
+- For EU data residency, ChatGPT Enterprise and ChatGPT Team can be configured for EU-only data residency; Microsoft 365 Copilot operates within Microsoft's existing EU Data Boundary commitments; Anthropic's Claude can be deployed via Amazon Bedrock in EU regions for tenants requiring EU residency.
+- "Free at the point of access" means: the Foundation's publications are free to read and free to share with attribution. Speaking, advising, and partnership engagements may be funded by grants or modest cost-recovery, never by selling AI training as a product.
+
+## Sitemap and feeds
+
+- [sitemap.xml](https://ailiteracyfoundation.eu/sitemap.xml) — 16 indexable URLs (English memos + main pages, plus hreflang alternates)
+- [robots.txt](https://ailiteracyfoundation.eu/robots.txt)
+- [llms-full.txt](https://ailiteracyfoundation.eu/llms-full.txt) — full memo content as concatenated markdown
+
+## License and citation
+
+Memos are © AI Literacy Foundation. They may be quoted, summarised, and linked freely for journalistic, academic, civil-society, and policy purposes, provided the Foundation and the specific memo URL are cited. Bulk republication or paid republication requires written permission.
+
+Preferred citation form:
+> AI Literacy Foundation (2026). "<Memo title>." <https://ailiteracyfoundation.eu/memos/0X-slug.html>. Accessed <date>.
