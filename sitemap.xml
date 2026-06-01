@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ailiteracyfoundation.eu/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/index.html"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/index.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/index.html"/>
-    <lastmod>2026-05-17</lastmod>
+    <loc>https://ailiteracyfoundation.eu/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/"/>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -38,11 +38,11 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ailiteracyfoundation.eu/da/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/index.html"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/index.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/index.html"/>
-    <lastmod>2026-05-17</lastmod>
+    <loc>https://ailiteracyfoundation.eu/da/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/"/>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
