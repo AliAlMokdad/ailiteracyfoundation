@@ -75,6 +75,62 @@
   gtag('js', new Date());
   gtag('config', 'G-ELL147GRCZ', { anonymize_ip: true });
 </script>
+
+<style id="rmglobe-css">
+/* Roadmap hero globe. Scoped under .hero--globe / .rmglobe, AI Literacy Foundation tokens only. */
+.hero--globe .rmhero{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) clamp(320px,38vw,480px);
+  gap:clamp(2rem,5vw,4.5rem);
+  align-items:center;
+}
+.rmhero__text{min-width:0;}
+.rmglobe{min-width:0;}
+.rmglobe__stage{
+  position:relative;width:100%;aspect-ratio:1/1;border-radius:24px;overflow:hidden;
+  background:radial-gradient(120% 120% at 50% 28%,var(--bg-elev),var(--bg-deep));
+  border:1px solid var(--line);
+  box-shadow:0 24px 60px -30px rgba(21,20,15,.28),inset 0 1px 0 rgba(255,255,255,.6);
+}
+.rmglobe__canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.rmglobe__note{
+  position:absolute;left:0;right:0;bottom:.6rem;text-align:center;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.02em;
+  color:var(--ink-quiet);padding:0 1rem;pointer-events:none;
+  text-shadow:0 1px 2px var(--bg-deep);
+}
+.rmglobe__caption{margin-top:1.4rem;}
+.rmglobe__label{
+  font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.55rem;
+  transition:opacity .5s var(--ease),transform .5s var(--ease);
+}
+.rmglobe__line{
+  font-family:var(--serif);font-size:var(--fs-md);line-height:1.5;
+  color:var(--ink-soft);max-width:34ch;min-height:4.8rem;
+  transition:opacity .5s var(--ease),transform .5s var(--ease);
+}
+.rmglobe__caption.is-swapping .rmglobe__label,
+.rmglobe__caption.is-swapping .rmglobe__line{opacity:0;transform:translateY(4px);}
+.rmglobe__dots{display:flex;gap:7px;margin-top:.4rem;}
+.rmglobe__dots .d{
+  width:7px;height:7px;border-radius:50%;
+  border:1px solid var(--ink-quiet);background:transparent;
+  transition:background .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease);
+}
+.rmglobe__dots .d.on{background:var(--accent);border-color:var(--accent);transform:scale(1.08);}
+@media (max-width:900px){
+  .hero--globe .rmhero{grid-template-columns:1fr;gap:2.5rem;}
+  .rmglobe{max-width:440px;width:100%;margin-inline:auto;}
+}
+@media (max-width:560px){
+  .rmglobe__stage{border-radius:20px;}
+  .rmglobe__line{font-size:var(--fs-base);min-height:5.4rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .rmglobe__label,.rmglobe__line{transition:none;}
+}
+</style>
 </head>
 <body>
 
@@ -105,11 +161,24 @@
 
 <main id="main">
 
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-mark hero-fade"><span class="signal" aria-hidden="true"></span><span>The AI Roadmap</span></div>
-      <h1 class="hero-fade hero-fade--2">The questions we work on, and the positions we hold.</h1>
-      <p class="lede hero-fade hero-fade--3">Artificial intelligence is the defining technology of this period. The questions of how it is built, deployed, and governed will shape decades. This page lays out the issues we work on, the positions we hold, and the frameworks we engage with.</p>
+  <section class="hero hero--globe">
+    <div class="wrap rmhero">
+      <div class="rmhero__text">
+        <div class="hero-mark hero-fade"><span class="signal" aria-hidden="true"></span><span>The AI Roadmap</span></div>
+        <h1 class="hero-fade hero-fade--2">The questions we work on, and the positions we hold.</h1>
+        <p class="lede hero-fade hero-fade--3">Artificial intelligence is the defining technology of this period. The questions of how it is built, deployed, and governed will shape decades. This page lays out the issues we work on, the positions we hold, and the frameworks we engage with.</p>
+      </div>
+      <div class="rmglobe hero-fade hero-fade--4">
+        <div class="rmglobe__stage">
+          <canvas class="rmglobe__canvas" role="img" aria-label="A slowly rotating globe of the world with Denmark highlighted, illustrating the foundation's work of turning global AI frameworks into local action."></canvas>
+          <p class="rmglobe__note">Boundaries shown do not imply official endorsement.</p>
+        </div>
+        <div class="rmglobe__caption" aria-hidden="true">
+          <div class="rmglobe__label"></div>
+          <p class="rmglobe__line"></p>
+          <div class="rmglobe__dots"></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -310,6 +379,233 @@
   }
 </script>
 <script src="motion.js" defer></script>
+
+<!-- Roadmap hero globe: embedded geometry (no CDN) + scoped, self-contained renderer -->
+<script src="roadmap-globe-geo.js"></script>
+<script>
+/* AI Literacy Foundation roadmap globe. Scoped to .rmglobe, no globals leak, no external fetch.
+   The world slowly rotates with a faint respondent-dot field over inhabited land; Denmark is held
+   in terracotta as the home. Definite borders solid, disputed borders dashed, no disputed area
+   filled to any country. Respects prefers-reduced-motion. */
+(function () {
+  'use strict';
+  var root = document.querySelector('.rmglobe');
+  if (!root) return;
+  var canvas = root.querySelector('.rmglobe__canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+  var GEO = window.__RM_GEO__ || {};
+  var elLabel = root.querySelector('.rmglobe__label');
+  var elLine  = root.querySelector('.rmglobe__line');
+  var elDots  = root.querySelector('.rmglobe__dots');
+  var elCap   = root.querySelector('.rmglobe__caption');
+  var stage   = root.querySelector('.rmglobe__stage');
+  var reduce  = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var D2R = Math.PI / 180;
+
+  var LINES = [
+    { label: 'AI literacy',         text: 'A public good, the way reading was before it.' },
+    { label: 'Who it touches',      text: 'Applicants, patients, displaced families, and frontline workers live with what AI decides.' },
+    { label: 'A seat at the table', text: 'The people AI affects are rarely in the room where it is designed.' },
+    { label: 'Global to local',     text: 'Global rules for AI are written far from the people they reach.' },
+    { label: 'Denmark',             text: 'We turn those frameworks into action communities here can use.' }
+  ];
+
+  var LAND = GEO.land || [], DEF = GEO.defLines || [], DISP = GEO.dispLines || [];
+  var DK_rings = GEO.dkRings || [], DK_polys = GEO.dkPolys || [], DK_center = GEO.dkCenter || [10, 56];
+
+  var W = 0, H = 0, DPR = 1, cx = 0, cy = 0, R = 0;
+  var rotY = 0, tilt = 0.52, cosT = 1, sinT = 0, PX = 0, PY = 0, PZ = 0;
+  function project(lonR, latR) {
+    var cl = Math.cos(latR), sl = Math.sin(latR), a = lonR + rotY;
+    var x = cl * Math.sin(a), z = cl * Math.cos(a);
+    PX = cx + R * x; PY = cy - R * (sl * cosT - z * sinT); PZ = sl * sinT + z * cosT;
+  }
+  function smoothstep(a, b, x) { var t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); }
+  function limb(z) { return smoothstep(0, 0.3, z); }
+
+  function inPolys(lon, lat, polys) {
+    for (var pi = 0; pi < polys.length; pi++) {
+      var poly = polys[pi], c = false;
+      for (var ri = 0; ri < poly.length; ri++) {
+        var ring = poly[ri];
+        for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+          var xi = ring[i][0], yi = ring[i][1], xj = ring[j][0], yj = ring[j][1];
+          if (((yi > lat) !== (yj > lat)) && (lon < (xj - xi) * (lat - yi) / (yj - yi) + xi)) c = !c;
+        }
+      }
+      if (c) return true;
+    }
+    return false;
+  }
+  function buildLandTest() {
+    var GW = 1024, GH = 512, off = document.createElement('canvas');
+    off.width = GW; off.height = GH;
+    var o = off.getContext('2d'); o.fillStyle = '#000';
+    for (var k = 0; k < LAND.length; k++) {
+      var ring = LAND[k]; o.beginPath();
+      for (var i = 0; i < ring.length; i++) {
+        var x = (ring[i][0] + 180) / 360 * GW, y = (90 - ring[i][1]) / 180 * GH;
+        i ? o.lineTo(x, y) : o.moveTo(x, y);
+      }
+      o.closePath(); o.fill();
+    }
+    var data = o.getImageData(0, 0, GW, GH).data;
+    return function (lon, lat) {
+      var x = ((lon + 180) / 360 * GW) | 0, y = ((90 - lat) / 180 * GH) | 0;
+      if (x < 0 || x >= GW || y < 0 || y >= GH) return false;
+      return data[(y * GW + x) * 4 + 3] > 0;
+    };
+  }
+  function boost(lon, lat) {
+    if (lon > -10 && lon < 35 && lat > 36 && lat < 64) return 1.6;
+    if (lon > -95 && lon < -68 && lat > 28 && lat < 47) return 1.4;
+    return 1;
+  }
+  var landDots = [];
+  function buildDots(isLand) {
+    landDots = [];
+    var small = Math.min(window.innerWidth, window.innerHeight) < 760;
+    var TARGET = reduce ? 2200 : (small ? 3000 : 5200);
+    var tries = 0;
+    while (landDots.length < TARGET && tries < TARGET * 12) {
+      tries++;
+      var lon = Math.random() * 360 - 180, lat = Math.asin(Math.random() * 2 - 1) / D2R;
+      if (!isLand(lon, lat)) continue;
+      if (Math.random() > 0.5 * boost(lon, lat)) continue;
+      landDots.push([lon * D2R, lat * D2R]);
+    }
+  }
+  var dkDots = [];
+  function buildDK() {
+    dkDots = [];
+    if (!DK_polys.length) return;
+    var mnx = 180, mxx = -180, mny = 90, mxy = -90;
+    for (var p = 0; p < DK_polys.length; p++) for (var r = 0; r < DK_polys[p].length; r++) {
+      var ring = DK_polys[p][r];
+      for (var i = 0; i < ring.length; i++) {
+        var pt = ring[i];
+        if (pt[0] < mnx) mnx = pt[0]; if (pt[0] > mxx) mxx = pt[0];
+        if (pt[1] < mny) mny = pt[1]; if (pt[1] > mxy) mxy = pt[1];
+      }
+    }
+    var N = 240, tries = 0;
+    while (dkDots.length < N && tries < N * 90) {
+      tries++;
+      var lo = mnx + Math.random() * (mxx - mnx), la = mny + Math.random() * (mxy - mny);
+      if (inPolys(lo, la, DK_polys)) dkDots.push([lo * D2R, la * D2R]);
+    }
+  }
+  function strokeRings(list, color, width, dash) {
+    ctx.strokeStyle = color; ctx.lineWidth = width; ctx.setLineDash(dash || []);
+    ctx.beginPath();
+    for (var k = 0; k < list.length; k++) {
+      var ring = list[k], pen = false;
+      for (var i = 0; i < ring.length; i++) {
+        project(ring[i][0] * D2R, ring[i][1] * D2R);
+        if (PZ > 0.02) { pen ? ctx.lineTo(PX, PY) : (ctx.moveTo(PX, PY), pen = true); }
+        else pen = false;
+      }
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  function draw() {
+    var rect = canvas.getBoundingClientRect();
+    if (rect.width > 0 && canvas.width !== Math.round(rect.width * DPR)) resize();
+    cosT = Math.cos(tilt); sinT = Math.sin(tilt);
+    ctx.clearRect(0, 0, W, H);
+    var grad = ctx.createRadialGradient(cx, cy - R * 0.15, R * 0.2, cx, cy, R);
+    grad.addColorStop(0, 'rgba(255,255,255,0.45)'); grad.addColorStop(1, 'rgba(176,84,51,0.05)');
+    ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(135,130,122,0.35)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+    var grat = [], lat, lon;
+    for (lat = -60; lat <= 60; lat += 30) { var rr = []; for (lon = -180; lon <= 180; lon += 6) rr.push([lon, lat]); grat.push(rr); }
+    for (lon = -180; lon < 180; lon += 30) { var rr2 = []; for (lat = -80; lat <= 80; lat += 4) rr2.push([lon, lat]); grat.push(rr2); }
+    strokeRings(grat, 'rgba(135,130,122,0.16)', 0.6);
+    strokeRings(LAND, 'rgba(74,70,62,0.34)', 0.7);
+    strokeRings(DEF, 'rgba(74,70,62,0.30)', 0.6);
+    strokeRings(DISP, 'rgba(135,130,122,0.72)', 0.8, [3, 3]);
+    ctx.fillStyle = 'rgba(74,70,62,0.42)';
+    for (var i = 0; i < landDots.length; i++) {
+      project(landDots[i][0], landDots[i][1]);
+      if (PZ <= 0.05) continue;
+      ctx.fillRect(PX - 0.5, PY - 0.5, 1, 1);
+    }
+    if (dkDots.length) {
+      var s = 1.7; ctx.fillStyle = 'rgba(176,84,51,0.95)';
+      for (var d = 0; d < dkDots.length; d++) {
+        project(dkDots[d][0], dkDots[d][1]);
+        if (PZ <= 0.03) continue;
+        ctx.globalAlpha = limb(PZ);
+        ctx.fillRect(PX - s / 2, PY - s / 2, s, s);
+      }
+      ctx.globalAlpha = 1;
+    }
+    if (DK_rings.length) strokeRings(DK_rings, 'rgba(142,63,34,0.9)', 1.2);
+  }
+  function resize() {
+    var r = canvas.getBoundingClientRect();
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = r.width; H = r.height;
+    canvas.width = Math.round(W * DPR); canvas.height = Math.round(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    cx = W / 2; cy = H / 2; R = Math.min(W, H) * 0.42;
+  }
+  function buildCapDots() {
+    if (!elDots) return;
+    for (var i = 0; i < LINES.length; i++) {
+      var sp = document.createElement('span');
+      sp.className = 'd' + (i === 0 ? ' on' : '');
+      elDots.appendChild(sp);
+    }
+  }
+  function showLine(i, instant) {
+    if (!elLabel || !elLine) return;
+    var apply = function () {
+      elLabel.textContent = LINES[i].label;
+      elLine.textContent = LINES[i].text;
+      if (elDots) for (var k = 0; k < elDots.children.length; k++) elDots.children[k].classList.toggle('on', k === i);
+    };
+    if (instant || !elCap) { apply(); return; }
+    elCap.classList.add('is-swapping');
+    setTimeout(function () { apply(); elCap.classList.remove('is-swapping'); }, 500);
+  }
+
+  resize();
+  rotY = -DK_center[0] * D2R;
+  if (LAND.length) { try { buildDots(buildLandTest()); } catch (e) {} }
+  buildDK();
+  buildCapDots();
+  showLine(0, true);
+  draw();
+
+  var ci = 0;
+  if (reduce) {
+    setInterval(function () { ci = (ci + 1) % LINES.length; showLine(ci, true); }, 5200);
+  } else {
+    setInterval(function () { ci = (ci + 1) % LINES.length; showLine(ci, false); }, 4800);
+    var ROT = (2 * Math.PI) / 45000, last = performance.now(), acc = 0, FRAME = 1000 / 30, rafId = null;
+    function loop(now) {
+      rafId = requestAnimationFrame(loop);
+      var dt = now - last; last = now;
+      if (dt > 200) dt = 16;
+      rotY += ROT * dt; if (rotY > Math.PI) rotY -= 2 * Math.PI;
+      acc += dt; if (acc >= FRAME) { acc %= FRAME; draw(); }
+    }
+    function start() { if (!rafId) { last = performance.now(); rafId = requestAnimationFrame(loop); } }
+    function stop() { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
+    if ('IntersectionObserver' in window && stage) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { e.isIntersecting ? start() : stop(); });
+      }, { threshold: 0.04 }).observe(stage);
+    } else { start(); }
+  }
+  window.addEventListener('resize', function () { resize(); }, { passive: true });
+  if ('ResizeObserver' in window && stage) { try { new ResizeObserver(function () { resize(); }).observe(stage); } catch (e) {} }
+})();
+</script>
 
 </body>
 </html>
