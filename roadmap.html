@@ -169,7 +169,7 @@
       </div>
       <div class="rmglobe hero-fade hero-fade--4">
         <div class="rmglobe__stage">
-          <canvas class="rmglobe__canvas" role="img" aria-label="A slowly rotating globe that travels across countries the foundation engages with, from the United States, United Kingdom, France and Germany to the United Arab Emirates, and home to Denmark."></canvas>
+          <canvas class="rmglobe__canvas" role="img" aria-label="A slowly rotating globe that travels across the United States, United Kingdom, France, Germany, the European Union and its AI Act, and the United Arab Emirates, returning home to Denmark."></canvas>
         </div>
         <div class="rmglobe__caption" aria-hidden="true">
           <div class="rmglobe__label"></div>
@@ -408,6 +408,7 @@
     uk: { label: 'United Kingdom',       line: 'Plain language for high-stakes AI.' },
     fr: { label: 'France',               line: 'A seat at the table for the people AI affects.' },
     de: { label: 'Germany',              line: 'Global rules, made usable on the ground.' },
+    eu: { label: 'European Union',       line: 'Article 4 of the EU AI Act makes AI literacy a legal requirement.' },
     dk: { label: 'Denmark',              line: 'Our home, where frameworks become local action.' },
     ae: { label: 'United Arab Emirates', line: 'AI literacy, wherever decisions are made.' }
   };
@@ -498,7 +499,8 @@
       var totalA = 0, areas = [];
       for (var p = 0; p < c.polys.length; p++) { var a = ringArea(c.polys[p][0]); areas.push(a); totalA += a; }
       if (totalA <= 0) continue;
-      var N = Math.round(Math.max(400, Math.min(2100, totalA * 2.4)) * scale);
+      var cap = (c.key === 'eu') ? 3600 : 2100;
+      var N = Math.round(Math.max(400, Math.min(cap, totalA * 2.4)) * scale);
       for (var p2 = 0; p2 < c.polys.length; p2++) {
         var n = Math.round(N * areas[p2] / totalA);
         if (n <= 0) continue;
