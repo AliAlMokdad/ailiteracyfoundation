@@ -93,6 +93,15 @@
   box-shadow:0 24px 60px -30px rgba(21,20,15,.28),inset 0 1px 0 rgba(255,255,255,.6);
 }
 .rmglobe__canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.rmglobe__toggle{
+  position:absolute;top:.6rem;right:.6rem;z-index:2;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-quiet);background:rgba(253,251,246,.82);
+  border:1px solid var(--line);border-radius:999px;padding:.28rem .62rem;cursor:pointer;
+  opacity:.6;transition:opacity .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease);
+}
+.rmglobe__toggle:hover,.rmglobe__toggle:focus-visible{opacity:1;color:var(--ink);border-color:var(--ink-quiet);}
+@media (prefers-reduced-motion:reduce){.rmglobe__toggle{display:none;}}
 .rmglobe__caption{margin-top:1.4rem;}
 .rmglobe__label{
   font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.18em;
@@ -169,7 +178,8 @@
       </div>
       <div class="rmglobe hero-fade hero-fade--4">
         <div class="rmglobe__stage">
-          <canvas class="rmglobe__canvas" role="img" aria-label="A slowly rotating globe that travels across the United States, United Kingdom, France, Germany, the European Union and its AI Act, and the United Arab Emirates, returning home to Denmark."></canvas>
+          <canvas class="rmglobe__canvas" role="img" aria-label="A slowly rotating globe that highlights, one at a time, the places this work touches: Denmark, Germany, the European Union and its AI Act, the United Arab Emirates, the United States, the United Kingdom and France, returning home to Denmark."></canvas>
+          <button type="button" class="rmglobe__toggle" aria-pressed="false" aria-label="Pause the globe animation">Pause</button>
         </div>
         <div class="rmglobe__caption" aria-hidden="true">
           <div class="rmglobe__label"></div>
@@ -391,8 +401,9 @@
   if (!root) return;
   var canvas = root.querySelector('.rmglobe__canvas');
   if (!canvas) return;
+  function muteCanvas(){ canvas.setAttribute('role', 'presentation'); canvas.removeAttribute('aria-label'); }
   var ctx = canvas.getContext('2d');
-  if (!ctx) return;
+  if (!ctx) { muteCanvas(); return; }
   var GEO = window.__RM_GEO__ || {};
   var elLabel = root.querySelector('.rmglobe__label');
   var elLine  = root.querySelector('.rmglobe__line');
@@ -401,6 +412,7 @@
   var stage   = root.querySelector('.rmglobe__stage');
   var reduce  = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var D2R = Math.PI / 180;
+  var GRAT = (function () { var g = [], la, lo; for (la = -60; la <= 60; la += 30) { var rr = []; for (lo = -180; lo <= 180; lo += 6) rr.push([lo, la]); g.push(rr); } for (lo = -180; lo < 180; lo += 30) { var rr2 = []; for (la = -80; la <= 80; la += 4) rr2.push([lo, la]); g.push(rr2); } return g; })();
 
   // Country -> label + one short foundation line (no quotes, no em dashes).
   var COPY = {
@@ -408,7 +420,7 @@
     uk: { label: 'United Kingdom',       line: 'Plain language for high-stakes AI.' },
     fr: { label: 'France',               line: 'A seat at the table for the people AI affects.' },
     de: { label: 'Germany',              line: 'Global rules, made usable on the ground.' },
-    eu: { label: 'European Union',       line: 'Article 4 of the EU AI Act makes AI literacy a legal requirement.' },
+    eu: { label: 'European Union',       line: 'Article 4 of the EU AI Act makes AI literacy a legal duty for organizations.' },
     dk: { label: 'Denmark',              line: 'Our home, where frameworks become local action.' },
     ae: { label: 'United Arab Emirates', line: 'AI literacy, wherever decisions are made.' }
   };
@@ -418,7 +430,7 @@
     var cp = COPY[c.key] || { label: c.key, line: '' };
     return { key: c.key, label: cp.label, line: cp.line, center: c.center || [0, 0], rings: c.rings || [], polys: c.polys || [], dots: [] };
   });
-  if (!COUNTRIES.length) return;
+  if (!COUNTRIES.length) { muteCanvas(); return; }
   var startIdx = (typeof GEO.dkIndex === 'number' && GEO.dkIndex >= 0 && GEO.dkIndex < COUNTRIES.length) ? GEO.dkIndex : 0;
 
   // ---- view geometry ----
@@ -477,7 +489,7 @@
     if (lon > -95 && lon < -68 && lat > 28 && lat < 47) return 1.35;
     return 1;
   }
-  var mobile = Math.min(window.innerWidth, window.innerHeight) < 760;
+  var mobile = (window.innerWidth < 900) || (window.matchMedia && window.matchMedia('(pointer:coarse)').matches);
   var landDots = [];
   function buildDots(isLand) {
     landDots = [];
@@ -615,28 +627,27 @@
     ctx.strokeStyle = 'rgba(135,130,122,' + edge + ')'; ctx.lineWidth = 1;
     ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
 
-    // graticule
-    var grat = [], lat, lon;
-    for (lat = -60; lat <= 60; lat += 30) { var rr = []; for (lon = -180; lon <= 180; lon += 6) rr.push([lon, lat]); grat.push(rr); }
-    for (lon = -180; lon < 180; lon += 30) { var rr2 = []; for (lat = -80; lat <= 80; lat += 4) rr2.push([lon, lat]); grat.push(rr2); }
-    strokeRings(grat, 'rgba(135,130,122,0.14)', 0.6);
+    // graticule (built once at module scope)
+    strokeRings(GRAT, 'rgba(135,130,122,0.14)', 0.6);
 
     // faint coastlines (no political borders)
     strokeRings(LAND, 'rgba(74,70,62,0.30)', 0.7);
 
-    // worldwide faint respondent dots
-    ctx.fillStyle = 'rgba(74,70,62,0.4)';
-    for (var i = 0; i < landDots.length; i++) { project(landDots[i][0], landDots[i][1]); if (PZ <= 0.05) continue; ctx.fillRect(PX - 0.5, PY - 0.5, 1, 1); }
+    // worldwide faint respondent dots (skipped while a country fully dominates the view)
+    if (!(gold > 0.9 && focusV > 0.9)) {
+      ctx.fillStyle = 'rgba(74,70,62,0.4)';
+      for (var i = 0; i < landDots.length; i++) { project(landDots[i][0], landDots[i][1]); if (PZ <= 0.05) continue; ctx.fillRect(PX - 0.5, PY - 0.5, 1, 1); }
+    }
 
     // active country: dense terracotta dot-field + thin outline
     var ac = COUNTRIES[idx];
     if (gold > 0.01 && ac.dots.length) {
       var s = 1.5 + 0.7 * focusV;
       ctx.fillStyle = 'rgba(176,84,51,1)';
+      ctx.globalAlpha = gold;                 // hoisted: limb(PZ) is 1.0 across the centred field
       for (var d = 0; d < ac.dots.length; d++) {
         project(ac.dots[d][0], ac.dots[d][1]);
         if (PZ <= 0.03) continue;
-        ctx.globalAlpha = limb(PZ) * gold;
         ctx.fillRect(PX - s / 2, PY - s / 2, s, s);
       }
       ctx.globalAlpha = 1;
@@ -685,11 +696,17 @@
     }
     function start() { if (!rafId) { last = (performance.now ? performance.now() : 0); rafId = requestAnimationFrame(loop); } }
     function stop() { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
+    var userPaused = false;
     if ('IntersectionObserver' in window && stage) {
-      new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? start() : stop(); }); }, { threshold: 0.04 }).observe(stage);
+      new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? (userPaused || start()) : stop(); }); }, { threshold: 0.04 }).observe(stage);
     } else { start(); }
+    var btn = root.querySelector('.rmglobe__toggle');
+    if (btn) btn.addEventListener('click', function () {
+      if (rafId) { stop(); userPaused = true; btn.setAttribute('aria-pressed', 'true'); btn.setAttribute('aria-label', 'Play the globe animation'); btn.textContent = 'Play'; }
+      else { userPaused = false; start(); btn.setAttribute('aria-pressed', 'false'); btn.setAttribute('aria-label', 'Pause the globe animation'); btn.textContent = 'Pause'; }
+    });
   }
-  window.addEventListener('resize', function () { mobile = Math.min(window.innerWidth, window.innerHeight) < 760; resize(); if (reduce) draw(); }, { passive: true });
+  window.addEventListener('resize', function () { mobile = (window.innerWidth < 900) || (window.matchMedia && window.matchMedia('(pointer:coarse)').matches); resize(); if (reduce) draw(); }, { passive: true });
   if ('ResizeObserver' in window && stage) { try { new ResizeObserver(function () { resize(); if (reduce) draw(); }).observe(stage); } catch (e) {} }
 })();
 </script>
