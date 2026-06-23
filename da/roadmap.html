@@ -78,6 +78,61 @@
   gtag('js', new Date());
   gtag('config', 'G-ELL147GRCZ', { anonymize_ip: true });
 </script>
+
+<style id="rmglobe-css">
+/* Roadmap hero globe. Scoped under .hero--globe / .rmglobe, AI Literacy Foundation tokens only. */
+.hero--globe .rmhero{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) clamp(320px,38vw,480px);
+  gap:clamp(2rem,5vw,4.5rem);
+  align-items:center;
+}
+.rmhero__text{min-width:0;}
+.rmglobe{min-width:0;}
+.rmglobe__stage{
+  position:relative;width:100%;aspect-ratio:1/1;border-radius:24px;overflow:hidden;
+  background:radial-gradient(120% 120% at 50% 28%,var(--bg-elev),var(--bg-deep));
+  border:1px solid var(--line);
+  box-shadow:0 24px 60px -30px rgba(21,20,15,.28),inset 0 1px 0 rgba(255,255,255,.6);
+}
+.rmglobe__canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.rmglobe__caption{margin-top:1.4rem;}
+.rmglobe__label{
+  font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.55rem;
+  opacity:0;will-change:opacity,transform;
+}
+.rmglobe__line{
+  font-family:var(--serif);font-size:var(--fs-md);line-height:1.5;
+  color:var(--ink-soft);max-width:36ch;min-height:4.4rem;
+}
+.rmglobe__cursor{
+  display:inline-block;width:2px;height:1.05em;margin-left:1px;vertical-align:baseline;
+  background:var(--ink-soft);transform:translateY(.16em);opacity:0;
+}
+.rmglobe__line.is-typing .rmglobe__cursor,.rmglobe__line.is-done .rmglobe__cursor{
+  opacity:1;animation:rm-blink 1.05s steps(1) infinite;
+}
+@keyframes rm-blink{0%,50%{opacity:1;}50.01%,100%{opacity:0;}}
+.rmglobe__dots{display:flex;gap:7px;margin-top:.9rem;}
+.rmglobe__dots .d{
+  width:7px;height:7px;border-radius:50%;
+  border:1px solid var(--ink-quiet);background:transparent;
+  transition:background .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease);
+}
+.rmglobe__dots .d.on{background:var(--accent);border-color:var(--accent);transform:scale(1.08);}
+@media (max-width:900px){
+  .hero--globe .rmhero{grid-template-columns:1fr;gap:2.5rem;}
+  .rmglobe{max-width:460px;width:100%;margin-inline:auto;}
+}
+@media (max-width:560px){
+  .rmglobe__stage{border-radius:20px;}
+  .rmglobe__line{font-size:var(--fs-base);min-height:5rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .rmglobe__cursor{animation:none;}
+}
+</style>
 </head>
 <body>
 
@@ -108,11 +163,23 @@
 
 <main id="main">
 
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-mark hero-fade"><span class="signal" aria-hidden="true"></span><span>AI-køreplanen</span></div>
-      <h1 class="hero-fade hero-fade--2">De spørgsmål vi arbejder med, og de holdninger vi indtager.</h1>
-      <p class="lede hero-fade hero-fade--3">Kunstig intelligens er denne tids definerende teknologi. Spørgsmålene om, hvordan den bygges, anvendes og forvaltes, vil forme årtier. Denne side beskriver de udfordringer, vi arbejder med, de holdninger, vi indtager, og de rammeværker, vi engagerer os i.</p>
+  <section class="hero hero--globe">
+    <div class="wrap rmhero">
+      <div class="rmhero__text">
+        <div class="hero-mark hero-fade"><span class="signal" aria-hidden="true"></span><span>AI-køreplanen</span></div>
+        <h1 class="hero-fade hero-fade--2">De spørgsmål vi arbejder med, og de holdninger vi indtager.</h1>
+        <p class="lede hero-fade hero-fade--3">Kunstig intelligens er denne tids definerende teknologi. Spørgsmålene om, hvordan den bygges, anvendes og forvaltes, vil forme årtier. Denne side beskriver de udfordringer, vi arbejder med, de holdninger, vi indtager, og de rammeværker, vi engagerer os i.</p>
+      </div>
+      <div class="rmglobe hero-fade hero-fade--4">
+        <div class="rmglobe__stage">
+          <canvas class="rmglobe__canvas" role="img" aria-label="En langsomt roterende globus, der ét sted ad gangen fremhæver de steder, dette arbejde berører: Danmark, Tyskland, Den Europæiske Union og dens AI-forordning, De Forenede Arabiske Emirater, USA, Storbritannien og Frankrig, og vender hjem til Danmark."></canvas>
+        </div>
+        <div class="rmglobe__caption" aria-hidden="true">
+          <div class="rmglobe__label"></div>
+          <p class="rmglobe__line"><span class="rmglobe__linetext"></span><span class="rmglobe__cursor"></span></p>
+          <div class="rmglobe__dots"></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -313,6 +380,321 @@
   }
 </script>
 <script src="../motion.js" defer></script>
+
+<!-- Roadmap hero globe: embedded geometry (no CDN) + scoped, self-contained renderer -->
+<script src="../roadmap-globe-geo.js"></script>
+<script>
+/* AI Literacy Foundation roadmap globe (Danish). Scoped to .rmglobe, no globals leak, no external fetch.
+   Anthropic-homepage style: the globe travels west to east, zooms out to the whole planet
+   mid-travel and zooms into each country as a dense terracotta dot-field, types a short line,
+   and holds (longer on Denmark, the home). No political borders. Respects prefers-reduced-motion. */
+(function () {
+  'use strict';
+  var root = document.querySelector('.rmglobe');
+  if (!root) return;
+  var canvas = root.querySelector('.rmglobe__canvas');
+  if (!canvas) return;
+  function muteCanvas(){ canvas.setAttribute('role', 'presentation'); canvas.removeAttribute('aria-label'); }
+  var ctx = canvas.getContext('2d');
+  if (!ctx) { muteCanvas(); return; }
+  var GEO = window.__RM_GEO__ || {};
+  var elLabel = root.querySelector('.rmglobe__label');
+  var elLine  = root.querySelector('.rmglobe__line');
+  var elText  = root.querySelector('.rmglobe__linetext');
+  var elDots  = root.querySelector('.rmglobe__dots');
+  var stage   = root.querySelector('.rmglobe__stage');
+  var reduce  = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var D2R = Math.PI / 180;
+  var GRAT = (function () { var g = [], la, lo; for (la = -60; la <= 60; la += 30) { var rr = []; for (lo = -180; lo <= 180; lo += 6) rr.push([lo, la]); g.push(rr); } for (lo = -180; lo < 180; lo += 30) { var rr2 = []; for (la = -80; la <= 80; la += 4) rr2.push([lo, la]); g.push(rr2); } return g; })();
+
+  // Country -> label + one short foundation line (Danish; foundation terms; no quotes, no em dashes).
+  var COPY = {
+    us: { label: 'USA',                           line: 'AI-dannelse er ved at blive et offentligt gode.' },
+    uk: { label: 'Storbritannien',                line: 'Klart sprog til AI i højrisiko-sammenhænge.' },
+    fr: { label: 'Frankrig',                      line: 'En plads ved bordet til de mennesker, AI berører.' },
+    de: { label: 'Tyskland',                      line: 'Globale regler, gjort brugbare i praksis.' },
+    eu: { label: 'Den Europæiske Union',          line: 'Artikel 4 i EU\'s AI-forordning gør AI-dannelse til et lovkrav for organisationer.' },
+    dk: { label: 'Danmark',                       line: 'Vores hjem, hvor rammeværker bliver til lokal handling.' },
+    ae: { label: 'De Forenede Arabiske Emirater', line: 'AI-dannelse, hvor end beslutninger træffes.' }
+  };
+
+  var LAND = GEO.land || [];
+  var COUNTRIES = (GEO.countries || []).map(function (c) {
+    var cp = COPY[c.key] || { label: c.key, line: '' };
+    return { key: c.key, label: cp.label, line: cp.line, center: c.center || [0, 0], rings: c.rings || [], polys: c.polys || [], dots: [] };
+  });
+  if (!COUNTRIES.length) { muteCanvas(); return; }
+  var startIdx = (typeof GEO.dkIndex === 'number' && GEO.dkIndex >= 0 && GEO.dkIndex < COUNTRIES.length) ? GEO.dkIndex : 0;
+
+  // ---- view geometry ----
+  var W = 0, H = 0, DPR = 1, cx = 0, cy = 0, R = 0, Rfull = 0, Rfeat = 0, cyView = 0;
+  var PHI = 0.34;
+  var rotY = 0, tilt = -0.1, cosT = 1, sinT = 0, PX = 0, PY = 0, PZ = 0;
+  function project(lonR, latR) {
+    var cl = Math.cos(latR), sl = Math.sin(latR), a = lonR + rotY;
+    var x = cl * Math.sin(a), z = cl * Math.cos(a);
+    PX = cx + R * x; PY = cy - R * (sl * cosT - z * sinT); PZ = sl * sinT + z * cosT;
+  }
+  function smoothstep(a, b, x) { var t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); }
+  function easeInOut(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function limb(z) { return smoothstep(0, 0.32, z); }
+
+  function inPolys(lon, lat, polys) {
+    for (var pi = 0; pi < polys.length; pi++) {
+      var poly = polys[pi], c = false;
+      for (var ri = 0; ri < poly.length; ri++) {
+        var ring = poly[ri];
+        for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+          var xi = ring[i][0], yi = ring[i][1], xj = ring[j][0], yj = ring[j][1];
+          if (((yi > lat) !== (yj > lat)) && (lon < (xj - xi) * (lat - yi) / (yj - yi) + xi)) c = !c;
+        }
+      }
+      if (c) return true;
+    }
+    return false;
+  }
+  function ringArea(r) { var a = 0; for (var i = 0, j = r.length - 1; i < r.length; j = i++) a += r[j][0] * r[i][1] - r[i][0] * r[j][1]; return Math.abs(a) / 2; }
+  function bboxOf(poly) {
+    var mnx = 180, mxx = -180, mny = 90, mxy = -90;
+    for (var i = 0; i < poly.length; i++) { var ring = poly[i]; for (var k = 0; k < ring.length; k++) { var p = ring[k]; if (p[0] < mnx) mnx = p[0]; if (p[0] > mxx) mxx = p[0]; if (p[1] < mny) mny = p[1]; if (p[1] > mxy) mxy = p[1]; } }
+    return [mnx, mny, mxx, mxy];
+  }
+
+  // ---- worldwide faint respondent-dot field ----
+  function buildLandTest() {
+    var GW = 1024, GH = 512, off = document.createElement('canvas');
+    off.width = GW; off.height = GH;
+    var o = off.getContext('2d'); o.fillStyle = '#000';
+    for (var k = 0; k < LAND.length; k++) {
+      var ring = LAND[k]; o.beginPath();
+      for (var i = 0; i < ring.length; i++) { var x = (ring[i][0] + 180) / 360 * GW, y = (90 - ring[i][1]) / 180 * GH; i ? o.lineTo(x, y) : o.moveTo(x, y); }
+      o.closePath(); o.fill();
+    }
+    var data = o.getImageData(0, 0, GW, GH).data;
+    return function (lon, lat) {
+      var x = ((lon + 180) / 360 * GW) | 0, y = ((90 - lat) / 180 * GH) | 0;
+      if (x < 0 || x >= GW || y < 0 || y >= GH) return false;
+      return data[(y * GW + x) * 4 + 3] > 0;
+    };
+  }
+  function boost(lon, lat) {
+    if (lon > -10 && lon < 35 && lat > 36 && lat < 64) return 1.5;
+    if (lon > -95 && lon < -68 && lat > 28 && lat < 47) return 1.35;
+    return 1;
+  }
+  var mobile = (window.innerWidth < 900) || (window.matchMedia && window.matchMedia('(pointer:coarse)').matches);
+  var landDots = [];
+  function buildDots(isLand) {
+    landDots = [];
+    var TARGET = reduce ? 2200 : (mobile ? 3000 : 4800), tries = 0;
+    while (landDots.length < TARGET && tries < TARGET * 12) {
+      tries++;
+      var lon = Math.random() * 360 - 180, lat = Math.asin(Math.random() * 2 - 1) / D2R;
+      if (!isLand(lon, lat)) continue;
+      if (Math.random() > 0.5 * boost(lon, lat)) continue;
+      landDots.push([lon * D2R, lat * D2R]);
+    }
+  }
+  // ---- dense per-country dot fields (area-proportional, multi-polygon aware) ----
+  function prepCountries() {
+    var scale = mobile ? 0.62 : 1;
+    for (var ci = 0; ci < COUNTRIES.length; ci++) {
+      var c = COUNTRIES[ci]; c.dots = [];
+      if (!c.polys.length) continue;
+      var totalA = 0, areas = [];
+      for (var p = 0; p < c.polys.length; p++) { var a = ringArea(c.polys[p][0]); areas.push(a); totalA += a; }
+      if (totalA <= 0) continue;
+      var cap = (c.key === 'eu') ? 3600 : 2100;
+      var N = Math.round(Math.max(400, Math.min(cap, totalA * 2.4)) * scale);
+      for (var p2 = 0; p2 < c.polys.length; p2++) {
+        var n = Math.round(N * areas[p2] / totalA);
+        if (n <= 0) continue;
+        var bb = bboxOf(c.polys[p2]), tries = 0, got = 0;
+        while (got < n && tries < n * 60) {
+          tries++;
+          var lo = bb[0] + Math.random() * (bb[2] - bb[0]), la = bb[1] + Math.random() * (bb[3] - bb[1]);
+          if (inPolys(lo, la, [c.polys[p2]])) { c.dots.push([lo * D2R, la * D2R]); got++; }
+        }
+      }
+    }
+  }
+
+  function strokeRings(list, color, width) {
+    ctx.strokeStyle = color; ctx.lineWidth = width; ctx.beginPath();
+    for (var k = 0; k < list.length; k++) {
+      var ring = list[k], pen = false;
+      for (var i = 0; i < ring.length; i++) {
+        project(ring[i][0] * D2R, ring[i][1] * D2R);
+        if (PZ > 0.02) { pen ? ctx.lineTo(PX, PY) : (ctx.moveTo(PX, PY), pen = true); }
+        else pen = false;
+      }
+    }
+    ctx.stroke();
+  }
+
+  // ---- carousel state machine ----
+  var idx = startIdx, prevTarget = 0, target = 0, prevTilt = -0.1, tiltTarget = -0.1;
+  var phase = 'rotate', phaseStart = 0, typed = 0;
+  var gold = 0, label = 0, focusV = 0;
+  var ROT = 5400, TYPE = 36, LINGER = 2800, LINGER_HOME = 4400, RELEASE = 760;
+
+  function buildPagDots() {
+    if (!elDots) return;
+    for (var i = 0; i < COUNTRIES.length; i++) { var d = document.createElement('span'); d.className = 'd'; elDots.appendChild(d); }
+  }
+  function setActiveDot() { if (!elDots) return; for (var i = 0; i < elDots.children.length; i++) elDots.children[i].classList.toggle('on', i === idx); }
+
+  function computeTarget(i) {
+    var t = -COUNTRIES[i].center[0] * D2R;
+    while (t > prevTarget) t -= Math.PI * 2;   // always travel east (west to east)
+    return t;
+  }
+  function startRotate(now) {
+    phase = 'rotate'; phaseStart = now;
+    prevTarget = rotY; target = computeTarget(idx);
+    prevTilt = tilt; tiltTarget = COUNTRIES[idx].center[1] * D2R - PHI;
+    setActiveDot();
+    if (elLabel) elLabel.textContent = COUNTRIES[idx].label;
+    if (elText) elText.textContent = ''; typed = 0;
+    if (elLine) { elLine.classList.remove('is-done', 'is-typing'); elLine.style.opacity = ''; }
+  }
+
+  function tick(now) {
+    var dt = now - phaseStart;
+    var goldT = 0, labelT = 0, focusT = 1;
+    var lon = COUNTRIES[idx].center[0];
+    var lingerMs = (idx === startIdx) ? LINGER_HOME : LINGER;
+
+    if (phase === 'rotate') {
+      var p = Math.min(1, dt / ROT);
+      rotY = prevTarget + (target - prevTarget) * easeInOut(p);
+      tilt = prevTilt + (tiltTarget - prevTilt) * easeInOut(p);
+      var centred = smoothstep(0.90, 0.999, Math.cos(lon * D2R + rotY));
+      labelT = smoothstep(0.62, 0.92, p) * centred;
+      goldT = smoothstep(0.84, 1.0, p) * centred;
+      focusT = 1 - Math.sin(Math.PI * p);
+      if (p >= 1) { phase = 'settle'; phaseStart = now; }
+    } else if (phase === 'settle') {
+      rotY = target; tilt = tiltTarget; labelT = 1; goldT = 1; focusT = 1;
+      if ((gold > 0.9 && focusV > 0.9) || dt > 900) { phase = 'type'; phaseStart = now; if (elLine) elLine.classList.add('is-typing'); }
+    } else if (phase === 'type') {
+      rotY = target; tilt = tiltTarget; labelT = 1; goldT = 1; focusT = 1;
+      var full = COUNTRIES[idx].line;
+      var want = Math.min(full.length, Math.floor(dt / TYPE));
+      if (want !== typed) { typed = want; if (elText) elText.textContent = full.slice(0, typed); }
+      if (typed >= full.length) { phase = 'linger'; phaseStart = now; if (elLine) { elLine.classList.remove('is-typing'); elLine.classList.add('is-done'); } }
+    } else if (phase === 'linger') {
+      rotY = target; tilt = tiltTarget; labelT = 1; goldT = 1; focusT = 1;
+      if (dt >= lingerMs) { phase = 'release'; phaseStart = now; }
+    } else if (phase === 'release') {
+      rotY = target; tilt = tiltTarget; labelT = 0; goldT = 0; focusT = 1;
+      var pr = Math.min(1, dt / RELEASE);
+      if (elLine) elLine.style.opacity = String(1 - pr);
+      if (pr >= 1) { idx = (idx + 1) % COUNTRIES.length; if (elLine) elLine.style.opacity = ''; startRotate(now); }
+    }
+
+    var k = reduce ? 1 : 0.12;
+    gold += (goldT - gold) * k;
+    label += (labelT - label) * (reduce ? 1 : 0.16);
+    focusV += (focusT - focusV) * (reduce ? 1 : 0.085);
+    if (gold < 0.002) gold = 0; if (label < 0.002) label = 0;
+
+    if (elLabel) { elLabel.style.opacity = String(label); elLabel.style.transform = 'translateY(' + ((1 - label) * 6).toFixed(1) + 'px)'; }
+    draw();
+  }
+
+  function draw() {
+    var rect = canvas.getBoundingClientRect();
+    if (rect.width > 0 && canvas.width !== Math.round(rect.width * DPR)) resize();
+    R = Rfull + (Rfeat - Rfull) * focusV;
+    var cyFeat = cyView + R * Math.sin(PHI);
+    cy = H * 0.5 + (cyFeat - H * 0.5) * focusV;
+    cx = W / 2; cosT = Math.cos(tilt); sinT = Math.sin(tilt);
+    ctx.clearRect(0, 0, W, H);
+
+    var edge = 0.26 * (1 - focusV) + 0.05;
+    var grad = ctx.createRadialGradient(cx, cy - R * 0.12, R * 0.2, cx, cy, R);
+    grad.addColorStop(0, 'rgba(255,255,255,0.4)'); grad.addColorStop(1, 'rgba(176,84,51,0.045)');
+    ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(135,130,122,' + edge + ')'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+
+    // graticule (built once at module scope)
+    strokeRings(GRAT, 'rgba(135,130,122,0.14)', 0.6);
+
+    // faint coastlines (no political borders)
+    strokeRings(LAND, 'rgba(74,70,62,0.30)', 0.7);
+
+    // worldwide faint respondent dots (skipped while a country fully dominates the view)
+    if (!(gold > 0.9 && focusV > 0.9)) {
+      ctx.fillStyle = 'rgba(74,70,62,0.4)';
+      for (var i = 0; i < landDots.length; i++) { project(landDots[i][0], landDots[i][1]); if (PZ <= 0.05) continue; ctx.fillRect(PX - 0.5, PY - 0.5, 1, 1); }
+    }
+
+    // active country: dense terracotta dot-field + thin outline
+    var ac = COUNTRIES[idx];
+    if (gold > 0.01 && ac.dots.length) {
+      var s = 1.5 + 0.7 * focusV;
+      ctx.fillStyle = 'rgba(176,84,51,1)';
+      ctx.globalAlpha = gold;                 // hoisted: limb(PZ) is 1.0 across the centred field
+      for (var d = 0; d < ac.dots.length; d++) {
+        project(ac.dots[d][0], ac.dots[d][1]);
+        if (PZ <= 0.03) continue;
+        ctx.fillRect(PX - s / 2, PY - s / 2, s, s);
+      }
+      ctx.globalAlpha = 1;
+      strokeRings(ac.rings, 'rgba(142,63,34,' + (0.8 * gold) + ')', 1.0 + 0.8 * focusV);
+    }
+  }
+
+  function resize() {
+    var r = canvas.getBoundingClientRect();
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = r.width; H = r.height;
+    canvas.width = Math.round(W * DPR); canvas.height = Math.round(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    cx = W / 2; cyView = H * 0.46;
+    Rfeat = Math.max(W, H) * 0.82;
+    Rfull = Math.min(W * 0.46, H * 0.44);
+    tiltTarget = COUNTRIES[idx].center[1] * D2R - PHI;
+  }
+
+  // ---- boot ----
+  var bootNow = (typeof performance !== 'undefined' && performance.now) ? performance.now() : 0;
+  resize();
+  rotY = -COUNTRIES[startIdx].center[0] * D2R + 2.2;
+  tilt = -0.1;
+  if (LAND.length) { try { buildDots(buildLandTest()); } catch (e) {} }
+  try { prepCountries(); } catch (e) {}
+  buildPagDots();
+  startRotate(bootNow);
+  draw();
+
+  if (reduce) {
+    rotY = target; tilt = tiltTarget; focusV = 1; gold = 1; label = 1;
+    typed = COUNTRIES[idx].line.length;
+    if (elText) elText.textContent = COUNTRIES[idx].line;
+    if (elLabel) { elLabel.style.opacity = '1'; elLabel.style.transform = 'none'; }
+    if (elLine) elLine.classList.add('is-done');
+    setActiveDot();
+    draw();
+  } else {
+    var last = bootNow, acc = 0, FRAME = 1000 / 32, rafId = null;
+    function loop(now) {
+      rafId = requestAnimationFrame(loop);
+      var dt = now - last; last = now; if (dt > 250) dt = 16;
+      acc += dt; if (acc >= FRAME) { acc %= FRAME; tick(now); }
+    }
+    function start() { if (!rafId) { last = (performance.now ? performance.now() : 0); rafId = requestAnimationFrame(loop); } }
+    function stop() { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
+    if ('IntersectionObserver' in window && stage) {
+      new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? start() : stop(); }); }, { threshold: 0.04 }).observe(stage);
+    } else { start(); }
+  }
+  window.addEventListener('resize', function () { mobile = (window.innerWidth < 900) || (window.matchMedia && window.matchMedia('(pointer:coarse)').matches); resize(); if (reduce) draw(); }, { passive: true });
+  if ('ResizeObserver' in window && stage) { try { new ResizeObserver(function () { resize(); if (reduce) draw(); }).observe(stage); } catch (e) {} }
+})();
+</script>
 
 </body>
 </html>

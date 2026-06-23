@@ -93,15 +93,6 @@
   box-shadow:0 24px 60px -30px rgba(21,20,15,.28),inset 0 1px 0 rgba(255,255,255,.6);
 }
 .rmglobe__canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
-.rmglobe__toggle{
-  position:absolute;top:.6rem;right:.6rem;z-index:2;
-  font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink-quiet);background:rgba(253,251,246,.82);
-  border:1px solid var(--line);border-radius:999px;padding:.28rem .62rem;cursor:pointer;
-  opacity:.6;transition:opacity .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease);
-}
-.rmglobe__toggle:hover,.rmglobe__toggle:focus-visible{opacity:1;color:var(--ink);border-color:var(--ink-quiet);}
-@media (prefers-reduced-motion:reduce){.rmglobe__toggle{display:none;}}
 .rmglobe__caption{margin-top:1.4rem;}
 .rmglobe__label{
   font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.18em;
@@ -179,7 +170,6 @@
       <div class="rmglobe hero-fade hero-fade--4">
         <div class="rmglobe__stage">
           <canvas class="rmglobe__canvas" role="img" aria-label="A slowly rotating globe that highlights, one at a time, the places this work touches: Denmark, Germany, the European Union and its AI Act, the United Arab Emirates, the United States, the United Kingdom and France, returning home to Denmark."></canvas>
-          <button type="button" class="rmglobe__toggle" aria-pressed="false" aria-label="Pause the globe animation">Pause</button>
         </div>
         <div class="rmglobe__caption" aria-hidden="true">
           <div class="rmglobe__label"></div>
@@ -696,15 +686,9 @@
     }
     function start() { if (!rafId) { last = (performance.now ? performance.now() : 0); rafId = requestAnimationFrame(loop); } }
     function stop() { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
-    var userPaused = false;
     if ('IntersectionObserver' in window && stage) {
-      new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? (userPaused || start()) : stop(); }); }, { threshold: 0.04 }).observe(stage);
+      new IntersectionObserver(function (es) { es.forEach(function (e) { e.isIntersecting ? start() : stop(); }); }, { threshold: 0.04 }).observe(stage);
     } else { start(); }
-    var btn = root.querySelector('.rmglobe__toggle');
-    if (btn) btn.addEventListener('click', function () {
-      if (rafId) { stop(); userPaused = true; btn.setAttribute('aria-pressed', 'true'); btn.setAttribute('aria-label', 'Play the globe animation'); btn.textContent = 'Play'; }
-      else { userPaused = false; start(); btn.setAttribute('aria-pressed', 'false'); btn.setAttribute('aria-label', 'Pause the globe animation'); btn.textContent = 'Pause'; }
-    });
   }
   window.addEventListener('resize', function () { mobile = (window.innerWidth < 900) || (window.matchMedia && window.matchMedia('(pointer:coarse)').matches); resize(); if (reduce) draw(); }, { passive: true });
   if ('ResizeObserver' in window && stage) { try { new ResizeObserver(function () { resize(); if (reduce) draw(); }).observe(stage); } catch (e) {} }
