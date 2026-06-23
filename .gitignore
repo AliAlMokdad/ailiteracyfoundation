@@ -6,3 +6,7 @@ _namecheap/
 Thumbs.db
 desktop.ini
 _project-context/
+
+# Local tooling scratch (never deployed)
+.audit_tmp/
+.claude/
