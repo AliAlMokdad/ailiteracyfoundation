@@ -130,6 +130,422 @@
   .rmglobe__cursor{animation:none;}
 }
 </style>
+<style id="rm-body-css">
+/* ============================================================
+   ROADMAP BODY REDESIGN. "The Standing Index" (final).
+   Winning direction grafted with the judges' best elements:
+   - sticky rail carries a live table of contents (from C, Ledger)
+   - Part two accent moves from numeral to a left body-rail (from C)
+   - Frameworks opens on a full-width masthead band (from B, Broadsheet)
+   - closing CTA is a full-width bg-deep statement band (from D, Canvas)
+   - framework cards are verbatim .framework DNA (from D)
+   All rules are roadmap-only rm- classes, namespaced under .rm-wrap
+   or an rm- ancestor, so nothing here can reach other pages or the hero.
+   Tokens only. No shared class overridden globally.
+   ============================================================ */
+
+/* Container: mirror .wrap exactly so the body aligns to the hero left edge. */
+.rm-wrap{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---- Two-column editorial index (Parts one + two) ---- */
+.rm-index{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.25rem;
+}
+@media (min-width: 1180px){
+  .rm-index{
+    grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+}
+
+/* Left rail: the standing statement, pinned while the list scrolls. */
+.rm-rail{ min-width: 0; }
+@media (min-width: 1180px){
+  .rm-rail{
+    position: sticky;
+    top: 80px;                 /* matches the site's 80px anchor clearance */
+    align-self: start;
+  }
+}
+.rm-rail .rm-label{
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 1.4rem;
+}
+.rm-rail .rm-label::before{
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+  flex: 0 0 auto;
+}
+.rm-rail .rm-h2{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-2xl);
+  line-height: 1.15;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  margin: 0 0 1.4rem;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+.rm-rail .rm-intro{
+  font-family: var(--serif);
+  font-size: var(--fs-md);
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 46ch;
+  margin: 0;
+}
+
+/* Live table of contents inside the rail (grafted from C, Ledger).
+   Progressive enhancement: renders and jumps with zero JS. */
+.rm-toc{
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: rmtoc;
+  border-top: 1px solid var(--line);
+}
+.rm-toc li{
+  counter-increment: rmtoc;
+  border-bottom: 1px solid var(--line-soft);
+}
+.rm-toc a{
+  display: grid;
+  grid-template-columns: 1.9rem 1fr;
+  gap: 0.6rem;
+  padding: 0.6rem 0;
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-size: var(--fs-sm);
+  line-height: 1.35;
+  transition: color 250ms var(--ease);
+}
+.rm-toc a::before{
+  content: counter(rmtoc, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  color: var(--ink-quiet);
+  padding-top: 0.15em;
+  transition: color 250ms var(--ease);
+}
+.rm-toc a:hover{ color: var(--ink); }
+.rm-toc a:hover::before{ color: var(--accent); }
+
+/* ---- The enumerated register (right column) ---- */
+/* Keeps <ol>/<li> semantics. Ghost numerals via our own counter,
+   never touching any shared list counter. */
+.rm-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: rmitem;
+  border-top: 1px solid var(--line);   /* opens the register */
+}
+.rm-list > li{
+  counter-increment: rmitem;
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(3rem, 6vw, 5.25rem) minmax(0, 1fr);
+  column-gap: clamp(1rem, 2.5vw, 2rem);
+  padding: clamp(1.75rem, 3.2vw, 2.6rem) 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 80px;             /* matches the site's 80px anchor clearance */
+}
+/* Large, quiet ghost numeral. Outline where supported, dim solid fallback. */
+.rm-list > li::before{
+  content: counter(rmitem, decimal-leading-zero);
+  grid-column: 1;
+  align-self: start;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  opacity: 0.28;                       /* solid fallback stays quiet */
+  font-variant-numeric: tabular-nums;
+  transition: opacity 260ms var(--ease), color 260ms var(--ease);
+}
+@supports ((-webkit-text-stroke: 1px currentColor)){
+  .rm-list > li::before{
+    color: transparent;
+    -webkit-text-stroke: 1.3px var(--accent-soft);
+    opacity: 0.85;
+  }
+}
+.rm-list > li:hover::before{
+  opacity: 1;
+}
+@supports ((-webkit-text-stroke: 1px currentColor)){
+  .rm-list > li:hover::before{
+    -webkit-text-stroke-color: var(--accent);
+    opacity: 1;
+  }
+}
+.rm-item-body{ grid-column: 2; min-width: 0; }
+.rm-list h3{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: var(--fs-xl);
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin: 0 0 0.75rem;
+}
+.rm-list p{
+  font-family: var(--serif);
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 62ch;         /* readable measure inside the wide column */
+  margin: 0;
+}
+.rm-list p em{ font-style: italic; }
+
+/* Part two accent rhyme (grafted from C): the terracotta MOVES from the
+   numeral (issues) to a left body-rail (positions), so issue N and
+   position N read as answer to each other, no added copy.
+   Implemented with padding + border-left (NOT a fragile negative margin). */
+.rm-list--positions > li::before{
+  color: var(--ink-quiet);
+  opacity: 0.5;
+}
+@supports ((-webkit-text-stroke: 1px currentColor)){
+  .rm-list--positions > li::before{
+    color: var(--ink-quiet);
+    -webkit-text-stroke: 0;
+    opacity: 0.5;
+  }
+}
+.rm-list--positions .rm-item-body{
+  border-left: 2px solid var(--accent);
+  padding-left: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* ---- Part three: full-width framework masthead + grid ---- */
+/* Masthead band (grafted from B): eyebrow + h2 left, intro lede right. */
+.rm-frame-band{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: end;
+  padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  border-bottom: 1px solid var(--line-soft);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+@media (min-width: 861px){
+  .rm-frame-band{
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+  }
+}
+.rm-frame-band__head{ min-width: 0; }
+.rm-frame-band__lede{ min-width: 0; }
+.rm-frame-band .rm-label{
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 1.5rem;
+}
+.rm-frame-band .rm-label::before{
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+  flex: 0 0 auto;
+}
+.rm-frame-band__head h2{ max-width: 24ch; margin: 0; }
+.rm-frame-band__lede p{
+  font-family: var(--serif);
+  font-size: var(--fs-md);
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 52ch;
+  margin: 0;
+}
+
+/* Fresh card grid (own rm- classes; does not touch .frameworks/.framework).
+   Values lifted verbatim from the existing .framework element (from D). */
+.rm-frames{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0 0 2.5rem;
+}
+@media (min-width: 720px){
+  .rm-frames{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1000px){
+  .rm-frames{ grid-template-columns: repeat(3, 1fr); }
+}
+.rm-frame{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.5rem 1.5rem 1.6rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  transition: border-color 240ms var(--ease),
+              transform 240ms var(--ease),
+              box-shadow 240ms var(--ease),
+              background 240ms var(--ease);
+}
+.rm-frame::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  width: 1.75rem;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0.35;
+  transition: opacity 240ms var(--ease), width 240ms var(--ease);
+}
+.rm-frame:hover{
+  border-color: var(--accent-soft);
+  background: var(--bg);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px -12px rgba(176, 84, 51, 0.22);
+}
+.rm-frame:hover::before{ opacity: 1; width: 2.5rem; }
+.rm-frame strong{
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  transition: letter-spacing 240ms var(--ease);
+}
+.rm-frame:hover strong{ letter-spacing: 0.14em; }
+.rm-frame span{
+  font-family: var(--sans);
+  font-size: var(--fs-sm);
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* Frameworks closing prose + pullout, kept within a readable measure. */
+.rm-frame-close{
+  font-family: var(--serif);
+  font-size: var(--fs-md);
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 68ch;
+  margin: 0 0 2rem;
+}
+.rm-pullout{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--fs-xl);
+  line-height: 1.4;
+  color: var(--ink);
+  border-left: 2px solid var(--accent);
+  padding: 0.75rem 0 0.75rem 1.75rem;
+  margin: 0;
+  max-width: 42ch;
+  position: relative;
+}
+.rm-pullout::before{
+  content: "\201C";
+  position: absolute;
+  left: -0.5rem;
+  top: -0.5rem;
+  font-size: 3rem;
+  color: var(--accent);
+  opacity: 0.22;
+  font-style: normal;
+  line-height: 1;
+  font-family: var(--serif);
+}
+
+/* ---- Closing CTA: full-width statement band on the deep surface (from D) ---- */
+.rm-close{
+  background: var(--bg-deep);
+  border-radius: 10px;
+  padding: clamp(2.75rem, 6vw, 4.5rem) var(--gutter);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rm-close h2{
+  max-width: 20ch;
+  margin: 0 auto 1rem;
+  text-align: center;
+}
+.rm-close .rm-close-lede{
+  font-family: var(--serif);
+  font-size: var(--fs-lg);
+  color: var(--ink);
+  line-height: 1.55;
+  max-width: 40ch;
+  margin: 0 auto 1.75rem;
+  text-align: center;
+}
+.rm-close .hero-cta{ justify-content: center; margin-top: 0; }
+
+/* ---- Reduced motion: nothing here relies on motion, be explicit ---- */
+@media (prefers-reduced-motion: reduce){
+  .rm-list > li::before,
+  .rm-frame,
+  .rm-frame::before,
+  .rm-frame strong,
+  .rm-toc a,
+  .rm-toc a::before{ transition: none; }
+}
+
+/* ---- Tablet / phone: single column, sticky released, safe measure ---- */
+@media (max-width: 1179px){
+  .rm-rail{ position: static; top: auto; }
+  .rm-rail .rm-h2{ max-width: 26ch; }
+  /* TOC becomes a compact two-up index above its list on tablet */
+  .rm-toc{ display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.5rem; }
+}
+@media (max-width: 640px){
+  .rm-toc{ grid-template-columns: 1fr; }
+  .rm-list > li{
+    grid-template-columns: 1fr;
+    row-gap: 0.5rem;
+    padding: 1.6rem 0;
+  }
+  .rm-list > li::before{
+    grid-column: 1;
+    font-size: var(--fs-2xl);
+    opacity: 0.32;
+  }
+  @supports ((-webkit-text-stroke: 1px currentColor)){
+    .rm-list > li::before{ opacity: 0.9; }
+    .rm-list--positions > li::before{ opacity: 0.5; }
+  }
+  .rm-item-body{ grid-column: 1; }
+  .rm-list p{ max-width: 100%; }
+}
+</style>
 </head>
 <body>
 
@@ -181,146 +597,181 @@
   </section>
 
   <section class="section" data-reveal data-chapter="01" data-chapter-label="The issues">
-    <div class="wrap--narrow">
-      <div class="section-label">Part one. The issues</div>
-      <h2>Six questions the AI conversation is converging around.</h2>
-      <p>These are not unique to us. They are the questions that international institutions, nonprofits, regulators, and researchers are working on. We name them here in plain language because half the problem is being able to talk about them clearly.</p>
-
-      <ol class="list-numbered">
-        <li>
-          <div>
-            <h3>Alignment and safety</h3>
-            <p>AI systems should do what their users and the wider public actually want them to do, and they should fail in ways that are safe, recoverable, and visible. The hardest part of alignment is not technical. It is the politics of who gets to define <em>want</em>.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Transparency and explainability</h3>
-            <p>When an AI system makes a consequential decision about a person, the person and their advocates should be able to understand, question, and contest that decision. Black-box systems in high-stakes contexts are a governance failure, not a technical inevitability.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>AI literacy as a public good</h3>
-            <p>The ability to understand what AI is, what it can do, where it fails, and how to use it well is becoming a precondition for agency in a society where decisions are increasingly mediated by machines. Under Article 4 of the EU AI Act it is also becoming a legal requirement. We treat AI literacy the way the twentieth century treated reading.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Who has a seat at the table</h3>
-            <p>Most AI is designed by builders looking down the funnel of their products. The people AI touches, including applicants, claimants, patients, displaced families, and frontline workers, have no seat at the table where the system is built. We work on that asymmetry.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Deployment in high-stakes contexts</h3>
-            <p>AI used in asylum, healthcare, education, public services, social protection, and migration is operating in contexts where errors damage human dignity in real and sometimes irreversible ways. The standard for deployment in those contexts cannot be the same as for advertising or entertainment.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Concentration of capability</h3>
-            <p>The benefits of AI should not accrue only to the largest companies, the most technical experts, and the wealthiest institutions. They should be understood, questioned, shaped, and used by ordinary people and ordinary organizations.</p>
-          </div>
-        </li>
-      </ol>
+    <div class="rm-wrap">
+      <div class="rm-index">
+        <div class="rm-rail">
+          <div class="rm-label">Part one. The issues</div>
+          <h2 class="rm-h2">Six questions the AI conversation is converging around.</h2>
+          <p class="rm-intro">These are not unique to us. They are the questions that international institutions, nonprofits, regulators, and researchers are working on. We name them here in plain language because half the problem is being able to talk about them clearly.</p>
+          <nav aria-label="The six issues">
+            <ol class="rm-toc">
+              <li><a href="#issue-1">Alignment and safety</a></li>
+              <li><a href="#issue-2">Transparency and explainability</a></li>
+              <li><a href="#issue-3">AI literacy as a public good</a></li>
+              <li><a href="#issue-4">Who has a seat at the table</a></li>
+              <li><a href="#issue-5">Deployment in high-stakes contexts</a></li>
+              <li><a href="#issue-6">Concentration of capability</a></li>
+            </ol>
+          </nav>
+        </div>
+  
+        <ol class="rm-list">
+          <li id="issue-1">
+            <div class="rm-item-body">
+              <h3>Alignment and safety</h3>
+              <p>AI systems should do what their users and the wider public actually want them to do, and they should fail in ways that are safe, recoverable, and visible. The hardest part of alignment is not technical. It is the politics of who gets to define <em>want</em>.</p>
+            </div>
+          </li>
+          <li id="issue-2">
+            <div class="rm-item-body">
+              <h3>Transparency and explainability</h3>
+              <p>When an AI system makes a consequential decision about a person, the person and their advocates should be able to understand, question, and contest that decision. Black-box systems in high-stakes contexts are a governance failure, not a technical inevitability.</p>
+            </div>
+          </li>
+          <li id="issue-3">
+            <div class="rm-item-body">
+              <h3>AI literacy as a public good</h3>
+              <p>The ability to understand what AI is, what it can do, where it fails, and how to use it well is becoming a precondition for agency in a society where decisions are increasingly mediated by machines. Under Article 4 of the EU AI Act it is also becoming a legal requirement. We treat AI literacy the way the twentieth century treated reading.</p>
+            </div>
+          </li>
+          <li id="issue-4">
+            <div class="rm-item-body">
+              <h3>Who has a seat at the table</h3>
+              <p>Most AI is designed by builders looking down the funnel of their products. The people AI touches, including applicants, claimants, patients, displaced families, and frontline workers, have no seat at the table where the system is built. We work on that asymmetry.</p>
+            </div>
+          </li>
+          <li id="issue-5">
+            <div class="rm-item-body">
+              <h3>Deployment in high-stakes contexts</h3>
+              <p>AI used in asylum, healthcare, education, public services, social protection, and migration is operating in contexts where errors damage human dignity in real and sometimes irreversible ways. The standard for deployment in those contexts cannot be the same as for advertising or entertainment.</p>
+            </div>
+          </li>
+          <li id="issue-6">
+            <div class="rm-item-body">
+              <h3>Concentration of capability</h3>
+              <p>The benefits of AI should not accrue only to the largest companies, the most technical experts, and the wealthiest institutions. They should be understood, questioned, shaped, and used by ordinary people and ordinary organizations.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
     </div>
   </section>
 
-  <section class="section" data-reveal data-chapter="02" data-chapter-label="Our roadmap">
-    <div class="wrap--narrow">
-      <div class="section-label">Part two. Our roadmap</div>
-      <h2>Our positions on each of these issues.</h2>
-      <p>The roadmap below is the foundation's working position. It is the commitment we are accountable to in the work we do.</p>
-
-      <ol class="list-numbered">
-        <li>
-          <div>
-            <h3>On alignment and safety</h3>
-            <p>We support the alignment research and the responsible-scaling commitments emerging in the field. In our own scope of work we will not endorse, train, or partner on the deployment of AI systems in high-stakes contexts without explicit human oversight, accountability for outcomes, and the ability to recover from error.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>On transparency</h3>
-            <p>Every AI tool we review for a partner organization is assessed on the quality of its explainability. Every public guide we publish is written in plain language, in English and Danish, with sources. We hold ourselves to the same standard of transparency we ask of others.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>On AI literacy</h3>
-            <p>We commit to making AI literacy free at the point of access for our priority audiences: Danish nonprofits, schools, clinics, public-sector teams, small business owners, and mission-driven organizations. We work to translate the Article 4 obligation of the EU AI Act into something organizations can actually do.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>On who has a seat at the table</h3>
-            <p>Through our public work, our research, and our partnerships, we bring the perspectives of frontline practitioners, nonprofit and community leaders, and the people AI is being deployed on into the rooms where AI systems and policies are designed.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>On high-stakes deployment</h3>
-            <p>We refuse operational support for the use of AI in the surveillance of people who cannot easily defend themselves, in automated decisions about asylum or fundamental rights, in weapons systems, and in the manipulation of public information. These limits are written into our bylaws and require a high bar of amendment.</p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>On concentration</h3>
-            <p>We commit to publishing our research, our tool reviews, and our training materials as open public goods, wherever legally and ethically possible. We work to keep AI literacy from becoming another fault line between those with access and those without.</p>
-          </div>
-        </li>
-      </ol>
+  <section class="section" data-chapter="02" data-chapter-label="Our roadmap">
+    <div class="rm-wrap">
+      <div class="rm-index">
+        <div class="rm-rail">
+          <div class="rm-label">Part two. Our roadmap</div>
+          <h2 class="rm-h2">Our positions on each of these issues.</h2>
+          <p class="rm-intro">The roadmap below is the foundation's working position. It is the commitment we are accountable to in the work we do.</p>
+          <nav aria-label="Our six positions">
+            <ol class="rm-toc">
+              <li><a href="#position-1">On alignment and safety</a></li>
+              <li><a href="#position-2">On transparency</a></li>
+              <li><a href="#position-3">On AI literacy</a></li>
+              <li><a href="#position-4">On who has a seat at the table</a></li>
+              <li><a href="#position-5">On high-stakes deployment</a></li>
+              <li><a href="#position-6">On concentration</a></li>
+            </ol>
+          </nav>
+        </div>
+  
+        <ol class="rm-list rm-list--positions">
+          <li id="position-1">
+            <div class="rm-item-body">
+              <h3>On alignment and safety</h3>
+              <p>We support the alignment research and the responsible-scaling commitments emerging in the field. In our own scope of work we will not endorse, train, or partner on the deployment of AI systems in high-stakes contexts without explicit human oversight, accountability for outcomes, and the ability to recover from error.</p>
+            </div>
+          </li>
+          <li id="position-2">
+            <div class="rm-item-body">
+              <h3>On transparency</h3>
+              <p>Every AI tool we review for a partner organization is assessed on the quality of its explainability. Every public guide we publish is written in plain language, in English and Danish, with sources. We hold ourselves to the same standard of transparency we ask of others.</p>
+            </div>
+          </li>
+          <li id="position-3">
+            <div class="rm-item-body">
+              <h3>On AI literacy</h3>
+              <p>We commit to making AI literacy free at the point of access for our priority audiences: Danish nonprofits, schools, clinics, public-sector teams, small business owners, and mission-driven organizations. We work to translate the Article 4 obligation of the EU AI Act into something organizations can actually do.</p>
+            </div>
+          </li>
+          <li id="position-4">
+            <div class="rm-item-body">
+              <h3>On who has a seat at the table</h3>
+              <p>Through our public work, our research, and our partnerships, we bring the perspectives of frontline practitioners, nonprofit and community leaders, and the people AI is being deployed on into the rooms where AI systems and policies are designed.</p>
+            </div>
+          </li>
+          <li id="position-5">
+            <div class="rm-item-body">
+              <h3>On high-stakes deployment</h3>
+              <p>We refuse operational support for the use of AI in the surveillance of people who cannot easily defend themselves, in automated decisions about asylum or fundamental rights, in weapons systems, and in the manipulation of public information. These limits are written into our bylaws and require a high bar of amendment.</p>
+            </div>
+          </li>
+          <li id="position-6">
+            <div class="rm-item-body">
+              <h3>On concentration</h3>
+              <p>We commit to publishing our research, our tool reviews, and our training materials as open public goods, wherever legally and ethically possible. We work to keep AI literacy from becoming another fault line between those with access and those without.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
     </div>
   </section>
 
-  <section class="section" data-reveal data-chapter="03" data-chapter-label="Frameworks">
-    <div class="wrap--data">
-      <div class="section-label">Part three. Frameworks we engage with</div>
-      <h2>Aligned with the major responsible-AI frameworks. Specific in our contribution.</h2>
-
-      <p>The work of the AI Literacy Foundation is part of a broader conversation. We engage with the major international frameworks and regulations shaping responsible AI: the EU AI Act, the General Data Protection Regulation, the OECD AI Principles, the UNESCO Recommendation on the Ethics of AI, and the Council of Europe Convention on Artificial Intelligence.</p>
-
-      <div class="frameworks" style="margin: 1.5rem 0;">
-        <div class="framework">
+  <section class="section" data-chapter="03" data-chapter-label="Frameworks">
+    <div class="rm-wrap">
+      <div class="rm-frame-band">
+        <div class="rm-frame-band__head">
+          <div class="rm-label">Part three. Frameworks we engage with</div>
+          <h2>Aligned with the major responsible-AI frameworks. Specific in our contribution.</h2>
+        </div>
+        <div class="rm-frame-band__lede">
+          <p>The work of the AI Literacy Foundation is part of a broader conversation. We engage with the major international frameworks and regulations shaping responsible AI: the EU AI Act, the General Data Protection Regulation, the OECD AI Principles, the UNESCO Recommendation on the Ethics of AI, and the Council of Europe Convention on Artificial Intelligence.</p>
+        </div>
+      </div>
+  
+      <div class="rm-frames">
+        <div class="rm-frame">
           <strong>EU AI Act</strong>
           <span>European Union Artificial Intelligence Act</span>
         </div>
-        <div class="framework">
+        <div class="rm-frame">
           <strong>GDPR</strong>
           <span>General Data Protection Regulation</span>
         </div>
-        <div class="framework">
+        <div class="rm-frame">
           <strong>OECD AI Principles</strong>
           <span>Organisation for Economic Co-operation and Development</span>
         </div>
-        <div class="framework">
+        <div class="rm-frame">
           <strong>UNESCO Ethics of AI</strong>
           <span>United Nations Educational, Scientific and Cultural Organization</span>
         </div>
-        <div class="framework">
+        <div class="rm-frame">
           <strong>CoE AI Convention</strong>
           <span>Council of Europe Framework Convention on Artificial Intelligence</span>
         </div>
-        <div class="framework">
+        <div class="rm-frame">
           <strong>Article 4 · EU AI Act</strong>
           <span>AI literacy obligation for organizations deploying AI</span>
         </div>
       </div>
-
-      <p>Our contribution is to bring these commitments into a specific context: Danish civil society, the public sector, small and medium-sized organizations, and the communities most affected by AI deployment. We translate broad principles into practical, usable obligations for organizations and people who do not have direct access to the rooms where standards are written.</p>
-
-      <p class="pullout" style="margin-top:2rem">"We do not aim to replicate the work of large institutions. We aim to translate it into something usable for those who are downstream of it."</p>
+  
+      <p class="rm-frame-close">Our contribution is to bring these commitments into a specific context: Danish civil society, the public sector, small and medium-sized organizations, and the communities most affected by AI deployment. We translate broad principles into practical, usable obligations for organizations and people who do not have direct access to the rooms where standards are written.</p>
+  
+      <p class="rm-pullout">"We do not aim to replicate the work of large institutions. We aim to translate it into something usable for those who are downstream of it."</p>
     </div>
   </section>
 
   <section class="section" data-reveal>
-    <div class="wrap--narrow">
-      <h2>What this looks like in practice.</h2>
-      <p>The roadmap above becomes work. The work is what we do.</p>
-      <div class="hero-cta" style="margin-top:1.5rem">
-        <a href="work.html" class="btn btn--primary">See what we do <span class="arrow">→</span></a>
-        <a href="donate.html" class="btn btn--ghost">Support the work</a>
+    <div class="rm-wrap">
+      <div class="rm-close">
+        <h2>What this looks like in practice.</h2>
+        <p class="rm-close-lede">The roadmap above becomes work. The work is what we do.</p>
+        <div class="hero-cta">
+          <a href="work.html" class="btn btn--primary">See what we do <span class="arrow">&rarr;</span></a>
+          <a href="donate.html" class="btn btn--ghost">Support the work</a>
+        </div>
       </div>
     </div>
   </section>
