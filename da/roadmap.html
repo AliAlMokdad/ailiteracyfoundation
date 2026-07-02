@@ -133,6 +133,422 @@
   .rmglobe__cursor{animation:none;}
 }
 </style>
+<style id="rm-body-css">
+/* ============================================================
+   ROADMAP BODY REDESIGN. "The Standing Index" (final).
+   Winning direction grafted with the judges' best elements:
+   - sticky rail carries a live table of contents (from C, Ledger)
+   - Part two accent moves from numeral to a left body-rail (from C)
+   - Frameworks opens on a full-width masthead band (from B, Broadsheet)
+   - closing CTA is a full-width bg-deep statement band (from D, Canvas)
+   - framework cards are verbatim .framework DNA (from D)
+   All rules are roadmap-only rm- classes, namespaced under .rm-wrap
+   or an rm- ancestor, so nothing here can reach other pages or the hero.
+   Tokens only. No shared class overridden globally.
+   ============================================================ */
+
+/* Container: mirror .wrap exactly so the body aligns to the hero left edge. */
+.rm-wrap{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---- Two-column editorial index (Parts one + two) ---- */
+.rm-index{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.25rem;
+}
+@media (min-width: 1180px){
+  .rm-index{
+    grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+}
+
+/* Left rail: the standing statement, pinned while the list scrolls. */
+.rm-rail{ min-width: 0; }
+@media (min-width: 1180px){
+  .rm-rail{
+    position: sticky;
+    top: 80px;                 /* matches the site's 80px anchor clearance */
+    align-self: start;
+  }
+}
+.rm-rail .rm-label{
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 1.4rem;
+}
+.rm-rail .rm-label::before{
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+  flex: 0 0 auto;
+}
+.rm-rail .rm-h2{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-2xl);
+  line-height: 1.15;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  margin: 0 0 1.4rem;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+.rm-rail .rm-intro{
+  font-family: var(--serif);
+  font-size: var(--fs-md);
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 46ch;
+  margin: 0;
+}
+
+/* Live table of contents inside the rail (grafted from C, Ledger).
+   Progressive enhancement: renders and jumps with zero JS. */
+.rm-toc{
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: rmtoc;
+  border-top: 1px solid var(--line);
+}
+.rm-toc li{
+  counter-increment: rmtoc;
+  border-bottom: 1px solid var(--line-soft);
+}
+.rm-toc a{
+  display: grid;
+  grid-template-columns: 1.9rem 1fr;
+  gap: 0.6rem;
+  padding: 0.6rem 0;
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-size: var(--fs-sm);
+  line-height: 1.35;
+  transition: color 250ms var(--ease);
+}
+.rm-toc a::before{
+  content: counter(rmtoc, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  color: var(--ink-quiet);
+  padding-top: 0.15em;
+  transition: color 250ms var(--ease);
+}
+.rm-toc a:hover{ color: var(--ink); }
+.rm-toc a:hover::before{ color: var(--accent); }
+
+/* ---- The enumerated register (right column) ---- */
+/* Keeps <ol>/<li> semantics. Ghost numerals via our own counter,
+   never touching any shared list counter. */
+.rm-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: rmitem;
+  border-top: 1px solid var(--line);   /* opens the register */
+}
+.rm-list > li{
+  counter-increment: rmitem;
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(3rem, 6vw, 5.25rem) minmax(0, 1fr);
+  column-gap: clamp(1rem, 2.5vw, 2rem);
+  padding: clamp(1.75rem, 3.2vw, 2.6rem) 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 80px;             /* matches the site's 80px anchor clearance */
+}
+/* Large, quiet ghost numeral. Outline where supported, dim solid fallback. */
+.rm-list > li::before{
+  content: counter(rmitem, decimal-leading-zero);
+  grid-column: 1;
+  align-self: start;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  opacity: 0.28;                       /* solid fallback stays quiet */
+  font-variant-numeric: tabular-nums;
+  transition: opacity 260ms var(--ease), color 260ms var(--ease);
+}
+@supports ((-webkit-text-stroke: 1px currentColor)){
+  .rm-list > li::before{
+    color: transparent;
+    -webkit-text-stroke: 1.3px var(--accent-soft);
+    opacity: 0.85;
+  }
+}
+.rm-list > li:hover::before{
+  opacity: 1;
+}
+@supports ((-webkit-text-stroke: 1px currentColor)){
+  .rm-list > li:hover::before{
+    -webkit-text-stroke-color: var(--accent);
+    opacity: 1;
+  }
+}
+.rm-item-body{ grid-column: 2; min-width: 0; }
+.rm-list h3{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: var(--fs-xl);
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin: 0 0 0.75rem;
+}
+.rm-list p{
+  font-family: var(--serif);
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 62ch;         /* readable measure inside the wide column */
+  margin: 0;
+}
+.rm-list p em{ font-style: italic; }
+
+/* Part two accent rhyme (grafted from C): the terracotta MOVES from the
+   numeral (issues) to a left body-rail (positions), so issue N and
+   position N read as answer to each other, no added copy.
+   Implemented with padding + border-left (NOT a fragile negative margin). */
+.rm-list--positions > li::before{
+  color: var(--ink-quiet);
+  opacity: 0.5;
+}
+@supports ((-webkit-text-stroke: 1px currentColor)){
+  .rm-list--positions > li::before{
+    color: var(--ink-quiet);
+    -webkit-text-stroke: 0;
+    opacity: 0.5;
+  }
+}
+.rm-list--positions .rm-item-body{
+  border-left: 2px solid var(--accent);
+  padding-left: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* ---- Part three: full-width framework masthead + grid ---- */
+/* Masthead band (grafted from B): eyebrow + h2 left, intro lede right. */
+.rm-frame-band{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: end;
+  padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  border-bottom: 1px solid var(--line-soft);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+@media (min-width: 861px){
+  .rm-frame-band{
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+  }
+}
+.rm-frame-band__head{ min-width: 0; }
+.rm-frame-band__lede{ min-width: 0; }
+.rm-frame-band .rm-label{
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 1.5rem;
+}
+.rm-frame-band .rm-label::before{
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+  flex: 0 0 auto;
+}
+.rm-frame-band__head h2{ max-width: 24ch; margin: 0; }
+.rm-frame-band__lede p{
+  font-family: var(--serif);
+  font-size: var(--fs-md);
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 52ch;
+  margin: 0;
+}
+
+/* Fresh card grid (own rm- classes; does not touch .frameworks/.framework).
+   Values lifted verbatim from the existing .framework element (from D). */
+.rm-frames{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0 0 2.5rem;
+}
+@media (min-width: 720px){
+  .rm-frames{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1000px){
+  .rm-frames{ grid-template-columns: repeat(3, 1fr); }
+}
+.rm-frame{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.5rem 1.5rem 1.6rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  transition: border-color 240ms var(--ease),
+              transform 240ms var(--ease),
+              box-shadow 240ms var(--ease),
+              background 240ms var(--ease);
+}
+.rm-frame::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  width: 1.75rem;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0.35;
+  transition: opacity 240ms var(--ease), width 240ms var(--ease);
+}
+.rm-frame:hover{
+  border-color: var(--accent-soft);
+  background: var(--bg);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px -12px rgba(176, 84, 51, 0.22);
+}
+.rm-frame:hover::before{ opacity: 1; width: 2.5rem; }
+.rm-frame strong{
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  transition: letter-spacing 240ms var(--ease);
+}
+.rm-frame:hover strong{ letter-spacing: 0.14em; }
+.rm-frame span{
+  font-family: var(--sans);
+  font-size: var(--fs-sm);
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* Frameworks closing prose + pullout, kept within a readable measure. */
+.rm-frame-close{
+  font-family: var(--serif);
+  font-size: var(--fs-md);
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 68ch;
+  margin: 0 0 2rem;
+}
+.rm-pullout{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--fs-xl);
+  line-height: 1.4;
+  color: var(--ink);
+  border-left: 2px solid var(--accent);
+  padding: 0.75rem 0 0.75rem 1.75rem;
+  margin: 0;
+  max-width: 42ch;
+  position: relative;
+}
+.rm-pullout::before{
+  content: "\201C";
+  position: absolute;
+  left: -0.5rem;
+  top: -0.5rem;
+  font-size: 3rem;
+  color: var(--accent);
+  opacity: 0.22;
+  font-style: normal;
+  line-height: 1;
+  font-family: var(--serif);
+}
+
+/* ---- Closing CTA: full-width statement band on the deep surface (from D) ---- */
+.rm-close{
+  background: var(--bg-deep);
+  border-radius: 10px;
+  padding: clamp(2.75rem, 6vw, 4.5rem) var(--gutter);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rm-close h2{
+  max-width: 20ch;
+  margin: 0 auto 1rem;
+  text-align: center;
+}
+.rm-close .rm-close-lede{
+  font-family: var(--serif);
+  font-size: var(--fs-lg);
+  color: var(--ink);
+  line-height: 1.55;
+  max-width: 40ch;
+  margin: 0 auto 1.75rem;
+  text-align: center;
+}
+.rm-close .hero-cta{ justify-content: center; margin-top: 0; }
+
+/* ---- Reduced motion: nothing here relies on motion, be explicit ---- */
+@media (prefers-reduced-motion: reduce){
+  .rm-list > li::before,
+  .rm-frame,
+  .rm-frame::before,
+  .rm-frame strong,
+  .rm-toc a,
+  .rm-toc a::before{ transition: none; }
+}
+
+/* ---- Tablet / phone: single column, sticky released, safe measure ---- */
+@media (max-width: 1179px){
+  .rm-rail{ position: static; top: auto; }
+  .rm-rail .rm-h2{ max-width: 26ch; }
+  /* TOC becomes a compact two-up index above its list on tablet */
+  .rm-toc{ display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.5rem; }
+}
+@media (max-width: 640px){
+  .rm-toc{ grid-template-columns: 1fr; }
+  .rm-list > li{
+    grid-template-columns: 1fr;
+    row-gap: 0.5rem;
+    padding: 1.6rem 0;
+  }
+  .rm-list > li::before{
+    grid-column: 1;
+    font-size: var(--fs-2xl);
+    opacity: 0.32;
+  }
+  @supports ((-webkit-text-stroke: 1px currentColor)){
+    .rm-list > li::before{ opacity: 0.9; }
+    .rm-list--positions > li::before{ opacity: 0.5; }
+  }
+  .rm-item-body{ grid-column: 1; }
+  .rm-list p{ max-width: 100%; }
+}
+</style>
 </head>
 <body>
 
@@ -184,146 +600,181 @@
   </section>
 
   <section class="section" data-reveal data-chapter="01" data-chapter-label="Udfordringerne">
-    <div class="wrap--narrow">
-      <div class="section-label">Del et. Udfordringerne</div>
-      <h2>Seks spørgsmål, som AI-samtalen samles om.</h2>
-      <p>Disse er ikke unikke for os. Det er de spørgsmål, som internationale institutioner, nonprofitorganisationer, regulatorer og forskere arbejder med. Vi navngiver dem her i klart sprog, fordi halvdelen af problemet er at kunne tale om dem klart.</p>
+    <div class="rm-wrap">
+      <div class="rm-index">
+        <div class="rm-rail">
+          <div class="rm-label">Del et. Udfordringerne</div>
+          <h2 class="rm-h2">Seks spørgsmål, som AI-samtalen samles om.</h2>
+          <p class="rm-intro">Disse er ikke unikke for os. Det er de spørgsmål, som internationale institutioner, nonprofitorganisationer, regulatorer og forskere arbejder med. Vi navngiver dem her i klart sprog, fordi halvdelen af problemet er at kunne tale om dem klart.</p>
+          <nav aria-label="De seks udfordringer">
+            <ol class="rm-toc">
+            <li><a href="#issue-1">Alignment og sikkerhed</a></li>
+            <li><a href="#issue-2">Gennemsigtighed og forklarbarhed</a></li>
+            <li><a href="#issue-3">AI-dannelse som offentligt gode</a></li>
+            <li><a href="#issue-4">Asymmetrien om sædet</a></li>
+            <li><a href="#issue-5">Udrulning i højrisiko-sammenhænge</a></li>
+            <li><a href="#issue-6">Koncentration af kapacitet</a></li>
+            </ol>
+          </nav>
+        </div>
 
-      <ol class="list-numbered">
-        <li>
-          <div>
+        <ol class="rm-list">
+        <li id="issue-1">
+          <div class="rm-item-body">
             <h3>Alignment og sikkerhed</h3>
             <p>AI-systemer skal gøre, hvad deres brugere og den bredere offentlighed faktisk ønsker, at de skal gøre, og de skal fejle på måder, der er sikre, gendannelige og synlige. Den sværeste del af alignment er ikke teknisk. Det er politikken om, hvem der får lov til at definere, hvad vi <em>ønsker</em>.</p>
           </div>
         </li>
-        <li>
-          <div>
+        <li id="issue-2">
+          <div class="rm-item-body">
             <h3>Gennemsigtighed og forklarbarhed</h3>
             <p>Når et AI-system træffer en betydningsfuld beslutning om en person, skal personen og deres talsmænd kunne forstå, sætte spørgsmålstegn ved og anfægte den beslutning. Black-box-systemer i højrisiko-sammenhænge er en governance-fejl, ikke en teknisk uundgåelighed.</p>
           </div>
         </li>
-        <li>
-          <div>
+        <li id="issue-3">
+          <div class="rm-item-body">
             <h3>AI-dannelse som offentligt gode</h3>
             <p>Evnen til at forstå, hvad AI er, hvad det kan, hvor det fejler, og hvordan man bruger det godt, er ved at blive en forudsætning for handlekraft i et samfund, hvor beslutninger i stigende grad er medieret af maskiner. Under artikel 4 i EU's AI-forordning er det også ved at blive et lovkrav. Vi behandler AI-dannelse på samme måde, som det 20. århundrede behandlede læsefærdighed.</p>
           </div>
         </li>
-        <li>
-          <div>
+        <li id="issue-4">
+          <div class="rm-item-body">
             <h3>Asymmetrien om sædet</h3>
             <p>Det meste AI er designet af udviklere, der ser ned gennem deres produkters tragt. De mennesker, AI berører, herunder ansøgere, klagere, patienter, fordrevne familier og frontmedarbejdere, har ingen plads ved bordet, hvor systemet bygges. Vi arbejder med den asymmetri.</p>
           </div>
         </li>
-        <li>
-          <div>
+        <li id="issue-5">
+          <div class="rm-item-body">
             <h3>Udrulning i højrisiko-sammenhænge</h3>
             <p>AI, der bruges i asyl, sundhed, uddannelse, offentlige tjenester, social beskyttelse og migration, opererer i sammenhænge, hvor fejl skader menneskelig værdighed på reelle og nogle gange uoprettelige måder. Standarden for udrulning i disse sammenhænge kan ikke være den samme som for reklame eller underholdning.</p>
           </div>
         </li>
-        <li>
-          <div>
+        <li id="issue-6">
+          <div class="rm-item-body">
             <h3>Koncentration af kapacitet</h3>
             <p>Fordelene ved AI bør ikke kun tilfalde de største virksomheder, de mest tekniske eksperter og de rigeste institutioner. De bør forstås, betvivles, formes og bruges af almindelige mennesker og almindelige organisationer.</p>
           </div>
         </li>
-      </ol>
+        </ol>
+      </div>
     </div>
   </section>
 
   <section class="section" data-reveal data-chapter="02" data-chapter-label="Vores køreplan">
-    <div class="wrap--narrow">
-      <div class="section-label">Del to. Vores køreplan</div>
-      <h2>Vores holdninger til hver af disse udfordringer.</h2>
-      <p>Køreplanen nedenfor er foreningens arbejdsholdning. Det er den forpligtelse, vi er ansvarlige for i det arbejde, vi udfører.</p>
+    <div class="rm-wrap">
+      <div class="rm-index">
+        <div class="rm-rail">
+          <div class="rm-label">Del to. Vores køreplan</div>
+          <h2 class="rm-h2">Vores holdninger til hver af disse udfordringer.</h2>
+          <p class="rm-intro">Køreplanen nedenfor er foreningens arbejdsholdning. Det er den forpligtelse, vi er ansvarlige for i det arbejde, vi udfører.</p>
+          <nav aria-label="Vores seks holdninger">
+            <ol class="rm-toc">
+            <li><a href="#position-1">Om alignment og sikkerhed</a></li>
+            <li><a href="#position-2">Om gennemsigtighed</a></li>
+            <li><a href="#position-3">Om AI-dannelse</a></li>
+            <li><a href="#position-4">Om hvem der har en plads ved bordet</a></li>
+            <li><a href="#position-5">Om udrulning i højrisiko-sammenhænge</a></li>
+            <li><a href="#position-6">Om koncentration</a></li>
+            </ol>
+          </nav>
+        </div>
 
-      <ol class="list-numbered">
-        <li>
-          <div>
+        <ol class="rm-list rm-list--positions">
+        <li id="position-1">
+          <div class="rm-item-body">
             <h3>Om alignment og sikkerhed</h3>
             <p>Vi støtter alignment-forskning og de ansvarlige skaleringsforpligtelser, der opstår i feltet. Inden for vores arbejdsområde vil vi ikke godkende, uddanne i eller indgå partnerskaber om udrulning af AI-systemer i højrisiko-sammenhænge uden eksplicit menneskeligt tilsyn, ansvarlighed for resultater og evnen til at gendanne efter fejl.</p>
           </div>
         </li>
-        <li>
-          <div>
+        <li id="position-2">
+          <div class="rm-item-body">
             <h3>Om gennemsigtighed</h3>
             <p>Hvert AI-værktøj, vi gennemgår for en partnerorganisation, vurderes på kvaliteten af dets forklarbarhed. Hver offentlig vejledning, vi udgiver, er skrevet i klart sprog, på engelsk og dansk, med kildeangivelser. Vi holder os til den samme standard for gennemsigtighed, vi forventer af andre.</p>
           </div>
         </li>
-        <li>
-          <div>
+        <li id="position-3">
+          <div class="rm-item-body">
             <h3>Om AI-dannelse</h3>
             <p>Vi forpligter os til at gøre AI-dannelse gratis tilgængelig for vores prioriterede målgrupper: danske nonprofitorganisationer, skoler, klinikker, offentlige medarbejdere, små virksomheder og missionsdrevne organisationer. Vi arbejder på at oversætte forpligtelsen i artikel 4 i EU's AI-forordning til noget, organisationer faktisk kan gøre.</p>
           </div>
         </li>
-        <li>
-          <div>
+        <li id="position-4">
+          <div class="rm-item-body">
             <h3>Om hvem der har en plads ved bordet</h3>
             <p>Gennem vores offentlige arbejde, vores forskning og vores partnerskaber bringer vi perspektiverne fra frontmedarbejdere, nonprofit- og fællesskabsledere og de mennesker, AI udrulles på, ind i de rum, hvor AI-systemer og -politikker designes.</p>
           </div>
         </li>
-        <li>
-          <div>
+        <li id="position-5">
+          <div class="rm-item-body">
             <h3>Om udrulning i højrisiko-sammenhænge</h3>
             <p>Vi afviser operationel støtte til brug af AI til overvågning af mennesker, der ikke nemt kan forsvare sig selv, til automatiske afgørelser om asyl eller grundlæggende rettigheder, til våbensystemer og til manipulation af offentlig information. Disse grænser er skrevet ind i vores vedtægter og kræver en høj tærskel for ændring.</p>
           </div>
         </li>
-        <li>
-          <div>
+        <li id="position-6">
+          <div class="rm-item-body">
             <h3>Om koncentration</h3>
             <p>Vi forpligter os til at udgive vores forskning, vores værktøjsgennemgange og vores undervisningsmaterialer som åbne offentlige goder, hvor det er juridisk og etisk muligt. Vi arbejder på at forhindre, at AI-dannelse bliver endnu en skillelinje mellem dem med adgang og dem uden.</p>
           </div>
         </li>
-      </ol>
+        </ol>
+      </div>
     </div>
   </section>
 
   <section class="section" data-reveal data-chapter="03" data-chapter-label="Rammeværker">
-    <div class="wrap--data">
-      <div class="section-label">Del tre. Rammeværker vi engagerer os i</div>
-      <h2>Aligneret med de største rammeværker for ansvarlig AI. Specifik i vores bidrag.</h2>
-
-      <p>Foreningens arbejde er en del af en bredere samtale. Vi engagerer os i de største internationale rammeværker og reguleringer, der former ansvarlig AI: EU's AI-forordning, persondataforordningen (GDPR), OECD's AI-principper, UNESCO's anbefaling om AI-etik og Europarådets konvention om kunstig intelligens.</p>
-
-      <div class="frameworks" style="margin: 1.5rem 0;">
-        <div class="framework">
-          <strong>EU AI Act</strong>
-          <span>EU's forordning om kunstig intelligens</span>
+    <div class="rm-wrap">
+      <div class="rm-frame-band">
+        <div class="rm-frame-band__head">
+          <div class="rm-label">Del tre. Rammeværker vi engagerer os i</div>
+          <h2>Aligneret med de største rammeværker for ansvarlig AI. Specifik i vores bidrag.</h2>
         </div>
-        <div class="framework">
-          <strong>GDPR</strong>
-          <span>Persondataforordningen</span>
-        </div>
-        <div class="framework">
-          <strong>OECD AI Principles</strong>
-          <span>OECD's principper for kunstig intelligens</span>
-        </div>
-        <div class="framework">
-          <strong>UNESCO Ethics of AI</strong>
-          <span>UNESCO's anbefaling om AI-etik</span>
-        </div>
-        <div class="framework">
-          <strong>CoE AI Convention</strong>
-          <span>Europarådets rammekonvention om kunstig intelligens</span>
-        </div>
-        <div class="framework">
-          <strong>Artikel 4 · EU AI Act</strong>
-          <span>Forpligtelse til AI-dannelse for organisationer, der bruger AI</span>
+        <div class="rm-frame-band__lede">
+          <p>Foreningens arbejde er en del af en bredere samtale. Vi engagerer os i de største internationale rammeværker og reguleringer, der former ansvarlig AI: EU's AI-forordning, persondataforordningen (GDPR), OECD's AI-principper, UNESCO's anbefaling om AI-etik og Europarådets konvention om kunstig intelligens.</p>
         </div>
       </div>
 
-      <p>Vores bidrag er at bringe disse forpligtelser ind i en specifik kontekst: dansk civilsamfund, den offentlige sektor, små og mellemstore organisationer og de fællesskaber, der berøres mest af AI-udrulning. Vi oversætter brede principper til praktiske, brugbare forpligtelser for organisationer og mennesker, der ikke har direkte adgang til de rum, hvor standarderne skrives.</p>
+      <div class="rm-frames">
+      <div class="rm-frame">
+        <strong>EU AI Act</strong>
+        <span>EU's forordning om kunstig intelligens</span>
+      </div>
+      <div class="rm-frame">
+        <strong>GDPR</strong>
+        <span>Persondataforordningen</span>
+      </div>
+      <div class="rm-frame">
+        <strong>OECD AI Principles</strong>
+        <span>OECD's principper for kunstig intelligens</span>
+      </div>
+      <div class="rm-frame">
+        <strong>UNESCO Ethics of AI</strong>
+        <span>UNESCO's anbefaling om AI-etik</span>
+      </div>
+      <div class="rm-frame">
+        <strong>CoE AI Convention</strong>
+        <span>Europarådets rammekonvention om kunstig intelligens</span>
+      </div>
+      <div class="rm-frame">
+        <strong>Artikel 4 · EU AI Act</strong>
+        <span>Forpligtelse til AI-dannelse for organisationer, der bruger AI</span>
+      </div>
+      </div>
 
-      <p class="pullout" style="margin-top:2rem">"Vi har ikke til hensigt at gentage de store institutioners arbejde. Vi har til hensigt at oversætte det til noget, som de, der er nedstrøms for det, kan bruge."</p>
+      <p class="rm-frame-close">Vores bidrag er at bringe disse forpligtelser ind i en specifik kontekst: dansk civilsamfund, den offentlige sektor, små og mellemstore organisationer og de fællesskaber, der berøres mest af AI-udrulning. Vi oversætter brede principper til praktiske, brugbare forpligtelser for organisationer og mennesker, der ikke har direkte adgang til de rum, hvor standarderne skrives.</p>
+
+      <p class="rm-pullout">"Vi har ikke til hensigt at gentage de store institutioners arbejde. Vi har til hensigt at oversætte det til noget, som de, der er nedstrøms for det, kan bruge."</p>
     </div>
   </section>
 
   <section class="section" data-reveal>
-    <div class="wrap--narrow">
-      <h2>Hvad dette ser ud som i praksis.</h2>
-      <p>Køreplanen ovenfor bliver til arbejde. Arbejdet er det, vi gør.</p>
-      <div class="hero-cta" style="margin-top:1.5rem">
+    <div class="rm-wrap">
+      <div class="rm-close">
+        <h2>Hvad dette ser ud som i praksis.</h2>
+        <p class="rm-close-lede">Køreplanen ovenfor bliver til arbejde. Arbejdet er det, vi gør.</p>
+        <div class="hero-cta">
         <a href="work.html" class="btn btn--primary">Se det vi gør <span class="arrow">→</span></a>
         <a href="donate.html" class="btn btn--ghost">Støt arbejdet</a>
+        </div>
       </div>
     </div>
   </section>
