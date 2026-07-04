@@ -2006,3 +2006,76 @@ a.inline-link:hover {
 @media (min-width: 861px) {
   .donate-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+/* ===== FOUNDING MANDATE BAND (home) =====
+   The working principle as a designed inscription: deep-cream plaque on the
+   full grid, oversized terracotta quote glyph, faint accent wash echoing the
+   globe, attribution carried by the house label voice. Tokens only. */
+.mandate {
+  position: relative;
+  background: var(--bg-deep);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  padding: clamp(2.25rem, 5vw, 3.75rem) clamp(1.5rem, 4vw, 3.5rem) clamp(2rem, 4vw, 3rem);
+  overflow: hidden;
+}
+.mandate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(640px circle at 88% -20%, rgba(176, 84, 51, 0.07), transparent 60%);
+  pointer-events: none;
+}
+.mandate::after {
+  content: "\201C";
+  position: absolute;
+  top: -0.12em;
+  left: clamp(0.75rem, 2vw, 2rem);
+  font-family: var(--serif);
+  font-size: clamp(6rem, 12vw, 9rem);
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.14;
+  pointer-events: none;
+}
+.mandate .section-label {
+  position: relative;
+  z-index: 1;
+}
+.mandate__quote {
+  position: relative;
+  z-index: 1;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  max-width: 52ch;
+  margin: 0 0 1.75rem;
+  text-wrap: pretty;
+}
+.mandate__source {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(105, 100, 92);
+  margin: 0;
+}
+.mandate__source::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+  flex: 0 0 auto;
+}
+@media (max-width: 640px) {
+  .mandate { border-radius: 10px; }
+  .mandate__quote { font-size: var(--fs-lg); }
+}
