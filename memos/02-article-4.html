@@ -106,7 +106,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=balance">
+<link rel="stylesheet" href="../styles.css?v=polish1">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 <link rel="mask-icon" href="/favicon.svg?v=2" color="#B05433">
@@ -114,10 +114,10 @@
 <style>
   .memo-page { padding-top: clamp(2.5rem, 8vh, 5rem); padding-bottom: clamp(3rem, 8vh, 6rem); }
   .memo-page .wrap { max-width: 720px; margin: 0 auto; padding: 0 var(--gutter); }
-  .memo-page__back { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; }
+  .memo-page__back { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; transition: color 200ms var(--ease); }
   .memo-page__back:hover { color: var(--accent); }
-  .memo-page__eyebrow { font-family: var(--mono); font-size: var(--fs-sm); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 0.75rem; }
-  .memo-page h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 0.6rem 0; }
+  .memo-page__eyebrow { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 0.75rem; }
+  .memo-page h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 0.6rem 0; text-wrap: balance; }
   .memo-page__sub { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--ink-quiet); margin: 0 0 0.6rem 0; }
   .memo-page__meta { font-family: var(--mono); font-size: var(--fs-sm); color: var(--ink-quiet); letter-spacing: 0.04em; padding-bottom: 1.25rem; border-bottom: 1px solid var(--accent-soft); margin-bottom: 2.5rem; }
 
@@ -140,6 +140,7 @@
   .memo-page__contact a { color: var(--accent); text-decoration: none; }
   .memo-page__contact a:hover { text-decoration: underline; }
   .memo-page__disclaimer { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-quiet); letter-spacing: 0.04em; line-height: 1.55; margin-top: 2rem; padding: 1rem; background: var(--bg-elev); border-left: 2px solid var(--line); }
+  .memo-page .memo-page__close { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2.1vw, 1.3rem); color: var(--accent); line-height: 1.4; margin: 1.5rem 0; }
 </style>
 
 <meta name="google-site-verification" content="VERIFY_CODE">
@@ -177,12 +178,12 @@
 <main id="main">
   <article class="memo-page">
     <div class="wrap">
-      <a href="../memos.html" class="memo-page__back">← All memos</a>
+      <a href="../memos.html" class="memo-page__back hero-fade">← All memos</a>
 
-      <div class="memo-page__eyebrow">Memo 02 · Article 4</div>
-      <h1>AI literacy is now a legal duty.</h1>
-      <p class="memo-page__sub">Article 4 of the EU AI Act, in plain language.</p>
-      <p class="memo-page__meta">Copenhagen · 1 May 2026</p>
+      <div class="memo-page__eyebrow hero-fade">Memo 02 · Article 4</div>
+      <h1 class="hero-fade hero-fade--2">AI literacy is now a legal duty.</h1>
+      <p class="memo-page__sub hero-fade hero-fade--3">Article 4 of the EU AI Act, in plain language.</p>
+      <p class="memo-page__meta hero-fade hero-fade--4">Copenhagen · 1 May 2026</p>
 
       <h2>The short version</h2>
       <p>If you are an organization in the EU and you use AI tools at work, you have a legal obligation to make sure the people using those tools understand them. That obligation is called Article 4 of the EU AI Act. It came into force on 2 February 2025. Most small organizations have not heard of it. Most that have heard of it do not know what it actually requires of them.</p>
@@ -267,7 +268,7 @@
       <p>The AI Literacy Foundation will publish two plain-language guides on Article 4 compliance in the next six months. The first will cover compliance for organizations with under 50 staff. The second will cover compliance for organizations operating across multiple jurisdictions.</p>
       <p>We will deliver Article 4 training cohorts, free at the point of access, for organizations that cannot afford a commercial provider. Cohorts will run in English and Danish. Each cohort covers what AI is, where it fails, how to verify outputs, how to handle data responsibly, and what good-faith compliance looks like for the specific kinds of AI the organization uses.</p>
       <p>We will offer free tool reviews for small organizations that want to understand what an AI tool is actually doing before they deploy it. The review will document the kinds of literacy required for the tool, in plain language, so the organization can use the review directly as part of its Article 4 documentation.</p>
-      <p>If you are unsure where to start, <a href="../work.html#contact" style="color:var(--accent)">write to us</a>.</p>
+      <p>If you are unsure where to start, <a href="../work.html#contact" class="inline-link">write to us</a>.</p>
 
       <h2>A practical checklist</h2>
       <p>For the person who just wants to know what to do this week:</p>
@@ -284,7 +285,7 @@
       <h2>Closing</h2>
       <p>Article 4 is not the most complicated part of the EU AI Act. It is, however, the part that applies to the most organizations. Every workplace using AI is a deployer. Every deployer is on the hook for AI literacy.</p>
       <p>Compliance, done reasonably and in good faith, is achievable for organizations of any size. It does not require lawyers, certificates, or AI engineers. It requires you to take seriously the fact that AI is now making decisions inside your organization, and to make sure the people running those decisions know what they are doing.</p>
-      <p style="font-style:italic;font-size:1.2rem;color:var(--accent);">The Foundation exists to help that happen.</p>
+      <p class="memo-page__close">The Foundation exists to help that happen.</p>
 
       <p class="memo-page__sig">Ali Al Mokdad</p>
       <p class="memo-page__contact">Founder, AI Literacy Foundation</p>
@@ -362,7 +363,7 @@
     });
   }
 </script>
-<script src="../motion.js" defer></script>
+<script src="../motion.js?v=polish1" defer></script>
 
 </body>
 </html>

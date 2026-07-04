@@ -104,7 +104,10 @@ body {
   border-bottom: 1px solid transparent;
   transition: border-color 320ms var(--ease), background 320ms var(--ease);
 }
-.site-header.is-scrolled { border-bottom-color: var(--line-soft); }
+.site-header.is-scrolled {
+  border-bottom-color: var(--line-soft);
+  box-shadow: 0 10px 28px -22px rgba(21, 20, 15, 0.16);
+}
 .site-header__inner {
   display: flex;
   align-items: center;
@@ -180,8 +183,9 @@ body {
 
 .cta-donate {
   font-family: var(--sans);
-  font-size: var(--fs-sm);
-  font-weight: 500;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   padding: 0.5rem 1.125rem;
   border-radius: 999px;
   background: var(--ink);
@@ -231,11 +235,14 @@ body {
     padding: 1rem var(--gutter) 1.5rem;
     gap: 0;
     transform: translateY(-200%);
-    transition: transform 360ms var(--ease-out), box-shadow 360ms var(--ease-out);
+    visibility: hidden;
+    transition: transform 360ms var(--ease-out), box-shadow 360ms var(--ease-out), visibility 0s linear 360ms;
     box-shadow: 0 0 0 0 rgba(0,0,0,0);
   }
   .nav.is-open {
     transform: translateY(0);
+    visibility: visible;
+    transition: transform 360ms var(--ease-out), box-shadow 360ms var(--ease-out), visibility 0s;
     box-shadow: 0 12px 24px -16px rgba(21, 20, 15, 0.18);
   }
   .nav a {
@@ -246,7 +253,7 @@ body {
   }
   .nav a:last-child { border-bottom: none; }
   .nav a::after { display: none; }
-  .cta-donate { font-size: var(--fs-sm); padding: 0.55rem 1rem; }
+  .cta-donate { padding: 0.55rem 1rem; }
   /* Language toggle injected by motion.js into the mobile nav */
   .nav-lang-mobile {
     display: flex;
@@ -665,7 +672,6 @@ a.inline-link:hover {
   display: grid;
   grid-template-columns: 4rem 1fr;
   gap: 1.75rem;
-  transition: padding 320ms var(--ease);
 }
 .list-numbered > li:last-child { padding-bottom: 1rem; }
 .list-numbered > li::before {
@@ -1128,9 +1134,9 @@ a.inline-link:hover {
   color: var(--accent);
   font-weight: 500;
   text-transform: uppercase;
-  transition: letter-spacing 240ms var(--ease);
+  transition: color 240ms var(--ease);
 }
-.framework:hover strong { letter-spacing: 0.14em; }
+.framework:hover strong { color: var(--accent-deep); }
 .framework span {
   font-family: var(--sans);
   font-size: var(--fs-sm);
@@ -1245,10 +1251,13 @@ a.inline-link:hover {
   top: 0;
   left: 0;
   height: 2px;
-  width: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
   background: linear-gradient(90deg, var(--accent), var(--accent-soft));
   z-index: 200;
-  transition: width 80ms linear, opacity 240ms var(--ease);
+  transition: opacity 240ms var(--ease);
   opacity: 0;
   pointer-events: none;
 }
@@ -1764,7 +1773,6 @@ a.inline-link:hover {
 .memo-share__link:focus-visible,
 .memo-share__link:active {
   transform: translateY(-2px);
-  outline: none;
 }
 .memo-share__link--linkedin:hover,
 .memo-share__link--linkedin:focus-visible,
@@ -1911,4 +1919,90 @@ a.inline-link:hover {
 .status__label,
 .status__foot {
   color: rgb(105, 100, 92);
+}
+
+/* ===================================================================
+   DESIGN POLISH PASS (2026-07-04)
+   Site-wide smoothness and coherence. Tokens only.
+   =================================================================== */
+
+/* Brand trademark mark: seat the sup so it reads as a typographic mark
+   and never inflates the header line box. */
+.brand-tm {
+  font-size: 0.58em;
+  line-height: 0;
+  vertical-align: super;
+  letter-spacing: 0;
+}
+
+/* Lede works outside .hero too (404, thanks, memo hub). .hero .lede keeps
+   its own margin; this only gives the class an identity everywhere. */
+.lede {
+  font-family: var(--serif);
+  font-size: var(--fs-lg);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 42rem;
+  text-wrap: pretty;
+}
+
+/* Press states: buttons acknowledge the click. */
+.btn:active,
+.cta-donate:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* The footer opens with a quiet terracotta signature instead of an
+   anonymous hairline: one accent that fades out, echoing the globe. */
+.site-footer { position: relative; }
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: min(320px, 38vw);
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-soft) 60%, transparent);
+  opacity: 0.55;
+}
+
+/* Footer grid 641-760px: the Foundation block spans the first row so the
+   Contact column is never stranded as a lone orphan. */
+@media (max-width: 760px) and (min-width: 641px) {
+  .site-footer__grid > div:first-child { grid-column: 1 / -1; }
+}
+
+/* iOS safe areas: keep floating chrome clear of the home indicator. */
+@supports (padding: max(0px)) {
+  .scroll-top {
+    bottom: max(clamp(1rem, 3vh, 1.75rem), calc(env(safe-area-inset-bottom) + 0.75rem));
+    right: max(clamp(1rem, 3vw, 1.75rem), calc(env(safe-area-inset-right) + 0.75rem));
+  }
+  .chapter-indicator {
+    left: max(clamp(1rem, 3vw, 2rem), calc(env(safe-area-inset-left) + 0.75rem));
+    bottom: max(clamp(1.25rem, 3vh, 2rem), calc(env(safe-area-inset-bottom) + 0.75rem));
+  }
+}
+
+/* Print: keep decorative chrome off paper and reveal load-faded content. */
+@media print {
+  .memo-share,
+  .chapter-indicator,
+  .scroll-progress,
+  .skip-link,
+  .nav-toggle,
+  .scroll-top { display: none !important; }
+  .hero-fade { opacity: 1 !important; transform: none !important; animation: none !important; }
+}
+
+/* Donate: three ways to give, side by side on wide screens */
+.donate-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.donate-grid .donate-block { margin-bottom: 0; }
+@media (min-width: 861px) {
+  .donate-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }

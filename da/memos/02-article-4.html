@@ -106,7 +106,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../styles.css?v=balance">
+<link rel="stylesheet" href="../../styles.css?v=polish1">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 <link rel="mask-icon" href="/favicon.svg?v=2" color="#B05433">
@@ -114,10 +114,10 @@
 <style>
   .memo-page { padding-top: clamp(2.5rem, 8vh, 5rem); padding-bottom: clamp(3rem, 8vh, 6rem); }
   .memo-page .wrap { max-width: 720px; margin: 0 auto; padding: 0 var(--gutter); }
-  .memo-page__back { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; }
+  .memo-page__back { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; transition: color 200ms var(--ease); }
   .memo-page__back:hover { color: var(--accent); }
-  .memo-page__eyebrow { font-family: var(--mono); font-size: var(--fs-sm); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 0.75rem; }
-  .memo-page h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 0.6rem 0; }
+  .memo-page__eyebrow { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 0.75rem; }
+  .memo-page h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 0.6rem 0; text-wrap: balance; }
   .memo-page__sub { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--ink-quiet); margin: 0 0 0.6rem 0; }
   .memo-page__meta { font-family: var(--mono); font-size: var(--fs-sm); color: var(--ink-quiet); letter-spacing: 0.04em; padding-bottom: 1.25rem; border-bottom: 1px solid var(--accent-soft); margin-bottom: 2.5rem; }
 
@@ -140,6 +140,7 @@
   .memo-page__contact a { color: var(--accent); text-decoration: none; }
   .memo-page__contact a:hover { text-decoration: underline; }
   .memo-page__disclaimer { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-quiet); letter-spacing: 0.04em; line-height: 1.55; margin-top: 2rem; padding: 1rem; background: var(--bg-elev); border-left: 2px solid var(--line); }
+  .memo-page .memo-page__close { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2.1vw, 1.3rem); color: var(--accent); line-height: 1.4; margin: 1.5rem 0; }
 </style>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELL147GRCZ"></script>
@@ -176,12 +177,12 @@
 <main id="main">
   <article class="memo-page">
     <div class="wrap">
-      <a href="../memos.html" class="memo-page__back">← Alle memoer</a>
+      <a href="../memos.html" class="memo-page__back hero-fade">← Alle memoer</a>
 
-      <div class="memo-page__eyebrow">Memo 02 · Artikel 4</div>
-      <h1>AI-dannelse er nu en lovpligt.</h1>
-      <p class="memo-page__sub">Artikel 4 i EU's AI-forordning, i klart sprog.</p>
-      <p class="memo-page__meta">København · 1. maj 2026</p>
+      <div class="memo-page__eyebrow hero-fade">Memo 02 · Artikel 4</div>
+      <h1 class="hero-fade hero-fade--2">AI-dannelse er nu en lovpligt.</h1>
+      <p class="memo-page__sub hero-fade hero-fade--3">Artikel 4 i EU's AI-forordning, i klart sprog.</p>
+      <p class="memo-page__meta hero-fade hero-fade--4">København · 1. maj 2026</p>
 
       <h2>Den korte version</h2>
       <p>Hvis du er en organisation i EU, og du bruger AI-værktøjer på arbejdet, har du en juridisk forpligtelse til at sikre, at de mennesker, der bruger værktøjerne, forstår dem. Den forpligtelse hedder Artikel 4 i EU's AI-forordning. Den trådte i kraft den 2. februar 2025. De fleste små organisationer har ikke hørt om den. De fleste, der har hørt om den, ved ikke, hvad den faktisk kræver af dem.</p>
@@ -266,7 +267,7 @@
       <p>AI Literacy Foundation vil udgive to vejledninger i klart sprog om efterlevelse af Artikel 4 inden for de næste seks måneder. Den første vil dække efterlevelse for organisationer med under 50 ansatte. Den anden vil dække efterlevelse for organisationer, der opererer på tværs af flere jurisdiktioner.</p>
       <p>Vi vil afholde uddannelseshold om Artikel 4, gratis ved adgangspunktet, for organisationer, der ikke har råd til en kommerciel udbyder. Holdene vil køre på engelsk og dansk. Hvert hold dækker, hvad AI er, hvor det fejler, hvordan man verificerer output, hvordan man håndterer data ansvarligt, og hvordan efterlevelse i god tro ser ud for de specifikke former for AI, organisationen bruger.</p>
       <p>Vi vil tilbyde gratis gennemgange af værktøjer for små organisationer, der vil forstå, hvad et AI-værktøj faktisk foretager sig, før de idriftsætter det. Gennemgangen vil dokumentere de former for dannelse, værktøjet kræver, i klart sprog, så organisationen kan bruge gennemgangen direkte som en del af sin dokumentation for Artikel 4.</p>
-      <p>Hvis du er i tvivl om, hvor du skal begynde, så <a href="../work.html#contact" style="color:var(--accent)">skriv til os</a>.</p>
+      <p>Hvis du er i tvivl om, hvor du skal begynde, så <a href="../work.html#contact" class="inline-link">skriv til os</a>.</p>
 
       <h2>En praktisk tjekliste</h2>
       <p>For den, der bare vil vide, hvad man skal gøre i denne uge:</p>
@@ -283,7 +284,7 @@
       <h2>Afslutning</h2>
       <p>Artikel 4 er ikke den mest komplicerede del af EU's AI-forordning. Den er dog den del, der gælder for flest organisationer. Enhver arbejdsplads, der bruger AI, er en idriftsætter. Enhver idriftsætter er ansvarlig for AI-dannelse.</p>
       <p>Efterlevelse, gjort rimeligt og i god tro, er opnåelig for organisationer af enhver størrelse. Det kræver ikke advokater, certifikater eller AI-ingeniører. Det kræver, at du tager det alvorligt, at AI nu træffer beslutninger inde i din organisation, og at du sikrer, at de mennesker, der står for de beslutninger, ved, hvad de gør.</p>
-      <p style="font-style:italic;font-size:1.2rem;color:var(--accent);">Foundationen eksisterer for at hjælpe det med at ske.</p>
+      <p class="memo-page__close">Foundationen eksisterer for at hjælpe det med at ske.</p>
 
       <p class="memo-page__sig">Ali Al Mokdad</p>
       <p class="memo-page__contact">Stifter, AI Literacy Foundation</p>

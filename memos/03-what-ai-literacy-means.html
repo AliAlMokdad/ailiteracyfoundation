@@ -106,7 +106,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=balance">
+<link rel="stylesheet" href="../styles.css?v=polish1">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 <link rel="mask-icon" href="/favicon.svg?v=2" color="#B05433">
@@ -114,10 +114,10 @@
 <style>
   .memo-page { padding-top: clamp(2.5rem, 8vh, 5rem); padding-bottom: clamp(3rem, 8vh, 6rem); }
   .memo-page .wrap { max-width: 720px; margin: 0 auto; padding: 0 var(--gutter); }
-  .memo-page__back { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; }
+  .memo-page__back { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; transition: color 200ms var(--ease); }
   .memo-page__back:hover { color: var(--accent); }
-  .memo-page__eyebrow { font-family: var(--mono); font-size: var(--fs-sm); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 0.75rem; }
-  .memo-page h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 0.6rem 0; }
+  .memo-page__eyebrow { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 0.75rem; }
+  .memo-page h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 0.6rem 0; text-wrap: balance; }
   .memo-page__sub { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--ink-quiet); margin: 0 0 0.6rem 0; }
   .memo-page__meta { font-family: var(--mono); font-size: var(--fs-sm); color: var(--ink-quiet); letter-spacing: 0.04em; padding-bottom: 1.25rem; border-bottom: 1px solid var(--accent-soft); margin-bottom: 2.5rem; }
 
@@ -146,6 +146,7 @@
   .role-block { padding: 1rem 0; border-top: 1px solid var(--accent-soft); }
   .role-block:last-child { border-bottom: 1px solid var(--accent-soft); }
   .role-block strong { font-family: var(--serif); font-weight: 600; color: var(--ink); }
+  .memo-page .memo-page__close { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2.1vw, 1.3rem); color: var(--accent); line-height: 1.4; margin: 1.5rem 0; }
 </style>
 
 <meta name="google-site-verification" content="VERIFY_CODE">
@@ -183,12 +184,12 @@
 <main id="main">
   <article class="memo-page">
     <div class="wrap">
-      <a href="../memos.html" class="memo-page__back">← All memos</a>
+      <a href="../memos.html" class="memo-page__back hero-fade">← All memos</a>
 
-      <div class="memo-page__eyebrow">Memo 03 · AI literacy, defined</div>
-      <h1>What "AI literacy" actually means.</h1>
-      <p class="memo-page__sub">A working definition for adults with jobs.</p>
-      <p class="memo-page__meta">Copenhagen · 10 May 2026</p>
+      <div class="memo-page__eyebrow hero-fade">Memo 03 · AI literacy, defined</div>
+      <h1 class="hero-fade hero-fade--2">What "AI literacy" actually means.</h1>
+      <p class="memo-page__sub hero-fade hero-fade--3">A working definition for adults with jobs.</p>
+      <p class="memo-page__meta hero-fade hero-fade--4">Copenhagen · 10 May 2026</p>
 
       <h2>The short version</h2>
       <p>AI literacy is not a slogan. It is a working capacity. It means five things you can do: recognize when AI is in the room, use the common tools competently, judge their output, know what to keep out, and hold institutions accountable for how they use AI on you and on others. That is the definition. The rest of this memo shows what it looks like in different jobs, at different stages of life, and inside organizations of every size.</p>
@@ -197,7 +198,7 @@
 
       <h2>Why this needs defining</h2>
       <p>"AI literacy" has become a phrase like "leadership" or "innovation". Everyone uses it. Almost nobody says what it means.</p>
-      <p>The EU AI Act made AI literacy a legal duty in February 2025 (see <a href="02-article-4.html" style="color:var(--accent)">Memo 02</a>). Companies are buying training. Schools are buying curricula. Ministries are writing strategies. Most of it is shaped around a definition that has never been written down in plain language.</p>
+      <p>The EU AI Act made AI literacy a legal duty in February 2025 (see <a href="02-article-4.html" class="inline-link">Memo 02</a>). Companies are buying training. Schools are buying curricula. Ministries are writing strategies. Most of it is shaped around a definition that has never been written down in plain language.</p>
       <p>A working definition matters because:</p>
       <ul>
         <li>A teacher needs to know whether a 90-minute webinar makes her staff "AI-literate".</li>
@@ -404,13 +405,13 @@
       <p>The AI Literacy Foundation publishes plain-language guides, runs training cohorts for organizations that cannot afford a commercial provider, and reviews tools so that small Danish and European organizations can make informed choices before they deploy. Everything we produce is free at the point of access.</p>
       <p>We work with teachers, doctors, nurses, public servants, small business owners, journalists, lawyers, accountants, HR managers, farmers, parents, board members, and the leaders of small and medium organizations across Denmark and the rest of Europe.</p>
       <p>We do not sell AI tools. We do not advise on which vendor to buy. We define what literacy means and help people get there.</p>
-      <p>If you want to be notified when the next memo is published, or if you want training for your organization, <a href="../work.html#contact" style="color:var(--accent)">write to us</a>.</p>
+      <p>If you want to be notified when the next memo is published, or if you want training for your organization, <a href="../work.html#contact" class="inline-link">write to us</a>.</p>
 
       <h2>Closing</h2>
       <p>"AI literacy" is a working capacity, not a slogan. It is five things you can do: recognize when AI is in the room, use the common tools competently, evaluate what they produce, keep the wrong things out, and hold institutions accountable for how they use these systems on you and on others.</p>
       <p>Anyone can build it. Most adults need a few months of honest practice. Most teams need one conversation and one page of written policy. Most organizations need a written inventory and a leader who has actually used the tools.</p>
       <p>The phrase will keep being misused. Vendors will keep selling certificates. Policymakers will keep writing strategies. None of that builds literacy. Practice does. Honest conversation does. Plain language does.</p>
-      <p style="font-style:italic;font-size:1.2rem;color:var(--accent);">That is what this foundation is for.</p>
+      <p class="memo-page__close">That is what this foundation is for.</p>
 
       <p class="memo-page__sig">Ali Al Mokdad</p>
       <p class="memo-page__contact">Founder, AI Literacy Foundation</p>
@@ -488,7 +489,7 @@
     });
   }
 </script>
-<script src="../motion.js" defer></script>
+<script src="../motion.js?v=polish1" defer></script>
 
 </body>
 </html>

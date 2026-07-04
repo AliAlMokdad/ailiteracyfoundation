@@ -108,7 +108,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=balance">
+<link rel="stylesheet" href="../styles.css?v=polish1">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 <link rel="mask-icon" href="/favicon.svg?v=2" color="#B05433">
@@ -116,10 +116,10 @@
 <style>
   .memo-page { padding-top: clamp(2.5rem, 8vh, 5rem); padding-bottom: clamp(3rem, 8vh, 6rem); }
   .memo-page .wrap { max-width: 720px; margin: 0 auto; padding: 0 var(--gutter); }
-  .memo-page__back { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; }
+  .memo-page__back { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; transition: color 200ms var(--ease); }
   .memo-page__back:hover { color: var(--accent); }
-  .memo-page__eyebrow { font-family: var(--mono); font-size: var(--fs-sm); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 0.75rem; }
-  .memo-page h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 0.6rem 0; }
+  .memo-page__eyebrow { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 0.75rem; }
+  .memo-page h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 0.6rem 0; text-wrap: balance; }
   .memo-page__sub { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--ink-quiet); margin: 0 0 0.6rem 0; }
   .memo-page__meta { font-family: var(--mono); font-size: var(--fs-sm); color: var(--ink-quiet); letter-spacing: 0.04em; padding-bottom: 1.25rem; border-bottom: 1px solid var(--accent-soft); margin-bottom: 2.5rem; }
 
@@ -145,6 +145,7 @@
   .vendor-block { padding: 1rem 0; border-top: 1px solid var(--accent-soft); }
   .vendor-block:last-child { border-bottom: 1px solid var(--accent-soft); }
   .vendor-block strong { font-family: var(--serif); font-weight: 600; color: var(--ink); }
+  .memo-page .memo-page__close { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2.1vw, 1.3rem); color: var(--accent); line-height: 1.4; margin: 1.5rem 0; }
 </style>
 
 <meta name="google-site-verification" content="VERIFY_CODE">
@@ -182,12 +183,12 @@
 <main id="main">
   <article class="memo-page">
     <div class="wrap">
-      <a href="../memos.html" class="memo-page__back">← All memos</a>
+      <a href="../memos.html" class="memo-page__back hero-fade">← All memos</a>
 
-      <div class="memo-page__eyebrow">Memo 04 · Data residency</div>
-      <h1>Where does your data go?</h1>
-      <p class="memo-page__sub">AI tools, EU data residency, and GDPR in plain language.</p>
-      <p class="memo-page__meta">Copenhagen · 16 May 2026</p>
+      <div class="memo-page__eyebrow hero-fade">Memo 04 · Data residency</div>
+      <h1 class="hero-fade hero-fade--2">Where does your data go?</h1>
+      <p class="memo-page__sub hero-fade hero-fade--3">AI tools, EU data residency, and GDPR in plain language.</p>
+      <p class="memo-page__meta hero-fade hero-fade--4">Copenhagen · 16 May 2026</p>
 
       <h2>The short version</h2>
       <p>Every time you paste a document into ChatGPT, every time Copilot suggests text in your Outlook, every time your team uses an AI summarizer, that data leaves your computer. Where it goes matters. Under GDPR, it can matter a lot.</p>
@@ -199,7 +200,7 @@
       <p>Three things happened in the last two years.</p>
       <p>First, AI tools became ordinary office software. ChatGPT, Microsoft Copilot, Google Gemini, Anthropic Claude, and dozens of smaller tools are now embedded in everyday work. Many of them send data outside the European Union by default.</p>
       <p>Second, EU regulators made it clear that AI use does not get a pass under the General Data Protection Regulation. The Italian data protection authority, the French CNIL, German DPAs, and the European Data Protection Board have all issued opinions or enforcement actions on generative AI, training data, and cross-border transfers.</p>
-      <p>Third, the EU AI Act came into force. Article 4 requires organizations using AI to ensure that the people using it have sufficient AI literacy, including knowing what the tool does with their data. (See <a href="02-article-4.html" style="color:var(--accent)">Memo 02</a>.)</p>
+      <p>Third, the EU AI Act came into force. Article 4 requires organizations using AI to ensure that the people using it have sufficient AI literacy, including knowing what the tool does with their data. (See <a href="02-article-4.html" class="inline-link">Memo 02</a>.)</p>
       <p>The combination matters. If your team is pasting client data into a tool you have no legal basis to use, you have a GDPR problem, an Article 4 problem, and a professional-conduct problem. Most organizations have not stopped to check.</p>
 
       <h2>What "data residency" actually means</h2>
@@ -337,12 +338,12 @@
       <p>Data residency is part of every AI tool review the AI Literacy Foundation runs. When we evaluate a tool for a Danish organization, we document where the data goes, which legal basis applies, what the residency posture is, and any known risks. The review is free at the point of access.</p>
       <p>We include data residency questions in our Article 4 compliance training so that the people who finish a cohort can answer the three core questions for their own organization: which AI tools are in use, what data goes into them, and where that data is processed.</p>
       <p>We do not sell AI tools. We do not have a preferred vendor. We help people make informed decisions.</p>
-      <p>If you are unsure where to start, <a href="../work.html#contact" style="color:var(--accent)">write to us</a>.</p>
+      <p>If you are unsure where to start, <a href="../work.html#contact" class="inline-link">write to us</a>.</p>
 
       <h2>Closing</h2>
       <p>Data residency is one of the most concrete intersections of AI and the law. It is also one of the most ignored. Most small organizations using AI in 2026 have no inventory, no policy, and no clear answer to the question "where does our data actually go."</p>
       <p>The legal exposure is real. The fix is reasonable. The difference between a compliant organization and a non-compliant one is rarely sophistication. It is usually attention.</p>
-      <p style="font-style:italic;font-size:1.2rem;color:var(--accent);">That is what this foundation is for.</p>
+      <p class="memo-page__close">That is what this foundation is for.</p>
 
       <p class="memo-page__sig">Ali Al Mokdad</p>
       <p class="memo-page__contact">Founder, AI Literacy Foundation</p>
@@ -430,7 +431,7 @@
     });
   }
 </script>
-<script src="../motion.js" defer></script>
+<script src="../motion.js?v=polish1" defer></script>
 
 </body>
 </html>

@@ -106,7 +106,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../styles.css?v=balance">
+<link rel="stylesheet" href="../../styles.css?v=polish1">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 <link rel="mask-icon" href="/favicon.svg?v=2" color="#B05433">
@@ -114,10 +114,10 @@
 <style>
   .memo-page { padding-top: clamp(2.5rem, 8vh, 5rem); padding-bottom: clamp(3rem, 8vh, 6rem); }
   .memo-page .wrap { max-width: 720px; margin: 0 auto; padding: 0 var(--gutter); }
-  .memo-page__back { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; }
+  .memo-page__back { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; transition: color 200ms var(--ease); }
   .memo-page__back:hover { color: var(--accent); }
-  .memo-page__eyebrow { font-family: var(--mono); font-size: var(--fs-sm); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 0.75rem; }
-  .memo-page h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 0.6rem 0; }
+  .memo-page__eyebrow { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 0.75rem; }
+  .memo-page h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 0.6rem 0; text-wrap: balance; }
   .memo-page__sub { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--ink-quiet); margin: 0 0 0.6rem 0; }
   .memo-page__meta { font-family: var(--mono); font-size: var(--fs-sm); color: var(--ink-quiet); letter-spacing: 0.04em; padding-bottom: 1.25rem; border-bottom: 1px solid var(--accent-soft); margin-bottom: 2.5rem; }
 
@@ -146,6 +146,7 @@
   .role-block { padding: 1rem 0; border-top: 1px solid var(--accent-soft); }
   .role-block:last-child { border-bottom: 1px solid var(--accent-soft); }
   .role-block strong { font-family: var(--serif); font-weight: 600; color: var(--ink); }
+  .memo-page .memo-page__close { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2.1vw, 1.3rem); color: var(--accent); line-height: 1.4; margin: 1.5rem 0; }
 </style>
 
 <meta name="google-site-verification" content="VERIFY_CODE">
@@ -183,12 +184,12 @@
 <main id="main">
   <article class="memo-page">
     <div class="wrap">
-      <a href="../memos.html" class="memo-page__back">← Alle memoer</a>
+      <a href="../memos.html" class="memo-page__back hero-fade">← Alle memoer</a>
 
-      <div class="memo-page__eyebrow">Memo 03 · AI-dannelse, defineret</div>
-      <h1>Hvad "AI-dannelse" faktisk betyder.</h1>
-      <p class="memo-page__sub">En arbejdsdefinition for voksne med job.</p>
-      <p class="memo-page__meta">København · 10. maj 2026</p>
+      <div class="memo-page__eyebrow hero-fade">Memo 03 · AI-dannelse, defineret</div>
+      <h1 class="hero-fade hero-fade--2">Hvad "AI-dannelse" faktisk betyder.</h1>
+      <p class="memo-page__sub hero-fade hero-fade--3">En arbejdsdefinition for voksne med job.</p>
+      <p class="memo-page__meta hero-fade hero-fade--4">København · 10. maj 2026</p>
 
       <h2>Den korte version</h2>
       <p>AI-dannelse er ikke et slogan. Det er en praktisk evne. Det betyder fem ting, du kan gøre: genkende, når AI er til stede, bruge de almindelige værktøjer kompetent, vurdere deres output, vide hvad der skal holdes ude, og holde institutioner ansvarlige for, hvordan de bruger AI på dig og på andre. Det er definitionen. Resten af dette memo viser, hvordan det ser ud i forskellige job, på forskellige livsstadier og inde i organisationer af enhver størrelse.</p>
@@ -197,7 +198,7 @@
 
       <h2>Hvorfor dette skal defineres</h2>
       <p>"AI-dannelse" er blevet en frase ligesom "ledelse" eller "innovation". Alle bruger den. Næsten ingen siger, hvad den betyder.</p>
-      <p>EU's AI-forordning gjorde AI-dannelse til en juridisk pligt i februar 2025 (se <a href="02-article-4.html" style="color:var(--accent)">Memo 02</a>). Virksomheder køber kurser. Skoler køber undervisningsforløb. Ministerier skriver strategier. Det meste af det er formet omkring en definition, der aldrig er blevet skrevet ned i et klart sprog.</p>
+      <p>EU's AI-forordning gjorde AI-dannelse til en juridisk pligt i februar 2025 (se <a href="02-article-4.html" class="inline-link">Memo 02</a>). Virksomheder køber kurser. Skoler køber undervisningsforløb. Ministerier skriver strategier. Det meste af det er formet omkring en definition, der aldrig er blevet skrevet ned i et klart sprog.</p>
       <p>En arbejdsdefinition er vigtig, fordi:</p>
       <ul>
         <li>En lærer har brug for at vide, om et 90-minutters webinar gør hendes personale "AI-dannet".</li>
@@ -404,13 +405,13 @@
       <p>AI Literacy Foundation udgiver guider i et klart sprog, afholder kurser for organisationer, der ikke har råd til en kommerciel udbyder, og gennemgår værktøjer, så små danske og europæiske organisationer kan træffe informerede valg, før de tager dem i brug. Alt, vi laver, er gratis ved adgangspunktet.</p>
       <p>Vi arbejder med lærere, læger, sygeplejersker, offentligt ansatte, indehavere af små virksomheder, journalister, advokater, revisorer, HR-chefer, landmænd, forældre, bestyrelsesmedlemmer og lederne af små og mellemstore organisationer i hele Danmark og resten af Europa.</p>
       <p>Vi sælger ikke AI-værktøjer. Vi rådgiver ikke om, hvilken leverandør man skal købe. Vi definerer, hvad dannelse betyder, og hjælper folk med at nå dertil.</p>
-      <p>Hvis du vil have besked, når det næste memo udkommer, eller hvis du vil have et kursus til din organisation, så <a href="../work.html#contact" style="color:var(--accent)">skriv til os</a>.</p>
+      <p>Hvis du vil have besked, når det næste memo udkommer, eller hvis du vil have et kursus til din organisation, så <a href="../work.html#contact" class="inline-link">skriv til os</a>.</p>
 
       <h2>Afslutning</h2>
       <p>"AI-dannelse" er en praktisk evne, ikke et slogan. Det er fem ting, du kan gøre: genkende, når AI er til stede, bruge de almindelige værktøjer kompetent, vurdere hvad de producerer, holde de forkerte ting ude, og holde institutioner ansvarlige for, hvordan de bruger disse systemer på dig og på andre.</p>
       <p>Enhver kan opbygge den. De fleste voksne har brug for et par måneders ærlig øvelse. De fleste teams har brug for én samtale og én side med skriftlig politik. De fleste organisationer har brug for en skriftlig kortlægning og en leder, der faktisk har brugt værktøjerne.</p>
       <p>Frasen vil blive ved med at blive misbrugt. Leverandører vil blive ved med at sælge certifikater. Politikere vil blive ved med at skrive strategier. Intet af det opbygger dannelse. Det gør øvelse. Det gør ærlig samtale. Det gør et klart sprog.</p>
-      <p style="font-style:italic;font-size:1.2rem;color:var(--accent);">Det er det, denne forening er til for.</p>
+      <p class="memo-page__close">Det er det, denne forening er til for.</p>
 
       <p class="memo-page__sig">Ali Al Mokdad</p>
       <p class="memo-page__contact">Stifter, AI Literacy Foundation</p>

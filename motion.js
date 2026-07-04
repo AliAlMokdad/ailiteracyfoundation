@@ -64,6 +64,13 @@
         navToggle.focus();
       }
     });
+    // Close the open mobile menu on a tap/click outside it (all pages)
+    document.addEventListener('click', function (e) {
+      if (!navEl.classList.contains('is-open')) return;
+      if (navEl.contains(e.target) || navToggle.contains(e.target)) return;
+      navEl.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
   }
 
   // Inject back-to-top button (no per-page HTML needed)
@@ -96,7 +103,7 @@
     if (progressBar) {
       var scrollable = document.documentElement.scrollHeight - window.innerHeight;
       var pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
-      progressBar.style.width = Math.max(0, Math.min(100, pct)) + '%';
+      progressBar.style.transform = 'scaleX(' + (Math.max(0, Math.min(100, pct)) / 100) + ')';
       if (window.scrollY > 80) progressBar.classList.add('is-active');
       else progressBar.classList.remove('is-active');
     }
