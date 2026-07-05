@@ -118,7 +118,7 @@
 .aiw-h2{font-family:var(--serif);font-weight:400;font-size:var(--fs-2xl);line-height:1.12;letter-spacing:-.018em;margin:.2rem 0 .7rem;color:var(--ink);max-width:24ch;text-wrap:balance}
 .aiw-h2 em{font-style:italic;color:var(--accent)}
 .aiw-lede{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.6;color:var(--ink-soft);max-width:66ch;margin:0 0 2.1rem}
-.aiw-card{background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:1.9rem 2.1rem 2.1rem;max-width:1120px}
+.aiw-card{background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:1.9rem 2.1rem 2.1rem;max-width:1000px}
 .aiw-card h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;margin:0 0 .5rem;color:var(--ink)}
 .aiw-intro{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.7;margin:0 0 1.5rem;max-width:70ch}
 .aiw-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -147,9 +147,8 @@
 .aiw-mobile-note{display:none}
 .ntp-card{position:relative;margin-top:2.6rem}
 .ntp-card::before{content:"";position:absolute;left:50%;top:-1.7rem;width:1px;height:1.2rem;background:linear-gradient(180deg,transparent,var(--accent-soft));transform:translateX(-50%)}
-.aiw-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.2rem;align-items:start;margin:.2rem 0 0}
+.aiw-cols{display:block;margin:.2rem 0 0}
 .aiw-col{min-width:0}
-@media(max-width:900px){.aiw-cols{grid-template-columns:1fr;gap:1.2rem}}
 .ntp-seedrow{display:flex;gap:.5rem;align-items:stretch;margin:0 0 .1rem}
 .ntp-seed{flex:1;min-width:0;box-sizing:border-box;font-family:var(--sans);font-size:1.05rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.7rem .9rem}
 .ntp-seed:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
@@ -171,7 +170,7 @@
 .ntp-row:last-child{border-bottom:0}
 .ntp-row:hover{background:var(--accent-bg)}
 .ntp-row:focus-visible{outline:2px solid var(--accent);outline-offset:-1px;border-radius:4px}
-.ntp-word{font-family:var(--mono);font-size:13px;color:var(--ink);flex:0 0 28%;max-width:28%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ntp-word{font-family:var(--mono);font-size:13px;color:var(--ink);flex:0 0 150px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ntp-track{flex:1;height:12px;background:var(--bg-deep);border-radius:999px;overflow:hidden}
 .ntp-fill{display:block;height:100%;background:var(--accent);border-radius:999px;transition:width .35s var(--ease)}
 .ntp-row:hover .ntp-fill{background:var(--accent-deep)}
