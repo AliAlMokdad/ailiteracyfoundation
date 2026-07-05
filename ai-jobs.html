@@ -387,9 +387,10 @@ let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(rend
     if(loading||ready) return;
     loading=true;
     var s=document.createElement('script');
-    s.src='/gpt-o200k.js';
+    s.src='https://cdn.jsdelivr.net/npm/gpt-tokenizer@3.4.0/dist/o200k_base.js';
+    s.crossOrigin='anonymous';
     s.onload=function(){enc=window.GPTTokenizer_o200k_base;ready=true;render();};
-    s.onerror=function(){cnt.innerHTML='<span class="sub">'+LW.err+'</span>';loading=false;};
+    s.onerror=function(){cnt.innerHTML='<span class="sub">'+LW.err+'</span>';if(sr)sr.textContent=LW.err;loading=false;};
     document.head.appendChild(s);
   }
   var rt;
