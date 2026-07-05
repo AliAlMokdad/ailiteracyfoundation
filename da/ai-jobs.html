@@ -112,6 +112,36 @@
   .aij-h1{font-size:var(--fs-2xl)}
 }
 @media(prefers-reduced-motion:reduce){.aij *{transition:none!important;animation:none!important}}
+
+.aiw-sep{border:0;border-top:1px solid var(--line);margin:3.5rem 0 2.25rem}
+.aiw{max-width:100%}
+.aiw-h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-2xl);line-height:1.1;letter-spacing:-.01em;margin:.4rem 0 .6rem;color:var(--ink);max-width:22ch;text-wrap:balance}
+.aiw-h2 em{font-style:italic;color:var(--accent)}
+.aiw-lede{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.5;color:var(--ink-soft);max-width:62ch;margin:0 0 2rem}
+.aiw-card{background:var(--bg-elev);border:1px solid var(--line);border-radius:12px;padding:1.4rem 1.5rem 1.5rem;max-width:920px}
+.aiw-card h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;margin:0 0 .5rem;color:var(--ink)}
+.aiw-intro{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.6;margin:0 0 1.1rem;max-width:64ch}
+.aiw-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.aiw-ta{width:100%;box-sizing:border-box;font-family:var(--sans);font-size:1.05rem;line-height:1.5;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;resize:vertical;min-height:60px}
+.aiw-ta:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.aiw-ex{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin:.75rem 0 1.15rem}
+.aiw-ex .lbl{font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-quiet);text-transform:uppercase;letter-spacing:.1em;margin-right:.15rem}
+.aiw-ex button{font-family:var(--mono);font-size:12px;color:var(--ink);background:var(--bg-deep);border:1px solid var(--line);border-radius:999px;padding:.32rem .72rem;cursor:pointer;transition:border-color .15s var(--ease)}
+.aiw-ex button:hover{border-color:var(--accent-soft)}
+.aiw-ex button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.aiw-count{display:flex;align-items:baseline;gap:.65rem;flex-wrap:wrap;margin:.1rem 0 1rem;min-height:2.1rem}
+.aiw-count .big{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
+.aiw-count .big b{color:var(--accent-deep);font-weight:600}
+.aiw-count .sub{font-family:var(--mono);font-size:var(--fs-sm);color:var(--ink-quiet)}
+.aiw-toks{display:flex;flex-wrap:wrap;gap:4px;margin:.1rem 0 1.15rem;min-height:2rem}
+.aiw-tok{font-family:var(--mono);font-size:13px;line-height:1.35;color:#15140F;padding:2px 5px;border-radius:5px;white-space:pre;border:1px solid rgba(21,20,15,.10)}
+.aiw-tok .sp{color:var(--ink-quiet)}
+.aiw-take{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.65;border-top:1px solid var(--line);padding-top:1rem;margin:0}
+.aiw-take b{color:var(--ink);font-weight:600}
+.aiw-credit{font-size:var(--fs-xs);color:var(--ink-quiet);line-height:1.6;margin:1rem 0 0}
+.aiw-credit a{color:var(--ink-soft)}
+.aiw-loading{font-family:var(--mono);font-size:var(--fs-sm);color:var(--ink-quiet)}
+@media(max-width:600px){.aiw-count .big{font-size:1.6rem}.aiw-card{padding:1.1rem 1.1rem 1.2rem}}
 </style>
 </head>
 <body>
@@ -173,6 +203,23 @@
 <p class="aij-phint">Tryk på en stilling for detaljer. Sorteret fra mest til mindst udsat.</p>
 <div class="aij-plist" id="aijPlist" aria-label="Stillinger med størrelse efter beskæftigelse og farve efter AI-udsathed"></div>
 <p class="aij-src">Kilder: <a href="https://ec.europa.eu/eurostat/databrowser/view/lfsa_egai2d/default/table?lang=en" target="_blank" rel="noopener">Eurostat LFS, beskæftigelse efter stilling, 2025</a>; <a href="https://www.ilo.org/publications/generative-ai-and-jobs-2025-update" target="_blank" rel="noopener">ILO Working Paper 140, 2025</a>; <a href="https://github.com/karpathy/jobs" target="_blank" rel="noopener">karpathy/jobs</a> (US BLS + AI-scoret). Stillingsgrupper er ISCO 2-cifret for Danmark og EU; USA-visningen bruger detaljerede amerikanske stillinger. Forsvaret er udeladt.</p>
+</div>
+<hr class="aiw-sep">
+<div class="aiw" data-reveal>
+<p class="aij-eyebrow"><span class="sig" aria-hidden="true"></span>AI-dannelse &middot; Sådan virker det</p>
+<h2 class="aiw-h2">Så hvad er det, AI egentlig <em>laver</em>?</h2>
+<p class="aiw-lede">Du så lige, hvor AI rammer arbejdet. Her er, hvad den i virkeligheden gør nedenunder, i et sprog du selv kan prøve.</p>
+<div class="aiw-card" id="aiwCard">
+  <h3>Den læser i stumper, ikke ord</h3>
+  <p class="aiw-intro">Skriv noget nedenfor. Her ser du, hvordan en model som ChatGPT deler din tekst op i stumper, der kaldes tokens. Den ser hverken bogstaver eller hele ord, den ser disse stumper og arbejder sig gennem dem én ad gangen.</p>
+  <label for="aiwTa" class="aiw-sr">Skriv tekst for at se dens tokens</label>
+  <textarea id="aiwTa" class="aiw-ta" spellcheck="false" rows="2">Hvorfor kan AI ikke tælle r&rsquo;erne i jordbær?</textarea>
+  <div class="aiw-ex" id="aiwEx"><span class="lbl">Prøv</span><button data-t="jordbær">jordbær</button><button data-t="Danmark">Danmark</button><button data-t=" Danmark">et mellemrum før Danmark</button><button data-t="1234567">1234567</button><button data-t="Jeg elsker AI 😀">Jeg elsker AI 😀</button></div>
+  <div class="aiw-count" id="aiwCount" aria-live="polite"></div>
+  <div class="aiw-toks" id="aiwToks" aria-hidden="true"></div>
+  <p class="aiw-take"><b>Hvad betyder det.</b> Det er præcis, hvad en model ser: tokens, ikke bogstaver. Tre ting følger heraf. Den afregnes per token, så mere tekst koster mere. Den kan kun rumme et vist antal tokens ad gangen, en grænse der kaldes kontekstvinduet. Og fordi den læser stumper og ikke bogstaver, kan den i praksis ikke tælle bogstaverne i et ord som jordbær.</p>
+  <p class="aiw-credit">Bruger cl100k, tokenizeren bag GPT-3.5 og GPT-4. Andre modeller deler lidt anderledes; for et præcist tal kan du tjekke enhver tekst i <a href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener">OpenAIs egen tokenizer</a>. Idéen forklares fra bunden i Andrej Karpathys åbne <a href="https://github.com/karpathy/minbpe" target="_blank" rel="noopener">minbpe</a>. En prik markerer et mellemrum.</p>
+</div>
 </div>
 </div>
 </section>
@@ -313,6 +360,43 @@ function switchReg(k,btn){
 document.querySelectorAll('.aij-seg button').forEach(b=>b.addEventListener('click',()=>switchReg(b.dataset.r,b)));
 renderStats();setLegend();render();
 let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(render,160);});
+
+</script>
+<script>
+
+(function(){
+  var LW={"tokens": "tokens", "token": "token", "chars": "tegn", "char": "tegn", "loading": "Indlæser tokenizeren, én gang, cirka 2 MB.", "err": "Kunne ikke indlæse tokenizeren. Genindlæs siden."};
+  var el=function(id){return document.getElementById(id);};
+  var ta=el('aiwTa'), toks=el('aiwToks'), cnt=el('aiwCount'), card=el('aiwCard');
+  if(!ta) return;
+  var PAL=['#EAD9CE','#DDE7DD','#E8E0C9','#DCE4EC','#EADFE6'];
+  var enc=null, ready=false, loading=false;
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function disp(t){return esc(t).replace(/ /g,'<span class="sp">&middot;</span>').replace(/\n/g,'<span class="sp">&#9166;</span>');}
+  function render(){
+    if(!ready){cnt.innerHTML='<span class="aiw-loading">'+LW.loading+'</span>';return;}
+    var text=ta.value;
+    var ids=text.length?enc.encode(text):[];
+    toks.innerHTML=ids.map(function(id,i){return '<span class="aiw-tok" style="background:'+PAL[i%PAL.length]+'">'+disp(enc.decode([id]))+'</span>';}).join('');
+    cnt.innerHTML='<span class="big"><b>'+ids.length+'</b> '+(ids.length===1?LW.token:LW.tokens)+'</span><span class="sub">'+text.length+' '+(text.length===1?LW.char:LW.chars)+'</span>';
+  }
+  function loadTok(){
+    if(loading||ready) return;
+    loading=true;
+    var s=document.createElement('script');
+    s.src='/gpt-cl100k.js';
+    s.onload=function(){enc=window.GPTTokenizer_cl100k_base;ready=true;render();};
+    s.onerror=function(){cnt.innerHTML='<span class="sub">'+LW.err+'</span>';loading=false;};
+    document.head.appendChild(s);
+  }
+  var rt;
+  ta.addEventListener('input',function(){clearTimeout(rt);rt=setTimeout(render,140);});
+  ta.addEventListener('focus',loadTok);
+  var exs=document.querySelectorAll('#aiwEx button');
+  for(var i=0;i<exs.length;i++){exs[i].addEventListener('click',function(){ta.value=this.getAttribute('data-t');loadTok();if(ready)render();ta.focus();});}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){for(var j=0;j<es.length;j++){if(es[j].isIntersecting){loadTok();io.disconnect();break;}}},{rootMargin:'250px'});io.observe(card);}else{loadTok();}
+  render();
+})();
 
 </script>
 <script>const toggle=document.getElementById('navToggle'),nav=document.getElementById('nav');if(toggle&&nav){toggle.addEventListener('click',()=>{const o=nav.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(o));});document.addEventListener('click',e=>{if(!nav.contains(e.target)&&!toggle.contains(e.target)&&nav.classList.contains('is-open')){nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}});}</script>
