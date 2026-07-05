@@ -29,7 +29,7 @@
 .aij{margin-top:1.25rem}
 .aij *{box-sizing:border-box}
 .aij-hero{margin-bottom:1.6rem}
-.aij-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-quiet);margin:0 0 .85rem}
+.aij-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 .85rem}
 .aij-eyebrow .sig{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-bg)}
 .aij-h1{font-family:var(--serif);font-weight:600;font-size:var(--fs-3xl);line-height:1.05;letter-spacing:-.01em;margin:0 0 .75rem;max-width:18ch;text-wrap:balance;color:var(--ink)}
 .aij-h1 em{font-style:italic;color:var(--accent)}
@@ -132,7 +132,7 @@
 .aiw-count{display:flex;align-items:baseline;gap:.65rem;flex-wrap:wrap;margin:.1rem 0 1rem;min-height:2.1rem}
 .aiw-count .big{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
 .aiw-count .big b{color:var(--accent-deep);font-weight:600}
-.aiw-count .sub{font-family:var(--mono);font-size:var(--fs-sm);color:var(--ink-quiet)}
+.aiw-count .sub{font-family:var(--mono);font-size:var(--fs-sm);color:var(--ink-soft)}
 .aiw-toks{display:flex;flex-wrap:wrap;gap:4px;margin:.1rem 0 1.15rem;min-height:2rem}
 .aiw-tok{font-family:var(--mono);font-size:13px;line-height:1.35;color:#15140F;padding:2px 5px;border-radius:5px;white-space:pre}
 .aiw-tok .sp{color:var(--ink-soft)}
@@ -140,7 +140,8 @@
 .aiw-take b{color:var(--ink);font-weight:600}
 .aiw-credit{font-size:var(--fs-xs);color:var(--ink-soft);line-height:1.6;margin:1rem 0 0}
 .aiw-credit a{color:var(--ink-soft)}
-.aiw-loading{font-family:var(--mono);font-size:var(--fs-sm);color:var(--ink-quiet)}
+.aiw-loading{font-family:var(--mono);font-size:var(--fs-sm);color:var(--ink-soft)}
+.aiw-more{font-family:var(--mono);font-size:12px;color:var(--ink-soft);align-self:center;padding:2px 4px}
 @media(max-width:600px){.aiw-count .big{font-size:1.6rem}.aiw-card{padding:1.1rem 1.1rem 1.2rem}}
 </style>
 </head>
@@ -218,7 +219,7 @@
   <div class="aiw-count" id="aiwCount" aria-hidden="true"></div>
   <span class="aiw-sr" id="aiwCountSr" aria-live="polite"></span>
   <div class="aiw-toks" id="aiwToks" aria-hidden="true"></div>
-  <p class="aiw-take"><b>Hvad betyder det.</b> Det er præcis, hvad en model ser: tokens, ikke bogstaver. Tre ting følger heraf. Den afregnes per token, så mere tekst koster mere. Den kan kun rumme et vist antal tokens ad gangen, en grænse der kaldes kontekstvinduet. Og fordi den læser stumper og ikke bogstaver, kan den i praksis ikke tælle bogstaverne i et ord som jordbær.</p>
+  <p class="aiw-take"><b>Hvad betyder det.</b> Det er præcis, hvad en model ser: tokens, ikke bogstaver. Tre ting følger heraf. Den afregnes per token, så mere tekst koster mere. Den kan kun rumme et vist antal tokens ad gangen, en grænse der kaldes kontekstvinduet. Og fordi den læser stumper og ikke bogstaver, kan den i praksis ikke tælle bogstaverne i et ord som jordbær, som den ser som blot tre stumper: jord, b, ær.</p>
   <p class="aiw-credit">Bruger o200k, tokenizeren bag GPT-4o og OpenAIs nyere modeller (GPT-3.5 og den oprindelige GPT-4 brugte en ældre). Andre modeller deler lidt anderledes; for et præcist tal kan du tjekke enhver tekst i <a href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener">OpenAIs egen tokenizer</a>. Idéen forklares fra bunden i Andrej Karpathys åbne <a href="https://github.com/karpathy/minbpe" target="_blank" rel="noopener">minbpe</a>; selve tokenizeren her er <a href="https://github.com/niieani/gpt-tokenizer" target="_blank" rel="noopener">gpt-tokenizer</a>, en port af OpenAIs tiktoken. En prik markerer et mellemrum.</p>
 </div>
 </div>
@@ -366,11 +367,11 @@ let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(rend
 <script>
 
 (function(){
-  var LW={"tokens": "tokens", "token": "token", "chars": "tegn", "char": "tegn", "loading": "Indlæser tokenizeren, én gang, cirka 2 MB.", "err": "Kunne ikke indlæse tokenizeren. Genindlæs siden."};
+  var LW={"tokens": "tokens", "token": "token", "chars": "tegn", "char": "tegn", "more": "flere", "loading": "Indlæser tokenizeren, én gang, cirka 2 MB.", "err": "Kunne ikke indlæse tokenizeren. Genindlæs siden."};
   var el=function(id){return document.getElementById(id);};
   var ta=el('aiwTa'), toks=el('aiwToks'), cnt=el('aiwCount'), card=el('aiwCard'), sr=el('aiwCountSr'), srT;
   if(!ta) return;
-  var PAL=['#EAD9CE','#DDE7DD','#E8E0C9','#DCE4EC','#EADFE6'];
+  var PAL=['#F0E2D8','#E4DBC9','#EAD9CE','#DDE1D6','#E6DEDC'];var CAP=220;
   var enc=null, ready=false, loading=false;
   function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
   function disp(t){return esc(t).replace(/ /g,'<span class="sp">&middot;</span>').replace(/\n/g,'<span class="sp">&#9166;</span>');}
@@ -378,7 +379,7 @@ let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(rend
     if(!ready){cnt.innerHTML='<span class="aiw-loading">'+LW.loading+'</span>';return;}
     var text=ta.value;
     var ids=text.length?enc.encode(text):[];
-    toks.innerHTML=ids.map(function(id,i){var tx=enc.decode([id]);var body=tx===''?'<span class="sp">&#9647;</span>':disp(tx);return '<span class="aiw-tok" style="background:'+PAL[i%PAL.length]+'">'+body+'</span>';}).join('');
+    toks.innerHTML=ids.slice(0,CAP).map(function(id,i){var tx=enc.decode([id]);var body=tx===''?'<span class="sp">&#9647;</span>':disp(tx);return '<span class="aiw-tok" style="background:'+PAL[i%PAL.length]+'">'+body+'</span>';}).join('')+(ids.length>CAP?'<span class="aiw-more">+'+(ids.length-CAP)+' '+LW.more+'</span>':'');
     var tl=ids.length===1?LW.token:LW.tokens, cl=text.length===1?LW.char:LW.chars;
     cnt.innerHTML='<span class="big"><b>'+ids.length+'</b> '+tl+'</span><span class="sub">'+text.length+' '+cl+'</span>';
     if(sr){clearTimeout(srT);srT=setTimeout(function(){sr.textContent=ids.length+' '+tl+', '+text.length+' '+cl;},1200);}
@@ -400,6 +401,7 @@ let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(rend
   for(var i=0;i<exs.length;i++){exs[i].addEventListener('click',function(){ta.value=this.getAttribute('data-t');loadTok();render();ta.focus();});}
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){for(var j=0;j<es.length;j++){if(es[j].isIntersecting){loadTok();io.disconnect();break;}}},{rootMargin:'250px'});io.observe(card);}else{loadTok();}
   render();
+  setTimeout(function(){var w=card&&card.closest('[data-reveal]');if(w){var cs=getComputedStyle(w);if(parseFloat(cs.opacity)<0.5){w.style.opacity='1';w.style.transform='none';}}},1600);
 })();
 
 </script>
