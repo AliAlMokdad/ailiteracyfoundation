@@ -113,14 +113,14 @@
 }
 @media(prefers-reduced-motion:reduce){.aij *{transition:none!important;animation:none!important}}
 
-.aiw-sep{border:0;border-top:1px solid var(--line);margin:3.5rem 0 2rem}
+.aiw-sep{border:0;border-top:1px solid var(--line);margin:4.5rem 0 2.75rem}
 .aiw{max-width:100%}
 .aiw-h2{font-family:var(--serif);font-weight:400;font-size:var(--fs-2xl);line-height:1.12;letter-spacing:-.018em;margin:.2rem 0 .7rem;color:var(--ink);max-width:24ch;text-wrap:balance}
 .aiw-h2 em{font-style:italic;color:var(--accent)}
-.aiw-lede{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.5;color:var(--ink-soft);max-width:62ch;margin:0 0 1.75rem}
-.aiw-card{background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:1.4rem 1.5rem 1.5rem;max-width:var(--maxw-data)}
+.aiw-lede{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.6;color:var(--ink-soft);max-width:66ch;margin:0 0 2.1rem}
+.aiw-card{background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:1.9rem 2.1rem 2.1rem;max-width:1120px}
 .aiw-card h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;margin:0 0 .5rem;color:var(--ink)}
-.aiw-intro{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.6;margin:0 0 1.1rem;max-width:64ch}
+.aiw-intro{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.7;margin:0 0 1.5rem;max-width:70ch}
 .aiw-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .aiw-ta{width:100%;box-sizing:border-box;font-family:var(--sans);font-size:1.05rem;line-height:1.5;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;resize:vertical;min-height:60px}
 .aiw-ta:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
@@ -136,9 +136,9 @@
 .aiw-toks{display:flex;flex-wrap:wrap;gap:4px;margin:.1rem 0 1.15rem;min-height:2rem}
 .aiw-tok{font-family:var(--mono);font-size:13px;line-height:1.35;color:#15140F;padding:2px 5px;border-radius:5px;white-space:pre}
 .aiw-tok .sp{color:var(--ink-soft)}
-.aiw-take{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.65;border-top:1px solid var(--line);padding-top:1rem;margin:0}
+.aiw-take{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.75;border-top:1px solid var(--line);padding-top:1.4rem;margin:1.6rem 0 0;max-width:78ch}
 .aiw-take b{color:var(--ink);font-weight:600}
-.aiw-credit{font-size:var(--fs-xs);color:var(--ink-soft);line-height:1.6;margin:1rem 0 0}
+.aiw-credit{font-size:var(--fs-xs);color:var(--ink-soft);line-height:1.65;margin:1rem 0 0;max-width:78ch}
 .aiw-credit a{color:var(--ink-soft)}
 .aiw-loading{font-family:var(--mono);font-size:var(--fs-sm);color:var(--ink-soft)}
 .aiw-more{font-family:var(--mono);font-size:12px;color:var(--ink-soft);align-self:center;padding:2px 4px}
@@ -147,6 +147,9 @@
 .aiw-mobile-note{display:none}
 .ntp-card{position:relative;margin-top:2.6rem}
 .ntp-card::before{content:"";position:absolute;left:50%;top:-1.7rem;width:1px;height:1.2rem;background:linear-gradient(180deg,transparent,var(--accent-soft));transform:translateX(-50%)}
+.aiw-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.2rem;align-items:start;margin:.2rem 0 0}
+.aiw-col{min-width:0}
+@media(max-width:900px){.aiw-cols{grid-template-columns:1fr;gap:1.2rem}}
 .ntp-seedrow{display:flex;gap:.5rem;align-items:stretch;margin:0 0 .1rem}
 .ntp-seed{flex:1;min-width:0;box-sizing:border-box;font-family:var(--sans);font-size:1.05rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.7rem .9rem}
 .ntp-seed:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
@@ -252,26 +255,38 @@
 <div class="aiw-card" id="aiwCard">
   <h3>It reads in chunks, not words</h3>
   <p class="aiw-intro">Type anything below. This shows how a model like ChatGPT breaks your text into pieces called tokens. It does not see letters or whole words, it sees these chunks, and it works through them one at a time.</p>
-  <label for="aiwTa" class="aiw-sr">Type text to see its tokens</label>
-  <textarea id="aiwTa" class="aiw-ta" spellcheck="false" rows="2">Why can&rsquo;t AI count the r&rsquo;s in strawberry?</textarea>
-  <div class="aiw-ex" id="aiwEx"><span class="lbl">Try</span><button data-t="strawberry">strawberry</button><button data-t="Denmark">Denmark</button><button data-t=" Denmark">a space before Denmark</button><button data-t="1234567">1234567</button><button data-t="I love AI 😀">I love AI 😀</button></div>
-  <div class="aiw-count" id="aiwCount" aria-hidden="true"></div>
-  <span class="aiw-sr" id="aiwCountSr" aria-live="polite"></span>
-  <div class="aiw-toks" id="aiwToks" aria-hidden="true"></div>
+  <div class="aiw-cols">
+    <div class="aiw-col">
+      <label for="aiwTa" class="aiw-sr">Type text to see its tokens</label>
+      <textarea id="aiwTa" class="aiw-ta" spellcheck="false" rows="3">Why can&rsquo;t AI count the r&rsquo;s in strawberry?</textarea>
+      <div class="aiw-ex" id="aiwEx"><span class="lbl">Try</span><button data-t="strawberry">strawberry</button><button data-t="Denmark">Denmark</button><button data-t=" Denmark">a space before Denmark</button><button data-t="1234567">1234567</button><button data-t="I love AI 😀">I love AI 😀</button></div>
+    </div>
+    <div class="aiw-col">
+      <div class="aiw-count" id="aiwCount" aria-hidden="true"></div>
+      <span class="aiw-sr" id="aiwCountSr" aria-live="polite"></span>
+      <div class="aiw-toks" id="aiwToks" aria-hidden="true"></div>
+    </div>
+  </div>
   <p class="aiw-take"><b>What this means.</b> This is exactly what a model sees: tokens, not letters. Three things follow. It is billed per token, so more text costs more. It can only hold so many tokens at once, a limit called the context window. And because it reads chunks and not letters, it genuinely cannot count the letters in a word like strawberry, which it sees as just three pieces: st, raw, berry. Once it has your text as tokens, the only question left is what token comes next.</p>
   <p class="aiw-credit">Uses o200k, the tokenizer behind GPT-4o and today&rsquo;s OpenAI models (GPT-3.5 and the original GPT-4 used an older one). Other models split a little differently; for an exact count you can check any text in <a href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener">OpenAI&rsquo;s own tokenizer</a>. The idea is explained from scratch in Andrej Karpathy&rsquo;s open <a href="https://github.com/karpathy/minbpe" target="_blank" rel="noopener">minbpe</a>; the tokenizer here is the <a href="https://github.com/niieani/gpt-tokenizer" target="_blank" rel="noopener">gpt-tokenizer</a> port of OpenAI&rsquo;s tiktoken. A dot marks a space.</p>
 </div>
 <div class="aiw-card ntp-card" id="ntpCard">
   <h3>Then it guesses the next word</h3>
   <p class="aiw-intro">Once it has read your words, this is all a model does. It does not look anything up. It looks at the words so far, estimates how likely each possible next word is, picks one, adds it, and does it again. That loop is the whole trick, from this tiny model to ChatGPT. Start a sentence and watch the bars move.</p>
-  <label for="ntpSeed" class="aiw-sr">Start of a sentence</label>
-  <div class="ntp-seedrow"><input id="ntpSeed" class="ntp-seed" type="text" spellcheck="false" autocomplete="off" value="it was a"><button id="ntpClear" class="ntp-btn ntp-btn-ghost" type="button">Clear</button></div>
-  <div class="aiw-ex" id="ntpEx"><span class="lbl">Try</span><button data-t="it was a">it was a</button><button data-t="once upon">once upon</button><button data-t="the old">the old</button><button data-t="i do not">i do not</button><button data-t="she looked at">she looked at</button></div>
-  <div class="ntp-out" id="ntpSent" aria-live="polite"></div>
-  <p class="ntp-ctx" id="ntpCtx" aria-hidden="true"></p>
-  <p class="ntp-barcap" aria-hidden="true"><span>Likely next word</span><span>Chance</span></p>
-  <div class="ntp-bars" id="ntpBars"></div>
-  <div class="ntp-actions"><button id="ntpTop" class="ntp-btn" type="button">Most likely</button><button id="ntpSample" class="ntp-btn ntp-btn-alt" type="button">Take a chance</button></div>
+  <div class="aiw-cols">
+    <div class="aiw-col">
+      <label for="ntpSeed" class="aiw-sr">Start of a sentence</label>
+      <div class="ntp-seedrow"><input id="ntpSeed" class="ntp-seed" type="text" spellcheck="false" autocomplete="off" value="it was a"><button id="ntpClear" class="ntp-btn ntp-btn-ghost" type="button">Clear</button></div>
+      <div class="aiw-ex" id="ntpEx"><span class="lbl">Try</span><button data-t="it was a">it was a</button><button data-t="once upon">once upon</button><button data-t="the old">the old</button><button data-t="i do not">i do not</button><button data-t="she looked at">she looked at</button></div>
+      <div class="ntp-out" id="ntpSent" aria-live="polite"></div>
+      <p class="ntp-ctx" id="ntpCtx" aria-hidden="true"></p>
+    </div>
+    <div class="aiw-col">
+      <p class="ntp-barcap" aria-hidden="true"><span>Likely next word</span><span>Chance</span></p>
+      <div class="ntp-bars" id="ntpBars"></div>
+      <div class="ntp-actions"><button id="ntpTop" class="ntp-btn" type="button">Most likely</button><button id="ntpSample" class="ntp-btn ntp-btn-alt" type="button">Take a chance</button></div>
+    </div>
+  </div>
   <p class="aiw-take"><b>What this means.</b> A model predicts, it does not remember, which is why it can sound completely fluent and still be wrong. Always pick the most likely word and it reads flat and repetitive; let it take chances and it turns creative but wanders. Big models expose that choice as a setting called temperature: low keeps it safe, high lets it get bolder. A hallucination is just prediction going wrong: an unlikely guess that looked likely enough, delivered with the same confidence as a true one. That is why a model always sounds sure, and why it is worth checking what it tells you.</p>
   <p class="aiw-credit">This is a real model, only a small one: an n-gram model built from public-domain books (Alice in Wonderland, Sherlock Holmes, Pride and Prejudice and others). It remembers just the last word or two, so it wanders; models like GPT use the same next-word idea with far more context and a neural network. The method is taught from scratch in Andrej Karpathy&rsquo;s open <a href="https://github.com/karpathy/makemore" target="_blank" rel="noopener">makemore</a>. It runs in your browser and works in lowercase.</p>
 </div>

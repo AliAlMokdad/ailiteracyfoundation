@@ -113,14 +113,14 @@
 }
 @media(prefers-reduced-motion:reduce){.aij *{transition:none!important;animation:none!important}}
 
-.aiw-sep{border:0;border-top:1px solid var(--line);margin:3.5rem 0 2rem}
+.aiw-sep{border:0;border-top:1px solid var(--line);margin:4.5rem 0 2.75rem}
 .aiw{max-width:100%}
 .aiw-h2{font-family:var(--serif);font-weight:400;font-size:var(--fs-2xl);line-height:1.12;letter-spacing:-.018em;margin:.2rem 0 .7rem;color:var(--ink);max-width:24ch;text-wrap:balance}
 .aiw-h2 em{font-style:italic;color:var(--accent)}
-.aiw-lede{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.5;color:var(--ink-soft);max-width:62ch;margin:0 0 1.75rem}
-.aiw-card{background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:1.4rem 1.5rem 1.5rem;max-width:var(--maxw-data)}
+.aiw-lede{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.6;color:var(--ink-soft);max-width:66ch;margin:0 0 2.1rem}
+.aiw-card{background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:1.9rem 2.1rem 2.1rem;max-width:1120px}
 .aiw-card h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;margin:0 0 .5rem;color:var(--ink)}
-.aiw-intro{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.6;margin:0 0 1.1rem;max-width:64ch}
+.aiw-intro{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.7;margin:0 0 1.5rem;max-width:70ch}
 .aiw-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .aiw-ta{width:100%;box-sizing:border-box;font-family:var(--sans);font-size:1.05rem;line-height:1.5;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;resize:vertical;min-height:60px}
 .aiw-ta:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
@@ -136,9 +136,9 @@
 .aiw-toks{display:flex;flex-wrap:wrap;gap:4px;margin:.1rem 0 1.15rem;min-height:2rem}
 .aiw-tok{font-family:var(--mono);font-size:13px;line-height:1.35;color:#15140F;padding:2px 5px;border-radius:5px;white-space:pre}
 .aiw-tok .sp{color:var(--ink-soft)}
-.aiw-take{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.65;border-top:1px solid var(--line);padding-top:1rem;margin:0}
+.aiw-take{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.75;border-top:1px solid var(--line);padding-top:1.4rem;margin:1.6rem 0 0;max-width:78ch}
 .aiw-take b{color:var(--ink);font-weight:600}
-.aiw-credit{font-size:var(--fs-xs);color:var(--ink-soft);line-height:1.6;margin:1rem 0 0}
+.aiw-credit{font-size:var(--fs-xs);color:var(--ink-soft);line-height:1.65;margin:1rem 0 0;max-width:78ch}
 .aiw-credit a{color:var(--ink-soft)}
 .aiw-loading{font-family:var(--mono);font-size:var(--fs-sm);color:var(--ink-soft)}
 .aiw-more{font-family:var(--mono);font-size:12px;color:var(--ink-soft);align-self:center;padding:2px 4px}
@@ -147,6 +147,9 @@
 .aiw-mobile-note{display:none}
 .ntp-card{position:relative;margin-top:2.6rem}
 .ntp-card::before{content:"";position:absolute;left:50%;top:-1.7rem;width:1px;height:1.2rem;background:linear-gradient(180deg,transparent,var(--accent-soft));transform:translateX(-50%)}
+.aiw-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.2rem;align-items:start;margin:.2rem 0 0}
+.aiw-col{min-width:0}
+@media(max-width:900px){.aiw-cols{grid-template-columns:1fr;gap:1.2rem}}
 .ntp-seedrow{display:flex;gap:.5rem;align-items:stretch;margin:0 0 .1rem}
 .ntp-seed{flex:1;min-width:0;box-sizing:border-box;font-family:var(--sans);font-size:1.05rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.7rem .9rem}
 .ntp-seed:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
@@ -252,26 +255,38 @@
 <div class="aiw-card" id="aiwCard">
   <h3>Den læser i stumper, ikke ord</h3>
   <p class="aiw-intro">Skriv noget nedenfor. Her ser du, hvordan en model som ChatGPT deler din tekst op i stumper, der kaldes tokens. Den ser hverken bogstaver eller hele ord, den ser disse stumper og arbejder sig gennem dem én ad gangen.</p>
-  <label for="aiwTa" class="aiw-sr">Skriv tekst for at se dens tokens</label>
-  <textarea id="aiwTa" class="aiw-ta" spellcheck="false" rows="2">Hvorfor kan AI ikke tælle r&rsquo;erne i jordbær?</textarea>
-  <div class="aiw-ex" id="aiwEx"><span class="lbl">Prøv</span><button data-t="jordbær">jordbær</button><button data-t="Danmark">Danmark</button><button data-t=" Danmark">et mellemrum før Danmark</button><button data-t="1234567">1234567</button><button data-t="Jeg elsker AI 😀">Jeg elsker AI 😀</button></div>
-  <div class="aiw-count" id="aiwCount" aria-hidden="true"></div>
-  <span class="aiw-sr" id="aiwCountSr" aria-live="polite"></span>
-  <div class="aiw-toks" id="aiwToks" aria-hidden="true"></div>
+  <div class="aiw-cols">
+    <div class="aiw-col">
+      <label for="aiwTa" class="aiw-sr">Skriv tekst for at se dens tokens</label>
+      <textarea id="aiwTa" class="aiw-ta" spellcheck="false" rows="3">Hvorfor kan AI ikke tælle r&rsquo;erne i jordbær?</textarea>
+      <div class="aiw-ex" id="aiwEx"><span class="lbl">Prøv</span><button data-t="jordbær">jordbær</button><button data-t="Danmark">Danmark</button><button data-t=" Danmark">et mellemrum før Danmark</button><button data-t="1234567">1234567</button><button data-t="Jeg elsker AI 😀">Jeg elsker AI 😀</button></div>
+    </div>
+    <div class="aiw-col">
+      <div class="aiw-count" id="aiwCount" aria-hidden="true"></div>
+      <span class="aiw-sr" id="aiwCountSr" aria-live="polite"></span>
+      <div class="aiw-toks" id="aiwToks" aria-hidden="true"></div>
+    </div>
+  </div>
   <p class="aiw-take"><b>Hvad betyder det.</b> Det er præcis, hvad en model ser: tokens, ikke bogstaver. Tre ting følger heraf. Den afregnes per token, så mere tekst koster mere. Den kan kun rumme et vist antal tokens ad gangen, en grænse der kaldes kontekstvinduet. Og fordi den læser stumper og ikke bogstaver, kan den i praksis ikke tælle bogstaverne i et ord som jordbær, som den ser som blot tre stumper: jord, b, ær. Når din tekst først er blevet til tokens, er det eneste spørgsmål tilbage, hvilket token der kommer bagefter.</p>
   <p class="aiw-credit">Bruger o200k, tokenizeren bag GPT-4o og OpenAIs nyere modeller (GPT-3.5 og den oprindelige GPT-4 brugte en ældre). Andre modeller deler lidt anderledes; for et præcist tal kan du tjekke enhver tekst i <a href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener">OpenAIs egen tokenizer</a>. Idéen forklares fra bunden i Andrej Karpathys åbne <a href="https://github.com/karpathy/minbpe" target="_blank" rel="noopener">minbpe</a>; selve tokenizeren her er <a href="https://github.com/niieani/gpt-tokenizer" target="_blank" rel="noopener">gpt-tokenizer</a>, en port af OpenAIs tiktoken. En prik markerer et mellemrum.</p>
 </div>
 <div class="aiw-card ntp-card" id="ntpCard">
   <h3>Så gætter den det næste ord</h3>
   <p class="aiw-intro">Når den har læst dine ord, er det her alt, hvad en model gør. Den slår ikke noget op. Den ser på ordene indtil nu, vurderer hvor sandsynligt hvert muligt næste ord er, vælger ét, føjer det til og gør det igen. Den løkke er hele tricket, fra denne lille model til ChatGPT. Begynd en sætning, og se søjlerne bevæge sig.</p>
-  <label for="ntpSeed" class="aiw-sr">Begyndelsen på en sætning</label>
-  <div class="ntp-seedrow"><input id="ntpSeed" class="ntp-seed" type="text" spellcheck="false" autocomplete="off" value="det var en"><button id="ntpClear" class="ntp-btn ntp-btn-ghost" type="button">Ryd</button></div>
-  <div class="aiw-ex" id="ntpEx"><span class="lbl">Prøv</span><button data-t="der var engang">der var engang</button><button data-t="det var en">det var en</button><button data-t="han så på">han så på</button><button data-t="jeg kan">jeg kan</button><button data-t="hun var">hun var</button></div>
-  <div class="ntp-out" id="ntpSent" aria-live="polite"></div>
-  <p class="ntp-ctx" id="ntpCtx" aria-hidden="true"></p>
-  <p class="ntp-barcap" aria-hidden="true"><span>Sandsynligt næste ord</span><span>Chance</span></p>
-  <div class="ntp-bars" id="ntpBars"></div>
-  <div class="ntp-actions"><button id="ntpTop" class="ntp-btn" type="button">Mest sandsynlige</button><button id="ntpSample" class="ntp-btn ntp-btn-alt" type="button">Tag en chance</button></div>
+  <div class="aiw-cols">
+    <div class="aiw-col">
+      <label for="ntpSeed" class="aiw-sr">Begyndelsen på en sætning</label>
+      <div class="ntp-seedrow"><input id="ntpSeed" class="ntp-seed" type="text" spellcheck="false" autocomplete="off" value="det var en"><button id="ntpClear" class="ntp-btn ntp-btn-ghost" type="button">Ryd</button></div>
+      <div class="aiw-ex" id="ntpEx"><span class="lbl">Prøv</span><button data-t="der var engang">der var engang</button><button data-t="det var en">det var en</button><button data-t="han så på">han så på</button><button data-t="jeg kan">jeg kan</button><button data-t="hun var">hun var</button></div>
+      <div class="ntp-out" id="ntpSent" aria-live="polite"></div>
+      <p class="ntp-ctx" id="ntpCtx" aria-hidden="true"></p>
+    </div>
+    <div class="aiw-col">
+      <p class="ntp-barcap" aria-hidden="true"><span>Sandsynligt næste ord</span><span>Chance</span></p>
+      <div class="ntp-bars" id="ntpBars"></div>
+      <div class="ntp-actions"><button id="ntpTop" class="ntp-btn" type="button">Mest sandsynlige</button><button id="ntpSample" class="ntp-btn ntp-btn-alt" type="button">Tag en chance</button></div>
+    </div>
+  </div>
   <p class="aiw-take"><b>Hvad betyder det.</b> En model gætter, den husker ikke, og derfor kan den lyde helt flydende og alligevel tage fejl. Vælger den altid det mest sandsynlige ord, bliver teksten flad og gentagende; lader man den tage chancer, bliver den kreativ, men kommer på afveje. Store modeller gør det valg til en indstilling kaldet temperatur: lav holder den sikker, høj lader den blive dristigere. En hallucination er bare gætteriet, der går galt: et usandsynligt gæt, der så sandsynligt nok ud, leveret lige så selvsikkert som et rigtigt. Derfor lyder en model altid sikker, og derfor er det værd at tjekke, hvad den fortæller dig.</p>
   <p class="aiw-credit">Det er en rigtig model, bare en lille: en n-gram-model bygget af klassiske danske bøger fra det fri (H.C. Andersen med flere). Den husker kun det sidste ord eller to, så den vandrer; modeller som GPT bruger samme idé om det næste ord med langt mere kontekst og et neuralt netværk. Metoden forklares fra bunden i Andrej Karpathys åbne <a href="https://github.com/karpathy/makemore" target="_blank" rel="noopener">makemore</a>. Den kører i din browser, i små bogstaver, og stavemåden er moderniseret (aa til å).</p>
 </div>
