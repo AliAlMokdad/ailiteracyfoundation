@@ -163,4 +163,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url><loc>https://ailiteracyfoundation.eu/ai-jobs.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ailiteracyfoundation.eu/da/ai-jobs.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
