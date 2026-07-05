@@ -32,8 +32,26 @@
 .aij-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 .85rem}
 .aij-eyebrow .sig{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-bg)}
 .aij-h1{font-family:var(--serif);font-weight:600;font-size:var(--fs-3xl);line-height:1.05;letter-spacing:-.01em;margin:0 0 .75rem;max-width:18ch;text-wrap:balance;color:var(--ink)}
-.aij-h1 em{font-style:italic;color:var(--accent)}
+.aij-h1 em{font-style:italic;color:var(--ink)}
 .aij-lede{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.5;color:var(--ink-soft);max-width:60ch;margin:0}
+/* Hero entrance motion: plays once on load, reduced-motion safe */
+.aij-hero .aij-eyebrow,.aij-hero .aij-h1,.aij-hero .aij-lede,.aij-hero .aij-scrollcue{opacity:0;animation:aijRise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.aij-hero .aij-eyebrow{animation-delay:.12s}
+.aij-hero .aij-h1{animation-delay:.3s}
+.aij-hero .aij-lede{animation-delay:.56s}
+.aij-hero .aij-scrollcue{animation-delay:1.4s;margin-top:1.7rem;color:var(--accent);line-height:0}
+.aij-hero .aij-scrollcue svg{width:26px;height:26px;animation:aijBob 1.9s ease-in-out 2.3s infinite}
+.aij-eyebrow .sig{animation:aijSig .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:.16s}
+.aij-h1 em{animation:aijGlow .55s ease forwards;animation-delay:1.15s}
+@keyframes aijRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes aijSig{0%{transform:scale(0);opacity:0}60%{transform:scale(1.3)}100%{transform:scale(1);opacity:1}}
+@keyframes aijGlow{from{color:var(--ink)}to{color:var(--accent)}}
+@keyframes aijBob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media (prefers-reduced-motion:reduce){
+.aij-hero .aij-eyebrow,.aij-hero .aij-h1,.aij-hero .aij-lede,.aij-hero .aij-scrollcue{opacity:1!important;animation:none!important;transform:none!important}
+.aij-eyebrow .sig,.aij-hero .aij-scrollcue svg{animation:none!important;opacity:1!important;transform:none!important}
+.aij-h1 em{animation:none!important;color:var(--accent)!important}
+}
 .aij-note{background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:1.5rem 1.9rem 1.6rem;font-family:var(--sans);font-size:var(--fs-md);color:var(--ink-soft);line-height:1.78;max-width:none;margin:1.9rem 0 2.4rem}
 .aij-note br{content:"";display:block;margin-top:.55rem}
 .aij-note-lbl{display:block;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-quiet);margin-bottom:.5rem}
@@ -210,6 +228,7 @@
 <p class="aij-eyebrow"><span class="sig" aria-hidden="true"></span>Data &middot; AI &amp; Jobs</p>
 <h1 class="aij-h1">Which jobs will AI touch, and <em>where</em>?</h1>
 <p class="aij-lede">One map, three economies. Each rectangle is an occupation, sized by how many people do it and coloured by how exposed the work is to generative AI. Switch between Denmark, the European Union, and the United States.</p>
+<div class="aij-scrollcue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8l6 6 6-6"/><path d="M6 14l6 6 6-6"/></svg></div>
 </div>
 </div>
 </section>
