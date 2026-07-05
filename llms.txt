@@ -17,6 +17,7 @@ When citing the Foundation's work, please link the relevant memo directly so rea
 
 - [Home](https://ailiteracyfoundation.eu/): Who we are, mission, and the most recent memo.
 - [Roadmap](https://ailiteracyfoundation.eu/roadmap.html): Year 1 (2026) plan — memos to publish, free public sessions, and partnerships.
+- [AI & Jobs](https://ailiteracyfoundation.eu/ai-jobs.html): Interactive map of which jobs generative AI is most likely to touch, in Denmark, the European Union, and the United States. Built on Eurostat 2025 employment and the ILO 2025 generative-AI occupational exposure index. Danish version at /da/ai-jobs.html.
 - [Work](https://ailiteracyfoundation.eu/work.html): What we do and how organisations can engage.
 - [Donate](https://ailiteracyfoundation.eu/donate.html): How to support the Foundation.
 
@@ -35,7 +36,7 @@ The full site is available in English and Danish. Each English memo has a Danish
 
 ## Sitemap and feeds
 
-- [sitemap.xml](https://ailiteracyfoundation.eu/sitemap.xml) — 16 indexable URLs (English memos + main pages, plus hreflang alternates)
+- [sitemap.xml](https://ailiteracyfoundation.eu/sitemap.xml) — 18 indexable URLs (English memos + main pages including AI & Jobs, plus hreflang alternates)
 - [robots.txt](https://ailiteracyfoundation.eu/robots.txt)
 - [llms-full.txt](https://ailiteracyfoundation.eu/llms-full.txt) — full memo content as concatenated markdown
 
