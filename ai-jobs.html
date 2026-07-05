@@ -113,12 +113,12 @@
 }
 @media(prefers-reduced-motion:reduce){.aij *{transition:none!important;animation:none!important}}
 
-.aiw-sep{border:0;border-top:1px solid var(--line);margin:3.5rem 0 2.25rem}
+.aiw-sep{border:0;border-top:1px solid var(--line);margin:3.5rem 0 2rem}
 .aiw{max-width:100%}
-.aiw-h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-2xl);line-height:1.1;letter-spacing:-.01em;margin:.4rem 0 .6rem;color:var(--ink);max-width:22ch;text-wrap:balance}
+.aiw-h2{font-family:var(--serif);font-weight:600;font-size:var(--fs-2xl);line-height:1.1;letter-spacing:-.01em;margin:.2rem 0 .7rem;color:var(--ink);max-width:22ch;text-wrap:balance}
 .aiw-h2 em{font-style:italic;color:var(--accent)}
-.aiw-lede{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.5;color:var(--ink-soft);max-width:62ch;margin:0 0 2rem}
-.aiw-card{background:var(--bg-elev);border:1px solid var(--line);border-radius:12px;padding:1.4rem 1.5rem 1.5rem;max-width:920px}
+.aiw-lede{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.5;color:var(--ink-soft);max-width:62ch;margin:0 0 1.75rem}
+.aiw-card{background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:1.4rem 1.5rem 1.5rem;max-width:var(--maxw-data)}
 .aiw-card h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;margin:0 0 .5rem;color:var(--ink)}
 .aiw-intro{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.6;margin:0 0 1.1rem;max-width:64ch}
 .aiw-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -134,11 +134,11 @@
 .aiw-count .big b{color:var(--accent-deep);font-weight:600}
 .aiw-count .sub{font-family:var(--mono);font-size:var(--fs-sm);color:var(--ink-quiet)}
 .aiw-toks{display:flex;flex-wrap:wrap;gap:4px;margin:.1rem 0 1.15rem;min-height:2rem}
-.aiw-tok{font-family:var(--mono);font-size:13px;line-height:1.35;color:#15140F;padding:2px 5px;border-radius:5px;white-space:pre;border:1px solid rgba(21,20,15,.10)}
-.aiw-tok .sp{color:var(--ink-quiet)}
+.aiw-tok{font-family:var(--mono);font-size:13px;line-height:1.35;color:#15140F;padding:2px 5px;border-radius:5px;white-space:pre}
+.aiw-tok .sp{color:var(--ink-soft)}
 .aiw-take{font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.65;border-top:1px solid var(--line);padding-top:1rem;margin:0}
 .aiw-take b{color:var(--ink);font-weight:600}
-.aiw-credit{font-size:var(--fs-xs);color:var(--ink-quiet);line-height:1.6;margin:1rem 0 0}
+.aiw-credit{font-size:var(--fs-xs);color:var(--ink-soft);line-height:1.6;margin:1rem 0 0}
 .aiw-credit a{color:var(--ink-soft)}
 .aiw-loading{font-family:var(--mono);font-size:var(--fs-sm);color:var(--ink-quiet)}
 @media(max-width:600px){.aiw-count .big{font-size:1.6rem}.aiw-card{padding:1.1rem 1.1rem 1.2rem}}
@@ -215,10 +215,11 @@
   <label for="aiwTa" class="aiw-sr">Type text to see its tokens</label>
   <textarea id="aiwTa" class="aiw-ta" spellcheck="false" rows="2">Why can&rsquo;t AI count the r&rsquo;s in strawberry?</textarea>
   <div class="aiw-ex" id="aiwEx"><span class="lbl">Try</span><button data-t="strawberry">strawberry</button><button data-t="Denmark">Denmark</button><button data-t=" Denmark">a space before Denmark</button><button data-t="1234567">1234567</button><button data-t="I love AI 😀">I love AI 😀</button></div>
-  <div class="aiw-count" id="aiwCount" aria-live="polite"></div>
+  <div class="aiw-count" id="aiwCount" aria-hidden="true"></div>
+  <span class="aiw-sr" id="aiwCountSr" aria-live="polite"></span>
   <div class="aiw-toks" id="aiwToks" aria-hidden="true"></div>
   <p class="aiw-take"><b>What this means.</b> This is exactly what a model sees: tokens, not letters. Three things follow. It is billed per token, so more text costs more. It can only hold so many tokens at once, a limit called the context window. And because it reads chunks and not letters, it genuinely cannot count the letters in a word like strawberry, which it sees as just three pieces: st, raw, berry.</p>
-  <p class="aiw-credit">Uses cl100k, the tokenizer behind GPT-3.5 and GPT-4. Other models split a little differently; for an exact count you can check any text in <a href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener">OpenAI&rsquo;s own tokenizer</a>. The idea is explained from scratch in Andrej Karpathy&rsquo;s open <a href="https://github.com/karpathy/minbpe" target="_blank" rel="noopener">minbpe</a>. A dot marks a space.</p>
+  <p class="aiw-credit">Uses o200k, the tokenizer behind GPT-4o and today&rsquo;s OpenAI models (GPT-3.5 and the original GPT-4 used an older one). Other models split a little differently; for an exact count you can check any text in <a href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener">OpenAI&rsquo;s own tokenizer</a>. The idea is explained from scratch in Andrej Karpathy&rsquo;s open <a href="https://github.com/karpathy/minbpe" target="_blank" rel="noopener">minbpe</a>; the tokenizer here is the <a href="https://github.com/niieani/gpt-tokenizer" target="_blank" rel="noopener">gpt-tokenizer</a> port of OpenAI&rsquo;s tiktoken. A dot marks a space.</p>
 </div>
 </div>
 </div>
@@ -367,7 +368,7 @@ let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(rend
 (function(){
   var LW={"tokens": "tokens", "token": "token", "chars": "characters", "char": "character", "loading": "Loading the tokenizer, one time, about 2 MB.", "err": "Could not load the tokenizer. Please refresh the page."};
   var el=function(id){return document.getElementById(id);};
-  var ta=el('aiwTa'), toks=el('aiwToks'), cnt=el('aiwCount'), card=el('aiwCard');
+  var ta=el('aiwTa'), toks=el('aiwToks'), cnt=el('aiwCount'), card=el('aiwCard'), sr=el('aiwCountSr'), srT;
   if(!ta) return;
   var PAL=['#EAD9CE','#DDE7DD','#E8E0C9','#DCE4EC','#EADFE6'];
   var enc=null, ready=false, loading=false;
@@ -377,23 +378,25 @@ let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(rend
     if(!ready){cnt.innerHTML='<span class="aiw-loading">'+LW.loading+'</span>';return;}
     var text=ta.value;
     var ids=text.length?enc.encode(text):[];
-    toks.innerHTML=ids.map(function(id,i){return '<span class="aiw-tok" style="background:'+PAL[i%PAL.length]+'">'+disp(enc.decode([id]))+'</span>';}).join('');
-    cnt.innerHTML='<span class="big"><b>'+ids.length+'</b> '+(ids.length===1?LW.token:LW.tokens)+'</span><span class="sub">'+text.length+' '+(text.length===1?LW.char:LW.chars)+'</span>';
+    toks.innerHTML=ids.map(function(id,i){var tx=enc.decode([id]);var body=tx===''?'<span class="sp">&#9647;</span>':disp(tx);return '<span class="aiw-tok" style="background:'+PAL[i%PAL.length]+'">'+body+'</span>';}).join('');
+    var tl=ids.length===1?LW.token:LW.tokens, cl=text.length===1?LW.char:LW.chars;
+    cnt.innerHTML='<span class="big"><b>'+ids.length+'</b> '+tl+'</span><span class="sub">'+text.length+' '+cl+'</span>';
+    if(sr){clearTimeout(srT);srT=setTimeout(function(){sr.textContent=ids.length+' '+tl+', '+text.length+' '+cl;},1200);}
   }
   function loadTok(){
     if(loading||ready) return;
     loading=true;
     var s=document.createElement('script');
-    s.src='/gpt-cl100k.js';
-    s.onload=function(){enc=window.GPTTokenizer_cl100k_base;ready=true;render();};
+    s.src='/gpt-o200k.js';
+    s.onload=function(){enc=window.GPTTokenizer_o200k_base;ready=true;render();};
     s.onerror=function(){cnt.innerHTML='<span class="sub">'+LW.err+'</span>';loading=false;};
     document.head.appendChild(s);
   }
   var rt;
-  ta.addEventListener('input',function(){clearTimeout(rt);rt=setTimeout(render,140);});
+  ta.addEventListener('input',function(){loadTok();clearTimeout(rt);rt=setTimeout(render,140);});
   ta.addEventListener('focus',loadTok);
   var exs=document.querySelectorAll('#aiwEx button');
-  for(var i=0;i<exs.length;i++){exs[i].addEventListener('click',function(){ta.value=this.getAttribute('data-t');loadTok();if(ready)render();ta.focus();});}
+  for(var i=0;i<exs.length;i++){exs[i].addEventListener('click',function(){ta.value=this.getAttribute('data-t');loadTok();render();ta.focus();});}
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){for(var j=0;j<es.length;j++){if(es[j].isIntersecting){loadTok();io.disconnect();break;}}},{rootMargin:'250px'});io.observe(card);}else{loadTok();}
   render();
 })();
