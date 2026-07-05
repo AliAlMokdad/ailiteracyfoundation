@@ -223,10 +223,14 @@ body {
 .nav-toggle[aria-expanded="true"] svg { transform: rotate(90deg); }
 
 /* AI & Jobs is a laptop/desktop-only tab: hide it from the phone nav and footer
-   (Ali, 2026-07-05). Scoped to .nav and .site-footer__grid so the language toggle
-   in .site-footer__legal and any in-body links stay untouched. */
+   (Ali, 2026-07-05). ".nav > a" targets the real tab (a direct child of .nav) but
+   NOT the mobile EN/DA language link that motion.js injects as .nav-lang-mobile > a
+   (a grandchild, whose href on the AI & Jobs page itself also ends in ai-jobs.html).
+   The footer rule stays a descendant selector because that link is nested in a
+   <ul><li>, and .site-footer__grid excludes the language toggle (which lives in
+   .site-footer__legal) and any in-body links. */
 @media (max-width: 760px) {
-  .nav a[href$="ai-jobs.html"],
+  .nav > a[href$="ai-jobs.html"],
   .site-footer__grid a[href$="ai-jobs.html"] { display: none !important; }
 }
 
