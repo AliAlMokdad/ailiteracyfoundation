@@ -28,7 +28,12 @@
 <style>
 /* ===== AI Economic Index (aei) - laptop-first data dashboard ===== */
 .aei *{box-sizing:border-box}
-.aei{margin-top:1.25rem}
+.aei{margin-top:1.5rem}
+/* Wide, breathing canvas for this data page (laptop-first) */
+#main .wrap--wide,.site-header__inner,.site-footer .wrap--wide{max-width:min(1560px,94vw)}
+/* keep prose at a readable measure even on the wide canvas */
+.aei-note{max-width:94ch}
+.aei-viewhead p{max-width:88ch}
 
 /* Hero */
 .aei-hero{margin-bottom:1.6rem}
@@ -46,20 +51,20 @@
 @keyframes aeiSig{0%{transform:scale(0);opacity:0}60%{transform:scale(1.3)}100%{transform:scale(1);opacity:1}}
 
 /* Stat row */
-.aei-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.7rem 0 0}
-.aei-stat{background:var(--bg-elev);border:1px solid var(--line);border-radius:10px;padding:1rem 1.15rem;transition:border-color .24s var(--ease),transform .24s var(--ease)}
+.aei-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:2.4rem 0 0}
+.aei-stat{background:var(--bg-elev);border:1px solid var(--line);border-radius:12px;padding:1.35rem 1.5rem;transition:border-color .24s var(--ease),transform .24s var(--ease)}
 .aei-stat:hover{border-color:var(--accent-soft);transform:translateY(-2px)}
 .aei-stat .n{font-family:var(--serif);font-size:1.9rem;font-weight:600;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink);letter-spacing:-.01em}
 .aei-stat .n b{color:var(--accent-deep);font-weight:600}
 .aei-stat .k{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);margin-top:.5rem;line-height:1.45}
 
 /* Note card */
-.aei-note{background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:1.4rem 1.8rem 1.5rem;font-family:var(--sans);font-size:var(--fs-md);color:var(--ink-soft);line-height:1.75;margin:2rem 0 2.2rem}
+.aei-note{background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:1.6rem 2rem 1.7rem;font-family:var(--sans);font-size:var(--fs-md);color:var(--ink-soft);line-height:1.8;margin:2.4rem 0 2.8rem}
 .aei-note-lbl{display:block;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-quiet);margin-bottom:.5rem}
 .aei-note b{color:var(--ink);font-weight:600}
 
 /* Mode switcher */
-.aei-modes{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-bottom:1.3rem}
+.aei-modes{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-bottom:2rem}
 .aei-seg{display:inline-flex;gap:2px;background:var(--bg-deep);border:1px solid var(--line);border-radius:999px;padding:3px}
 .aei-seg button{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--ink-quiet);background:none;border:0;padding:.55rem 1.15rem;border-radius:999px;cursor:pointer;transition:color .2s var(--ease),background .2s var(--ease)}
 .aei-seg button:hover{color:var(--ink)}
@@ -69,14 +74,22 @@
 
 /* View shell */
 .aei-view{display:none}
-.aei-view.on{display:block;animation:aeiFade .4s var(--ease-out) both}
-@keyframes aeiFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.aei-viewhead{margin:.4rem 0 1.15rem}
-.aei-viewhead h2{font-family:var(--serif);font-weight:500;font-size:var(--fs-2xl);line-height:1.12;letter-spacing:-.015em;margin:0 0 .35rem;color:var(--ink)}
-.aei-viewhead p{font-family:var(--sans);font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.6;margin:0;max-width:74ch}
+.aei-view.on{display:block}
+/* gentle staggered settle when a view opens */
+.aei-view.on>.aei-viewhead,.aei-view.on>.aei-controls,.aei-view.on>.aei-grid>*,.aei-view.on>.aei-usewrap>*,.aei-view.on>#dkProfile>*,.aei-view.on>.aei-share{opacity:0;animation:aeiSettle .52s var(--ease-out) forwards}
+.aei-view.on>.aei-controls{animation-delay:.06s}
+.aei-view.on>.aei-grid>*:nth-child(1),.aei-view.on>.aei-usewrap>*:nth-child(1),.aei-view.on>#dkProfile>*:nth-child(1){animation-delay:.12s}
+.aei-view.on>.aei-grid>*:nth-child(2),.aei-view.on>.aei-usewrap>*:nth-child(2),.aei-view.on>#dkProfile>*:nth-child(2){animation-delay:.19s}
+.aei-view.on>.aei-grid>*:nth-child(3),.aei-view.on>.aei-usewrap>*:nth-child(3){animation-delay:.26s}
+.aei-view.on>.aei-usewrap>*:nth-child(4){animation-delay:.33s}
+.aei-view.on>.aei-share{animation-delay:.3s}
+@keyframes aeiSettle{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.aei-viewhead{margin:.6rem 0 1.8rem}
+.aei-viewhead h2{font-family:var(--serif);font-weight:500;font-size:var(--fs-2xl);line-height:1.12;letter-spacing:-.015em;margin:0 0 .5rem;color:var(--ink)}
+.aei-viewhead p{font-family:var(--sans);font-size:var(--fs-md);color:var(--ink-soft);line-height:1.65;margin:0}
 
 /* Controls row: legend + baseline */
-.aei-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.5rem;margin-bottom:1.1rem}
+.aei-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.5rem;margin-bottom:1.5rem}
 .aei-legend{display:inline-flex;align-items:center;gap:.9rem;flex-wrap:wrap;font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-quiet);letter-spacing:.03em}
 .aei-legend .lg{display:inline-flex;align-items:center;gap:.4rem}
 .aei-legend .sw{width:14px;height:14px;border-radius:4px;border:1px solid rgba(21,20,15,.08)}
@@ -91,8 +104,8 @@
 .aei-dkpin:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 /* Grid: map + board + panel */
-.aei-grid{display:grid;grid-template-columns:1.35fr .82fr .92fr;gap:1rem;align-items:start}
-.aei-card{background:var(--bg-elev);border:1px solid var(--line);border-radius:12px;padding:1.1rem}
+.aei-grid{display:grid;grid-template-columns:1.4fr .8fr .95fr;gap:1.5rem;align-items:start}
+.aei-card{background:var(--bg-elev);border:1px solid var(--line);border-radius:12px;padding:1.5rem}
 
 /* US cartogram */
 .aei-map{position:relative}
@@ -125,7 +138,7 @@
 .aei-row:focus-visible{outline:2px solid var(--accent-deep);outline-offset:-1px}
 .aei-row.sel{background:var(--accent-bg);box-shadow:inset 2px 0 0 var(--accent)}
 .aei-row .rk{font-family:var(--mono);font-size:12px;color:var(--ink-quiet);width:22px;flex:none;font-variant-numeric:tabular-nums}
-.aei-row .nm{flex:1;font-family:var(--sans);font-size:13.5px;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.aei-row .nm{flex:1;font-family:var(--sans);font-size:14px;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .aei-row .vl{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
 .aei-row .dl{font-family:var(--mono);font-size:11px;color:var(--ink-quiet);width:52px;text-align:right;font-variant-numeric:tabular-nums}
 .aei-row .sq{width:9px;height:9px;border-radius:3px;flex:none}
@@ -134,7 +147,7 @@
 .aei-panel{position:sticky;top:1rem}
 .aei-panel .ph{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-quiet);margin:0 0 .6rem}
 .aei-panel .ph::before{content:"";width:14px;height:1px;background:var(--accent)}
-.aei-pname{font-family:var(--serif);font-size:1.5rem;font-weight:600;line-height:1.15;letter-spacing:-.012em;margin:0 0 .1rem;color:var(--ink);text-wrap:balance}
+.aei-pname{font-family:var(--serif);font-size:1.65rem;font-weight:600;line-height:1.15;letter-spacing:-.012em;margin:0 0 .1rem;color:var(--ink);text-wrap:balance}
 .aei-pidxrow{display:flex;align-items:baseline;gap:.5rem;margin:.3rem 0 .1rem}
 .aei-pidx{font-family:var(--mono);font-size:1.9rem;font-weight:600;color:var(--accent-deep);font-variant-numeric:tabular-nums;line-height:1}
 .aei-pidxlbl{font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-quiet)}
@@ -153,9 +166,9 @@
 .aei-topichead{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin:1rem 0 .7rem}
 .aei-topichead .cap{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);line-height:1.4}
 .aei-topics{list-style:none;margin:0;padding:0}
-.aei-topics li{display:flex;align-items:center;gap:.7rem;padding:.32rem 0}
+.aei-topics li{display:flex;align-items:center;gap:.7rem;padding:.44rem 0}
 .aei-topics .ti{font-family:var(--mono);font-size:11px;color:var(--ink-quiet);width:16px;flex:none}
-.aei-topics .tn{flex:1;font-family:var(--sans);font-size:12.5px;color:var(--ink);min-width:0}
+.aei-topics .tn{flex:1;font-family:var(--sans);font-size:13px;color:var(--ink);min-width:0;line-height:1.4}
 .aei-topics .tv{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
 .aei-pinbtn{width:100%;margin-top:1rem;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.6rem;cursor:pointer;transition:border-color .18s var(--ease),background .18s var(--ease)}
 .aei-pinbtn:hover{border-color:var(--accent-soft);background:var(--accent-bg)}
@@ -163,7 +176,7 @@
 .aei-pinbtn.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 
 /* World share bars (second lens) */
-.aei-share{margin-top:1.2rem}
+.aei-share{margin-top:2.6rem}
 .aei-share h3{font-family:var(--serif);font-size:1.15rem;font-weight:600;margin:0 0 .2rem;color:var(--ink)}
 .aei-share p{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin:0 0 1rem}
 .aei-bar{display:grid;grid-template-columns:150px 1fr 52px;align-items:center;gap:.8rem;margin-bottom:.5rem}
@@ -173,7 +186,7 @@
 .aei-bar .bv{font-family:var(--mono);font-size:12px;color:var(--ink);font-variant-numeric:tabular-nums}
 
 /* How people use AI view */
-.aei-usewrap{display:grid;grid-template-columns:1fr;gap:2.2rem}
+.aei-usewrap{display:grid;grid-template-columns:1fr;gap:3.4rem}
 .aei-sub{margin:0}
 .aei-sub h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin:0 0 .3rem;color:var(--ink)}
 .aei-sub p{font-family:var(--sans);font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.6;margin:0 0 1.1rem;max-width:74ch}
@@ -202,7 +215,7 @@
 .aei-dlegend .sw{width:12px;height:12px;border-radius:3px}
 
 /* two-column sub layout for use view */
-.aei-two{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.aei-two{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem}
 
 /* waffle for artifacts */
 .aei-waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;max-width:360px}
@@ -213,8 +226,8 @@
 .aei-wlegend .lg b{font-family:var(--mono);color:var(--ink);font-weight:500;margin-left:auto;font-variant-numeric:tabular-nums}
 
 /* insights */
-.aei-insights{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin:0}
-.aei-ins{background:var(--bg-elev);border:1px solid var(--line);border-top:2px solid var(--accent);border-radius:10px;padding:1.1rem 1.2rem}
+.aei-insights{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin:0}
+.aei-ins{background:var(--bg-elev);border:1px solid var(--line);border-top:2px solid var(--accent);border-radius:10px;padding:1.5rem 1.6rem}
 .aei-ins .it{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.04em;text-transform:uppercase;color:var(--accent-deep);margin:0 0 .5rem;font-weight:500}
 .aei-ins p{font-family:var(--serif);font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0}
 .aei-ins p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
@@ -242,7 +255,7 @@
 .aei-src b{color:var(--ink-soft);font-weight:600}
 
 /* section separators */
-.aei-sep{border:0;border-top:1px solid var(--line);margin:3.2rem 0 2.4rem}
+.aei-sep{border:0;border-top:1px solid var(--line);margin:4.5rem 0 3rem}
 
 /* laptop-only note */
 .aei-mobile-note{display:none}
@@ -258,8 +271,7 @@
   .aei-stats{grid-template-columns:1fr 1fr}
 }
 @media(prefers-reduced-motion:reduce){
-  .aei *{animation:none!important;transition:none!important}
-  .aei-hero .aei-eyebrow,.aei-hero .aei-h1,.aei-hero .aei-lede{opacity:1!important;transform:none!important}
+  .aei *{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
 }
 </style>
 </head>
