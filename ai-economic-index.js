@@ -13,6 +13,7 @@ var RAMP = [
 ];
 function tier(rank, total){ var q=rank/total; if(q<0.25)return 0; if(q<0.5)return 1; if(q<0.75)return 2; return 3; }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function refocus(sel){ try{ var el=document.querySelector(sel); if(el&&el.focus) el.focus(); }catch(e){} }
 function fmtIdx(v){ return v.toFixed(2)+'×'; }
 
 /* ================= HERO STATS ================= */
@@ -45,12 +46,12 @@ var US = (function(){
 
   function buildMap(){
     var w=11*STEP-(STEP-TILE), h=8*STEP-(STEP-TILE);
-    var parts=['<svg viewBox="0 0 '+w+' '+h+'" role="list">'];
+    var parts=['<svg viewBox="0 0 '+w+' '+h+'" role="group">'];
     states.forEach(function(s){
       var p=POS[s.abbr]; if(!p)return;
       var x=p[0]*STEP, y=p[1]*STEP, r=RAMP[s.t];
       parts.push(
-        '<g class="aei-tile" data-abbr="'+s.abbr+'" tabindex="0" role="listitem" aria-label="'+esc(s.name)+', Usage Index '+s.idx.toFixed(2)+', rank '+s.rank+' of '+total+'">'+
+        '<g class="aei-tile" data-abbr="'+s.abbr+'" tabindex="0" role="button" aria-label="'+esc(s.name)+', Usage Index '+s.idx.toFixed(2)+', rank '+s.rank+' of '+total+'. Select to see detail.">'+
         '<rect x="'+x+'" y="'+y+'" width="'+TILE+'" height="'+TILE+'" rx="5" fill="'+r.bg+'" stroke="rgba(255,255,255,.55)" stroke-width="1"></rect>'+
         '<text x="'+(x+TILE/2)+'" y="'+(y+TILE/2+3.5)+'" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="'+r.tx+'" style="pointer-events:none">'+s.abbr+'</text>'+
         '</g>');
@@ -85,7 +86,7 @@ var US = (function(){
     var pinned=base?byAbbr[base]:null;
     var deltaLine = pinned && pinned.abbr!==s.abbr ? ('<div class="aei-pdelta">Versus <b>'+esc(pinned.name.replace('Washington, D.C.','D.C.'))+'</b>: '+(s.idx/pinned.idx).toFixed(2)+'× its intensity</div>') : '';
     var topics = list && list.length ? list.map(function(t,i){
-      var val = topicMode==='freq'? (t.pct.toFixed?t.pct.toFixed(1):t.pct)+'%' : t.ratio.toFixed(1)+'×';
+      var val = topicMode==='freq'? ((t.pct!=null?t.pct.toFixed(1):'—')+'%') : ((t.ratio!=null?t.ratio.toFixed(1):'—')+'×');
       return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(t.name)+'</span><span class="tv">'+val+'</span></li>';
     }).join('') : '<li><span class="tn" style="color:var(--ink-quiet)">Not published for this state.</span></li>';
     el.innerHTML=
@@ -119,18 +120,19 @@ var US = (function(){
     });
   }
   function selectState(a){ if(!byAbbr[a])return; sel=a; buildBoard(); panel(); marks(); }
+  function repaint(){ buildBoard(); panel(); chip(); marks(); } // pin/clear: no map rebuild, keeps tile focus
   function render(){ buildMap(); buildBoard(); panel(); chip(); marks(); }
 
   function wire(){
     var map=document.getElementById('usMap');
     map.addEventListener('click',function(e){ var g=e.target.closest('.aei-tile'); if(g)selectState(g.getAttribute('data-abbr')); });
     map.addEventListener('keydown',function(e){ var g=e.target.closest('.aei-tile'); if(g&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); selectState(g.getAttribute('data-abbr')); } });
-    document.getElementById('usBoard').addEventListener('click',function(e){ var b=e.target.closest('.aei-row'); if(b)selectState(b.getAttribute('data-abbr')); });
+    document.getElementById('usBoard').addEventListener('click',function(e){ var b=e.target.closest('.aei-row'); if(b){ var a=b.getAttribute('data-abbr'); selectState(a); refocus('#usBoard [data-abbr="'+a+'"]'); } });
     document.getElementById('usPanel').addEventListener('click',function(e){
-      var tm=e.target.closest('[data-tm]'); if(tm){ topicMode=tm.getAttribute('data-tm'); panel(); return; }
-      var pin=e.target.closest('[data-pin]'); if(pin){ var a=pin.getAttribute('data-pin'); base=(base===a?null:a); render(); return; }
+      var tm=e.target.closest('[data-tm]'); if(tm){ topicMode=tm.getAttribute('data-tm'); panel(); refocus('#usPanel [data-tm="'+topicMode+'"]'); return; }
+      var pin=e.target.closest('[data-pin]'); if(pin){ var a=pin.getAttribute('data-pin'); base=(base===a?null:a); repaint(); refocus('#usPanel .aei-pinbtn'); return; }
     });
-    document.getElementById('usBaseChip').addEventListener('click',function(e){ if(e.target.closest('[data-clear]')){ base=null; render(); } });
+    document.getElementById('usBaseChip').addEventListener('click',function(e){ if(e.target.closest('[data-clear]')){ base=null; repaint(); refocus('#usPanel .aei-pinbtn'); } });
   }
   return { render:render, wire:wire };
 })();
@@ -207,16 +209,17 @@ var WORLD = (function(){
     });
   }
   function selectC(code){ if(!byCode[code])return; sel=code; buildBoard(); panel(); marks(); }
+  function repaint(){ buildBoard(); panel(); chip(); marks(); } // pin/clear: no grid rebuild, keeps tile focus
   function render(){ buildGrid(); buildBoard(); panel(); chip(); shareBars(); marks(); }
   function wire(){
     document.getElementById('worldGrid').addEventListener('click',function(e){ var b=e.target.closest('.aei-ctile'); if(b)selectC(b.getAttribute('data-code')); });
-    document.getElementById('worldBoard').addEventListener('click',function(e){ var b=e.target.closest('.aei-row'); if(b)selectC(b.getAttribute('data-code')); });
+    document.getElementById('worldBoard').addEventListener('click',function(e){ var b=e.target.closest('.aei-row'); if(b){ var a=b.getAttribute('data-code'); selectC(a); refocus('#worldBoard [data-code="'+a+'"]'); } });
     document.getElementById('worldPanel').addEventListener('click',function(e){
-      var tm=e.target.closest('[data-tm]'); if(tm){ topicMode=tm.getAttribute('data-tm'); panel(); return; }
-      var pin=e.target.closest('[data-pin]'); if(pin){ var a=pin.getAttribute('data-pin'); base=(base===a?null:a); render(); return; }
+      var tm=e.target.closest('[data-tm]'); if(tm){ topicMode=tm.getAttribute('data-tm'); panel(); refocus('#worldPanel [data-tm="'+topicMode+'"]'); return; }
+      var pin=e.target.closest('[data-pin]'); if(pin){ var a=pin.getAttribute('data-pin'); base=(base===a?null:a); repaint(); refocus('#worldPanel .aei-pinbtn'); return; }
     });
-    document.getElementById('worldBaseChip').addEventListener('click',function(e){ if(e.target.closest('[data-clear]')){ base=null; render(); } });
-    document.getElementById('dkPin').addEventListener('click',function(){ if(byCode.DNK){ base='DNK'; sel='DNK'; render(); } });
+    document.getElementById('worldBaseChip').addEventListener('click',function(e){ if(e.target.closest('[data-clear]')){ base=null; repaint(); refocus('#worldPanel .aei-pinbtn'); } });
+    document.getElementById('dkPin').addEventListener('click',function(){ if(byCode.DNK){ base='DNK'; sel='DNK'; repaint(); refocus('#dkPin'); } });
   }
   return { render:render, wire:wire };
 })();
@@ -232,7 +235,7 @@ var USE = (function(){
       var dot=j.mode==='aug'?'var(--accent)':'var(--ink-quiet)';
       var meta = sum>0 ? ('Augmentation '+Math.round(aug)+'% · Automation '+Math.round(auto)+'%') : 'Split not published';
       return '<div class="aei-job"><div class="jt"><span class="jd" style="background:'+dot+'"></span><span class="jname">'+esc(j.title)+'</span></div>'+
-        '<div class="jpct">'+j.pct.toFixed(2)+'% of usage</div>'+
+        '<div class="jpct">'+(j.pct!=null?j.pct.toFixed(2):'—')+'% of usage</div>'+
         '<div class="jsplit"><span class="a" style="width:'+aw.toFixed(0)+'%"></span><span class="b" style="width:'+bw.toFixed(0)+'%"></span></div>'+
         '<div class="jmeta">'+meta+'</div></div>';
     }).join('');
@@ -257,9 +260,9 @@ var USE = (function(){
     var names={explanation_or_answer:'Explanation or answer',document_or_report:'Document or report',advice_or_recommendation:'Advice or recommendation',analysis_or_summary:'Analysis or summary',email_or_message:'Email or message',app_or_website:'App or website',plan_or_strategy:'Plan or strategy',code_fix_or_debug:'Code fix or debug',data_or_spreadsheet:'Data or spreadsheet',creative_writing:'Creative writing'};
     var squares=[], legend=[];
     arr.forEach(function(a,i){
-      var n=Math.max(1,Math.round(a.pct));
+      var n=Math.max(1,Math.round(a.pct||0));
       for(var k=0;k<n;k++) squares.push(pal[i]);
-      legend.push('<div class="lg"><span class="sw" style="background:'+pal[i]+'"></span>'+esc(names[a.label]||a.label.replace(/_/g,' '))+'<b>'+a.pct.toFixed(1)+'%</b></div>');
+      legend.push('<div class="lg"><span class="sw" style="background:'+pal[i]+'"></span>'+esc(names[a.label]||a.label.replace(/_/g,' '))+'<b>'+(a.pct!=null?a.pct.toFixed(1):'—')+'%</b></div>');
     });
     squares=squares.slice(0,100);
     while(squares.length<100) squares.push('var(--bg-deep)');
@@ -270,9 +273,9 @@ var USE = (function(){
   var reqKey='global';
   function requests(){
     var arr=(reqKey==='us'?D.reqUS:D.reqGlobal)||[]; if(!arr.length)return;
-    var max=arr[0].pct;
+    var max=arr[0].pct||1;
     document.getElementById('reqBars').innerHTML=arr.map(function(r){
-      return '<div class="aei-bar"><span class="bl">'+esc(r.name)+'</span><span class="bt"><i style="width:'+(r.pct/max*100).toFixed(1)+'%"></i></span><span class="bv">'+r.pct.toFixed(1)+'%</span></div>';
+      return '<div class="aei-bar"><span class="bl">'+esc(r.name)+'</span><span class="bt"><i style="width:'+((r.pct||0)/max*100).toFixed(1)+'%"></i></span><span class="bv">'+(r.pct!=null?r.pct.toFixed(1):'—')+'%</span></div>';
     }).join('');
   }
   function render(){ jobs(); diverge(); artifacts(); requests(); }
