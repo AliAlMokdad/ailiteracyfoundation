@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>AI Economic Index &middot; AI Literacy Foundation</title>
-<meta name="description" content="Where and how people put AI to work. An interactive reading of the Anthropic Economic Index open data: Claude usage by US state, by country, and by kind of work, for May 2026.">
+<title>AI-økonomiindeks &middot; AI Literacy Foundation</title>
+<meta name="description" content="Hvor og hvordan folk sætter AI i arbejde. En interaktiv gennemgang af den åbne Anthropic Economic Index: brugen af Claude fordelt på amerikanske delstater, lande og typer af arbejde, for maj 2026.">
 <meta name="theme-color" content="#F7F4EE">
 <meta name="author" content="AI Literacy Foundation">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://ailiteracyfoundation.eu/ai-economic-index.html">
+<link rel="canonical" href="https://ailiteracyfoundation.eu/da/ai-economic-index.html">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://ailiteracyfoundation.eu/ai-economic-index.html">
-<meta property="og:title" content="AI Economic Index &middot; AI Literacy Foundation">
-<meta property="og:description" content="Where and how people put AI to work. An interactive reading of the Anthropic Economic Index open data, for the public.">
-<meta property="og:locale" content="en_DK">
-<meta property="og:locale:alternate" content="da_DK">
+<meta property="og:url" content="https://ailiteracyfoundation.eu/da/ai-economic-index.html">
+<meta property="og:title" content="AI-økonomiindeks &middot; AI Literacy Foundation">
+<meta property="og:description" content="Hvor og hvordan folk sætter AI i arbejde. En interaktiv gennemgang af de åbne data fra Anthropic Economic Index, til offentligheden.">
+<meta property="og:locale" content="da_DK">
+<meta property="og:locale:alternate" content="en_DK">
 <meta property="og:site_name" content="AI Literacy Foundation">
 <meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
 <link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/ai-economic-index.html">
 <link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/ai-economic-index.html">
 <link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/ai-economic-index.html">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=polish4">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"AI Economic Index","url":"https://ailiteracyfoundation.eu/ai-economic-index.html","inLanguage":"en","description":"An interactive, public reading of the Anthropic Economic Index open data: Claude usage by US state, by country, and by kind of work.","isPartOf":{"@type":"WebSite","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"publisher":{"@type":"NonprofitOrganization","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"mainEntity":{"@type":"Dataset","name":"Anthropic Economic Index","creator":{"@type":"Organization","name":"Anthropic"},"license":"https://creativecommons.org/licenses/by/4.0/","isBasedOn":"https://www.anthropic.com/research/economic-index-june-2026-report","temporalCoverage":"2026-05","description":"Claude.ai usage metrics aggregated by geography and task, released 2026-06-26."}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ailiteracyfoundation.eu/"},{"@type":"ListItem","position":2,"name":"AI Economic Index","item":"https://ailiteracyfoundation.eu/ai-economic-index.html"}]}</script>
+<link rel="stylesheet" href="../styles.css?v=polish4">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"AI-økonomiindeks","url":"https://ailiteracyfoundation.eu/da/ai-economic-index.html","inLanguage":"da","description":"En interaktiv, offentlig gennemgang af den åbne Anthropic Economic Index: brugen af Claude fordelt på amerikanske delstater, lande og typer af arbejde.","isPartOf":{"@type":"WebSite","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"publisher":{"@type":"NonprofitOrganization","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"mainEntity":{"@type":"Dataset","name":"Anthropic Economic Index","creator":{"@type":"Organization","name":"Anthropic"},"license":"https://creativecommons.org/licenses/by/4.0/","isBasedOn":"https://www.anthropic.com/research/economic-index-june-2026-report","temporalCoverage":"2026-05","description":"Claude.ai-brugsmålinger aggregeret efter geografi og opgave, udgivet 2026-06-26."}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Forside","item":"https://ailiteracyfoundation.eu/da/"},{"@type":"ListItem","position":2,"name":"AI-økonomiindeks","item":"https://ailiteracyfoundation.eu/da/ai-economic-index.html"}]}</script>
 <style>
 /* ===== AI Economic Index (aei) - laptop-first data dashboard ===== */
 .aei *{box-sizing:border-box}
@@ -193,7 +193,7 @@
 .aei-bar .bt i{display:block;height:100%;background:linear-gradient(90deg,var(--accent-soft),var(--accent));border-radius:5px;transition:width .6s cubic-bezier(.2,.7,.2,1)}
 .aei-bar .bv{font-family:var(--mono);font-size:12px;color:var(--ink);font-variant-numeric:tabular-nums}
 
-/* How people use AI view */
+/* AI-brugsvisning */
 .aei-usewrap{display:grid;grid-template-columns:1fr;gap:3.4rem}
 .aei-sub{margin:0}
 .aei-sub h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin:0 0 .3rem;color:var(--ink)}
@@ -287,16 +287,16 @@
 <header class="site-header">
   <div class="site-header__inner">
     <a href="index.html" class="brand"><span class="dot" aria-hidden="true"></span>AI Literacy Foundation<sup class="brand-tm" aria-hidden="true">&#8482;</sup></a>
-    <nav class="nav" id="nav" aria-label="Main">
-      <a href="index.html">Home</a>
-      <a href="roadmap.html">The AI Roadmap</a>
-      <a href="ai-economic-index.html" aria-current="page">AI Economic Index</a>
-      <a href="ai-jobs.html">AI &amp; Jobs</a>
-      <a href="work.html">What We Do</a>
-      <a href="memos.html">Memos</a>
+    <nav class="nav" id="nav" aria-label="Hovednavigation">
+      <a href="index.html">Forside</a>
+      <a href="roadmap.html">AI-køreplanen</a>
+      <a href="ai-economic-index.html" aria-current="page">AI-økonomiindeks</a>
+      <a href="ai-jobs.html">AI &amp; job</a>
+      <a href="work.html">Det vi gør</a>
+      <a href="memos.html">Memoer</a>
     </nav>
     <div style="display:flex;align-items:center;gap:0.75rem;">
-      <a href="donate.html" class="cta-donate">Support us</a>
+      <a href="donate.html" class="cta-donate">Støt os</a>
       <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -307,10 +307,10 @@
 <section class="section section--flush" style="padding-bottom:clamp(1.25rem,3vh,2rem)">
 <div class="wrap--wide">
 <div class="aei-hero">
-<p class="aei-eyebrow"><span class="sig" aria-hidden="true"></span>Data &middot; The AI economy</p>
-<h1 class="aei-h1">Where people put AI to <em>work</em></h1>
-<p class="aei-lede">A public reading of the Anthropic Economic Index open data. It shows how people used the Claude AI assistant across US states, countries, and kinds of work in May 2026. It is one assistant's usage, not the whole economy.</p>
-<div class="aei-stats" id="aeiStats" aria-label="Headline figures"></div>
+<p class="aei-eyebrow"><span class="sig" aria-hidden="true"></span>Data &middot; AI-økonomien</p>
+<h1 class="aei-h1">Hvor folk bruger AI i <em>arbejdet</em></h1>
+<p class="aei-lede">En offentlig gennemgang af de åbne data fra Anthropic Economic Index. Den viser, hvordan folk brugte AI-assistenten Claude på tværs af amerikanske delstater, lande og typer af arbejde i maj 2026. Det er én assistents brug, ikke hele økonomien.</p>
+<div class="aei-stats" id="aeiStats" aria-label="Nøgletal"></div>
 </div>
 </div>
 </section>
@@ -320,28 +320,28 @@
 <div class="aei" data-reveal>
 
 <div class="aei-note">
-  <span class="aei-note-lbl">How to read this</span>
-  <b>This is Claude.ai usage, not all AI.</b> The Usage Index compares a place's share of that usage with its share of the world's working-age population: 1.0 is proportional, above is higher than expected, below is lower. Small figures are withheld for privacy, so a blank means not published, not zero, and percentages need not add to 100.
+  <span class="aei-note-lbl">Sådan læser du det</span>
+  <b>Dette er brug af Claude.ai, ikke al AI.</b> Brugsindekset sammenligner et steds andel af den brug med dets andel af verdens befolkning i den arbejdsdygtige alder: 1,0 er proportionalt, over er højere end forventet, under er lavere. Små tal offentliggøres ikke af hensyn til privatlivet, så et tomt felt betyder ikke offentliggjort, ikke nul, og procenter behøver ikke give 100.
 </div>
 
-<p class="aei-mobile-note">This wide interactive view is built for a larger screen. Open this page on a laptop or desktop to explore the maps, rankings, and charts.</p>
+<p class="aei-mobile-note">Denne brede interaktive visning er lavet til en større skærm. Åbn siden på en bærbar eller stationær computer for at udforske kort, placeringer og grafer.</p>
 
 <div class="aei-labonly">
-<div class="aei-modes" role="group" aria-label="Choose a view">
+<div class="aei-modes" role="group" aria-label="Vælg en visning">
   <div class="aei-seg" id="aeiModes">
-    <button data-mode="denmark" aria-pressed="true">Denmark</button>
-    <button data-mode="europe" aria-pressed="false">Europe</button>
-    <button data-mode="us" aria-pressed="false">United States</button>
-    <button data-mode="world" aria-pressed="false">World</button>
-    <button data-mode="use" aria-pressed="false">How people use AI</button>
+    <button data-mode="denmark" aria-pressed="true">Danmark</button>
+    <button data-mode="europe" aria-pressed="false">Europa</button>
+    <button data-mode="us" aria-pressed="false">USA</button>
+    <button data-mode="world" aria-pressed="false">Verden</button>
+    <button data-mode="use" aria-pressed="false">Sådan bruges AI</button>
   </div>
 </div>
 
 <!-- ============ DENMARK VIEW ============ -->
 <div class="aei-view on" id="view-denmark">
   <div class="aei-viewhead">
-    <h2>Denmark</h2>
-    <p>AI Literacy Foundation is based in Copenhagen, so we start at home. How Denmark uses Claude, how that compares with the world, and the topics people here bring to it.</p>
+    <h2>Danmark</h2>
+    <p>AI Literacy Foundation har base i København, så vi begynder hjemme. Her vises, hvordan Danmark bruger Claude, hvordan det står i forhold til verden, og hvilke emner folk her bringer til assistenten.</p>
   </div>
   <div id="dkProfile" aria-live="polite"></div>
 </div>
@@ -349,22 +349,22 @@
 <!-- ============ EUROPE VIEW ============ -->
 <div class="aei-view" id="view-europe">
   <div class="aei-viewhead">
-    <h2>Europe, country by country</h2>
-    <p>European countries ordered by their Usage Index, with Denmark highlighted. Ranks here are within Europe. Pin any country to compare the rest against it.</p>
+    <h2>Europa, land for land</h2>
+    <p>Europæiske lande ordnet efter deres brugsindeks, med Danmark fremhævet. Placeringerne her er inden for Europa. Fastgør et land for at sammenligne resten med det.</p>
   </div>
   <div class="aei-controls">
-    <div class="aei-legend" id="euLegend" aria-label="Usage Index colour tiers"></div>
+    <div class="aei-legend" id="euLegend" aria-label="Farveniveauer for brugsindeks"></div>
     <div class="aei-baseline">
-      <button class="aei-dkpin" id="euDkPin" type="button">Benchmark Denmark</button>
+      <button class="aei-dkpin" id="euDkPin" type="button">Sammenlign med Danmark</button>
       <span class="aei-basechip" id="euBaseChip"></span>
     </div>
   </div>
   <div class="aei-grid">
     <div class="aei-card" style="max-height:560px;overflow-y:auto">
-      <div class="aei-worldgrid" id="euGrid" role="group" aria-label="European countries ordered by Usage Index"></div>
+      <div class="aei-worldgrid" id="euGrid" role="group" aria-label="Europæiske lande sorteret efter brugsindeks"></div>
     </div>
     <div class="aei-card">
-      <div class="aei-boardhead"><span>Countries by Usage Index</span><span>Index</span></div>
+      <div class="aei-boardhead"><span>Lande efter brugsindeks</span><span>Indeks</span></div>
       <div class="aei-board" id="euBoard"></div>
     </div>
     <aside class="aei-card aei-panel" id="euPanel" aria-live="polite"></aside>
@@ -374,19 +374,19 @@
 <!-- ============ US VIEW ============ -->
 <div class="aei-view" id="view-us">
   <div class="aei-viewhead">
-    <h2>The United States, state by state</h2>
-    <p>Each tile is a state, placed roughly by geography and coloured by its Usage Index. Select any state for its rank, its most frequent topics, and the topics most distinctive to it. Pin a state to compare the rest against it.</p>
+    <h2>USA, delstat for delstat</h2>
+    <p>Hver flise er en delstat, placeret nogenlunde efter geografi og farvet efter dens brugsindeks. Vælg en delstat for at se dens placering, dens hyppigste emner og de emner, der er mest kendetegnende for den. Fastgør en delstat for at sammenligne resten med den.</p>
   </div>
   <div class="aei-controls">
-    <div class="aei-legend" id="usLegend" aria-label="Usage Index colour tiers"></div>
+    <div class="aei-legend" id="usLegend" aria-label="Farveniveauer for brugsindeks"></div>
     <div class="aei-baseline">
       <span class="aei-basechip" id="usBaseChip"></span>
     </div>
   </div>
   <div class="aei-grid">
-    <div class="aei-card aei-map" id="usMap" role="group" aria-label="US states, sized equally and coloured by Usage Index"></div>
+    <div class="aei-card aei-map" id="usMap" role="group" aria-label="Amerikanske delstater, lige store og farvet efter brugsindeks"></div>
     <div class="aei-card">
-      <div class="aei-boardhead"><span id="usBoardTitle">States by Usage Index</span><span>Index</span></div>
+      <div class="aei-boardhead"><span id="usBoardTitle">Delstater efter brugsindeks</span><span>Indeks</span></div>
       <div class="aei-board" id="usBoard"></div>
     </div>
     <aside class="aei-card aei-panel" id="usPanel" aria-live="polite"></aside>
@@ -396,29 +396,29 @@
 <!-- ============ WORLD VIEW ============ -->
 <div class="aei-view" id="view-world">
   <div class="aei-viewhead">
-    <h2>The world, country by country</h2>
-    <p>Every published country, ordered by its Usage Index. AI Literacy Foundation is based in Copenhagen, so Denmark is one tap away as a benchmark. Pin any country to compare the rest against it.</p>
+    <h2>Verden, land for land</h2>
+    <p>Alle offentliggjorte lande, ordnet efter deres brugsindeks. AI Literacy Foundation har hjemme i København, så Danmark er ét tryk væk som sammenligning. Fastgør et land for at sammenligne resten med det.</p>
   </div>
   <div class="aei-controls">
-    <div class="aei-legend" id="worldLegend" aria-label="Usage Index colour tiers"></div>
+    <div class="aei-legend" id="worldLegend" aria-label="Farveniveauer for brugsindeks"></div>
     <div class="aei-baseline">
-      <button class="aei-dkpin" id="dkPin" type="button">Benchmark Denmark</button>
+      <button class="aei-dkpin" id="dkPin" type="button">Sammenlign med Danmark</button>
       <span class="aei-basechip" id="worldBaseChip"></span>
     </div>
   </div>
   <div class="aei-grid">
     <div class="aei-card" style="max-height:560px;overflow-y:auto">
-      <div class="aei-worldgrid" id="worldGrid" role="group" aria-label="Countries ordered by Usage Index"></div>
+      <div class="aei-worldgrid" id="worldGrid" role="group" aria-label="Lande sorteret efter brugsindeks"></div>
     </div>
     <div class="aei-card">
-      <div class="aei-boardhead"><span>Countries by Usage Index</span><span>Index</span></div>
+      <div class="aei-boardhead"><span>Lande efter brugsindeks</span><span>Indeks</span></div>
       <div class="aei-board" id="worldBoard"></div>
     </div>
     <aside class="aei-card aei-panel" id="worldPanel" aria-live="polite"></aside>
   </div>
   <div class="aei-share">
-    <h3>Share of all Claude.ai usage</h3>
-    <p>A different lens. Not per person, but each country's slice of total measured usage. The United States alone is about a fifth of it.</p>
+    <h3>Andel af al Claude.ai-brug</h3>
+    <p>En anden vinkel. Ikke pr. person, men hvert lands andel af den samlede målte brug. USA alene udgør omkring en femtedel.</p>
     <div id="worldShare"></div>
   </div>
 </div>
@@ -426,47 +426,47 @@
 <!-- ============ USE VIEW ============ -->
 <div class="aei-view" id="view-use">
   <div class="aei-viewhead">
-    <h2>How people use AI</h2>
-    <p>Not where, but what for. The occupations whose tasks appear most, whether people delegate work or collaborate on it, and the things Claude actually produces.</p>
+    <h2>Sådan bruges AI</h2>
+    <p>Ikke hvor, men hvad til. De erhverv, hvis opgaver optræder mest, om folk uddelegerer arbejde eller samarbejder om det, og de ting Claude faktisk laver.</p>
   </div>
   <div class="aei-usewrap">
 
     <div class="aei-sub">
-      <h3>Occupations by usage</h3>
-      <p>Tasks mapped to the US O*NET-SOC occupation they belong to, worldwide. The bar shows each occupation's split between automation, where the person delegates a task, and augmentation, where the person works with Claude.</p>
+      <h3>Erhverv efter brug</h3>
+      <p>Opgaver knyttet til det amerikanske O*NET-SOC-erhverv, de tilhører, på verdensplan. Bjælken viser hvert erhvervs fordeling mellem automatisering, hvor personen uddelegerer en opgave, og samarbejde, hvor personen arbejder med Claude.</p>
       <div class="aei-jobs" id="useJobs"></div>
       <div class="aei-dlegend" style="margin-top:1.1rem">
-        <span class="lg"><span class="sw" style="background:var(--accent)"></span>Augmentation, working together</span>
-        <span class="lg"><span class="sw" style="background:var(--ink-quiet)"></span>Automation, delegating the task</span>
+        <span class="lg"><span class="sw" style="background:var(--accent)"></span>Samarbejde, man arbejder sammen</span>
+        <span class="lg"><span class="sw" style="background:var(--ink-quiet)"></span>Automatisering, opgaven uddelegeres</span>
       </div>
     </div>
 
     <div class="aei-two">
       <div class="aei-sub">
-        <h3>Delegate or collaborate</h3>
-        <p>The split between automation and augmentation, by setting. Personal chat is close to even. The developer API is almost all automation.</p>
-        <div class="aei-seg mini" id="divToggle" role="group" aria-label="Choose a setting" style="margin-bottom:1rem">
-          <button data-k="global" aria-pressed="true">Global chat</button>
-          <button data-k="USA" aria-pressed="false">US chat</button>
-          <button data-k="DNK" aria-pressed="false">Denmark</button>
-          <button data-k="api" aria-pressed="false">Business API</button>
+        <h3>Uddelegér eller samarbejd</h3>
+        <p>Fordelingen mellem automatisering og samarbejde, alt efter sammenhæng. Personlig chat er næsten ligeligt fordelt. Udvikler-API’et er næsten udelukkende automatisering.</p>
+        <div class="aei-seg mini" id="divToggle" role="group" aria-label="Vælg en kontekst" style="margin-bottom:1rem">
+          <button data-k="global" aria-pressed="true">Globalt</button>
+          <button data-k="USA" aria-pressed="false">Chat i USA</button>
+          <button data-k="DNK" aria-pressed="false">Danmark</button>
+          <button data-k="api" aria-pressed="false">Erhvervs-API</button>
         </div>
         <div class="aei-diverge" id="divChart"></div>
       </div>
       <div class="aei-sub">
-        <h3>What Claude produces</h3>
-        <p>The main output of each conversation, worldwide. One hundred squares, each roughly one in a hundred conversations.</p>
+        <h3>Hvad Claude laver</h3>
+        <p>Det vigtigste resultat af hver samtale, på verdensplan. Hundrede felter, hvert cirka én ud af hundrede samtaler.</p>
         <div class="aei-waffle" id="artWaffle" aria-hidden="true"></div>
         <div class="aei-wlegend" id="artLegend"></div>
       </div>
     </div>
 
     <div class="aei-sub">
-      <h3>Most common requests</h3>
-      <p>The broad topics people bring to Claude, as a share of conversations. Switch between the world and the United States.</p>
-      <div class="aei-seg mini" id="reqToggle" role="group" aria-label="Choose a region" style="margin-bottom:1.1rem">
-        <button data-k="global" aria-pressed="true">Global</button>
-        <button data-k="us" aria-pressed="false">United States</button>
+      <h3>De mest almindelige forespørgsler</h3>
+      <p>De brede emner folk kommer til Claude med, som andel af samtalerne. Skift mellem verden og USA.</p>
+      <div class="aei-seg mini" id="reqToggle" role="group" aria-label="Vælg en region" style="margin-bottom:1.1rem">
+        <button data-k="global" aria-pressed="true">Globalt</button>
+        <button data-k="us" aria-pressed="false">USA</button>
       </div>
       <div id="reqBars"></div>
     </div>
@@ -477,11 +477,11 @@
 <hr class="aei-sep">
 
 <!-- insights -->
-<div class="aei-viewhead"><h2>Four things the data shows</h2></div>
+<div class="aei-viewhead"><h2>Fire ting data viser</h2></div>
 <div class="aei-insights" id="aeiInsights"></div>
 
 <p class="aei-src">
-  <b>Source.</b> Anthropic Economic Index, released 26 June 2026, licensed CC-BY. Companion report: <a href="https://www.anthropic.com/research/economic-index-june-2026-report" target="_blank" rel="noopener">Cadences</a>, with data through May 2026. Figures are shares of Claude.ai conversations under Anthropic's privacy filtering, so they need not sum to 100. Occupations use the US O*NET-SOC classification. The Usage Index covers countries and US states only.
+  <b>Kilde.</b> Anthropic Economic Index, udgivet 26. juni 2026, licenseret under CC-BY. Ledsagende rapport: <a href="https://www.anthropic.com/research/economic-index-june-2026-report" target="_blank" rel="noopener">Cadences</a>, med data til og med maj 2026. Tallene er andele af Claude.ai-samtaler under Anthropics privatlivsfiltrering, så de behøver ikke give 100. Erhverv bruger den amerikanske O*NET-SOC-klassifikation. Brugsindekset dækker kun lande og amerikanske delstater.
 </p>
 
 </div><!-- /labonly -->
@@ -493,45 +493,45 @@
   <div class="wrap--wide">
     <div class="site-footer__grid">
       <div>
-        <h3 class="site-footer__heading">The Foundation</h3>
+        <h3 class="site-footer__heading">Foreningen</h3>
         <div class="site-footer__addr">
           <strong>AI Literacy Foundation</strong>
-          <span class="site-footer__city">Copenhagen, Denmark</span><br><br>
-          <span class="mono" style="font-size:var(--fs-xs);">CVR &middot; 46487869</span>
+          <span class="site-footer__city">København, Danmark</span><br><br>
+          <span class="mono" style="font-size:var(--fs-xs);">CVR · 46487869</span>
         </div>
       </div>
       <div>
-        <h3 class="site-footer__heading">Site</h3>
+        <h3 class="site-footer__heading">Side</h3>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="roadmap.html">The AI Roadmap</a></li>
-          <li><a href="ai-economic-index.html">AI Economic Index</a></li>
-          <li><a href="ai-jobs.html">AI &amp; Jobs</a></li>
-          <li><a href="work.html">What We Do</a></li>
-          <li><a href="memos.html">Memos</a></li>
-          <li><a href="donate.html">Support us</a></li>
+          <li><a href="index.html">Forside</a></li>
+          <li><a href="roadmap.html">AI-køreplanen</a></li>
+          <li><a href="ai-economic-index.html">AI-økonomiindeks</a></li>
+          <li><a href="ai-jobs.html">AI &amp; job</a></li>
+          <li><a href="work.html">Det vi gør</a></li>
+          <li><a href="memos.html">Memoer</a></li>
+          <li><a href="donate.html">Støt os</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="site-footer__heading">Contact</h3>
+        <h3 class="site-footer__heading">Kontakt</h3>
         <ul>
-          <li><a href="work.html#contact">Contact form <span aria-hidden="true">&rarr;</span></a></li>
+          <li><a href="work.html#contact">Kontaktformular <span aria-hidden="true">→</span></a></li>
           <li><a href="mailto:hello@ailiteracyfoundation.eu">hello@ailiteracyfoundation.eu</a></li>
         </ul>
       </div>
     </div>
     <div class="site-footer__legal">
-      <div>&copy; 2026 AI Literacy Foundation&#8482;. All rights reserved. &middot; CVR 46487869</div>
+      <div>© 2026 AI Literacy Foundation&#8482;. Alle rettigheder forbeholdt. · CVR 46487869</div>
       <div class="lang-toggle">
-        <a href="ai-economic-index.html" class="active">EN</a>
-        <a href="da/ai-economic-index.html">DA</a>
+        <a href="../ai-economic-index.html">EN</a>
+        <a href="ai-economic-index.html" class="active">DA</a>
       </div>
     </div>
   </div>
 </footer>
 <script>const toggle=document.getElementById('navToggle'),nav=document.getElementById('nav');if(toggle&&nav){toggle.addEventListener('click',()=>{const o=nav.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(o));});document.addEventListener('click',e=>{if(!nav.contains(e.target)&&!toggle.contains(e.target)&&nav.classList.contains('is-open')){nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}});}</script>
-<script src="ai-economic-index.data.js?v=1"></script>
-<script src="ai-economic-index.js?v=4" defer></script>
-<script src="motion.js?v=polish1" defer></script>
+<script src="../ai-economic-index.data.js?v=1"></script>
+<script src="ai-economic-index.js?v=3" defer></script>
+<script src="../motion.js?v=polish1" defer></script>
 </body>
 </html>

@@ -86,7 +86,7 @@ var US = (function(){
     var pinned=base?byAbbr[base]:null;
     var deltaLine = pinned && pinned.abbr!==s.abbr ? ('<div class="aei-pdelta">Versus <b>'+esc(pinned.name.replace('Washington, D.C.','D.C.'))+'</b>: '+(s.idx/pinned.idx).toFixed(2)+'× its intensity</div>') : '';
     var topics = list && list.length ? list.map(function(t,i){
-      var val = topicMode==='freq'? ((t.pct!=null?t.pct.toFixed(1):'—')+'%') : ((t.ratio!=null?t.ratio.toFixed(1):'—')+'×');
+      var val = topicMode==='freq'? ((t.pct!=null?t.pct.toFixed(1):'-')+'%') : ((t.ratio!=null?t.ratio.toFixed(1):'-')+'×');
       return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(t.name)+'</span><span class="tv">'+val+'</span></li>';
     }).join('') : '<li><span class="tn" style="color:var(--ink-quiet)">Not published for this state.</span></li>';
     el.innerHTML=
@@ -174,7 +174,7 @@ function geoView(cfg){
     var pinned=base?byCode[base]:null;
     var deltaLine = pinned && pinned.code!==c.code ? ('<div class="aei-pdelta">Versus <b>'+esc(pinned.name)+'</b>: '+(c.idx/pinned.idx).toFixed(2)+'× its intensity</div>') : '';
     var topics = list && list.length ? list.map(function(t,i){
-      var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1):'—')+'%'):((t.ratio!=null?t.ratio.toFixed(1):'—')+'×');
+      var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1):'-')+'%'):((t.ratio!=null?t.ratio.toFixed(1):'-')+'×');
       return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(t.name)+'</span><span class="tv">'+val+'</span></li>';
     }).join('') : '<li><span class="tn" style="color:var(--ink-quiet)">Topic detail not published for this country.</span></li>';
     var shareTxt = c.share>0 ? (c.share.toFixed(2)+'% of all measured usage') : 'Share not published';
@@ -202,7 +202,7 @@ function geoView(cfg){
     var arr=(cfg.shareData||[]).slice(0,15); if(!arr.length){ el(G.share).innerHTML=''; return; }
     var max=arr[0].share||1;
     el(G.share).innerHTML=arr.map(function(c){
-      return '<div class="aei-bar"><span class="bl">'+esc(c.name)+'</span><span class="bt"><i style="width:'+((c.share||0)/max*100).toFixed(1)+'%"></i></span><span class="bv">'+(c.share!=null?c.share.toFixed(1):'—')+'%</span></div>';
+      return '<div class="aei-bar"><span class="bl">'+esc(c.name)+'</span><span class="bt"><i style="width:'+((c.share||0)/max*100).toFixed(1)+'%"></i></span><span class="bv">'+(c.share!=null?c.share.toFixed(1):'-')+'%</span></div>';
     }).join('');
   }
   function marks(){
@@ -255,8 +255,8 @@ var DENMARK = (function(){
     var tp=(D.countryTopics&&D.countryTopics.DNK)||{freq:[],dist:[]};
     var tl=topicMode==='freq'?tp.freq:tp.dist;
     var cap=topicMode==='freq'?'Most frequent topics in Denmark':'Topics most distinctive to Denmark, versus the world';
-    var topics=(tl&&tl.length)?tl.map(function(t,i){ var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1):'—')+'%'):((t.ratio!=null?t.ratio.toFixed(1):'—')+'×'); return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(t.name)+'</span><span class="tv">'+val+'</span></li>'; }).join(''):'<li><span class="tn" style="color:var(--ink-quiet)">Not published.</span></li>';
-    var autonomy=sn.ai_autonomy_mean!=null?sn.ai_autonomy_mean.toFixed(1):'—';
+    var topics=(tl&&tl.length)?tl.map(function(t,i){ var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1):'-')+'%'):((t.ratio!=null?t.ratio.toFixed(1):'-')+'×'); return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(t.name)+'</span><span class="tv">'+val+'</span></li>'; }).join(''):'<li><span class="tn" style="color:var(--ink-quiet)">Not published.</span></li>';
+    var autonomy=sn.ai_autonomy_mean!=null?sn.ai_autonomy_mean.toFixed(1):'-';
     box.innerHTML=
       '<div class="aei-dkgrid">'+
         '<div class="aei-card aei-panel">'+
@@ -268,8 +268,8 @@ var DENMARK = (function(){
           '<div class="aei-metercap"><span>0</span><span>1.0 expected</span><span>6.5</span></div>'+
           '<div class="aei-pdiv"></div>'+
           '<div class="aei-mini">'+
-            '<div class="aei-minicell"><div class="mv">'+(sn.collaboration_bucket_augmentation_pct!=null?Math.round(sn.collaboration_bucket_augmentation_pct):'—')+'%</div><div class="mk">Collaborate</div></div>'+
-            '<div class="aei-minicell"><div class="mv">'+(sn.use_case_work_pct!=null?Math.round(sn.use_case_work_pct):'—')+'%</div><div class="mk">Work use</div></div>'+
+            '<div class="aei-minicell"><div class="mv">'+(sn.collaboration_bucket_augmentation_pct!=null?Math.round(sn.collaboration_bucket_augmentation_pct):'-')+'%</div><div class="mk">Collaborate</div></div>'+
+            '<div class="aei-minicell"><div class="mv">'+(sn.use_case_work_pct!=null?Math.round(sn.use_case_work_pct):'-')+'%</div><div class="mk">Work use</div></div>'+
             '<div class="aei-minicell"><div class="mv">'+autonomy+'</div><div class="mk">Autonomy / 5</div></div>'+
           '</div>'+
           '<p class="aei-dknote">Denmark uses Claude well above its population share, and leans to collaboration over pure automation.</p>'+
@@ -304,7 +304,7 @@ var USE = (function(){
       var dot=j.mode==='aug'?'var(--accent)':'var(--ink-quiet)';
       var meta = sum>0 ? ('Augmentation '+Math.round(aug)+'% · Automation '+Math.round(auto)+'%') : 'Split not published';
       return '<div class="aei-job"><div class="jt"><span class="jd" style="background:'+dot+'"></span><span class="jname">'+esc(j.title)+'</span></div>'+
-        '<div class="jpct">'+(j.pct!=null?j.pct.toFixed(2):'—')+'% of usage</div>'+
+        '<div class="jpct">'+(j.pct!=null?j.pct.toFixed(2):'-')+'% of usage</div>'+
         '<div class="jsplit"><span class="a" style="width:'+aw.toFixed(0)+'%"></span><span class="b" style="width:'+bw.toFixed(0)+'%"></span></div>'+
         '<div class="jmeta">'+meta+'</div></div>';
     }).join('');
@@ -331,7 +331,7 @@ var USE = (function(){
     arr.forEach(function(a,i){
       var n=Math.max(1,Math.round(a.pct||0));
       for(var k=0;k<n;k++) squares.push(pal[i]);
-      legend.push('<div class="lg"><span class="sw" style="background:'+pal[i]+'"></span>'+esc(names[a.label]||a.label.replace(/_/g,' '))+'<b>'+(a.pct!=null?a.pct.toFixed(1):'—')+'%</b></div>');
+      legend.push('<div class="lg"><span class="sw" style="background:'+pal[i]+'"></span>'+esc(names[a.label]||a.label.replace(/_/g,' '))+'<b>'+(a.pct!=null?a.pct.toFixed(1):'-')+'%</b></div>');
     });
     squares=squares.slice(0,100);
     while(squares.length<100) squares.push('var(--bg-deep)');
@@ -344,7 +344,7 @@ var USE = (function(){
     var arr=(reqKey==='us'?D.reqUS:D.reqGlobal)||[]; if(!arr.length)return;
     var max=arr[0].pct||1;
     document.getElementById('reqBars').innerHTML=arr.map(function(r){
-      return '<div class="aei-bar"><span class="bl">'+esc(r.name)+'</span><span class="bt"><i style="width:'+((r.pct||0)/max*100).toFixed(1)+'%"></i></span><span class="bv">'+(r.pct!=null?r.pct.toFixed(1):'—')+'%</span></div>';
+      return '<div class="aei-bar"><span class="bl">'+esc(r.name)+'</span><span class="bt"><i style="width:'+((r.pct||0)/max*100).toFixed(1)+'%"></i></span><span class="bv">'+(r.pct!=null?r.pct.toFixed(1):'-')+'%</span></div>';
     }).join('');
   }
   function render(){ jobs(); diverge(); artifacts(); requests(); }
