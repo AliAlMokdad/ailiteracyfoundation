@@ -33,7 +33,7 @@ function fmtIdx(v){ return v.toFixed(2)+'×'; }
 function legendHTML(){
   return RAMP.map(function(r){return '<span class="lg"><span class="sw" style="background:'+r.bg+'"></span>'+esc(r.label)+'</span>';}).join('');
 }
-['usLegend','worldLegend'].forEach(function(id){ var el=document.getElementById(id); if(el)el.innerHTML=legendHTML(); });
+['usLegend','worldLegend','euLegend'].forEach(function(id){ var el=document.getElementById(id); if(el)el.innerHTML=legendHTML(); });
 
 /* ================= US VIEW ================= */
 var US = (function(){
@@ -137,52 +137,54 @@ var US = (function(){
   return { render:render, wire:wire };
 })();
 
-/* ================= WORLD VIEW ================= */
-var WORLD = (function(){
-  var countries=D.countries.slice();
+/* ================= COUNTRY VIEWS (World + Europe) ================= */
+var EUROPE_CODES={AUT:1,BEL:1,BGR:1,HRV:1,CYP:1,CZE:1,DNK:1,EST:1,FIN:1,FRA:1,DEU:1,GRC:1,HUN:1,IRL:1,ITA:1,LVA:1,LTU:1,LUX:1,MLT:1,NLD:1,POL:1,PRT:1,ROU:1,SVK:1,SVN:1,ESP:1,SWE:1,GBR:1,CHE:1,NOR:1,ISL:1,UKR:1,SRB:1,BIH:1,ALB:1,MKD:1,MNE:1,MDA:1,BLR:1,XKX:1};
+function euCountries(){ return D.countries.filter(function(c){ return EUROPE_CODES[c.code]; }); }
+
+function geoView(cfg){
+  var G=cfg.ids, scaleMax=cfg.scaleMax||6.5, rankNote=cfg.rankNote||'';
+  var countries=cfg.countries.map(function(c){ return {code:c.code,name:c.name,idx:c.idx,share:c.share}; }); // clone so views do not clobber each other
   var total=countries.length;
   var byCode={}; countries.forEach(function(c,i){ c.rank=i+1; c.t=tier(i,total); byCode[c.code]=c; });
-  var sel='USA', base=null, topicMode='freq';
-
+  var sel=(cfg.defaultSel&&byCode[cfg.defaultSel])?cfg.defaultSel:(countries[0]&&countries[0].code), base=null, topicMode='freq';
+  function el(id){ return document.getElementById(id); }
   function buildGrid(){
-    var html=countries.map(function(c){
+    el(G.grid).innerHTML=countries.map(function(c){
       var r=RAMP[c.t];
-      return '<button class="aei-ctile'+(c.code===sel?' sel':'')+(c.code===base?' base':'')+'" data-code="'+c.code+'" style="background:'+r.bg+';color:'+r.tx+'" aria-label="'+esc(c.name)+', Usage Index '+c.idx.toFixed(2)+', rank '+c.rank+'">'+
+      return '<button class="aei-ctile'+(c.code===sel?' sel':'')+(c.code===base?' base':'')+'" data-code="'+c.code+'" style="background:'+r.bg+';color:'+r.tx+'" aria-label="'+esc(c.name)+', Usage Index '+c.idx.toFixed(2)+', rank '+c.rank+'. Select to see detail.">'+
         '<span class="cc">'+esc(c.code)+'</span><span class="cv">'+c.idx.toFixed(2)+'</span></button>';
     }).join('');
-    document.getElementById('worldGrid').innerHTML=html;
   }
   function buildBoard(){
     var pinned=base?byCode[base]:null;
-    var rows=countries.map(function(c){
+    el(G.board).innerHTML=countries.map(function(c){
       var r=RAMP[c.t];
       var dl=pinned?('<span class="dl">'+(c.idx/pinned.idx).toFixed(2)+'×</span>'):'';
       return '<button class="aei-row'+(c.code===sel?' sel':'')+'" data-code="'+c.code+'">'+
         '<span class="rk">'+c.rank+'</span><span class="sq" style="background:'+r.bg+'"></span>'+
         '<span class="nm">'+esc(c.name)+'</span><span class="vl">'+c.idx.toFixed(2)+'</span>'+dl+'</button>';
-    });
-    document.getElementById('worldBoard').innerHTML=rows.join('');
+    }).join('');
   }
   function panel(){
-    var c=byCode[sel]; var el=document.getElementById('worldPanel');
+    var c=byCode[sel];
     var tp=(D.countryTopics&&D.countryTopics[sel])||null;
     var list = tp? (topicMode==='freq'?tp.freq:tp.dist) : [];
     var cap = topicMode==='freq'? ('Most frequent topics in '+c.name) : ('Topics most distinctive to '+c.name+', versus the world');
-    var scaleMax=6.5; var fillW=Math.min(100,c.idx/scaleMax*100); var tickL=(1/scaleMax*100);
+    var fillW=Math.min(100,c.idx/scaleMax*100), tickL=(1/scaleMax*100);
     var pinned=base?byCode[base]:null;
     var deltaLine = pinned && pinned.code!==c.code ? ('<div class="aei-pdelta">Versus <b>'+esc(pinned.name)+'</b>: '+(c.idx/pinned.idx).toFixed(2)+'× its intensity</div>') : '';
     var topics = list && list.length ? list.map(function(t,i){
-      var val=topicMode==='freq'?(t.pct.toFixed?t.pct.toFixed(1):t.pct)+'%':t.ratio.toFixed(1)+'×';
+      var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1):'—')+'%'):((t.ratio!=null?t.ratio.toFixed(1):'—')+'×');
       return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(t.name)+'</span><span class="tv">'+val+'</span></li>';
     }).join('') : '<li><span class="tn" style="color:var(--ink-quiet)">Topic detail not published for this country.</span></li>';
     var shareTxt = c.share>0 ? (c.share.toFixed(2)+'% of all measured usage') : 'Share not published';
-    el.innerHTML=
-      '<p class="ph">Usage rank '+c.rank+' of '+total+'</p>'+
+    el(G.panel).innerHTML=
+      '<p class="ph">Usage rank '+c.rank+' of '+total+rankNote+'</p>'+
       '<div class="aei-pname">'+esc(c.name)+'</div>'+
       '<div class="aei-pidxrow"><span class="aei-pidx">'+fmtIdx(c.idx)+'</span><span class="aei-pidxlbl">Usage Index</span></div>'+
       deltaLine+
       '<div class="aei-meter"><div class="fill" style="width:'+fillW.toFixed(0)+'%"></div><span class="tick" style="left:'+tickL.toFixed(1)+'%"></span></div>'+
-      '<div class="aei-metercap"><span>0</span><span>1.0 expected</span><span>6.5</span></div>'+
+      '<div class="aei-metercap"><span>0</span><span>1.0 expected</span><span>'+scaleMax.toFixed(1)+'</span></div>'+
       '<div class="aei-pdelta" style="margin-top:.55rem">'+esc(shareTxt)+'</div>'+
       '<div class="aei-pdiv"></div>'+
       '<div class="aei-topichead"><span class="cap">'+esc(cap)+'</span></div>'+
@@ -191,19 +193,20 @@ var WORLD = (function(){
       '<button class="aei-pinbtn'+(base===sel?' active':'')+'" data-pin="'+c.code+'">'+(base===sel?'Pinned as baseline':'Pin '+esc(c.name)+' as baseline')+'</button>';
   }
   function chip(){
-    var el=document.getElementById('worldBaseChip');
-    if(base){ var b=byCode[base]; el.className='aei-basechip on'; el.innerHTML='Baseline <b>'+esc(b.name)+' '+fmtIdx(b.idx)+'</b><button aria-label="Clear baseline" data-clear="1">×</button>'; }
-    else { el.className='aei-basechip'; el.innerHTML=''; }
+    if(!G.chip) return; var box=el(G.chip);
+    if(base){ var b=byCode[base]; box.className='aei-basechip on'; box.innerHTML='Baseline <b>'+esc(b.name)+' '+fmtIdx(b.idx)+'</b><button aria-label="Clear baseline" data-clear="1">×</button>'; }
+    else { box.className='aei-basechip'; box.innerHTML=''; }
   }
   function shareBars(){
-    var arr=(D.countryShare||[]).slice(0,15); if(!arr.length){ document.getElementById('worldShare').innerHTML=''; return; }
-    var max=arr[0].share;
-    document.getElementById('worldShare').innerHTML=arr.map(function(c){
-      return '<div class="aei-bar"><span class="bl">'+esc(c.name)+'</span><span class="bt"><i style="width:'+(c.share/max*100).toFixed(1)+'%"></i></span><span class="bv">'+c.share.toFixed(1)+'%</span></div>';
+    if(!G.share) return;
+    var arr=(cfg.shareData||[]).slice(0,15); if(!arr.length){ el(G.share).innerHTML=''; return; }
+    var max=arr[0].share||1;
+    el(G.share).innerHTML=arr.map(function(c){
+      return '<div class="aei-bar"><span class="bl">'+esc(c.name)+'</span><span class="bt"><i style="width:'+((c.share||0)/max*100).toFixed(1)+'%"></i></span><span class="bv">'+(c.share!=null?c.share.toFixed(1):'—')+'%</span></div>';
     }).join('');
   }
   function marks(){
-    document.querySelectorAll('#worldGrid .aei-ctile').forEach(function(b){
+    document.querySelectorAll('#'+G.grid+' .aei-ctile').forEach(function(b){
       b.classList.toggle('sel', b.getAttribute('data-code')===sel);
       b.classList.toggle('base', b.getAttribute('data-code')===base);
     });
@@ -212,14 +215,80 @@ var WORLD = (function(){
   function repaint(){ buildBoard(); panel(); chip(); marks(); } // pin/clear: no grid rebuild, keeps tile focus
   function render(){ buildGrid(); buildBoard(); panel(); chip(); shareBars(); marks(); }
   function wire(){
-    document.getElementById('worldGrid').addEventListener('click',function(e){ var b=e.target.closest('.aei-ctile'); if(b)selectC(b.getAttribute('data-code')); });
-    document.getElementById('worldBoard').addEventListener('click',function(e){ var b=e.target.closest('.aei-row'); if(b){ var a=b.getAttribute('data-code'); selectC(a); refocus('#worldBoard [data-code="'+a+'"]'); } });
-    document.getElementById('worldPanel').addEventListener('click',function(e){
-      var tm=e.target.closest('[data-tm]'); if(tm){ topicMode=tm.getAttribute('data-tm'); panel(); refocus('#worldPanel [data-tm="'+topicMode+'"]'); return; }
-      var pin=e.target.closest('[data-pin]'); if(pin){ var a=pin.getAttribute('data-pin'); base=(base===a?null:a); repaint(); refocus('#worldPanel .aei-pinbtn'); return; }
+    el(G.grid).addEventListener('click',function(e){ var b=e.target.closest('.aei-ctile'); if(b)selectC(b.getAttribute('data-code')); });
+    el(G.board).addEventListener('click',function(e){ var b=e.target.closest('.aei-row'); if(b){ var a=b.getAttribute('data-code'); selectC(a); refocus('#'+G.board+' [data-code="'+a+'"]'); } });
+    el(G.panel).addEventListener('click',function(e){
+      var tm=e.target.closest('[data-tm]'); if(tm){ topicMode=tm.getAttribute('data-tm'); panel(); refocus('#'+G.panel+' [data-tm="'+topicMode+'"]'); return; }
+      var pin=e.target.closest('[data-pin]'); if(pin){ var a=pin.getAttribute('data-pin'); base=(base===a?null:a); repaint(); refocus('#'+G.panel+' .aei-pinbtn'); return; }
     });
-    document.getElementById('worldBaseChip').addEventListener('click',function(e){ if(e.target.closest('[data-clear]')){ base=null; repaint(); refocus('#worldPanel .aei-pinbtn'); } });
-    document.getElementById('dkPin').addEventListener('click',function(){ if(byCode.DNK){ base='DNK'; sel='DNK'; repaint(); refocus('#dkPin'); } });
+    if(G.chip) el(G.chip).addEventListener('click',function(e){ if(e.target.closest('[data-clear]')){ base=null; repaint(); refocus('#'+G.panel+' .aei-pinbtn'); } });
+    if(G.dkPin){ var d=el(G.dkPin); if(d) d.addEventListener('click',function(){ if(byCode.DNK){ base='DNK'; sel='DNK'; repaint(); refocus('#'+G.dkPin); } }); }
+  }
+  return { render:render, wire:wire };
+}
+
+var WORLD = geoView({ countries:D.countries, shareData:D.countryShare, ids:{grid:'worldGrid',board:'worldBoard',panel:'worldPanel',chip:'worldBaseChip',dkPin:'dkPin',share:'worldShare'} });
+var EUROPE = geoView({ countries:euCountries(), defaultSel:'DNK', rankNote:' in Europe', ids:{grid:'euGrid',board:'euBoard',panel:'euPanel',chip:'euBaseChip',dkPin:'euDkPin'} });
+
+/* ================= DENMARK VIEW ================= */
+var DENMARK = (function(){
+  var topicMode='freq';
+  function render(){
+    var dnk=null, wr=0;
+    for(var i=0;i<D.countries.length;i++){ if(D.countries[i].code==='DNK'){ dnk=D.countries[i]; wr=i+1; break; } }
+    var box=document.getElementById('dkProfile');
+    if(!dnk){ box.innerHTML='<div class="aei-card">Denmark data is not published in this release.</div>'; return; }
+    var eu=euCountries(), er=0; for(var j=0;j<eu.length;j++){ if(eu[j].code==='DNK'){ er=j+1; break; } }
+    var sn=(D.snapshot&&D.snapshot.DNK)||{}, g=(D.snapshot&&D.snapshot.global)||{};
+    var scaleMax=6.5, fillW=Math.min(100,dnk.idx/scaleMax*100), tickL=1/scaleMax*100;
+    function bar(cls,pct){ return '<div class="b '+cls+'"><i style="width:'+Math.max(0,Math.min(100,pct)).toFixed(0)+'%"></i></div>'; }
+    function cmpRow(label,dk,wd){
+      if(dk==null||wd==null) return '';
+      return '<div class="crow"><div class="rl"><span>'+label+'</span><span><b>'+Math.round(dk)+'%</b> Denmark · '+Math.round(wd)+'% world</span></div>'+
+        bar('dk',dk)+bar('wd',wd)+'</div>';
+    }
+    var rows=cmpRow('Augmentation, working with AI', sn.collaboration_bucket_augmentation_pct, g.collaboration_bucket_augmentation_pct)+
+             cmpRow('Automation, delegating tasks', sn.collaboration_bucket_automation_pct, g.collaboration_bucket_automation_pct)+
+             cmpRow('Work use', sn.use_case_work_pct, g.use_case_work_pct)+
+             cmpRow('Personal use', sn.use_case_personal_pct, g.use_case_personal_pct)+
+             cmpRow('Coursework', sn.use_case_coursework_pct, g.use_case_coursework_pct);
+    var tp=(D.countryTopics&&D.countryTopics.DNK)||{freq:[],dist:[]};
+    var tl=topicMode==='freq'?tp.freq:tp.dist;
+    var cap=topicMode==='freq'?'Most frequent topics in Denmark':'Topics most distinctive to Denmark, versus the world';
+    var topics=(tl&&tl.length)?tl.map(function(t,i){ var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1):'—')+'%'):((t.ratio!=null?t.ratio.toFixed(1):'—')+'×'); return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(t.name)+'</span><span class="tv">'+val+'</span></li>'; }).join(''):'<li><span class="tn" style="color:var(--ink-quiet)">Not published.</span></li>';
+    var autonomy=sn.ai_autonomy_mean!=null?sn.ai_autonomy_mean.toFixed(1):'—';
+    box.innerHTML=
+      '<div class="aei-dkgrid">'+
+        '<div class="aei-card aei-panel">'+
+          '<p class="ph">Denmark · Usage Index</p>'+
+          '<div class="aei-pname">Denmark</div>'+
+          '<div class="aei-pidxrow"><span class="aei-pidx">'+fmtIdx(dnk.idx)+'</span><span class="aei-pidxlbl">times the world average</span></div>'+
+          '<div class="aei-pdelta">World rank <b>'+wr+' of '+D.countries.length+'</b>'+(er?(' &middot; Europe rank <b>'+er+' of '+eu.length+'</b>'):'')+'</div>'+
+          '<div class="aei-meter"><div class="fill" style="width:'+fillW.toFixed(0)+'%"></div><span class="tick" style="left:'+tickL.toFixed(1)+'%"></span></div>'+
+          '<div class="aei-metercap"><span>0</span><span>1.0 expected</span><span>6.5</span></div>'+
+          '<div class="aei-pdiv"></div>'+
+          '<div class="aei-mini">'+
+            '<div class="aei-minicell"><div class="mv">'+(sn.collaboration_bucket_augmentation_pct!=null?Math.round(sn.collaboration_bucket_augmentation_pct):'—')+'%</div><div class="mk">Collaborate</div></div>'+
+            '<div class="aei-minicell"><div class="mv">'+(sn.use_case_work_pct!=null?Math.round(sn.use_case_work_pct):'—')+'%</div><div class="mk">Work use</div></div>'+
+            '<div class="aei-minicell"><div class="mv">'+autonomy+'</div><div class="mk">Autonomy / 5</div></div>'+
+          '</div>'+
+          '<p class="aei-dknote">Denmark uses Claude well above its population share, and leans to collaboration over pure automation.</p>'+
+        '</div>'+
+        '<div class="aei-card">'+
+          '<div style="font-family:var(--serif);font-size:1.2rem;font-weight:600;margin:0 0 1.1rem;color:var(--ink)">Denmark next to the world</div>'+
+          '<div class="aei-cmp">'+rows+'</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="aei-card">'+
+        '<div class="aei-topichead" style="margin-top:0"><span class="cap">'+esc(cap)+'</span></div>'+
+        '<div class="aei-seg mini" role="group" aria-label="Topic ranking"><button data-tm="freq" aria-pressed="'+(topicMode==='freq')+'">Frequent</button><button data-tm="dist" aria-pressed="'+(topicMode==='dist')+'">Distinctive</button></div>'+
+        '<ul class="aei-topics aei-dktopics" style="margin-top:.9rem">'+topics+'</ul>'+
+      '</div>';
+  }
+  function wire(){
+    document.getElementById('dkProfile').addEventListener('click',function(e){
+      var tm=e.target.closest('[data-tm]'); if(tm){ topicMode=tm.getAttribute('data-tm'); render(); refocus('#dkProfile [data-tm="'+topicMode+'"]'); }
+    });
   }
   return { render:render, wire:wire };
 })();
@@ -304,21 +373,23 @@ function setPressed(groupId, btn){
 
 /* ================= MODE SWITCH ================= */
 (function(){
-  var rendered={us:false,world:false,use:false};
+  var rendered={denmark:false,europe:false,us:false,world:false,use:false};
   function show(mode){
-    ['us','world','use'].forEach(function(m){
-      document.getElementById('view-'+m).classList.toggle('on', m===mode);
+    ['denmark','europe','us','world','use'].forEach(function(m){
+      var v=document.getElementById('view-'+m); if(v) v.classList.toggle('on', m===mode);
     });
     document.querySelectorAll('#aeiModes button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-mode')===mode)); });
     if(!rendered[mode]){
-      if(mode==='us') US.render();
+      if(mode==='denmark') DENMARK.render();
+      else if(mode==='europe') EUROPE.render();
+      else if(mode==='us') US.render();
       else if(mode==='world') WORLD.render();
       else USE.render();
       rendered[mode]=true;
     }
   }
   document.getElementById('aeiModes').addEventListener('click',function(e){ var b=e.target.closest('button'); if(b)show(b.getAttribute('data-mode')); });
-  US.wire(); WORLD.wire(); USE.wire();
-  show('us');
+  DENMARK.wire(); EUROPE.wire(); US.wire(); WORLD.wire(); USE.wire();
+  show('denmark');
 })();
 })();

@@ -219,6 +219,23 @@
 .aei-ins p{font-family:var(--serif);font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0}
 .aei-ins p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 
+/* Denmark profile */
+.aei-dkgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start;margin-bottom:1rem}
+.aei-dkgrid .aei-panel{position:static}
+.aei-cmp{margin:.2rem 0 0}
+.aei-cmp .crow{margin-bottom:1rem}
+.aei-cmp .crow:last-child{margin-bottom:0}
+.aei-cmp .rl{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--sans);font-size:13px;color:var(--ink-soft);margin-bottom:.4rem}
+.aei-cmp .rl b{font-family:var(--mono);color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+.aei-cmp .b{height:11px;border-radius:5px;background:var(--bg-deep);overflow:hidden;margin-bottom:3px}
+.aei-cmp .b i{display:block;height:100%;border-radius:5px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.aei-cmp .b.dk i{background:var(--accent)}
+.aei-cmp .b.wd i{background:var(--ink-quiet)}
+.aei-cmp .tag{font-family:var(--mono);font-size:10px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-quiet)}
+.aei-dknote{font-family:var(--serif);font-size:13.5px;color:var(--ink-soft);line-height:1.6;margin:1rem 0 0;font-style:italic}
+.aei-dktopics{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:1080px){.aei-dkgrid,.aei-dktopics{grid-template-columns:1fr}}
+
 /* source */
 .aei-src{font-family:var(--sans);font-size:var(--fs-xs);color:var(--ink-quiet);line-height:1.7;margin-top:1.6rem;max-width:90ch}
 .aei-src a{color:var(--ink-soft)}
@@ -292,14 +309,50 @@
 <div class="aei-labonly">
 <div class="aei-modes" role="group" aria-label="Choose a view">
   <div class="aei-seg" id="aeiModes">
-    <button data-mode="us" aria-pressed="true">United States</button>
+    <button data-mode="denmark" aria-pressed="true">Denmark</button>
+    <button data-mode="europe" aria-pressed="false">Europe</button>
+    <button data-mode="us" aria-pressed="false">United States</button>
     <button data-mode="world" aria-pressed="false">World</button>
     <button data-mode="use" aria-pressed="false">How people use AI</button>
   </div>
 </div>
 
+<!-- ============ DENMARK VIEW ============ -->
+<div class="aei-view on" id="view-denmark">
+  <div class="aei-viewhead">
+    <h2>Denmark</h2>
+    <p>AI Literacy Foundation is based in Copenhagen, so we start at home. How Denmark uses Claude, how that compares with the world, and the topics people here bring to it.</p>
+  </div>
+  <div id="dkProfile" aria-live="polite"></div>
+</div>
+
+<!-- ============ EUROPE VIEW ============ -->
+<div class="aei-view" id="view-europe">
+  <div class="aei-viewhead">
+    <h2>Europe, country by country</h2>
+    <p>European countries ordered by their Usage Index, with Denmark highlighted. Ranks here are within Europe. Pin any country to compare the rest against it.</p>
+  </div>
+  <div class="aei-controls">
+    <div class="aei-legend" id="euLegend" aria-label="Usage Index colour tiers"></div>
+    <div class="aei-baseline">
+      <button class="aei-dkpin" id="euDkPin" type="button">Benchmark Denmark</button>
+      <span class="aei-basechip" id="euBaseChip"></span>
+    </div>
+  </div>
+  <div class="aei-grid">
+    <div class="aei-card" style="max-height:560px;overflow-y:auto">
+      <div class="aei-worldgrid" id="euGrid" role="group" aria-label="European countries ordered by Usage Index"></div>
+    </div>
+    <div class="aei-card">
+      <div class="aei-boardhead"><span>Countries by Usage Index</span><span>Index</span></div>
+      <div class="aei-board" id="euBoard"></div>
+    </div>
+    <aside class="aei-card aei-panel" id="euPanel" aria-live="polite"></aside>
+  </div>
+</div>
+
 <!-- ============ US VIEW ============ -->
-<div class="aei-view on" id="view-us">
+<div class="aei-view" id="view-us">
   <div class="aei-viewhead">
     <h2>The United States, state by state</h2>
     <p>Each tile is a state, placed roughly by geography and coloured by its Usage Index. Select any state for its rank, its most frequent topics, and the topics most distinctive to it. Pin a state to compare the rest against it.</p>
@@ -460,7 +513,7 @@
 </footer>
 <script>const toggle=document.getElementById('navToggle'),nav=document.getElementById('nav');if(toggle&&nav){toggle.addEventListener('click',()=>{const o=nav.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(o));});document.addEventListener('click',e=>{if(!nav.contains(e.target)&&!toggle.contains(e.target)&&nav.classList.contains('is-open')){nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}});}</script>
 <script src="ai-economic-index.data.js?v=1"></script>
-<script src="ai-economic-index.js?v=2" defer></script>
+<script src="ai-economic-index.js?v=3" defer></script>
 <script src="motion.js?v=polish1" defer></script>
 </body>
 </html>
