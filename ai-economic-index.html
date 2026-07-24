@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI Economic Index &middot; AI Literacy Foundation</title>
+<meta name="description" content="Where and how people put AI to work. An interactive reading of the Anthropic Economic Index open data: Claude usage by US state, by country, and by kind of work, for May 2026.">
+<meta name="theme-color" content="#F7F4EE">
+<meta name="author" content="AI Literacy Foundation">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://ailiteracyfoundation.eu/ai-economic-index.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ailiteracyfoundation.eu/ai-economic-index.html">
+<meta property="og:title" content="AI Economic Index &middot; AI Literacy Foundation">
+<meta property="og:description" content="Where and how people put AI to work. An interactive reading of the Anthropic Economic Index open data, for the public.">
+<meta property="og:locale" content="en_DK">
+<meta property="og:locale:alternate" content="da_DK">
+<meta property="og:site_name" content="AI Literacy Foundation">
+<meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
+<link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/ai-economic-index.html">
+<link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/ai-economic-index.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=polish4">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"AI Economic Index","url":"https://ailiteracyfoundation.eu/ai-economic-index.html","inLanguage":"en","description":"An interactive, public reading of the Anthropic Economic Index open data: Claude usage by US state, by country, and by kind of work.","isPartOf":{"@type":"WebSite","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"publisher":{"@type":"NonprofitOrganization","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"mainEntity":{"@type":"Dataset","name":"Anthropic Economic Index","creator":{"@type":"Organization","name":"Anthropic"},"license":"https://creativecommons.org/licenses/by/4.0/","isBasedOn":"https://www.anthropic.com/research/economic-index-june-2026-report","temporalCoverage":"2026-05","description":"Claude.ai usage metrics aggregated by geography and task, released 2026-06-26."}}</script>
+<style>
+/* ===== AI Economic Index (aei) - laptop-first data dashboard ===== */
+.aei *{box-sizing:border-box}
+.aei{margin-top:1.25rem}
+
+/* Hero */
+.aei-hero{margin-bottom:1.6rem}
+.aei-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 .85rem}
+.aei-eyebrow .sig{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-bg)}
+.aei-h1{font-family:var(--serif);font-weight:600;font-size:var(--fs-3xl);line-height:1.05;letter-spacing:-.01em;margin:0 0 .75rem;max-width:20ch;text-wrap:balance;color:var(--ink)}
+.aei-h1 em{font-style:italic;color:var(--accent)}
+.aei-lede{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.5;color:var(--ink-soft);max-width:64ch;margin:0}
+.aei-hero .aei-eyebrow,.aei-hero .aei-h1,.aei-hero .aei-lede{opacity:0;animation:aeiRise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.aei-hero .aei-eyebrow{animation-delay:.1s}
+.aei-hero .aei-h1{animation-delay:.26s}
+.aei-hero .aei-lede{animation-delay:.5s}
+.aei-eyebrow .sig{animation:aeiSig .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:.14s}
+@keyframes aeiRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes aeiSig{0%{transform:scale(0);opacity:0}60%{transform:scale(1.3)}100%{transform:scale(1);opacity:1}}
+
+/* Stat row */
+.aei-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.7rem 0 0}
+.aei-stat{background:var(--bg-elev);border:1px solid var(--line);border-radius:10px;padding:1rem 1.15rem;transition:border-color .24s var(--ease),transform .24s var(--ease)}
+.aei-stat:hover{border-color:var(--accent-soft);transform:translateY(-2px)}
+.aei-stat .n{font-family:var(--serif);font-size:1.9rem;font-weight:600;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink);letter-spacing:-.01em}
+.aei-stat .n b{color:var(--accent-deep);font-weight:600}
+.aei-stat .k{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);margin-top:.5rem;line-height:1.45}
+
+/* Note card */
+.aei-note{background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:1.4rem 1.8rem 1.5rem;font-family:var(--sans);font-size:var(--fs-md);color:var(--ink-soft);line-height:1.75;margin:2rem 0 2.2rem}
+.aei-note-lbl{display:block;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-quiet);margin-bottom:.5rem}
+.aei-note b{color:var(--ink);font-weight:600}
+
+/* Mode switcher */
+.aei-modes{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-bottom:1.3rem}
+.aei-seg{display:inline-flex;gap:2px;background:var(--bg-deep);border:1px solid var(--line);border-radius:999px;padding:3px}
+.aei-seg button{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--ink-quiet);background:none;border:0;padding:.55rem 1.15rem;border-radius:999px;cursor:pointer;transition:color .2s var(--ease),background .2s var(--ease)}
+.aei-seg button:hover{color:var(--ink)}
+.aei-seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.aei-seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.aei-seg.mini button{padding:.42rem .85rem}
+
+/* View shell */
+.aei-view{display:none}
+.aei-view.on{display:block;animation:aeiFade .4s var(--ease-out) both}
+@keyframes aeiFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.aei-viewhead{margin:.4rem 0 1.15rem}
+.aei-viewhead h2{font-family:var(--serif);font-weight:500;font-size:var(--fs-2xl);line-height:1.12;letter-spacing:-.015em;margin:0 0 .35rem;color:var(--ink)}
+.aei-viewhead p{font-family:var(--sans);font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.6;margin:0;max-width:74ch}
+
+/* Controls row: legend + baseline */
+.aei-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.5rem;margin-bottom:1.1rem}
+.aei-legend{display:inline-flex;align-items:center;gap:.9rem;flex-wrap:wrap;font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-quiet);letter-spacing:.03em}
+.aei-legend .lg{display:inline-flex;align-items:center;gap:.4rem}
+.aei-legend .sw{width:14px;height:14px;border-radius:4px;border:1px solid rgba(21,20,15,.08)}
+.aei-baseline{display:inline-flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.aei-basechip{display:none;align-items:center;gap:.55rem;font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink);background:var(--accent-bg);border:1px solid var(--accent-soft);border-radius:999px;padding:.35rem .5rem .35rem .8rem}
+.aei-basechip.on{display:inline-flex}
+.aei-basechip b{color:var(--accent-deep);font-weight:600}
+.aei-basechip button{border:0;background:none;cursor:pointer;color:var(--ink-quiet);font-size:14px;line-height:1;padding:2px 3px;border-radius:50%}
+.aei-basechip button:hover{color:var(--accent-deep)}
+.aei-dkpin{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.04em;color:var(--ink);background:var(--bg-elev);border:1px solid var(--line);border-radius:999px;padding:.42rem .95rem;cursor:pointer;transition:border-color .18s var(--ease),background .18s var(--ease)}
+.aei-dkpin:hover{border-color:var(--accent-soft);background:var(--accent-bg)}
+.aei-dkpin:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Grid: map + board + panel */
+.aei-grid{display:grid;grid-template-columns:1.35fr .82fr .92fr;gap:1rem;align-items:start}
+.aei-card{background:var(--bg-elev);border:1px solid var(--line);border-radius:12px;padding:1.1rem}
+
+/* US cartogram */
+.aei-map{position:relative}
+.aei-map svg{display:block;width:100%;height:auto}
+.aei-tile{cursor:pointer;transition:transform .16s var(--ease),filter .16s var(--ease)}
+.aei-tile rect{transition:stroke .14s var(--ease),stroke-width .14s var(--ease)}
+.aei-tile:hover{transform:translateY(-1.5px)}
+.aei-tile:focus-visible{outline:none}
+.aei-tile:focus-visible rect{stroke:var(--accent-deep);stroke-width:3}
+.aei-tile.sel rect{stroke:var(--ink);stroke-width:2.6}
+.aei-tile.base rect{stroke:var(--accent-deep);stroke-width:2.6;stroke-dasharray:3 2}
+
+/* World tile grid (rank cartogram) */
+.aei-worldgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px}
+.aei-ctile{position:relative;border:1px solid rgba(21,20,15,.08);border-radius:8px;padding:.5rem .55rem;cursor:pointer;text-align:left;min-height:58px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .16s var(--ease),box-shadow .18s var(--ease)}
+.aei-ctile:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(40,36,28,.1);z-index:2}
+.aei-ctile:focus-visible{outline:3px solid var(--accent-deep);outline-offset:2px;z-index:3}
+.aei-ctile.sel{outline:2.5px solid var(--ink);outline-offset:1px;z-index:3}
+.aei-ctile.base{outline:2.5px dashed var(--accent-deep);outline-offset:1px}
+.aei-ctile .cc{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.02em}
+.aei-ctile .cv{font-family:var(--mono);font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* Leaderboard */
+.aei-board{max-height:560px;overflow-y:auto;padding:2px;scrollbar-width:thin;scrollbar-color:var(--accent-soft) transparent}
+.aei-board::-webkit-scrollbar{width:8px}
+.aei-board::-webkit-scrollbar-thumb{background:var(--accent-soft);border-radius:999px}
+.aei-boardhead{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-quiet);padding:.5rem .6rem .65rem}
+.aei-row{display:flex;align-items:center;gap:.7rem;width:100%;text-align:left;background:none;border:0;border-radius:8px;padding:.55rem .6rem;cursor:pointer;font-family:inherit;transition:background .16s var(--ease)}
+.aei-row:hover{background:var(--accent-bg)}
+.aei-row:focus-visible{outline:2px solid var(--accent-deep);outline-offset:-1px}
+.aei-row.sel{background:var(--accent-bg);box-shadow:inset 2px 0 0 var(--accent)}
+.aei-row .rk{font-family:var(--mono);font-size:12px;color:var(--ink-quiet);width:22px;flex:none;font-variant-numeric:tabular-nums}
+.aei-row .nm{flex:1;font-family:var(--sans);font-size:13.5px;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.aei-row .vl{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+.aei-row .dl{font-family:var(--mono);font-size:11px;color:var(--ink-quiet);width:52px;text-align:right;font-variant-numeric:tabular-nums}
+.aei-row .sq{width:9px;height:9px;border-radius:3px;flex:none}
+
+/* Detail panel */
+.aei-panel{position:sticky;top:1rem}
+.aei-panel .ph{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-quiet);margin:0 0 .6rem}
+.aei-panel .ph::before{content:"";width:14px;height:1px;background:var(--accent)}
+.aei-pname{font-family:var(--serif);font-size:1.5rem;font-weight:600;line-height:1.15;letter-spacing:-.012em;margin:0 0 .1rem;color:var(--ink);text-wrap:balance}
+.aei-pidxrow{display:flex;align-items:baseline;gap:.5rem;margin:.3rem 0 .1rem}
+.aei-pidx{font-family:var(--mono);font-size:1.9rem;font-weight:600;color:var(--accent-deep);font-variant-numeric:tabular-nums;line-height:1}
+.aei-pidxlbl{font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-quiet)}
+.aei-pdelta{font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-soft);margin:.35rem 0 0;min-height:1rem}
+.aei-pdelta b{color:var(--accent-deep)}
+/* baseline meter with 1.0 tick */
+.aei-meter{position:relative;height:9px;background:var(--bg-deep);border-radius:999px;overflow:visible;margin:.85rem 0 .3rem}
+.aei-meter .fill{height:100%;background:linear-gradient(90deg,var(--accent-soft),var(--accent));border-radius:999px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.aei-meter .tick{position:absolute;top:-3px;bottom:-3px;width:0;border-left:1.5px dashed var(--ink-quiet)}
+.aei-metercap{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--ink-quiet);letter-spacing:.03em}
+.aei-pdiv{height:1px;background:var(--line);margin:1rem 0}
+.aei-mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin:.2rem 0 0}
+.aei-minicell{background:var(--bg);border:1px solid var(--line-soft);border-radius:8px;padding:.55rem .5rem;text-align:center}
+.aei-minicell .mv{font-family:var(--mono);font-size:1rem;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.aei-minicell .mk{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-quiet);margin-top:.25rem;line-height:1.3}
+.aei-topichead{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin:1rem 0 .7rem}
+.aei-topichead .cap{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);line-height:1.4}
+.aei-topics{list-style:none;margin:0;padding:0}
+.aei-topics li{display:flex;align-items:center;gap:.7rem;padding:.32rem 0}
+.aei-topics .ti{font-family:var(--mono);font-size:11px;color:var(--ink-quiet);width:16px;flex:none}
+.aei-topics .tn{flex:1;font-family:var(--sans);font-size:12.5px;color:var(--ink);min-width:0}
+.aei-topics .tv{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.aei-pinbtn{width:100%;margin-top:1rem;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.6rem;cursor:pointer;transition:border-color .18s var(--ease),background .18s var(--ease)}
+.aei-pinbtn:hover{border-color:var(--accent-soft);background:var(--accent-bg)}
+.aei-pinbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.aei-pinbtn.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* World share bars (second lens) */
+.aei-share{margin-top:1.2rem}
+.aei-share h3{font-family:var(--serif);font-size:1.15rem;font-weight:600;margin:0 0 .2rem;color:var(--ink)}
+.aei-share p{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin:0 0 1rem}
+.aei-bar{display:grid;grid-template-columns:150px 1fr 52px;align-items:center;gap:.8rem;margin-bottom:.5rem}
+.aei-bar .bl{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.aei-bar .bt{height:20px;background:var(--bg-deep);border-radius:5px;overflow:hidden}
+.aei-bar .bt i{display:block;height:100%;background:linear-gradient(90deg,var(--accent-soft),var(--accent));border-radius:5px;transition:width .6s cubic-bezier(.2,.7,.2,1)}
+.aei-bar .bv{font-family:var(--mono);font-size:12px;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* How people use AI view */
+.aei-usewrap{display:grid;grid-template-columns:1fr;gap:2.2rem}
+.aei-sub{margin:0}
+.aei-sub h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin:0 0 .3rem;color:var(--ink)}
+.aei-sub p{font-family:var(--sans);font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.6;margin:0 0 1.1rem;max-width:74ch}
+.aei-jobs{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:10px}
+.aei-job{border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;background:var(--bg-elev);transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.aei-job:hover{border-color:var(--accent-soft);transform:translateY(-2px)}
+.aei-job .jt{display:flex;align-items:flex-start;gap:.6rem}
+.aei-job .jd{width:12px;height:12px;border-radius:4px;flex:none;margin-top:3px}
+.aei-job .jname{font-family:var(--serif);font-size:14px;font-weight:600;line-height:1.25;color:var(--ink)}
+.aei-job .jpct{font-family:var(--mono);font-size:13px;color:var(--accent-deep);font-weight:500;margin-top:.55rem;font-variant-numeric:tabular-nums}
+.aei-job .jsplit{height:6px;border-radius:5px;overflow:hidden;display:flex;margin-top:.6rem;background:var(--bg-deep)}
+.aei-job .jsplit .a{background:var(--accent)}
+.aei-job .jsplit .b{background:var(--ink-quiet)}
+.aei-job .jmeta{font-family:var(--mono);font-size:10.5px;color:var(--ink-quiet);margin-top:.45rem;letter-spacing:.02em}
+
+/* diverging automation/augmentation */
+.aei-diverge{background:var(--bg-elev);border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.5rem}
+.aei-drow{display:grid;grid-template-columns:130px 1fr;align-items:center;gap:1rem;margin-bottom:.7rem}
+.aei-drow .dlab{font-family:var(--sans);font-size:13px;color:var(--ink);text-align:right}
+.aei-dtrack{display:flex;height:26px;border-radius:6px;overflow:hidden;background:var(--bg-deep)}
+.aei-dtrack .auto{background:var(--ink-quiet);display:flex;align-items:center;justify-content:flex-start;padding:0 .5rem}
+.aei-dtrack .aug{background:var(--accent);display:flex;align-items:center;justify-content:flex-end;padding:0 .5rem;margin-left:auto}
+.aei-dtrack span{font-family:var(--mono);font-size:11px;color:var(--bg);font-variant-numeric:tabular-nums}
+.aei-dlegend{display:flex;gap:1.4rem;font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-quiet);margin-top:1rem}
+.aei-dlegend .lg{display:inline-flex;align-items:center;gap:.4rem}
+.aei-dlegend .sw{width:12px;height:12px;border-radius:3px}
+
+/* two-column sub layout for use view */
+.aei-two{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+
+/* waffle for artifacts */
+.aei-waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;max-width:360px}
+.aei-waffle span{aspect-ratio:1;border-radius:3px;background:var(--bg-deep)}
+.aei-wlegend{display:flex;flex-direction:column;gap:.4rem;margin-top:1rem}
+.aei-wlegend .lg{display:flex;align-items:center;gap:.55rem;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft)}
+.aei-wlegend .sw{width:12px;height:12px;border-radius:3px;flex:none}
+.aei-wlegend .lg b{font-family:var(--mono);color:var(--ink);font-weight:500;margin-left:auto;font-variant-numeric:tabular-nums}
+
+/* insights */
+.aei-insights{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin:0}
+.aei-ins{background:var(--bg-elev);border:1px solid var(--line);border-top:2px solid var(--accent);border-radius:10px;padding:1.1rem 1.2rem}
+.aei-ins .it{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.04em;text-transform:uppercase;color:var(--accent-deep);margin:0 0 .5rem;font-weight:500}
+.aei-ins p{font-family:var(--serif);font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0}
+.aei-ins p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* source */
+.aei-src{font-family:var(--sans);font-size:var(--fs-xs);color:var(--ink-quiet);line-height:1.7;margin-top:1.6rem;max-width:90ch}
+.aei-src a{color:var(--ink-soft)}
+.aei-src b{color:var(--ink-soft);font-weight:600}
+
+/* section separators */
+.aei-sep{border:0;border-top:1px solid var(--line);margin:3.2rem 0 2.4rem}
+
+/* laptop-only note */
+.aei-mobile-note{display:none}
+
+@media(max-width:1080px){
+  .aei-grid{grid-template-columns:1.2fr 1fr;gap:.9rem}
+  .aei-panel{grid-column:1 / -1;position:static}
+  .aei-two{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .aei-labonly{display:none}
+  .aei-mobile-note{display:block;font-family:var(--sans);font-size:var(--fs-sm);color:var(--ink-soft);background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:1.1rem 1.2rem;line-height:1.65;margin:1.5rem 0}
+  .aei-stats{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .aei *{animation:none!important;transition:none!important}
+  .aei-hero .aei-eyebrow,.aei-hero .aei-h1,.aei-hero .aei-lede{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand"><span class="dot" aria-hidden="true"></span>AI Literacy Foundation<sup class="brand-tm" aria-hidden="true">&#8482;</sup></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="roadmap.html">The AI Roadmap</a>
+      <a href="ai-economic-index.html" aria-current="page">AI Economic Index</a>
+      <a href="ai-jobs.html">AI &amp; Jobs</a>
+      <a href="work.html">What We Do</a>
+      <a href="memos.html">Memos</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="donate.html" class="cta-donate">Support us</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="section section--flush" style="padding-bottom:clamp(1.25rem,3vh,2rem)">
+<div class="wrap--wide">
+<div class="aei-hero">
+<p class="aei-eyebrow"><span class="sig" aria-hidden="true"></span>Data &middot; The AI economy</p>
+<h1 class="aei-h1">Where people put AI to <em>work</em></h1>
+<p class="aei-lede">A public reading of the Anthropic Economic Index open data. It shows how people used the Claude AI assistant across US states, countries, and kinds of work in May 2026. It is one assistant's usage, not the whole economy.</p>
+<div class="aei-stats" id="aeiStats" aria-label="Headline figures"></div>
+</div>
+</div>
+</section>
+
+<section class="section section--flush" style="padding-top:0">
+<div class="wrap--wide">
+<div class="aei" data-reveal>
+
+<div class="aei-note">
+  <span class="aei-note-lbl">How to read this</span>
+  <b>This is Claude.ai usage, not all AI.</b> The data measures Claude chat and Cowork use on Free, Pro, and Max plans. The Usage Index is a place's share of that usage divided by its share of the world's working-age population, ages 15 to 64. A score of 1.0 means usage is proportional to population, above 1.0 means higher than expected, below 1.0 means lower. Some small figures are not published to protect privacy, so a missing value means not published, not zero, and published percentages need not add to 100.
+</div>
+
+<p class="aei-mobile-note">This wide interactive view is built for a larger screen. Open this page on a laptop or desktop to explore the maps, rankings, and charts.</p>
+
+<div class="aei-labonly">
+<div class="aei-modes" role="group" aria-label="Choose a view">
+  <div class="aei-seg" id="aeiModes">
+    <button data-mode="us" aria-pressed="true">United States</button>
+    <button data-mode="world" aria-pressed="false">World</button>
+    <button data-mode="use" aria-pressed="false">How people use AI</button>
+  </div>
+</div>
+
+<!-- ============ US VIEW ============ -->
+<div class="aei-view on" id="view-us">
+  <div class="aei-viewhead">
+    <h2>The United States, state by state</h2>
+    <p>Each tile is a state, placed roughly by geography and coloured by its Usage Index. Select any state for its rank, its most frequent topics, and the topics most distinctive to it. Pin a state to compare the rest against it.</p>
+  </div>
+  <div class="aei-controls">
+    <div class="aei-legend" id="usLegend" aria-hidden="true"></div>
+    <div class="aei-baseline">
+      <span class="aei-basechip" id="usBaseChip"></span>
+    </div>
+  </div>
+  <div class="aei-grid">
+    <div class="aei-card aei-map" id="usMap" role="group" aria-label="US states, sized equally and coloured by Usage Index"></div>
+    <div class="aei-card">
+      <div class="aei-boardhead"><span id="usBoardTitle">States by Usage Index</span><span>Index</span></div>
+      <div class="aei-board" id="usBoard"></div>
+    </div>
+    <aside class="aei-card aei-panel" id="usPanel" aria-live="polite"></aside>
+  </div>
+</div>
+
+<!-- ============ WORLD VIEW ============ -->
+<div class="aei-view" id="view-world">
+  <div class="aei-viewhead">
+    <h2>The world, country by country</h2>
+    <p>Every published country, ordered by its Usage Index. AI Literacy Foundation is based in Copenhagen, so Denmark is one tap away as a benchmark. Pin any country to compare the rest against it.</p>
+  </div>
+  <div class="aei-controls">
+    <div class="aei-legend" id="worldLegend" aria-hidden="true"></div>
+    <div class="aei-baseline">
+      <button class="aei-dkpin" id="dkPin" type="button">Benchmark Denmark</button>
+      <span class="aei-basechip" id="worldBaseChip"></span>
+    </div>
+  </div>
+  <div class="aei-grid">
+    <div class="aei-card" style="max-height:560px;overflow-y:auto">
+      <div class="aei-worldgrid" id="worldGrid" role="group" aria-label="Countries ordered by Usage Index"></div>
+    </div>
+    <div class="aei-card">
+      <div class="aei-boardhead"><span>Countries by Usage Index</span><span>Index</span></div>
+      <div class="aei-board" id="worldBoard"></div>
+    </div>
+    <aside class="aei-card aei-panel" id="worldPanel" aria-live="polite"></aside>
+  </div>
+  <div class="aei-share">
+    <h3>Share of all Claude.ai usage</h3>
+    <p>A different lens. Not per person, but each country's slice of total measured usage. The United States alone is about a fifth of it.</p>
+    <div id="worldShare"></div>
+  </div>
+</div>
+
+<!-- ============ USE VIEW ============ -->
+<div class="aei-view" id="view-use">
+  <div class="aei-viewhead">
+    <h2>How people use AI</h2>
+    <p>Not where, but what for. The occupations whose tasks appear most, whether people delegate work or collaborate on it, and the things Claude actually produces.</p>
+  </div>
+  <div class="aei-usewrap">
+
+    <div class="aei-sub">
+      <h3>Occupations by usage</h3>
+      <p>Tasks mapped to the US O*NET-SOC occupation they belong to, worldwide. The bar shows each occupation's split between automation, where the person delegates a task, and augmentation, where the person works with Claude.</p>
+      <div class="aei-jobs" id="useJobs"></div>
+      <div class="aei-dlegend" style="margin-top:1.1rem">
+        <span class="lg"><span class="sw" style="background:var(--accent)"></span>Augmentation, working together</span>
+        <span class="lg"><span class="sw" style="background:var(--ink-quiet)"></span>Automation, delegating the task</span>
+      </div>
+    </div>
+
+    <div class="aei-two">
+      <div class="aei-sub">
+        <h3>Delegate or collaborate</h3>
+        <p>The split between automation and augmentation, by setting. Personal chat is close to even. The developer API is almost all automation.</p>
+        <div class="aei-seg mini" id="divToggle" role="group" aria-label="Choose a setting" style="margin-bottom:1rem">
+          <button data-k="global" aria-pressed="true">Global chat</button>
+          <button data-k="USA" aria-pressed="false">US chat</button>
+          <button data-k="DNK" aria-pressed="false">Denmark</button>
+          <button data-k="api" aria-pressed="false">Business API</button>
+        </div>
+        <div class="aei-diverge" id="divChart"></div>
+      </div>
+      <div class="aei-sub">
+        <h3>What Claude produces</h3>
+        <p>The main output of each conversation, worldwide. One hundred squares, each roughly one in a hundred conversations.</p>
+        <div class="aei-waffle" id="artWaffle" aria-hidden="true"></div>
+        <div class="aei-wlegend" id="artLegend"></div>
+      </div>
+    </div>
+
+    <div class="aei-sub">
+      <h3>Most common requests</h3>
+      <p>The broad topics people bring to Claude, as a share of conversations. Switch between the world and the United States.</p>
+      <div class="aei-seg mini" id="reqToggle" role="group" aria-label="Choose a region" style="margin-bottom:1.1rem">
+        <button data-k="global" aria-pressed="true">Global</button>
+        <button data-k="us" aria-pressed="false">United States</button>
+      </div>
+      <div id="reqBars"></div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="aei-sep">
+
+<!-- insights -->
+<div class="aei-viewhead"><h2>Four things the data shows</h2></div>
+<div class="aei-insights" id="aeiInsights"></div>
+
+<p class="aei-src">
+  <b>Source.</b> Anthropic Economic Index, released 26 June 2026, licensed CC-BY. Companion report: <a href="https://www.anthropic.com/research/economic-index-june-2026-report" target="_blank" rel="noopener">Cadences</a>, with data through May 2026. Figures are shares of Claude.ai conversations under Anthropic's privacy filtering, so they need not sum to 100. Occupations use the US O*NET-SOC classification. The Usage Index covers countries and US states only.
+  <br><br>
+  <b>What AI Literacy Foundation added.</b> A plain-language, public reading of open data, with the caveats stated up front. We do not sell anything and we take no position beyond making the numbers easier to understand.
+</p>
+
+</div><!-- /labonly -->
+</div><!-- /aei -->
+</div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap--wide">
+    <div class="site-footer__grid">
+      <div>
+        <h3 class="site-footer__heading">The Foundation</h3>
+        <div class="site-footer__addr">
+          <strong>AI Literacy Foundation</strong>
+          <span class="site-footer__city">Copenhagen, Denmark</span><br><br>
+          <span class="mono" style="font-size:var(--fs-xs);">CVR &middot; 46487869</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="site-footer__heading">Site</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="roadmap.html">The AI Roadmap</a></li>
+          <li><a href="ai-economic-index.html">AI Economic Index</a></li>
+          <li><a href="ai-jobs.html">AI &amp; Jobs</a></li>
+          <li><a href="work.html">What We Do</a></li>
+          <li><a href="memos.html">Memos</a></li>
+          <li><a href="donate.html">Support us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="site-footer__heading">Contact</h3>
+        <ul>
+          <li><a href="work.html#contact">Contact form <span aria-hidden="true">&rarr;</span></a></li>
+          <li><a href="mailto:hello@ailiteracyfoundation.eu">hello@ailiteracyfoundation.eu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <div>&copy; 2026 AI Literacy Foundation&#8482;. All rights reserved. &middot; CVR 46487869</div>
+      <div class="lang-toggle">
+        <a href="ai-economic-index.html" class="active">EN</a>
+        <a href="da/index.html">DA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>const toggle=document.getElementById('navToggle'),nav=document.getElementById('nav');if(toggle&&nav){toggle.addEventListener('click',()=>{const o=nav.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(o));});document.addEventListener('click',e=>{if(!nav.contains(e.target)&&!toggle.contains(e.target)&&nav.classList.contains('is-open')){nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}});}</script>
+<script src="ai-economic-index.data.js?v=1"></script>
+<script src="ai-economic-index.js?v=1" defer></script>
+<script src="motion.js?v=polish1" defer></script>
+</body>
+</html>
