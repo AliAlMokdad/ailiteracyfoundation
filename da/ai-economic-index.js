@@ -314,7 +314,7 @@ var USE = (function(){
     el.innerHTML=arr.map(function(j){
       var aug=j.aug!=null?j.aug:0, auto=j.auto!=null?j.auto:0, sum=aug+auto;
       var aw=sum>0?(aug/sum*100):50, bw=100-aw;
-      var dot=j.mode==='aug'?'var(--accent)':'var(--ink-quiet)';
+      var dot=j.mode==='aug'?'var(--accent)':'var(--chart-neutral)';
       var meta = sum>0 ? ('Samarbejde '+Math.round(aug)+'% · Automatisering '+Math.round(auto)+'%') : 'Fordeling ikke offentliggjort';
       return '<div class="aei-job"><div class="jt"><span class="jd" style="background:'+dot+'"></span><span class="jname">'+esc(daJob(j))+'</span></div>'+
         '<div class="jpct">'+(j.pct!=null?j.pct.toFixed(2):'--')+'% af brugen</div>'+
@@ -332,7 +332,7 @@ var USE = (function(){
     document.getElementById('divChart').innerHTML=
       '<div class="aei-dtrack"><div class="auto" style="width:'+autoW.toFixed(1)+'%"><span>'+auto.toFixed(0)+'%</span></div>'+
       '<div class="aug" style="width:'+augW.toFixed(1)+'%"><span>'+aug.toFixed(0)+'%</span></div></div>'+
-      '<div class="aei-dlegend"><span class="lg"><span class="sw" style="background:var(--ink-quiet)"></span>Automatisering, uddelegeret</span>'+
+      '<div class="aei-dlegend"><span class="lg"><span class="sw" style="background:var(--chart-neutral)"></span>Automatisering, uddelegeret</span>'+
       '<span class="lg"><span class="sw" style="background:var(--accent)"></span>Samarbejde</span>'+
       (a.autonomy!=null?'<span class="lg" style="margin-left:auto">AI-autonomi '+a.autonomy.toFixed(1)+' ud af 5</span>':'')+'</div>';
   }
