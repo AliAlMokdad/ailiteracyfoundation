@@ -7,7 +7,17 @@
   --bg-deep: #EFEAE0;
   --ink: #15140F;
   --ink-soft: #4A463E;
-  --ink-quiet: #87827A;
+  /* A11y pass 2 (2026-07-27): was #87827A = 3.48:1 on --bg, which FAILS WCAG AA for
+     body text. The 2026-05-17 pass fixed this per SELECTOR (.muted, .section-label,
+     .status__label, .status__foot), so every component built AFTER it silently
+     inherited the failing value again: the memo hub's descriptions at 17px, its
+     dates, its mobile numerals, the footer headings, the copyright and the language
+     toggle were all still 3.48:1. Fixing the TOKEN closes the class of bug instead of
+     the instance. #69645C = 5.35:1, and it is the same grey the earlier pass chose. */
+  --ink-quiet: #69645C;
+  /* The old value, kept ONLY for chart fills and bars on the Economic Index, where it
+     encodes data rather than carrying text, so it must not shift. Never use for text. */
+  --chart-neutral: #87827A;
   --line: #E0D9C9;
   --line-soft: #ECE6D8;
   --accent: #B05433;
@@ -289,7 +299,14 @@ body {
     color: var(--ink-quiet);
     font-weight: 500;
   }
-  .nav-lang-mobile .active {
+  /* SPECIFICITY FIX (2026-07-27). This rule always intended cream-on-ink for the active pill,
+     but `.nav-lang-mobile span.active` above (0,2,1) outranks `.nav-lang-mobile .active`
+     (0,2,0), so the background applied and the COLOUR never did: the pill has been rendering
+     quiet grey on ink the whole time. That accidentally measured 4.83:1 with the old token and
+     dropped to 3.14:1 when the token was corrected for light backgrounds, which is how the bug
+     surfaced. Matching the selector's specificity restores the intended 16.8:1. */
+  .nav-lang-mobile span.active,
+  .nav-lang-mobile a.active {
     background: var(--ink);
     color: var(--bg);
   }

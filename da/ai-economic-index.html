@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=polish4">
+<link rel="stylesheet" href="../styles.css?v=polish5">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"AI-økonomiindeks","url":"https://ailiteracyfoundation.eu/da/ai-economic-index.html","inLanguage":"da","description":"En interaktiv, offentlig gennemgang af den åbne Anthropic Economic Index: brugen af Claude fordelt på amerikanske delstater, lande og typer af arbejde.","isPartOf":{"@type":"WebSite","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"publisher":{"@type":"NonprofitOrganization","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"mainEntity":{"@type":"Dataset","name":"Anthropic Economic Index","creator":{"@type":"Organization","name":"Anthropic"},"license":"https://creativecommons.org/licenses/by/4.0/","isBasedOn":"https://www.anthropic.com/research/economic-index-june-2026-report","temporalCoverage":"2026-05","description":"Claude.ai-brugsmålinger aggregeret efter geografi og opgave, udgivet 2026-06-26."}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Forside","item":"https://ailiteracyfoundation.eu/da/"},{"@type":"ListItem","position":2,"name":"AI-økonomiindeks","item":"https://ailiteracyfoundation.eu/da/ai-economic-index.html"}]}</script>
 <style>
@@ -164,7 +164,7 @@
 /* baseline meter with 1.0 tick */
 .aei-meter{position:relative;height:9px;background:var(--bg-deep);border-radius:999px;overflow:visible;margin:.85rem 0 .3rem}
 .aei-meter .fill{height:100%;background:linear-gradient(90deg,var(--accent-soft),var(--accent));border-radius:999px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
-.aei-meter .tick{position:absolute;top:-3px;bottom:-3px;width:0;border-left:1.5px dashed var(--ink-quiet)}
+.aei-meter .tick{position:absolute;top:-3px;bottom:-3px;width:0;border-left:1.5px dashed var(--chart-neutral)}
 .aei-metercap{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--ink-quiet);letter-spacing:.03em}
 .aei-pdiv{height:1px;background:var(--line);margin:1rem 0}
 .aei-mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin:.2rem 0 0}
@@ -207,7 +207,7 @@
 .aei-job .jpct{font-family:var(--mono);font-size:13px;color:var(--accent-deep);font-weight:500;margin-top:.55rem;font-variant-numeric:tabular-nums}
 .aei-job .jsplit{height:6px;border-radius:5px;overflow:hidden;display:flex;margin-top:.6rem;background:var(--bg-deep)}
 .aei-job .jsplit .a{background:var(--accent)}
-.aei-job .jsplit .b{background:var(--ink-quiet)}
+.aei-job .jsplit .b{background:var(--chart-neutral)}
 .aei-job .jmeta{font-family:var(--mono);font-size:10.5px;color:var(--ink-quiet);margin-top:.45rem;letter-spacing:.02em}
 
 /* diverging automation/augmentation */
@@ -215,7 +215,7 @@
 .aei-drow{display:grid;grid-template-columns:130px 1fr;align-items:center;gap:1rem;margin-bottom:.7rem}
 .aei-drow .dlab{font-family:var(--sans);font-size:13px;color:var(--ink);text-align:right}
 .aei-dtrack{display:flex;height:26px;border-radius:6px;overflow:hidden;background:var(--bg-deep)}
-.aei-dtrack .auto{background:var(--ink-quiet);display:flex;align-items:center;justify-content:flex-start;padding:0 .5rem}
+.aei-dtrack .auto{background:var(--chart-neutral);display:flex;align-items:center;justify-content:flex-start;padding:0 .5rem}
 .aei-dtrack .aug{background:var(--accent);display:flex;align-items:center;justify-content:flex-end;padding:0 .5rem;margin-left:auto}
 .aei-dtrack span{font-family:var(--mono);font-size:11px;color:var(--bg);font-variant-numeric:tabular-nums}
 .aei-dlegend{display:flex;gap:1.4rem;font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-quiet);margin-top:1rem}
@@ -251,7 +251,7 @@
 .aei-cmp .b{height:11px;border-radius:5px;background:var(--bg-deep);overflow:hidden;margin-bottom:3px}
 .aei-cmp .b i{display:block;height:100%;border-radius:5px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
 .aei-cmp .b.dk i{background:var(--accent)}
-.aei-cmp .b.wd i{background:var(--ink-quiet)}
+.aei-cmp .b.wd i{background:var(--chart-neutral)}
 .aei-cmp .tag{font-family:var(--mono);font-size:10px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-quiet)}
 .aei-dknote{font-family:var(--serif);font-size:13.5px;color:var(--ink-soft);line-height:1.6;margin:1rem 0 0;font-style:italic}
 .aei-dktopics{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
@@ -437,7 +437,7 @@
       <div class="aei-jobs" id="useJobs"></div>
       <div class="aei-dlegend" style="margin-top:1.1rem">
         <span class="lg"><span class="sw" style="background:var(--accent)"></span>Samarbejde, man arbejder sammen</span>
-        <span class="lg"><span class="sw" style="background:var(--ink-quiet)"></span>Automatisering, opgaven uddelegeres</span>
+        <span class="lg"><span class="sw" style="background:var(--chart-neutral)"></span>Automatisering, opgaven uddelegeres</span>
       </div>
     </div>
 
