@@ -2108,3 +2108,31 @@ a.inline-link:hover {
   .mandate { border-radius: 10px; }
   .mandate__quote { font-size: var(--fs-lg); }
 }
+
+/* ===================================================================
+   HOME LAPTOP BREATHING PASS (2026-08-01)
+   The section rhythm is vh-scaled, so on laptop heights (700-800px)
+   every clamp resolves near its floor and the page compresses: at
+   768px tall, sections got 61px, the audience line 38px, the hero
+   bottom 46px. Tall monitors never saw it. Scoped to body.home so
+   work/roadmap/memos keep their current rhythm, and gated to >640px
+   so the phone experience (own overrides) is untouched.
+   =================================================================== */
+@media (min-width: 641px) {
+  body.home .section { padding: clamp(4.5rem, 11vh, 7rem) 0; }
+  /* Keep the dense modifier winning: the blanket rule above would otherwise
+     silently override any future .section--dense added to the home page. */
+  body.home .section--dense { padding: clamp(2.5rem, 5vh, 4rem) 0; }
+  body.home .section--statement { padding: clamp(3.25rem, 8vh, 5rem) 0; }
+  body.home .hero { padding: clamp(4rem, 13vh, 8.5rem) 0 clamp(3.5rem, 9vh, 6rem); }
+  /* Air goes to the sections, not the hero decoration: a tighter hero mark
+     keeps the primary CTA row fully above the fold at 1366x768. */
+  body.home .hero-mark { margin-bottom: 1.5rem; }
+  body.home h2 { margin-bottom: 1.75rem; }
+  body.home .section-heading { margin-bottom: 3rem; }
+  body.home .cards-3 { margin-top: 2.5rem; gap: 1.5rem; }
+  body.home .frameworks { gap: 1.25rem; }
+  body.home .status { padding: clamp(1.75rem, 3.2vw, 2.5rem); }
+  body.home .status__row { padding: 0.65rem 0; }
+  body.home .site-footer { margin-top: 6.5rem; }
+}
