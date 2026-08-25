@@ -259,9 +259,17 @@
 /* ================= Print: certificate only ================= */
 
 @media print {
-  body.printing-cert * { visibility: hidden; }
-  body.printing-cert .cert, body.printing-cert .cert * { visibility: visible; }
-  body.printing-cert .cert { position: fixed; inset: 8% 6% auto; border-color: #000; }
+  body.printing-cert .site-header, body.printing-cert .course-hero, body.printing-cert .course-rail,
+  body.printing-cert .site-footer, body.printing-cert .begin-card, body.printing-cert .objectives,
+  body.printing-cert .pager, body.printing-cert .course-colophon,
+  body.printing-cert .lesson:not(.lesson--quiz),
+  body.printing-cert .lesson--quiz > *:not(.completion),
+  body.printing-cert .completion__bar { display: none !important; }
+  body.printing-cert .lesson--quiz { display: block !important; border: 0; padding: 0; }
+  body.printing-cert .course-shell { display: block; padding: 0; }
+  body.printing-cert .completion { display: block; margin: 0; }
+  body.printing-cert .cert-frame { border: 0; padding: 0; background: none; border-radius: 0; }
+  body.printing-cert .cert { border-color: #000; }
 }
 
 /* ================= Responsive ================= */
