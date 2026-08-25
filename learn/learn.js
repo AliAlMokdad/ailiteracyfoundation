@@ -90,7 +90,7 @@
       allDone: 'Se et kursus igen \u2192',
       allDoneNote: 'Du har gennemf\u00f8rt forl\u00f8bet. Alle kurser bliver st\u00e5ende, hvis du vil vende tilbage til et af dem.',
       needsName: 'mangler et navn', addNameAbove: 'Skriv dit navn ovenfor', addNameFirst: 'Skriv dit navn f\u00f8rst',
-      updateName: 'Ret navnet', putOnCert: 'S\u00e6t det p\u00e5 beviset'
+      updateName: 'Ret navn', putOnCert: 'S\u00e6t det p\u00e5 beviset'
     }
   };
   function T(k, vars) {

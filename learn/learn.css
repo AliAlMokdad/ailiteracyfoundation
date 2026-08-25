@@ -280,6 +280,8 @@
 
 /* ================= Completion + certificate ================= */
 
+/* the site header is sticky at 74px, so anything we scroll to needs to clear it */
+.completion, .lesson, .quiz fieldset { scroll-margin-top: 96px; }
 .completion { display: none; margin-top: 2.25rem; }
 .completion.is-open { display: block; }
 .completion__bar { border: 1px solid var(--line); border-radius: 12px; background: var(--bg-deep); margin-bottom: 1.15rem; padding: 1.4rem 1.75rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
