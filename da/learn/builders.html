@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>AI Fluency for udviklere · AI Literacy Foundation</title>
-<meta name="description" content="AI Fluency for produktfolk, designere og udviklere: udviklerens værktøjskasse, Description-kæden, fem linser til kode-Discernment og Diligence-gaten før deploy. Gratis, med test og bevis.">
+<meta name="description" content="AI Fluency for produktfolk, designere og udviklere: udviklerens værktøjskasse, Description-kæden, fem linser til kode-Discernment og Diligence-porten før produktionsættelse. Gratis, med test og bevis.">
 <meta name="theme-color" content="#F7F4EE">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ailiteracyfoundation.eu/da/learn/builders.html">
@@ -16,23 +16,28 @@
 <meta property="og:title" content="AI Fluency for udviklere">
 <meta property="og:description" content="For produktfolk, designere og udviklere: AI er stærkest til første udkast til implementering, og hvad der skal bygges, samt om det sendes i produktion, er fortsat dit ansvar.">
 <meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "Course",
-  "name": "AI Fluency for Builders",
-  "description": "AI Fluency for product people, designers, and makers who own the full arc from customer problem to shipped solution.",
-  "provider": { "@id": "https://ailiteracyfoundation.eu/#organization" },
+  "name": "AI Fluency for udviklere",
+  "description": "AI Fluency for produktfolk, designere og udviklere: udviklerens værktøjskasse, Description-kæden, fem linser til kode-Discernment og Diligence-porten før produktionsættelse. Gratis, med test og bevis.",
+  "provider": {
+    "@id": "https://ailiteracyfoundation.eu/#organization"
+  },
   "isAccessibleForFree": true,
-  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-  "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT3H" }
-}
-</script>
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4,0/",
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "courseWorkload": "PT3H"
+  },
+  "inLanguage": "da"
+}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../styles.css?v=polish6">
-<link rel="stylesheet" href="../../learn/learn.css?v=39">
+<link rel="stylesheet" href="../../learn/learn.css?v=40">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <body>
@@ -122,7 +127,7 @@
         <li>Delegér første udkast til implementering op mod test, du selv definerer. Behold empati, dømmekraft og beslutningen om at sende i produktion</li>
         <li>Spor produktfejl tilbage gennem Description-kæden</li>
         <li>Evaluer kode gennem de fem linser, fra at køre den til vurdering med dømmekraft alene</li>
-        <li>Kør Diligence-gaten før deploy, før noget sendes i produktion</li>
+        <li>Kør Diligence-porten før produktionsættelse, før noget sendes i produktion</li>
       </ul>
     </div>
 
@@ -143,7 +148,7 @@
         <p>Fuldfør derefter sætningen: "Hvis AI kunne håndtere ___, kunne jeg bruge mere tid på ___." Den sætning er dit Delegation-kompas gennem hele kurset.</p>
       </div>
       <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
-        <li>Implementering kan delegeres. Dømmekraft kan ikke.</li>
+        <li>Første udkast af implementering kan delegeres, målt mod tests du selv definerer først. Dømmekraft kan slet ikke delegeres.</li>
         <li>En skriftlig brief slår at forklare din verden igen i hver samtale.</li>
       </ul></div>
     </section>
@@ -196,7 +201,7 @@
         <p>En lokal klinik ønsker, at patienter kan se forventede ventetider. Skriv bevidst ingen kode i denne lektion. Lav tre artefakter:</p>
         <ol>
           <li>En problembeskrivelse: hvilke patienter, hvilket resultat, hvordan føles fremragende?</li>
-          <li>En delegationsplan, der kortlægger de seks kompetencer i forhold til automatisering, augmentering eller handlekraft.</li>
+          <li>En delegationsplan, der kortlægger de seks kapaciteter i forhold til automatisering, augmentering eller handlekraft.</li>
           <li>Fem til syv accepttest, som en fremmed ville kunne verificere. "Viser ventetiden på under 30 sekunder uden at oprette en konto" er en test. "Nem at bruge" er ikke.</li>
         </ol>
       </div>
@@ -231,9 +236,9 @@
       <ol>
         <li><strong>Funktionel integritet.</strong> Virker det med rigtige data? Den typiske AI-fejl: koden består sine unit-test, men går i stykker ved data, som prompten aldrig tog højde for.</li>
         <li><strong>Driftsklarhed.</strong> Fejlhåndtering, logning, ydeevne under belastning, sikkerhedsniveau.</li>
-        <li><strong>Problemløsning.</strong> Er dette overhovedet den rigtige løsning på det faktiske problem?</li>
+        <li><strong>Problemmatch.</strong> Er dette overhovedet den rigtige løsning på det faktiske problem?</li>
         <li><strong>Oplevelseskvalitet.</strong> Ville nogen have lyst til at bruge det? Noget, der er funktionelt, men forvirrende, langsomt eller klodset, er en fejl i oplevelseskvaliteten.</li>
-        <li><strong>Ansvarlig indvirkning.</strong> Hvem kan dette skade, udelukke eller vildlede?</li>
+        <li><strong>Ansvarlig effekt.</strong> Hvem kan dette skade, udelukke eller vildlede?</li>
       </ol>
       <div class="callout"><span class="furniture">Blinde vinkler og god smag</span><p>AI har forudsigelige blinde vinkler inden for samtidighed, sikkerhed og alt det, der først går i stykker, når det skal skaleres. Og god smag er en udviklerkompetence: AI leverer det funktionelle, men det er op til dig at gøre det værd at bruge.</p></div>
       <p>En tankevækkende overvejelse: Når resultatet ikke er godt nok, er din første indskydelse så at rette det selv eller at beskrive det bedre? Den anden indskydelse kan skaleres, det kan den første ikke.</p>
@@ -243,13 +248,13 @@
         <button type="button" class="opt" data-correct>Funktionel integritet: Det virkede aldrig med rigtige data</button>
         <button type="button" class="opt">Oplevelseskvalitet</button>
         <button type="button" class="opt">Ansvarlig effekt</button>
-        <button type="button" class="opt">Problem-match</button>
+        <button type="button" class="opt">Problemmatch</button>
         <p class="check__why">At bestå unit tests, men fejle på data, som prompten aldrig dækkede, er det klassiske AI-svigt i funktionel integritet. Virkelige input er den test, der tæller.</p>
         <span class="check__award"></span>
       </div>
 
       <div class="takeaways"><span class="furniture">Vigtigste pointer</span><ul>
-        <li>Fem linser: funktionel integritet, produktionsklarhed, problem-match, oplevelseskvalitet og ansvarlig effekt.</li>
+        <li>Fem linser: funktionel integritet, driftsklarhed, problem-match, oplevelseskvalitet og ansvarlig effekt.</li>
         <li>Concurrency, sikkerhed og adfærd i stor skala er de faste blinde vinkler.</li>
       </ul></div>
     </section>
@@ -318,7 +323,7 @@
             <label class="opt"><input type="radio" name="q2"><span>Produktionsklarhed</span></label>
             <label class="opt"><input type="radio" name="q2" data-correct><span>Oplevelseskvalitet</span></label>
             <label class="opt"><input type="radio" name="q2"><span>Versionsstyring</span></label>
-            <p class="q-why">Det byggede fungerer, og det løser det rigtige problem. Det, der svigter, er oplevelsen af at bruge det. Problem-match ville være linsen, hvis produktet fra starten løste det forkerte problem.</p>
+            <p class="q-why">Det byggede fungerer, og det løser det rigtige problem. Det, der svigter, er oplevelsen af at bruge det. Problemmatch ville være linsen, hvis produktet fra starten løste det forkerte problem.</p>
           </fieldset>
           <fieldset>
             <legend><span class="q-n">Spørgsmål 3</span>Beskrivelseskæden går:</legend>
@@ -401,7 +406,7 @@
               <span>Point<b data-cert-points></b></span>
               <span>Beviskode<b data-cert-code></b></span>
             </div>
-            <div class="cert__foot">Foreningen AI Literacy Foundation · Copenhagen, Denmark · CVR 46487869 · <a href="https://ailiteracyfoundation.eu/da/learn.html">ailiteracyfoundation.eu/da/learn</a></div>
+            <div class="cert__foot">Foreningen AI Literacy Foundation · København, Danmark · CVR 46487869 · <a href="https://ailiteracyfoundation.eu/da/learn.html">ailiteracyfoundation.eu/da/learn</a></div>
           </div>
         </div>
       </div>
@@ -438,7 +443,7 @@
     });
   }
 </script>
-<script src="../../learn/learn.js?v=39" defer></script>
+<script src="../../learn/learn.js?v=40" defer></script>
 
 </body>
 </html>

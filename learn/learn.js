@@ -49,6 +49,8 @@
       passedBefore: 'This attempt: {c} of {t}. Your earlier pass and certificate stand.',
       notYet: 'Not yet. {c} of {t} correct ({p}%). The explanation under each question shows why. Unlimited retries.',
       retake: 'Retake this quiz', submit: 'Submit answers',
+      allDone: 'Revisit any course \u2192',
+      allDoneNote: 'You have finished all twelve. Everything stays open if you want to come back to it.',
       needsName: 'needs a name', addNameAbove: 'Add your name above', addNameFirst: 'Add your name first',
       updateName: 'Update the name', putOnCert: 'Put it on the certificate'
     },
@@ -85,6 +87,8 @@
       passedBefore: 'Dette fors\u00f8g: {c} ud af {t}. Din tidligere best\u00e5else og dit bevis st\u00e5r ved magt.',
       notYet: 'Ikke endnu. {c} ud af {t} rigtige ({p}%). Forklaringen under hvert sp\u00f8rgsm\u00e5l viser hvorfor. Ubegr\u00e6nsede fors\u00f8g.',
       retake: 'Tag testen igen', submit: 'Send svar',
+      allDone: 'Se et kursus igen \u2192',
+      allDoneNote: 'Du har gennemf\u00f8rt alle tolv. Alt bliver st\u00e5ende, hvis du vil vende tilbage til det.',
       needsName: 'mangler et navn', addNameAbove: 'Skriv dit navn ovenfor', addNameFirst: 'Skriv dit navn f\u00f8rst',
       updateName: 'Ret navnet', putOnCert: 'S\u00e6t det p\u00e5 beviset'
     }
@@ -259,6 +263,14 @@
         var at = (typeof inProgress.s.at === 'number' ? inProgress.s.at : 0) + 1;
         if (whereEl && l.lessons && !whereEl.hasAttribute('data-locked')) whereEl.textContent = T('onLesson', { n: Math.min(at, l.lessons), m: l.lessons });
       }
+    } else if (started > 0 && COURSES.every(isComplete)) {
+      /* nothing left to point at, so stop pretending there is */
+      actionEl.setAttribute('href', '#start-here');
+      actionEl.textContent = T('allDone');
+      if (whereEl && !whereEl.hasAttribute('data-locked')) {
+        whereEl.hidden = false;
+        whereEl.textContent = T('allDoneNote');
+      }
     } else if (started > 0) {
       var nextId = null;
       if (doneIn(STAGES.foundation) < 2) { nextId = STAGES.foundation.filter(function (i) { var s = store(i); return !(s.quiz && s.quiz.passed); })[0]; }
@@ -320,7 +332,14 @@
       if (!el.classList.contains('is-link')) return;
       var q = -1;
       lessons.forEach(function (s, k) { if (s.classList.contains('lesson--quiz')) q = k; });
-      if (q >= 0) show(q);
+      if (q < 0) return;
+      show(q, false);
+      var comp = document.querySelector('.completion');
+      if (comp) {
+        window.requestAnimationFrame(function () {
+          comp.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
     };
     el.addEventListener('click', goToCert);
     el.addEventListener('keydown', function (e) {

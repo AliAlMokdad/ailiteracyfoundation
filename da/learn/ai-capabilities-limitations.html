@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>AI's muligheder og begrænsninger · AI Literacy Foundation</title>
-<meta name="description" content="Opbyg en præcis mental model af, hvad sprogmodeller kan og ikke kan: next-token prediction, viden, arbejdshukommelse og styrbarhed. 13 lektioner, quiz, bevis. Gratis.">
+<meta name="description" content="Opbyg en præcis mental model af, hvad sprogmodeller kan og ikke kan: next-token prediction, viden, arbejdshukommelse og styrbarhed. 13 lektioner, test, bevis. Gratis.">
 <meta name="theme-color" content="#F7F4EE">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ailiteracyfoundation.eu/da/learn/ai-capabilities-limitations.html">
@@ -14,25 +14,30 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://ailiteracyfoundation.eu/da/learn/ai-capabilities-limitations.html">
 <meta property="og:title" content="AI's muligheder og begrænsninger">
-<meta property="og:description" content="En præcis mental model af maskinen: fire egenskaber, hver et spektrum fra evne til begrænsning. Gratis, selvstudie, med quiz og bevis.">
+<meta property="og:description" content="En præcis mental model af maskinen: fire egenskaber, hver et spektrum fra evne til begrænsning. Gratis, selvstudie, med test og bevis.">
 <meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "Course",
-  "name": "AI Capabilities and Limitations",
-  "description": "An accurate mental model of what large language models can and cannot do: next-token prediction, knowledge, working memory, steerability, and context limits.",
-  "provider": { "@id": "https://ailiteracyfoundation.eu/#organization" },
+  "name": "AI's muligheder og begrænsninger",
+  "description": "Opbyg en præcis mental model af, hvad sprogmodeller kan og ikke kan: next-token prediction, viden, arbejdshukommelse og styrbarhed. 13 lektioner, test, bevis. Gratis.",
+  "provider": {
+    "@id": "https://ailiteracyfoundation.eu/#organization"
+  },
   "isAccessibleForFree": true,
-  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-  "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT3H30M" }
-}
-</script>
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4,0/",
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "courseWorkload": "PT3H30M"
+  },
+  "inLanguage": "da"
+}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../styles.css?v=polish6">
-<link rel="stylesheet" href="../../learn/learn.css?v=39">
+<link rel="stylesheet" href="../../learn/learn.css?v=40">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <body>
@@ -70,7 +75,7 @@
       <h1>AI's muligheder og begrænsninger</h1>
       <p class="lede">4D-rammeværket lærer dig at samarbejde med AI. Dette kursus lærer dig, hvordan AI kan arbejde sammen med dig. Sammen udgør de ét system: menneskelige kompetencer på den ene side, maskinegenskaber på den anden. Fire egenskaber forklarer det meste af, hvad du nogensinde vil se en sprogmodel gøre, strålende eller dårligt.</p>
       <div class="course-hero__meta">
-        <span>13 lektioner</span><span>1 videnskontrol</span><span>Quiz med 10 spørgsmål</span><span>~3,5 timer</span><span class="hl">Bevis + point</span>
+        <span>13 lektioner</span><span>1 videnstjek</span><span>Test med 10 spørgsmål</span><span>~3,5 timer</span><span class="hl">Bevis + point</span>
       </div>
       </div>
       <div class="course-ring">
@@ -113,7 +118,7 @@
       <li><a href="#l11"><span class="c" aria-hidden="true"></span> Bogstav mod ånd</a></li>
       <li><a href="#l12"><span class="c" aria-hidden="true"></span> Når egenskaber støder sammen</a></li>
       <li><a href="#l13"><span class="c" aria-hidden="true"></span> Næste trin</a></li>
-      <li><a href="#quiz"><span class="c" aria-hidden="true"></span> Kursusquiz</a></li>
+      <li><a href="#quiz"><span class="c" aria-hidden="true"></span> Kursustest</a></li>
     </ol>
   </aside>
 
@@ -123,7 +128,7 @@
     <div class="objectives">
       <span class="furniture">Hvad du lærer</span>
       <ul>
-        <li>Husk maskinens fire egenskaber: prediction, knowledge, working memory, steerability</li>
+        <li>Husk maskinens fire egenskaber: næste-token-forudsigelse, viden, arbejdshukommelse og styrbarhed</li>
         <li>Placer enhver opgave på evne-begrænsningsspektret, før du stoler på outputtet</li>
         <li>Diagnosticer fejl ved at navngive, hvilke to egenskaber der stødte sammen</li>
         <li>Verificer specifikke detaljer grundigst: navne, tal, kilder, citater</li>
@@ -154,8 +159,8 @@
       <div class="table-scroll"><table>
         <tr><th>Egenskab</th><th>Evnezone</th><th>Begrænsningszone</th></tr>
         <tr><td><strong>Forudsigelse af næste token</strong></td><td>Velkendte veje: opsummer, omformater, almindelige koncepter</td><td>Nyt område, sparsomme mønstre, hvor som helst "sandt" skal adskilles fra "lyder sandt"</td></tr>
-        <tr><td><strong>Viden</strong></td><td>Hyppige, konsistente, velrepræsenterede emner</td><td>Sjældne, efter-deadline, nicheprægede, lokale eller omstridte emner</td></tr>
-        <tr><td><strong>Arbejdshukommelse</strong></td><td>Passer komfortabelt i kontekstvinduet, nuværende session</td><td>Meget lange dokumenter, forventer kontinuitet på tværs af sessioner: the cliff</td></tr>
+        <tr><td><strong>Viden</strong></td><td>Hyppige, konsistente, velrepræsenterede emner</td><td>Sjældne, efter modellens vidensgrænse, nicheprægede, lokale eller omstridte emner</td></tr>
+        <tr><td><strong>Arbejdshukommelse</strong></td><td>Passer komfortabelt i kontekstvinduet, nuværende session</td><td>Meget lange dokumenter, forventer kontinuitet på tværs af sessioner: den bratte kant</td></tr>
         <tr><td><strong>Styrbarhed</strong></td><td>Korte, konkrete, verificerbare instruktioner</td><td>Lange ræsonnementskæder, abstrakte anmodninger, indbygget præcision</td></tr>
       </table></div>
       <div class="callout"><span class="furniture">Den mest nyttige sætning i dette kursus</span><p>Kalibreret tillid betyder, at du placerer din opgave på kontinuummet, ikke at du giver eller tilbageholder tillid fuldstændigt. Den samme mekanisme giver dig både kapaciteten og begrænsningen.</p></div>
@@ -276,7 +281,7 @@
       <span class="lesson__eyebrow">Lektion 09 · ~12 min</span>
       <h2>Tabt i midten</h2>
       <p>Prøv denne hukommelsestest på dig selv: Læs en liste med femten ord én gang, kig væk, og skriv ned, hvad du husker. Næsten alle husker de første par og de sidste par og glemmer midten. Psykologer kalder det seriel positionseffekt.</p>
-      <p>Sprogmodeller viser ofte den samme U-formede kurve. Forskning fra Stanford i 2023 (Liu et al.) viste, at nøjagtigheden ved genfinding af en nøglefaktum kan falde med mere end tredive procent, når denne faktum sidder midt i konteksten snarere end i kanterne. Effekten varierer efter model og opgave, nogle modeller håndterede testen næsten perfekt, og hvorfor det sker, studeres stadig.</p>
+      <p>Sprogmodeller viser ofte den samme U-formede kurve. Forskning fra Stanford i 2023 (Liu et al.) viste, at nøjagtigheden ved genfinding af en nøgleoplysning kan falde med mere end tredive procent, når denne oplysning sidder midt i konteksten snarere end i kanterne. Effekten varierer efter model og opgave, nogle modeller håndterede testen næsten perfekt, og hvorfor det sker, studeres stadig.</p>
       <p>Prompting-konsekvensen er direkte. Farligt mønster: En nøgleinstruktion begravet midt i tråden. Sikrere mønster: Nøgleinstruktion forrest og gentaget til sidst for lange kontekster. Og den dybere lektion om kontekst-engineering: Hvert stykke kontekst, du tilføjer, skubber andre stykker længere ind i midten.</p>
       <div class="callout"><span class="furniture">Vogteren</span><p>Mere kontekst er ikke lig med bedre resultater. Kuratér hensynsløst, placer strategisk, og gentag det, der er vigtigt. Løsningen er ikke mere; den er smartere.</p></div>
       <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
@@ -366,7 +371,7 @@
 
     <section class="lesson lesson--quiz" id="quiz" data-lesson>
       <span class="lesson__eyebrow">Afsluttende vurdering</span>
-      <h2>Kursusquiz</h2>
+      <h2>Kursustest</h2>
       <div class="quiz-intro"><span>Bestå med 80 %</span><span>Ubegrænset antal forsøg</span><span>Hvert svar forklaret</span></div>
       <div class="quiz">
         <form novalidate>
@@ -491,7 +496,7 @@
     </section>
 
     <div class="course-colophon">
-      <p><strong>Attribution.</strong> Tilpasset fra AI Fluency-kursusmaterialet udviklet i samarbejde med Anthropic, CC BY-NC-SA 4.0. Denne tilpasning © 2026 AI Literacy Foundation, delt under samme licens. Den refererede forskning om serieposition er Liu et al., Stanford, 2023 ("Lost in the Middle").</p>
+      <p><strong>Kreditering.</strong> Tilpasset fra AI Fluency-kursusmaterialet udviklet i samarbejde med Anthropic, CC BY-NC-SA 4.0. Denne tilpasning © 2026 AI Literacy Foundation, delt under samme licens. Den refererede forskning om serieposition er Liu et al., Stanford, 2023 ("Lost in the Middle").</p>
       <div class="course-nav-next">
         <a class="lbtn" href="ai-fluency-foundations.html">← Rammeværk og fundament</a>
         <a class="lbtn lbtn--primary" href="../learn.html#editions">Trin 2: vælg din udgave →</a>
@@ -521,7 +526,7 @@
     });
   }
 </script>
-<script src="../../learn/learn.js?v=39" defer></script>
+<script src="../../learn/learn.js?v=40" defer></script>
 
 </body>
 </html>
