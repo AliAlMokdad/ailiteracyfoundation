@@ -62,31 +62,94 @@
   });
   var xpEl = document.querySelector('[data-hub-xp]');
   var crEl = document.querySelector('[data-hub-credits]');
+  var stEl = document.querySelector('[data-hub-started]');
+  var started = COURSES.filter(function (id) {
+    var s = store(id);
+    return (s.read || []).length > 0 || (s.quiz && s.quiz.passed);
+  }).length;
   if (xpEl) xpEl.textContent = totalXP;
   if (crEl) crEl.textContent = credits;
+  if (stEl) stEl.textContent = started;
+  /* the scoreboard means nothing to someone who has not begun */
+  var statsEl = document.querySelector('[data-hub-stats]');
+  if (statsEl && started > 0) statsEl.hidden = false;
 
-  /* ---------- hub: resume where you left off ---------- */
-  var resumeEl = document.querySelector('.resume');
-  if (resumeEl) {
-    var best = null;
+  /* ---------- hub: the path, with live state ----------
+     Stage 1 is the two foundation courses. Stage 2 is any one edition, because
+     nobody needs all six. Stage 3 is the teaching material. */
+  var doneIn = function (ids) {
+    return ids.filter(function (id) { var s = store(id); return s.quiz && s.quiz.passed; }).length;
+  };
+  var STAGES = {
+    foundation: ['foundations', 'capabilities'],
+    edition: ['builders', 'educators', 'pk12', 'nonprofits', 'smallbiz', 'students'],
+    teach: ['teaching', 'trainer']
+  };
+  var pathEls = document.querySelectorAll('.path > a[data-path]');
+  if (pathEls.length) {
+    var touchedIn = function (ids) {
+      return ids.filter(function (id) { return (store(id).read || []).length > 0; }).length;
+    };
+    var fDone = doneIn(STAGES.foundation), eDone = doneIn(STAGES.edition), tDone = doneIn(STAGES.teach);
+    var state = {
+      foundation: { done: fDone >= 2, label: fDone ? fDone + ' of 2 courses passed' : (touchedIn(STAGES.foundation) ? 'In progress' : 'Start here') },
+      edition: { done: eDone >= 1, label: eDone ? (eDone === 1 ? 'One edition passed' : eDone + ' editions passed') : (touchedIn(STAGES.edition) ? 'In progress' : 'Pick one when you are ready') },
+      teach: { done: tDone >= 1, label: tDone ? 'Passed' : (touchedIn(STAGES.teach) ? 'In progress' : (eDone >= 1 ? 'Ready when you are' : 'Optional, for facilitators')) }
+    };
+    /* the active stage is the first one not yet finished */
+    var order = ['foundation', 'edition', 'teach'];
+    var active = order.filter(function (k) { return !state[k].done; })[0];
+    pathEls.forEach(function (el) {
+      var k = el.getAttribute('data-path');
+      var s = state[k];
+      if (!s) return;
+      el.querySelector('.path__s').textContent = s.done ? 'Done' : s.label;
+      el.classList.toggle('is-done', s.done);
+      el.classList.toggle('is-active', k === active && started > 0);
+    });
+  }
+
+  /* ---------- hub: one adaptive next action ----------
+     A first-time visitor gets the first course. Someone mid-course gets that
+     course and lesson. Someone between stages gets the next stage. */
+  var actionEl = document.querySelector('[data-next-action]');
+  var whereEl = document.querySelector('[data-next-where]');
+  if (actionEl) {
+    var linkFor = function (id) {
+      var chip = document.querySelector('[data-course-status="' + id + '"]');
+      var card = chip && chip.closest('.course-card');
+      var a = card && card.querySelector('h3 a');
+      return a ? { href: a.getAttribute('href'), title: a.textContent.trim(), lessons: parseInt(chip.getAttribute('data-lessons') || '0', 10) } : null;
+    };
+    var inProgress = null;
     COURSES.forEach(function (id) {
       var s = store(id);
       if (s.quiz && s.quiz.passed) return;
       if (!(s.read || []).length && typeof s.at !== 'number') return;
-      if (!best || (s.ts || 0) > (best.s.ts || 0)) best = { id: id, s: s };
+      if (!inProgress || (s.ts || 0) > (inProgress.s.ts || 0)) inProgress = { id: id, s: s };
     });
-    var card = best && document.querySelector('[data-course-status="' + best.id + '"]');
-    var link = card && card.closest('.course-card') && card.closest('.course-card').querySelector('h3 a');
-    if (best && link) {
-      var total = parseInt(card.getAttribute('data-lessons') || '0', 10);
-      var at = (typeof best.s.at === 'number' ? best.s.at : 0) + 1;
-      resumeEl.querySelector('.resume__title').textContent = link.textContent.trim();
-      resumeEl.querySelector('.resume__where').textContent = total ? 'Lesson ' + Math.min(at, total) + ' of ' + total : '';
-      var btn = resumeEl.querySelector('a.lbtn');
-      btn.setAttribute('href', link.getAttribute('href'));
-      resumeEl.classList.add('is-on');
+    if (inProgress) {
+      var l = linkFor(inProgress.id);
+      if (l) {
+        actionEl.setAttribute('href', l.href);
+        actionEl.textContent = 'Continue ' + l.title + ' →';
+        var at = (typeof inProgress.s.at === 'number' ? inProgress.s.at : 0) + 1;
+        if (whereEl && l.lessons) whereEl.textContent = 'You are on lesson ' + Math.min(at, l.lessons) + ' of ' + l.lessons + '. Saved in this browser only.';
+      }
+    } else if (started > 0) {
+      var nextId = null, label = '';
+      if (doneIn(STAGES.foundation) < 2) { nextId = STAGES.foundation.filter(function (i) { var s = store(i); return !(s.quiz && s.quiz.passed); })[0]; label = 'Continue stage 1: '; }
+      else if (doneIn(STAGES.edition) < 1) { actionEl.setAttribute('href', '#editions'); actionEl.textContent = 'Stage 2: choose your edition →'; }
+      else if (doneIn(STAGES.teach) < 1) { actionEl.setAttribute('href', 'learn/teaching-ai-fluency.html'); actionEl.textContent = 'Stage 3: teach it forward →'; }
+      else { actionEl.setAttribute('href', 'learn/research.html'); actionEl.textContent = 'Read the research behind this →'; }
+      if (nextId) {
+        var nl = linkFor(nextId);
+        if (nl) { actionEl.setAttribute('href', nl.href); actionEl.textContent = label + nl.title + ' →'; }
+      }
+      if (whereEl) whereEl.textContent = 'Saved in this browser only, so your progress stays on this device.';
     }
   }
+
 
   if (!courseEl) return;
 
