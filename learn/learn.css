@@ -350,7 +350,7 @@
   body.printing-cert .cert-frame { border: 0; padding: 0; background: none; border-radius: 0; }
   /* align-items:center, or the column stretches every child to full width and the
      signature rule and the meta hairline run the whole span of the page */
-  body.printing-cert .cert { border-color: #000; min-height: 168mm; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+  body.printing-cert .cert { border-color: #000; min-height: 184mm; display: flex; flex-direction: column; justify-content: center; align-items: center; }
   body.printing-cert .cert > * { max-width: 100%; }
 }
 
