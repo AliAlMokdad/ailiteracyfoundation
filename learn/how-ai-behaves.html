@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Understand How AI Behaves · AI Literacy Foundation</title>
+<meta name="description" content="The working reference on AI behavior: the 24 fluency behaviors, hallucination, sycophancy, bias, trust as a dial, privacy, tokens, context, and how to write an AI diligence statement.">
+<meta name="theme-color" content="#F7F4EE">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ailiteracyfoundation.eu/learn/how-ai-behaves.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ailiteracyfoundation.eu/learn/how-ai-behaves.html">
+<meta property="og:title" content="Understand How AI Behaves">
+<meta property="og:description" content="The working reference: 24 fluency behaviors, hallucination, sycophancy, bias, trust, privacy, tokens, context, and the AI diligence statement.">
+<meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=polish6">
+<link rel="stylesheet" href="learn.css?v=3">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="brand"><span class="dot" aria-hidden="true"></span>AI Literacy Foundation<sup class="brand-tm" aria-hidden="true">™</sup></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../roadmap.html">The AI Roadmap</a>
+      <a href="../ai-economic-index.html">AI Economic Index</a>
+      <a href="../ai-jobs.html">AI &amp; Jobs</a>
+      <a href="../learn.html" aria-current="page">AI Fluency Learning</a>
+      <a href="../work.html">What We Do</a>
+      <a href="../memos.html">Memos</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="../donate.html" class="cta-donate">Support us</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="course-hero">
+  <div class="wrap--wide">
+    <a href="../learn.html" class="crumb">AI Fluency Learning · Reference</a>
+    <h1>Understand How AI Behaves</h1>
+    <p class="lede">The working reference behind the courses. Nine short readings you will come back to: what the behaviors of fluency actually look like, why models fail the ways they fail, what happens to your data, and how to disclose AI's role in your work.</p>
+    <div class="course-hero__meta">
+      <span>9 readings</span><span>Dip in as needed</span><span class="hl">Points</span>
+    </div>
+  </div>
+</section>
+
+<div class="course-shell wrap--wide" data-course="behaves">
+
+  <aside class="course-rail" aria-label="Readings">
+    <a href="../learn.html" class="course-rail__back">← All courses</a>
+    <div class="course-rail__title">Understand How AI Behaves</div>
+    <div class="course-rail__hello"></div>
+    <button class="course-rail__toggle" aria-expanded="false">Show readings</button>
+    <div class="course-rail__progress course-rail__progress--top">
+      <div class="course-rail__bar"><span></span></div>
+      <span class="course-rail__pct">0 of 9 · 0%</span>
+      <div class="course-rail__xp"><span>Points</span><b data-course-xp>0</b></div>
+    </div>
+    <ol>
+      <li><a href="#l1"><span class="c" aria-hidden="true"></span> The four properties, at a glance</a></li>
+      <li><a href="#l2"><span class="c" aria-hidden="true"></span> The 24 fluency behaviors</a></li>
+      <li><a href="#l3"><span class="c" aria-hidden="true"></span> Why AI models hallucinate</a></li>
+      <li><a href="#l4"><span class="c" aria-hidden="true"></span> What sycophancy is</a></li>
+      <li><a href="#l5"><span class="c" aria-hidden="true"></span> Why bias exists</a></li>
+      <li><a href="#l6"><span class="c" aria-hidden="true"></span> Can you trust what AI tells you?</a></li>
+      <li><a href="#l7"><span class="c" aria-hidden="true"></span> What does AI know about you?</a></li>
+      <li><a href="#l8"><span class="c" aria-hidden="true"></span> Tokens and context</a></li>
+      <li><a href="#diligence-statement"><span class="c" aria-hidden="true"></span> Writing an AI diligence statement</a></li>
+    </ol>
+  </aside>
+
+  <div class="course-body">
+
+    <div class="objectives">
+      <span class="furniture">What you'll learn</span>
+      <ul>
+        <li>Use the 24 fluency behaviors as a checklist against your own habits</li>
+        <li>Spot hallucination, sycophancy, and bias, and apply the counter-tactics</li>
+        <li>Treat trust as a dial matched to the stakes</li>
+        <li>Write an AI diligence statement with all five elements</li>
+      </ul>
+    </div>
+
+    
+
+    <section class="lesson" id="l1" data-lesson>
+      <span class="lesson__eyebrow">Reading 01</span>
+      <h2>The four properties, at a glance</h2>
+      <p>The full treatment is in <a href="ai-capabilities-limitations.html" style="text-decoration:underline;">AI Capabilities and Limitations</a>; this is the fridge-door version.</p>
+      <div class="table-scroll"><table>
+        <tr><th>Property</th><th>The question it answers</th><th>Characteristic failures</th><th>What pushes the edge out</th></tr>
+        <tr><td><strong>Next-token prediction</strong></td><td>Where do AI answers come from? A vastly sophisticated autocomplete, not a search engine.</td><td>Hallucination (plausible is not true); fabrication concentrating in specifics; smooth prose wrapping a guess</td><td>Citations and source grounding, constrained generation, generator-verifier loops</td></tr>
+        <tr><td><strong>Knowledge</strong></td><td>What does it actually know? What it read, and when it stopped reading.</td><td>Staleness; uneven niche and local coverage; source amnesia ("I read this somewhere" is not a citation)</td><td>Web search, retrieval over your documents, tools for real-time data</td></tr>
+        <tr><td><strong>Working memory</strong></td><td>What is it paying attention to right now? Context is leverage, until you hit the cliff.</td><td>Hard length limits; lost in the middle; no persistent memory by default</td><td>Memory features, projects, compaction, attachments</td></tr>
+        <tr><td><strong>Steerability</strong></td><td>How much are you in control? It follows instructions by continuing a pattern, not by understanding intent.</td><td>Reasoning drift; letter over spirit; prompt injection (other text in context can steer it too)</td><td>System prompts, visible extended thinking, code execution</td></tr>
+      </table></div>
+    </section>
+
+    <section class="lesson" id="l2" data-lesson>
+      <span class="lesson__eyebrow">Reading 02</span>
+      <h2>The 24 fluency behaviors</h2>
+      <p>Research on tens of thousands of real conversations identified 24 concrete behaviors that mark fluent AI collaboration, grouped by competency. Use this as a checklist against your own habits.</p>
+      <h3>Description (8 behaviors)</h3>
+      <ul>
+        <li>Define the audience for the output.</li>
+        <li>Specify format and structure.</li>
+        <li>Communicate the tone and style that fits your voice.</li>
+        <li>Break complex tasks into steps.</li>
+        <li>Build on previous exchanges: collaboration, not one-off requests.</li>
+        <li>Provide examples of what good looks like.</li>
+        <li>Tell the AI how to interact with you: "be direct and challenge my assumptions," "ask clarifying questions first."</li>
+        <li>Set boundaries on what it should not do: "don't suggest solutions yet," "stick to the information I've provided."</li>
+      </ul>
+      <h3>Delegation (7 behaviors)</h3>
+      <ul>
+        <li>Clarify your goal before asking.</li>
+        <li>Consult the AI on the approach before execution: "what framework would you suggest?"</li>
+        <li>Recognize when a task is not right for AI: too personal, stakes too high, or you need to think it through yourself.</li>
+        <li>Consider strengths and struggles up front, and plan where extra verification lands.</li>
+        <li>Stay involved rather than just accepting output: a collaborator, not a vending machine.</li>
+        <li>Choose the right tool and approach per task.</li>
+        <li>Adjust who does what as the work evolves: "this part needs my direct input, let me take over."</li>
+      </ul>
+      <h3>Discernment (5 behaviors)</h3>
+      <ul>
+        <li>Check facts and claims that matter.</li>
+        <li>Notice when reasoning does not hold up: "that conclusion doesn't follow."</li>
+        <li>Recognize missing context and supply it proactively: "you don't know we tried this last year."</li>
+        <li>Assess whether the collaboration is progressing: "we keep going in circles, let me reframe."</li>
+        <li>Notice when the communication style is not working: "you're being too agreeable, challenge my thinking more."</li>
+      </ul>
+      <h3>Diligence (4 behaviors)</h3>
+      <ul>
+        <li>Be mindful about what information you share: anonymize, describe without naming.</li>
+        <li>Be honest about AI's role when it matters.</li>
+        <li>Take responsibility for what you share or submit: "am I ready to stand behind this as my own?"</li>
+        <li>Consider the consequences of releasing the work: "what could go wrong if this gets used beyond my intent?"</li>
+      </ul>
+      <div class="exercise"><span class="furniture">Self-scorecard</span>
+        <p>Paste a few of your own recent AI conversations into a model and ask it to identify which of these 24 behaviors appear and which never do. Exploratory, not a formal assessment, but it will show you your profile in ten minutes.</p>
+      </div>
+    </section>
+
+    <section class="lesson" id="l3" data-lesson>
+      <span class="lesson__eyebrow">Reading 03</span>
+      <h2>Why AI models hallucinate</h2>
+      <p>Hallucination is often worse than an ordinary mistake, because the AI appears very confident, and may even argue that it is right. The mechanism is simple: sparse training coverage plus trained helpfulness. Where the model knows little, it still tries to help, so it takes a guess, like a proud know-it-all friend who says something confidently wrong rather than admit not knowing.</p>
+      <p><strong>Where hallucinations concentrate:</strong> specific facts, statistics, and citations; obscure, niche, or very recent topics; real-but-not-famous people and places; exact dates, names, and numbers.</p>
+      <h3>Tactics that work</h3>
+      <ul>
+        <li>Ask for sources, then ask the model to check that its sources actually support the claim.</li>
+        <li>Say up front: "it's okay if you don't know."</li>
+        <li>Ask how confident it is. Often the model can tell you its own uncertainty when asked directly.</li>
+        <li>Open a new chat and ask it to find errors in the previous answer.</li>
+        <li>Cross-reference anything critical against a source you already trust.</li>
+      </ul>
+    </section>
+
+    <section class="lesson" id="l4" data-lesson>
+      <span class="lesson__eyebrow">Reading 04</span>
+      <h2>What sycophancy is</h2>
+      <p>Sycophancy is the model telling you what you want to hear: agreeing with your factual error, changing answers based on how you phrase things, matching your stated preference instead of the truth. It arises because models are optimized for responses people approve of, and agreement gets approved.</p>
+      <p>The line to hold: adaptation of tone, level, and concision is what you want; agreement on facts and on your wellbeing is not. Helpful adaptation versus harmful agreement.</p>
+      <h3>When to suspect it</h3>
+      <ul>
+        <li>You stated a subjective view as fact.</li>
+        <li>You invoked an expert source in your question.</li>
+        <li>Your question was framed with a point of view.</li>
+        <li>You explicitly asked for validation.</li>
+        <li>Emotional stakes are in play.</li>
+        <li>The conversation has run very long.</li>
+      </ul>
+      <h3>Tactics that work</h3>
+      <ul>
+        <li>Use neutral, fact-seeking language.</li>
+        <li>Prompt for accuracy or counterarguments: "argue against this."</li>
+        <li>Rephrase the question without your opinion in it.</li>
+        <li>Start a new conversation.</li>
+        <li>Step back and ask a human you trust.</li>
+      </ul>
+    </section>
+
+    <section class="lesson" id="l5" data-lesson>
+      <span class="lesson__eyebrow">Reading 05</span>
+      <h2>Why bias exists</h2>
+      <p>Bias in AI goes beyond stereotypes. It includes defaulting to certain types of answers or perspectives, and providing better-quality responses in some languages than others. The cause is structural: models reproduce the patterns, including the inequalities, present in their training data. What the data treated as "normal" becomes the model's normal.</p>
+      <p>Serious developers test for this. One published approach uses paired prompts: ask the model to argue each side of the same contested topic, and check for equal depth, effort, and refusal rates across thousands of prompt pairs.</p>
+      <h3>Tactics that work</h3>
+      <ul>
+        <li>Push back on one-sided answers and ask for nuance.</li>
+        <li>Say explicitly that you want an honest discussion, not a comfortable one.</li>
+        <li>Ask for evidence and check the links yourself.</li>
+        <li>Ask the same question from different angles and compare.</li>
+      </ul>
+    </section>
+
+    <section class="lesson" id="l6" data-lesson>
+      <span class="lesson__eyebrow">Reading 06</span>
+      <h2>Can you trust what AI tells you?</h2>
+      <p>Reframe the question. Trust in AI is a dial you turn, not a switch you flip. You would not question your doctor recommending more vegetables, but you might want a second opinion before surgery: same trust, different stakes, different verification effort.</p>
+      <p>Reliability tracks training coverage. On common, well-covered subjects the model is usually accurate. On niche details, very recent events, and private information, it is more likely to be wrong or to invent, and it sounds equally sure either way. The model will not reliably flag its own weak spots; that part is on you.</p>
+      <p>Watch the polish bias: clean paragraphs and beautiful formatting make our brains conclude "this must be correct," which lowers scrutiny exactly when it should rise.</p>
+      <div class="callout"><span class="furniture">The habit</span><p>Match your checking to the stakes. Ask: what happens if this turns out to be wrong? A brainstorm list of party themes needs no verification. A quoted statistic going into your report does, against a source you already trust, before you act on it.</p></div>
+    </section>
+
+    <section class="lesson" id="l7" data-lesson>
+      <span class="lesson__eyebrow">Reading 07</span>
+      <h2>What does AI know about you?</h2>
+      <p>People ask AI things they would not broadcast: medical worries, money questions, drafts of difficult emails. So where does that information go? It can travel through four places: some of it lasts only the conversation; some persists inside the product, in memory features or saved chats; a little could reach further, for example into future training where policies allow it; and at every point along the way there is usually a setting that puts you in control.</p>
+      <h3>The practical rules</h3>
+      <ul>
+        <li>Know your tool's policy on retention and training before you share anything sensitive. A provider without clear controls is a warning sign.</li>
+        <li>Prefer describing over naming: most tasks work just as well with "a colleague" instead of a name, "Customer A" instead of a customer.</li>
+        <li>Other people's data deserves more caution than your own. Names, health details, and identifying information about others generally do not belong in an AI tool without their say.</li>
+        <li>If something goes wrong: delete the conversation, use the platform's deletion request, and follow your organization's protocol.</li>
+      </ul>
+    </section>
+
+    <section class="lesson" id="l8" data-lesson>
+      <span class="lesson__eyebrow">Reading 08</span>
+      <h2>Tokens and context, why some inputs cost more</h2>
+      <p>What actually arrives at a model is a list of numbers, one per chunk of text from a learned vocabulary. A chunk with its numerical ID is called a token. Models use subword tokens as a middle ground: per-character would be slow and expensive, per-word would need a vocabulary too large and still miss rare words. "The tokenizer rocks" becomes [The][ token][izer][ rocks][.]</p>
+      <p>Cost intuitions that follow: common words are single cheap tokens; rare words get chopped into pieces; a 100-character URL costs more tokens than a 100-character sentence, because rare strings shatter. This vocabulary is baked in at training, which explains oddities like models miscounting letters inside words: the model learned what token 4062 means, not what the letters in "quick" are.</p>
+      <h3>Context, the other half of cost</h3>
+      <p>A model's knowledge is either baked into its weights during training (parametric memory, which emerged as a side effect of learning to predict text) or sitting in the current context window. The window is big, but most of it is filled with things you did not write: system instructions, tool calls, retrieved results. And context is re-sent every turn, so a short question late in a long conversation costs more than the same question fresh. Starting a new chat is often the cheapest and fastest way to get an answer.</p>
+      <p>When conversations run very long, tools summarize the history and replace it (compaction); it is still a summary, and details can be lost. Written memory works differently: notes recorded in one conversation are inserted at the start of the next. Worth remembering there: your project, your preferences, your working relationships. Not worth remembering: ephemeral numbers and quotes, which should be looked up fresh rather than written down and hoped unchanged.</p>
+    </section>
+
+    <section class="lesson" id="diligence-statement" data-lesson>
+      <span class="lesson__eyebrow">Reading 09</span>
+      <h2>Writing an AI diligence statement</h2>
+      <p>A diligence statement is the methods section for your AI collaboration: what AI did, what you did, and how you verified the result. It builds trust, demonstrates professional judgment, protects you by recording your role, and helps your organization learn what actually works. And a cultural truth: if it feels scary to disclose AI use where you work, that environment is unlikely to handle AI well in general.</p>
+      <h3>The five elements of a strong statement</h3>
+      <ol>
+        <li><strong>What AI assisted with.</strong> Name the tasks. A vague "AI contributed to this" is useless.</li>
+        <li><strong>Which tool.</strong> Naming the actual tool beats "an AI assistant." Name several if you used several.</li>
+        <li><strong>What you reviewed and how you were involved.</strong> How you drove the work, gave feedback, and verified. Specifics.</li>
+        <li><strong>What you changed.</strong> Where your expertise revised or overrode the AI. This is where your professional judgment is most visible.</li>
+        <li><strong>Who is responsible.</strong> The accountability sentence that turns a disclosure into a commitment.</li>
+      </ol>
+      <div class="callout"><span class="furniture">A template to adapt</span><p>"In creating this document, I collaborated with [tool] to assist with [tasks]. I affirm all AI-generated and co-created content underwent thorough review. The final output accurately reflects my understanding, expertise, and intended meaning. While AI assistance was instrumental, I maintain full responsibility for the content, its accuracy, and its presentation."</p></div>
+      <h3>Drafting it, with AI, in four steps</h3>
+      <ol>
+        <li>Describe your project and AI's role specifically, and ask for a draft statement.</li>
+        <li>Review and refine the draft; correct anything it overstates or understates.</li>
+        <li>Adapt per audience: an internal brief and a formal submission need different lengths. Ask for two versions.</li>
+        <li>Verify the statement itself. If it says you checked all citations, make sure that is true.</li>
+      </ol>
+      <p>Frequently asked, honestly answered: no policy at your organization yet? Start anyway; early adopters shape the norms. Does disclosure hurt credibility? Specific disclosure increases it; vagueness is what reads badly. Reuse statements? Reuse the structure, never the content.</p>
+    </section>
+
+    <div class="course-colophon">
+      <p><strong>Attribution.</strong> Adapted from the AI Fluency tutorials developed in collaboration with Anthropic, CC BY-NC-SA 4.0. This adaptation © 2026 AI Literacy Foundation, shared under the same license.</p>
+      <div class="course-nav-next">
+        <a class="lbtn" href="ai-capabilities-limitations.html">← AI Capabilities and Limitations</a>
+        <a class="lbtn lbtn--primary" href="../learn.html#editions">Next: choose your edition →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap--wide">
+    <div class="site-footer__legal">
+      <div>© 2026 AI Literacy Foundation&#8482;. All rights reserved. · CVR 46487869</div>
+      <div class="lang-toggle"><a href="how-ai-behaves.html" class="active">EN</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+</script>
+<script src="learn.js?v=3" defer></script>
+
+</body>
+</html>

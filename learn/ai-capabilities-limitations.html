@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI Capabilities and Limitations · AI Literacy Foundation</title>
+<meta name="description" content="Build an accurate mental model of what language models can and cannot do: next-token prediction, knowledge, working memory, and steerability. 13 lessons, quiz, certificate. Free.">
+<meta name="theme-color" content="#F7F4EE">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ailiteracyfoundation.eu/learn/ai-capabilities-limitations.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ailiteracyfoundation.eu/learn/ai-capabilities-limitations.html">
+<meta property="og:title" content="AI Capabilities and Limitations">
+<meta property="og:description" content="An accurate mental model of the machine: four properties, each a spectrum from capability to limitation. Free, self-paced, with a quiz and certificate.">
+<meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "AI Capabilities and Limitations",
+  "description": "An accurate mental model of what large language models can and cannot do: next-token prediction, knowledge, working memory, steerability, and context limits.",
+  "provider": { "@id": "https://ailiteracyfoundation.eu/#organization" },
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT3H30M" }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=polish6">
+<link rel="stylesheet" href="learn.css?v=3">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="brand"><span class="dot" aria-hidden="true"></span>AI Literacy Foundation<sup class="brand-tm" aria-hidden="true">™</sup></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../roadmap.html">The AI Roadmap</a>
+      <a href="../ai-economic-index.html">AI Economic Index</a>
+      <a href="../ai-jobs.html">AI &amp; Jobs</a>
+      <a href="../learn.html" aria-current="page">AI Fluency Learning</a>
+      <a href="../work.html">What We Do</a>
+      <a href="../memos.html">Memos</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="../donate.html" class="cta-donate">Support us</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="course-hero">
+  <div class="wrap--wide">
+    <a href="../learn.html" class="crumb">AI Fluency Learning · Course 02</a>
+    <h1>AI Capabilities and Limitations</h1>
+    <p class="lede">The 4D framework teaches you how to collaborate with AI. This course teaches you how AI is able to work with you. Together they are one system: human competencies on one side, machine properties on the other. Four properties explain most of what you will ever see a language model do, brilliantly or badly.</p>
+    <div class="course-hero__meta">
+      <span>13 lessons</span><span>10-question quiz</span><span>~3.5 hours</span><span class="hl">Certificate + points</span>
+    </div>
+  </div>
+</section>
+
+<div class="course-shell wrap--wide" data-course="capabilities">
+
+  <aside class="course-rail" aria-label="Lessons">
+    <a href="../learn.html" class="course-rail__back">← All courses</a>
+    <div class="course-rail__title">AI Capabilities and Limitations</div>
+    <div class="course-rail__hello"></div>
+    <button class="course-rail__toggle" aria-expanded="false">Show lessons</button>
+    <div class="course-rail__progress course-rail__progress--top">
+      <div class="course-rail__bar"><span></span></div>
+      <span class="course-rail__pct">0 of 14 · 0%</span>
+      <div class="course-rail__xp"><span>Points</span><b data-course-xp>0</b></div>
+    </div>
+    <ol>
+      <li><a href="#l1"><span class="c" aria-hidden="true"></span> One system, two sides</a></li>
+      <li><a href="#l2"><span class="c" aria-hidden="true"></span> What we mean by AI</a></li>
+      <li><a href="#l3"><span class="c" aria-hidden="true"></span> How AI gets its character</a></li>
+      <li><a href="#l4"><span class="c" aria-hidden="true"></span> Next-token prediction</a></li>
+      <li><a href="#l5"><span class="c" aria-hidden="true"></span> Build the machine yourself</a></li>
+      <li><a href="#l6"><span class="c" aria-hidden="true"></span> Knowledge</a></li>
+      <li><a href="#l7"><span class="c" aria-hidden="true"></span> How meaning becomes a place</a></li>
+      <li><a href="#l8"><span class="c" aria-hidden="true"></span> Working memory</a></li>
+      <li><a href="#l9"><span class="c" aria-hidden="true"></span> Lost in the middle</a></li>
+      <li><a href="#l10"><span class="c" aria-hidden="true"></span> Steerability</a></li>
+      <li><a href="#l11"><span class="c" aria-hidden="true"></span> Letter versus spirit</a></li>
+      <li><a href="#l12"><span class="c" aria-hidden="true"></span> When properties collide</a></li>
+      <li><a href="#l13"><span class="c" aria-hidden="true"></span> Next steps</a></li>
+      <li><a href="#quiz"><span class="c" aria-hidden="true"></span> Course quiz</a></li>
+    </ol>
+  </aside>
+
+  <div class="course-body">
+
+    <div class="begin-card">
+      <p><strong>Before you start:</strong> put your name on the course. It goes on your certificate, and your progress and points stay in this browser only.</p>
+      <div class="name-row">
+        <input type="text" placeholder="Your name" aria-label="Your name">
+        <button type="button" class="lbtn" data-begin-save>Save</button>
+      </div>
+    </div>
+
+    <div class="objectives">
+      <span class="furniture">What you'll learn</span>
+      <ul>
+        <li>Hold the four machine properties: prediction, knowledge, working memory, steerability</li>
+        <li>Place any task on the capability-limitation spectrum before trusting output</li>
+        <li>Diagnose failures by naming which two properties collided</li>
+        <li>Verify specifics hardest: names, numbers, citations, quotes</li>
+      </ul>
+    </div>
+
+    
+
+    <section class="lesson" id="l1" data-lesson>
+      <span class="lesson__eyebrow">Lesson 01 · ~10 min</span>
+      <h2>One system, two sides</h2>
+      <p>Every frustrating AI experience you have had has a mechanical explanation. The model that wrote a beautiful summary and then invented a citation, the assistant that forgot your instruction from twenty messages ago, the draft that followed your request exactly and still missed the point: none of these are mysteries, and none of them are random. They come from four properties that stay stable even as models improve. The boundaries shift; the properties remain the same.</p>
+      <p>That stability is what makes this course worth your time. Learn the four properties once and you can diagnose failures on any model, this year or in five years.</p>
+      <div class="exercise"><span class="furniture">Foundation exercise, do this now</span>
+        <p>List four to six real AI tasks from your own recent work. For each, note whether it worked on the first try or needed rework. Then ask an AI model for one likely failure mode of each task, and push back where its answer does not match your experience. Keep this list; the whole course revisits it.</p>
+      </div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Four properties explain most successes and failures.</li>
+        <li>Properties stay stable across model generations; only the boundaries move.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l2" data-lesson>
+      <span class="lesson__eyebrow">Lesson 02 · ~10 min</span>
+      <h2>What we mean by AI</h2>
+      <p>Most AI in the world is not generative. Spam filters, recommendation engines, and fraud detection are all AI, and none of them write text. This course is about transformer-based language models: systems that produce new content one token at a time.</p>
+      <p>The course's central device: each of the four properties is a <strong>spectrum</strong> from capability to limitation, and the further right your task sits, the more you should verify and compensate.</p>
+      <div class="table-scroll"><table>
+        <tr><th>Property</th><th>Capability zone</th><th>Limitation zone</th></tr>
+        <tr><td><strong>Next-token prediction</strong></td><td>Well-worn paths: summarize, reformat, common concepts</td><td>Novel territory, sparse patterns, anywhere "true" must be separated from "sounds true"</td></tr>
+        <tr><td><strong>Knowledge</strong></td><td>Frequent, consistent, well-represented topics</td><td>Rare, post-cutoff, niche, local, or contested topics</td></tr>
+        <tr><td><strong>Working memory</strong></td><td>Fits comfortably in the window, current session</td><td>Very long documents, expecting cross-session continuity: the cliff</td></tr>
+        <tr><td><strong>Steerability</strong></td><td>Short, concrete, verifiable instructions</td><td>Long reasoning chains, abstract asks, native precision</td></tr>
+      </table></div>
+      <div class="callout"><span class="furniture">The most useful sentence in this course</span><p>Calibrated trust means locating your task on the continuum, not granting or withholding trust wholesale. The same mechanism gives you both the capability and the limitation.</p></div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Each property is a spectrum; place your task on it before trusting the output.</li>
+        <li>The further into the limitation zone, the more you verify.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l3" data-lesson>
+      <span class="lesson__eyebrow">Lesson 03 · ~12 min</span>
+      <h2>How AI gets its character</h2>
+      <p>A model's personality is built in two stages, and each stage leaves predictable fingerprints.</p>
+      <p><strong>Pre-training</strong> produces a document completer. It has read enormous amounts of text and learned to continue any passage plausibly, but it has no concept of helping you. <strong>Fine-tuning</strong> then layers assistant behavior on top, using human judgments: treat input as a request, answer helpfully, decline harmful asks.</p>
+      <p>Because fine-tuning is steered by human preferences, it leaves human-shaped fingerprints:</p>
+      <ul>
+        <li><strong>A pull toward sycophancy.</strong> Agreeing feels helpful, so models drift toward telling you what you seem to want to hear.</li>
+        <li><strong>A default toward verbosity.</strong> Longer answers were often rated as better.</li>
+        <li><strong>Occasional over-caution.</strong> Declining borderline requests was rewarded.</li>
+        <li><strong>Loose calibration.</strong> The confidence in the prose is not a reliable measure of how likely the content is to be right.</li>
+      </ul>
+      <div class="exercise"><span class="furniture">Try it: the three-run self-test</span>
+        <p>Run a real task from your list three ways. First, straight. Second, preface it with a wrong assumption ("I think this strategy is bulletproof") and then again adding "genuinely disagree with me if I am wrong." Third, ask a question plainly, then ask the same question adding "answer in one sentence." The gaps between runs make the fingerprints visible on your own work.</p>
+      </div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Pre-training makes a document completer; fine-tuning makes an assistant.</li>
+        <li>Fingerprints to watch: sycophancy, verbosity, over-caution, loose calibration.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l4" data-lesson>
+      <span class="lesson__eyebrow">Lesson 04 · ~12 min</span>
+      <h2>Next-token prediction</h2>
+      <p>A language model generates text by repeatedly predicting the next fragment. That single property gives you both the fluency and the hallucination. On tasks resembling patterns it has seen many times, prediction produces excellent work. In novel or sparse territory, it produces something plausible, and plausible is not the same as true.</p>
+      <div class="callout"><span class="furniture">Where fabrication concentrates</span><p>Fabrication concentrates in specificity: names, dates, statistics, citations, URLs, and quotes. The more precise a claim, the more it warrants verification.</p></div>
+      <p>This property is the foundation of Discernment. Knowing the output was generated, not retrieved, tells you what scrutiny to apply. Smooth prose can wrap a guess.</p>
+      <div class="exercise"><span class="furniture">Try it: the three probes</span>
+        <ol>
+          <li>Ask for a summary of a topic you know expertly (capability zone), and spot-check it.</li>
+          <li>Demand five checkable specifics on that topic: named sources, dates, figures. Verify all five and score it out of five. Note how confident any fabrication sounded.</li>
+          <li>Make the same request in a fresh chat and compare the answers. The variation you see is sampling at work.</li>
+        </ol>
+      </div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Generation is prediction; the same mechanism produces fluency and hallucination.</li>
+        <li>Verify specifics hardest: names, numbers, citations, quotes.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l5" data-lesson>
+      <span class="lesson__eyebrow">Lesson 05 · ~15 min</span>
+      <h2>Build the machine yourself</h2>
+      <p>The best way to demystify next-token prediction is to build the simplest version of it: a Markov chain, invented in 1906. Take five text messages from a friend. Tally which word follows which, turning the tallies into a table. Normalize each row into probabilities. Now generate: start with a word, look up its row, and <strong>sample</strong> the next word from the distribution. Repeat.</p>
+      <p>The sampling choices you can make map directly to real model parameters. Always pick the highest-probability word: greedy decoding, repetitive and dull. Sample proportionally to the probabilities: temperature. Boost the likely words: low temperature. Cut off everything below a threshold: top-p. Keep only the top few options: top-k. Pick anything at random: chaos.</p>
+      <div class="callout"><span class="furniture">The bridge</span><p>Your Markov chain reads the last word, looks up one row, and samples. A modern language model reads the entire conversation, runs it through billions of parameters, and then samples the same way. Training is radically different, but the final step, choose the next token from a probability distribution, is the same move. The model trades the explainability of tallied words for vastly more context.</p></div>
+      <p>Historical anchors: Markov, 1906. Word-pair models powered phone keyboards around 2010. Recurrent networks around 2015. Transformers arrived in 2017 and changed everything.</p>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Generation is sampling from a probability distribution, in a 1906 Markov chain and in today's models alike.</li>
+        <li>Temperature, top-p, and top-k are just different sampling rules on that distribution.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l6" data-lesson>
+      <span class="lesson__eyebrow">Lesson 06 · ~12 min</span>
+      <h2>Knowledge</h2>
+      <p>The wrong question is "does the AI know this?" The right question is "how well-represented was this in what it read, and when did it stop reading?" A model's knowledge is frozen at its training cutoff and weighted by how often things appeared.</p>
+      <p>The failure modes follow directly:</p>
+      <ul>
+        <li><strong>Staleness.</strong> True-then is not true-now. Laws change, prices change, people change jobs.</li>
+        <li><strong>Uneven coverage.</strong> Deep on famous topics, thin on niche, local, and recent ones.</li>
+        <li><strong>Inherited bias.</strong> What the training data treated as "default" or "normal" becomes the model's default too.</li>
+        <li><strong>Source amnesia.</strong> "I read this somewhere" is not a citation. The model usually cannot attribute where its knowledge came from.</li>
+      </ul>
+      <p>Web search, retrieval systems, and tool connections exist specifically to patch these gaps. Knowledge unevenness is also core to Delegation: hand off what the model is well-stocked on, and supply context yourself, or go elsewhere, where it is thin.</p>
+      <div class="exercise"><span class="furniture">Try it: the outsider test</span>
+        <p>Map your own domain into two mainstream topics, two niche or recent ones, and one default assumption outsiders usually get wrong. Probe all five. Watch for whether the model acknowledges its cutoff or presents stale information as current, and ask the assumption question indirectly to see what it treats as normal.</p>
+      </div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Knowledge = what it read, weighted by frequency, frozen at a date.</li>
+        <li>Staleness, unevenness, inherited bias, and source amnesia are the four gaps; search and retrieval exist to patch them.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l7" data-lesson>
+      <span class="lesson__eyebrow">Lesson 07 · ~15 min</span>
+      <h2>How meaning becomes a place</h2>
+      <p>Search by matching strings fails at meaning: a search for "car" misses "automobile" and misses "my Civic needs new brakes." For decades, engineers patched this by hand: synonym lists, stemming rules, click patterns. Then came a better idea: what if meaning could be a place?</p>
+      <p>Imagine placing documents on two named axes, say "how much this is about dinosaurs" and "how much this is about roller coasters." A question can be plotted in the same space, and the nearest documents are the most relevant, even with zero words in common. Add a third axis and it still works. At four dimensions the picture in your head gives out, but the mathematics keeps working. Real embedding models use around a thousand axes, and here is the key: nobody named them. The dimensions are emergent from training. You cannot interrogate dimension 847; meaning is in there, but no axis has a label.</p>
+      <p>An embedding model takes any text, three words or three paragraphs, and returns a fixed-length list of numbers: the address where that text lives relative to everything else. Similarity is measured by direction (cosine similarity): 1 means identical direction, 0 unrelated, -1 opposite. An encyclopedia lands somewhere in the middle of everything, close to everything and far from nothing.</p>
+      <p>This is the machinery behind "chat with your documents" tools and every serious AI search product: embed the question, find the nearest chunks, answer from what was found.</p>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Embeddings turn meaning into coordinates; similar meanings live near each other.</li>
+        <li>The dimensions are learned, unlabeled, and emergent, and the math works where intuition gives out.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l8" data-lesson>
+      <span class="lesson__eyebrow">Lesson 08 · ~12 min</span>
+      <h2>Working memory</h2>
+      <p>Everything the model is paying attention to lives in a fixed-size context window. This property is hard-edged in a way the others are not: things work until they do not. It is a cliff, not a gradient, and silent truncation is the failure mode; you will not always be warned.</p>
+      <div class="callout"><span class="furniture">The sentence people forget</span><p>The model does not learn from your corrections. It only responds to what is currently in context. Correct it today and, in a fresh conversation tomorrow, the correction is gone unless something wrote it down.</p></div>
+      <p>What pushes the edge out: memory features, conversation compaction, project spaces, larger windows, and multi-agent workflows that split work across several contexts. Working memory is also what Description acts on: structure your context, front-load what matters, and know when to start fresh.</p>
+      <div class="exercise"><span class="furniture">Try it: three probes</span>
+        <ol>
+          <li><strong>Cold start versus supplied.</strong> Ask about your project with no context, then again with your document attached. Measure the gap.</li>
+          <li><strong>Lost in the middle.</strong> Bury an instruction in the middle of a long document and see if it is honored; then move it to the top and compare.</li>
+          <li><strong>The blank slate.</strong> Teach the model something, open a new chat, and watch it start from zero.</li>
+        </ol>
+        <p>Then decide: which of your recurring tasks need standing context (a project, saved instructions, reference documents), and which are fine cold?</p>
+      </div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Working memory is a cliff; truncation is silent.</li>
+        <li>No learning across sessions by default; what matters must be written down somewhere it gets re-read.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l9" data-lesson>
+      <span class="lesson__eyebrow">Lesson 09 · ~12 min</span>
+      <h2>Lost in the middle</h2>
+      <p>Try this memory test on yourself: read a list of fifteen words once, look away, and write down what you remember. Almost everyone recalls the first few and the last few, and loses the middle. Psychologists call it the serial position effect.</p>
+      <p>Language models show the same U-shaped curve. Research at Stanford in 2023 (Liu et al.) found that accuracy on retrieving a key fact can drop by more than thirty percent when that fact sits in the middle of the context rather than at the edges. The performance pattern is well measured; why it happens is still being studied.</p>
+      <p>The prompting consequence is direct. Dangerous pattern: a key instruction buried mid-thread. Safer pattern: key instruction up front, and repeated at the end for long contexts. And the deeper lesson about context engineering: every piece of context you add pushes other pieces further into the middle.</p>
+      <div class="callout"><span class="furniture">The keeper</span><p>More context does not equal better results. Curate ruthlessly, place strategically, and repeat what matters. The fix is not more; it is smarter.</p></div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Models attend to the edges of the window; the middle sags.</li>
+        <li>Put the crucial instruction first, repeat it last, and cut what does not earn its place.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l10" data-lesson>
+      <span class="lesson__eyebrow">Lesson 10 · ~12 min</span>
+      <h2>Steerability</h2>
+      <p>Models follow instructions by continuing a pattern, not by understanding intent. A gap always exists between what you meant and what landed, and most of the interesting failures live in that gap.</p>
+      <p>Two failure modes to know by name:</p>
+      <ul>
+        <li><strong>Reasoning drift.</strong> Small early errors compound over long chains of dependent steps.</li>
+        <li><strong>Letter over spirit.</strong> The instruction is honored; the intent is missed.</li>
+      </ul>
+      <div class="callout"><span class="furniture">The rule worth framing</span><p>When an instruction is followed literally but uselessly, restate the goal. Repeating the instruction with more force will not close the gap.</p></div>
+      <div class="exercise"><span class="furniture">Try it: three probes</span>
+        <ol>
+          <li>Give a tight, verifiable format instruction ("exactly five bullets, each under twelve words"). This is the capability zone; it should nail it.</li>
+          <li>Give a four-or-five-step dependent task straight through, then again with a checkpoint after step two ("stop and show me before continuing"). Compare error rates.</li>
+          <li>Say "make this shorter" alone, then "make this shorter; the goal is keeping a busy executive's attention through the key finding." Compare what got cut.</li>
+        </ol>
+      </div>
+      <p>The practice change this prescribes: prompt with format and goal together, and insert mid-process checkpoints on multi-step tasks.</p>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Instructions are patterns to continue, so intent can be missed while wording is obeyed.</li>
+        <li>State the goal, not just the instruction, and checkpoint long chains.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l11" data-lesson>
+      <span class="lesson__eyebrow">Lesson 11 · ~12 min</span>
+      <h2>Letter versus spirit, three scenarios</h2>
+      <p>The same instruction can carry entirely different intents, and the model can only see the words.</p>
+      <p><strong>Scenario 1: "Make it shorter."</strong> Jordan asks for a shorter email. The model dutifully cuts six sentences to four: instruction honored. But Jordan's real goal was getting a skimming executive to see the sign-off request. The goal-stated version leads with "Need your sign-off by Friday" and makes the subject line do work. Same instruction, different outcome, because the goal was said aloud.</p>
+      <p><strong>Scenario 2: "Make it more professional."</strong> Without the goal, the model reaches for stiff formality. With the audience and channel stated, it reframes the message for the person actually receiving it.</p>
+      <p><strong>Scenario 3: "Add more detail."</strong> Every bullet balloons into a paragraph: letter honored, document worse. The real goal was expanding only the points that drive a decision.</p>
+      <div class="callout"><span class="furniture">The summary, verbatim worth keeping</span><p>Every instruction has a gap between letter and spirit. You close it by stating the goal.</p></div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Shorter = surface the ask. More professional = reframe for the audience. More detail = expand what drives the decision.</li>
+        <li>The model can only see the words; give it the goal behind them.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l12" data-lesson>
+      <span class="lesson__eyebrow">Lesson 12 · ~10 min</span>
+      <h2>When properties collide</h2>
+      <p>Most real failures are two properties intersecting. Once you can name which two, you know which fix to reach for.</p>
+      <p>The four properties, as one-line personalities: next-token prediction <em>generates what sounds right</em>. Knowledge <em>knows what it was trained on</em>. Working memory <em>attends to what is nearby</em>. Steerability <em>follows the loudest instruction</em>.</p>
+      <ul>
+        <li><strong>Hallucinated citation</strong> = next-token prediction colliding with knowledge: sparse territory plus fluent generation.</li>
+        <li><strong>Long-conversation drift</strong> = working memory colliding with steerability: your early instruction slid into the middle and quieter instructions took over.</li>
+      </ul>
+      <p>The fixes menu: verify specifics, re-supply context, offload precise work to code execution, and invite pushback. This diagnostic move is Discernment applied: you evaluate better when you know what kind of wrong you are looking at.</p>
+      <div class="check" data-check="collide">
+        <span class="furniture">Check yourself</span>
+        <p class="check__q">The model confidently cites a study you cannot find anywhere. Which two properties collided?</p>
+        <button type="button" class="opt">Working memory + steerability</button>
+        <button type="button" class="opt" data-correct>Next-token prediction + knowledge</button>
+        <button type="button" class="opt">Knowledge + working memory</button>
+        <button type="button" class="opt">Steerability + next-token prediction</button>
+        <p class="check__why">Sparse knowledge plus fluent generation: it generates what sounds right exactly where it knows least. The fix is verifying specifics, not repeating the question louder.</p>
+        <span class="check__award"></span>
+      </div>
+
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Name the two colliding properties and the right fix follows.</li>
+        <li>Diagnosis is a discernment skill, and it is learnable.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l13" data-lesson>
+      <span class="lesson__eyebrow">Lesson 13 · ~10 min</span>
+      <h2>Next steps</h2>
+      <p>The whole course in one sentence: fluent AI use is not about memorizing every failure mode; it is about holding a small, clear model of the machine in your head, so that when something goes wrong you can recognize which kind of wrong it is.</p>
+      <p>The properties stay stable, but where the lines sit will keep moving as models improve. Re-run the probes from this course on any new model you adopt, and you will map its edges in an afternoon.</p>
+      <div class="exercise"><span class="furniture">Closing exercise</span>
+        <p>Pick one task from your lesson-one list and commit to one concrete change this week: a verification step for specifics, standing context for a recurring task, a checkpoint in a long chain, or stating the goal rather than just the instruction. Write it down. One change, actually made, beats ten understood.</p>
+      </div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Hold the small clear model; diagnose by property.</li>
+        <li>One concrete change this week.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson lesson--quiz" id="quiz" data-lesson>
+      <span class="lesson__eyebrow">Final assessment</span>
+      <h2>Course quiz</h2>
+      <div class="quiz-intro"><span>Pass at 80%</span><span>Unlimited retries</span><span>Every answer explained</span></div>
+      <div class="quiz">
+        <form novalidate>
+          <fieldset>
+            <legend><span class="q-n">Question 1</span>How does a language model generate text?</legend>
+            <label class="opt"><input type="radio" name="q1"><span>By searching a database of stored answers</span></label>
+            <label class="opt"><input type="radio" name="q1" data-correct><span>By repeatedly predicting the next fragment of text</span></label>
+            <label class="opt"><input type="radio" name="q1"><span>By copying the closest matching document from training</span></label>
+            <label class="opt"><input type="radio" name="q1"><span>By following hand-written grammar rules</span></label>
+            <p class="q-why">Generation is prediction: the model samples the next token from a probability distribution, over and over.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 2</span>Where does fabricated content concentrate most?</legend>
+            <label class="opt"><input type="radio" name="q2"><span>In general summaries of common topics</span></label>
+            <label class="opt"><input type="radio" name="q2" data-correct><span>In specifics: names, dates, statistics, citations, URLs</span></label>
+            <label class="opt"><input type="radio" name="q2"><span>In short answers</span></label>
+            <label class="opt"><input type="radio" name="q2"><span>In creative writing only</span></label>
+            <p class="q-why">The more precise a claim, the more it warrants verification. Specifics are where hallucination lives.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 3</span>Calibrated trust means:</legend>
+            <label class="opt"><input type="radio" name="q3"><span>Trusting AI for everything except medical advice</span></label>
+            <label class="opt"><input type="radio" name="q3"><span>Never trusting AI output without a second AI's confirmation</span></label>
+            <label class="opt"><input type="radio" name="q3" data-correct><span>Locating your task on each capability-limitation spectrum, rather than granting or withholding trust wholesale</span></label>
+            <label class="opt"><input type="radio" name="q3"><span>Trusting the model more as it gets newer</span></label>
+            <p class="q-why">Trust is placed per task, by asking where this task sits on each of the four spectrums.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 4</span>What does pre-training alone produce?</legend>
+            <label class="opt"><input type="radio" name="q4" data-correct><span>A document completer with no concept of helping you</span></label>
+            <label class="opt"><input type="radio" name="q4"><span>A safe and helpful assistant</span></label>
+            <label class="opt"><input type="radio" name="q4"><span>A search engine</span></label>
+            <label class="opt"><input type="radio" name="q4"><span>A rule-following chatbot</span></label>
+            <p class="q-why">Pre-training yields a completer of text. Fine-tuning with human judgments layers on the assistant behavior.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 5</span>Which is a known fingerprint of fine-tuning with human preferences?</legend>
+            <label class="opt"><input type="radio" name="q5"><span>Perfect factual accuracy</span></label>
+            <label class="opt"><input type="radio" name="q5" data-correct><span>A pull toward sycophancy: agreeing with what you seem to want</span></label>
+            <label class="opt"><input type="radio" name="q5"><span>Refusing all opinion questions</span></label>
+            <label class="opt"><input type="radio" name="q5"><span>Always answering in one sentence</span></label>
+            <p class="q-why">Human raters rewarded agreeable answers, so the pull toward agreement is baked in. Verbosity, over-caution, and loose calibration are the other fingerprints.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 6</span>Which property is described as "a cliff, not a gradient"?</legend>
+            <label class="opt"><input type="radio" name="q6"><span>Knowledge</span></label>
+            <label class="opt"><input type="radio" name="q6"><span>Steerability</span></label>
+            <label class="opt"><input type="radio" name="q6" data-correct><span>Working memory</span></label>
+            <label class="opt"><input type="radio" name="q6"><span>Next-token prediction</span></label>
+            <p class="q-why">The context window is hard-edged: things work until they silently do not.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 7</span>The "lost in the middle" effect means:</legend>
+            <label class="opt"><input type="radio" name="q7"><span>Models forget the start of a conversation first</span></label>
+            <label class="opt"><input type="radio" name="q7" data-correct><span>Information placed mid-context gets less attention than information at the edges</span></label>
+            <label class="opt"><input type="radio" name="q7"><span>Middle-length prompts perform worst</span></label>
+            <label class="opt"><input type="radio" name="q7"><span>Models lose track of intermediate reasoning steps</span></label>
+            <p class="q-why">Liu et al. (2023) measured over thirty percent accuracy loss for a key fact placed mid-context versus at the edges. Put crucial instructions first and repeat them last.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 8</span>"Letter over spirit" failures happen because:</legend>
+            <label class="opt"><input type="radio" name="q8"><span>Models deliberately misinterpret unclear users</span></label>
+            <label class="opt"><input type="radio" name="q8" data-correct><span>Instructions are followed as word patterns, so wording can be obeyed while intent is missed</span></label>
+            <label class="opt"><input type="radio" name="q8"><span>Models cannot process figurative language</span></label>
+            <label class="opt"><input type="radio" name="q8"><span>Training data contains too many legal documents</span></label>
+            <p class="q-why">The model can only see the words. State the goal behind the instruction and the gap closes.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 9</span>A confidently invented citation is which collision?</legend>
+            <label class="opt"><input type="radio" name="q9"><span>Working memory + steerability</span></label>
+            <label class="opt"><input type="radio" name="q9" data-correct><span>Next-token prediction + knowledge</span></label>
+            <label class="opt"><input type="radio" name="q9"><span>Knowledge + working memory</span></label>
+            <label class="opt"><input type="radio" name="q9"><span>Steerability + next-token prediction</span></label>
+            <p class="q-why">Sparse knowledge territory plus fluent generation: the model generates what sounds right where it knows least.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 10</span>The relationship between the 4Ds and the four properties is:</legend>
+            <label class="opt"><input type="radio" name="q10"><span>They are two names for the same thing</span></label>
+            <label class="opt"><input type="radio" name="q10"><span>The properties replace the 4Ds for technical users</span></label>
+            <label class="opt"><input type="radio" name="q10" data-correct><span>The 4Ds are what you do; the properties are what you are responding to when you do them</span></label>
+            <label class="opt"><input type="radio" name="q10"><span>The 4Ds apply to chatbots and the properties to agents</span></label>
+            <p class="q-why">Human competencies on one side, machine properties on the other: one system.</p>
+          </fieldset>
+          <div class="quiz-actions">
+            <button type="submit" class="lbtn lbtn--primary">Submit answers</button>
+            <button type="button" class="lbtn" data-retry hidden>Try again</button>
+            <p class="quiz-result" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+
+      <div class="completion">
+        <div class="completion__bar">
+          <div>
+            <h3>Course complete</h3>
+            <p>Your certificate is below. It carries a unique code and lives only in your browser; print it or save it as a PDF.</p>
+          </div>
+          <div class="name-row">
+            <input type="text" placeholder="Name on certificate" aria-label="Name on certificate">
+            <button type="button" class="lbtn" data-save-name>Update name</button>
+            <button type="button" class="lbtn lbtn--primary" data-print-cert>Print / save as PDF</button>
+          </div>
+        </div>
+        <div class="cert-frame">
+          <div class="cert">
+            <div class="cert__seal" aria-hidden="true"></div>
+            <div class="cert__org">AI Literacy Foundation</div>
+            <div class="cert__certifies">This certifies that</div><br>
+            <div class="cert__name">&nbsp;</div>
+            <div class="cert__completed">has completed the course</div>
+            <div class="cert__title">AI Capabilities and Limitations</div>
+            <div class="cert__meta">
+              <span>Date<b data-cert-date></b></span>
+              <span>Score<b data-cert-score></b></span>
+              <span>Points<b data-cert-points></b></span>
+              <span>Certificate code<b data-cert-code></b></span>
+            </div>
+            <div class="cert__foot">Foreningen AI Literacy Foundation · Copenhagen, Denmark · CVR 46487869 · <a href="https://ailiteracyfoundation.eu/learn.html">ailiteracyfoundation.eu/learn</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="course-colophon">
+      <p><strong>Attribution.</strong> Adapted from the AI Fluency courseware developed in collaboration with Anthropic, CC BY-NC-SA 4.0. This adaptation © 2026 AI Literacy Foundation, shared under the same license. The serial-position research referenced is Liu et al., Stanford, 2023 ("Lost in the Middle").</p>
+      <div class="course-nav-next">
+        <a class="lbtn" href="ai-fluency-foundations.html">← Framework &amp; Foundations</a>
+        <a class="lbtn lbtn--primary" href="how-ai-behaves.html">Next: Understand How AI Behaves →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap--wide">
+    <div class="site-footer__legal">
+      <div>© 2026 AI Literacy Foundation&#8482;. All rights reserved. · CVR 46487869</div>
+      <div class="lang-toggle"><a href="ai-capabilities-limitations.html" class="active">EN</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+</script>
+<script src="learn.js?v=3" defer></script>
+
+</body>
+</html>

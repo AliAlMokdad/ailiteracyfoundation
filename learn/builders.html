@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI Fluency for Builders · AI Literacy Foundation</title>
+<meta name="description" content="AI fluency for product people, designers, and makers: the builder's toolkit, the description chain, five lenses of code discernment, and the pre-deploy gate. Free, with quiz and certificate.">
+<meta name="theme-color" content="#F7F4EE">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ailiteracyfoundation.eu/learn/builders.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ailiteracyfoundation.eu/learn/builders.html">
+<meta property="og:title" content="AI Fluency for Builders">
+<meta property="og:description" content="For product people, designers, and makers: delegating implementation is usually safe, delegating judgment is usually not.">
+<meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "AI Fluency for Builders",
+  "description": "AI fluency for product people, designers, and makers who own the full arc from customer problem to shipped solution.",
+  "provider": { "@id": "https://ailiteracyfoundation.eu/#organization" },
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT3H" }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=polish6">
+<link rel="stylesheet" href="learn.css?v=3">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="brand"><span class="dot" aria-hidden="true"></span>AI Literacy Foundation<sup class="brand-tm" aria-hidden="true">™</sup></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../roadmap.html">The AI Roadmap</a>
+      <a href="../ai-economic-index.html">AI Economic Index</a>
+      <a href="../ai-jobs.html">AI &amp; Jobs</a>
+      <a href="../learn.html" aria-current="page">AI Fluency Learning</a>
+      <a href="../work.html">What We Do</a>
+      <a href="../memos.html">Memos</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="../donate.html" class="cta-donate">Support us</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="course-hero">
+  <div class="wrap--wide">
+    <a href="../learn.html" class="crumb">AI Fluency Learning · Edition</a>
+    <h1>AI Fluency for Builders</h1>
+    <p class="lede">For product people, designers, and makers who own the full arc from customer problem to shipped solution. Two axioms carry this edition: delegating implementation is usually safe, delegating judgment is usually not. And most AI failures trace back to description, discernment, or diligence failures made earlier.</p>
+    <div class="course-hero__meta">
+      <span>9 lessons</span><span>8-question quiz</span><span>~3 hours</span><span class="hl">Certificate + points</span>
+    </div>
+  </div>
+</section>
+
+<div class="course-shell wrap--wide" data-course="builders">
+
+  <aside class="course-rail" aria-label="Lessons">
+    <a href="../learn.html" class="course-rail__back">← All courses</a>
+    <div class="course-rail__title">AI Fluency for Builders</div>
+    <div class="course-rail__hello"></div>
+    <button class="course-rail__toggle" aria-expanded="false">Show lessons</button>
+    <div class="course-rail__progress course-rail__progress--top">
+      <div class="course-rail__bar"><span></span></div>
+      <span class="course-rail__pct">0 of 10 · 0%</span>
+      <div class="course-rail__xp"><span>Points</span><b data-course-xp>0</b></div>
+    </div>
+    <ol>
+      <li><a href="#l1"><span class="c" aria-hidden="true"></span> Welcome, and the builder brief</a></li>
+      <li><a href="#l2"><span class="c" aria-hidden="true"></span> The two loops</a></li>
+      <li><a href="#l3"><span class="c" aria-hidden="true"></span> Capabilities, builder tests</a></li>
+      <li><a href="#l4"><span class="c" aria-hidden="true"></span> Delegation and the toolkit</a></li>
+      <li><a href="#l5"><span class="c" aria-hidden="true"></span> The description chain</a></li>
+      <li><a href="#l6"><span class="c" aria-hidden="true"></span> Discernment for code</a></li>
+      <li><a href="#l7"><span class="c" aria-hidden="true"></span> Discernment for experience</a></li>
+      <li><a href="#l8"><span class="c" aria-hidden="true"></span> Stand behind what you build</a></li>
+      <li><a href="#l9"><span class="c" aria-hidden="true"></span> Closure</a></li>
+      <li><a href="#quiz"><span class="c" aria-hidden="true"></span> Course quiz</a></li>
+    </ol>
+  </aside>
+
+  <div class="course-body">
+
+    <div class="begin-card">
+      <p><strong>Before you start:</strong> put your name on the course. It goes on your certificate, and your progress and points stay in this browser only.</p>
+      <div class="name-row">
+        <input type="text" placeholder="Your name" aria-label="Your name">
+        <button type="button" class="lbtn" data-begin-save>Save</button>
+      </div>
+    </div>
+
+    <div class="objectives">
+      <span class="furniture">What you'll learn</span>
+      <ul>
+        <li>Delegate implementation freely; keep empathy, judgment, and shipping</li>
+        <li>Trace product failures up the description chain</li>
+        <li>Evaluate code through the five lenses, from run-it to judgment-only</li>
+        <li>Run the pre-deploy diligence gate before anything ships</li>
+      </ul>
+    </div>
+
+    
+
+    <section class="lesson" id="l1" data-lesson>
+      <span class="lesson__eyebrow">Lesson 01 · ~15 min</span>
+      <h2>Welcome, and the builder brief</h2>
+      <p>Builders sit in an unusual position with AI: it can now produce in minutes what took your team days, which means the scarce skill is no longer producing. It is knowing what to produce, judging what got produced, and standing behind what ships.</p>
+      <div class="exercise"><span class="furniture">Build your builder brief</span>
+        <p>Before anything else, write a reusable context document you will paste into AI collaborations. Four sections:</p>
+        <ol>
+          <li>What you are building and for whom.</li>
+          <li>Your role and what you personally own.</li>
+          <li>Constraints, including your stack and your non-negotiables.</li>
+          <li>Where AI is wanted in your process, and where it is not.</li>
+        </ol>
+        <p>Then complete the sentence: "If AI could handle ___, I could spend more time on ___." That sentence is your delegation compass for the whole course.</p>
+      </div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Implementation is delegable; judgment is not.</li>
+        <li>A written brief beats re-explaining your world in every conversation.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l2" data-lesson>
+      <span class="lesson__eyebrow">Lesson 02 · ~10 min</span>
+      <h2>The two loops</h2>
+      <p>The 4Ds organize into two loops. The <strong>inner loop</strong>, Description and Discernment, guides your daily interactions: tell the AI what you need, judge what comes back, refine. The <strong>outer loop</strong>, Delegation and Diligence, guides the bigger decisions: whether AI belongs in this work at all, and how you own the result.</p>
+      <div class="exercise"><span class="furniture">Try it</span>
+        <p>Go back to your builder brief and tag each item with the competency it exercises. The one that shows up most is where your attention is already focused, and usually where you will see the fastest gains.</p>
+      </div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Inner loop for the day-to-day; outer loop for whether and how much.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l3" data-lesson>
+      <span class="lesson__eyebrow">Lesson 03 · ~15 min</span>
+      <h2>Capabilities and limitations, builder tests</h2>
+      <p>The machine-side properties (prediction, knowledge, working memory, steerability) are covered in full in <a href="ai-capabilities-limitations.html" style="text-decoration:underline;">AI Capabilities and Limitations</a>. Here is how a builder tests them on their own ground:</p>
+      <ul>
+        <li><strong>Versatility test.</strong> Ask the AI to explain your system three ways: to a product manager, to a mid-level engineer, to a senior reviewer. Did the depth actually shift, or just the vocabulary?</li>
+        <li><strong>Hallucination test.</strong> Ask it to recommend libraries for a real need, then spot-check that each exists, that the API it described is real, and that the version is current.</li>
+        <li><strong>Cutoff and reasoning test.</strong> Ask about a recent deprecation in your stack. Did it resolve the confusion, or just restate the answer more confidently?</li>
+      </ul>
+      <div class="exercise"><span class="furniture">Stretch</span>
+        <p>Run the same topic through a second AI tool and compare the error patterns. Different tools fail differently, and knowing your tools' habits is platform awareness in practice.</p>
+      </div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Test capabilities on your own system, not on toy examples.</li>
+        <li>Library recommendations are a hallucination hotspot: verify existence, API, and version.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l4" data-lesson>
+      <span class="lesson__eyebrow">Lesson 04 · ~20 min</span>
+      <h2>Delegation and the builder's toolkit</h2>
+      <p>The wrong question is "should I use AI here?" The right question is "I have a customer problem; how do I break it down, and what role does AI play in each part?"</p>
+      <p>Think of building as six capabilities, ranked by where AI is strong:</p>
+      <ol>
+        <li><strong>Empathy.</strong> AI is weak here. It can surface data and personas; it cannot feel the gap between what users say and what they mean.</li>
+        <li><strong>Design.</strong> AI assists; taste stays yours.</li>
+        <li><strong>Architecture.</strong> AI advises well when you supply constraints.</li>
+        <li><strong>Implementation.</strong> AI is strongest here. First drafts of working code are the safest large delegation you can make.</li>
+        <li><strong>Judgment.</strong> Yours. What to build, whether it is good, whether it ships.</li>
+        <li><strong>Shipping.</strong> Yours: the accountability cannot be delegated.</li>
+      </ol>
+      <div class="callout"><span class="furniture">Two rules worth framing</span><p>Write acceptance tests before code; they give you and the AI a shared definition of done. And as AI accelerates implementation, your value shifts to framing problems and raising the bar.</p></div>
+      <div class="exercise"><span class="furniture">The carry-through project: clinic wait times</span>
+        <p>A local clinic wants patients to see expected wait times. Deliberately write zero code in this lesson. Produce three artifacts:</p>
+        <ol>
+          <li>A problem brief: which patients, what outcome, what does great feel like?</li>
+          <li>A delegation plan mapping the six capabilities to automation, augmentation, or agency.</li>
+          <li>Five to seven acceptance tests a stranger could verify. "Shows the wait in under 30 seconds without creating an account" is a test. "Easy to use" is not.</li>
+        </ol>
+      </div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>AI is strongest in the middle of the toolkit; empathy, judgment, and shipping stay human.</li>
+        <li>Acceptance tests first: a shared, verifiable definition of done.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l5" data-lesson>
+      <span class="lesson__eyebrow">Lesson 05 · ~20 min</span>
+      <h2>The description chain</h2>
+      <p>Prompt engineering is only one link. The full chain runs: <strong>user voice → requirement → technical spec → AI instruction</strong>, and the builder is the translator at every step. AI cannot hear what the user did not say; only you were in the room.</p>
+      <p>The diagnostic that follows: code that works but a product that does not is a description failure. Find which link broke upstream. Did the requirement mistranslate the user? Did the spec mistranslate the requirement? Did the prompt mistranslate the spec?</p>
+      <ul>
+        <li><strong>Tests are the most precise form of description.</strong> A passing test with an unhappy user means you described the wrong intent.</li>
+        <li><strong>Every adjective should be a decision you can defend.</strong> If you write "fast," write how fast.</li>
+      </ul>
+      <div class="exercise"><span class="furniture">The demo gate</span>
+        <p>Build the smallest slice of your clinic project with AI, then hand it to a partner playing the patient. Do not explain anything. Do not help. If your test results and their satisfaction diverge, trace the chain and find the broken link.</p>
+      </div>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>User voice, requirement, spec, instruction: four links, and you translate at each.</li>
+        <li>Adjectives are decisions; make them defensible numbers where possible.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l6" data-lesson>
+      <span class="lesson__eyebrow">Lesson 06 · ~20 min</span>
+      <h2>Discernment for code</h2>
+      <p>When AI can spin up a working product in minutes, "working" stops being the bar. Evaluate through five lenses, ordered from run-it-and-see to judgment-only:</p>
+      <ol>
+        <li><strong>Functional integrity.</strong> Does it work on real inputs? The common AI failure: passes unit tests, breaks on data the prompt never covered.</li>
+        <li><strong>Production readiness.</strong> Error handling, logging, performance under load, security posture.</li>
+        <li><strong>Problem fit.</strong> Is this even the right solution to the actual problem?</li>
+        <li><strong>Experience quality.</strong> Would someone want to use it? "Works but no one wants it" is an experience-quality failure.</li>
+        <li><strong>Responsible impact.</strong> Who could this harm, exclude, or mislead?</li>
+      </ol>
+      <div class="callout"><span class="furniture">Blind spots and taste</span><p>AI has predictable blind spots in concurrency, security, and anything that only breaks at scale. And taste is a builder skill: AI delivers functional; making it worth using is on you.</p></div>
+      <p>A reflection worth sitting with: when the output is not good enough, is your instinct to fix it yourself or to describe it better? The second instinct scales; the first one does not.</p>
+      <div class="check" data-check="lens">
+        <span class="furniture">Check yourself</span>
+        <p class="check__q">AI-written code passes every unit test, then crashes on the first day of real customer data. Which lens failed?</p>
+        <button type="button" class="opt" data-correct>Functional integrity: it never worked on real inputs</button>
+        <button type="button" class="opt">Experience quality</button>
+        <button type="button" class="opt">Responsible impact</button>
+        <button type="button" class="opt">Problem fit</button>
+        <p class="check__why">Passing unit tests while breaking on data the prompt never covered is the classic AI failure of functional integrity. Real inputs are the test that counts.</p>
+        <span class="check__award"></span>
+      </div>
+
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Five lenses: functional, production, fit, experience, impact.</li>
+        <li>Concurrency, security, and at-scale behavior are the standing blind spots.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l7" data-lesson>
+      <span class="lesson__eyebrow">Lesson 07 · ~15 min</span>
+      <h2>Discernment for user experience</h2>
+      <p>When implementation is fast, experience is the differentiator, and "make it look good" is a wish, not a spec. Evaluate AI-generated interfaces against four principles:</p>
+      <ul>
+        <li><strong>Clarity.</strong> Does the user instantly know what this screen is for?</li>
+        <li><strong>Hierarchy.</strong> Does the eye land on the most important thing first?</li>
+        <li><strong>Accessibility.</strong> AI does not get accessibility right by default. Specify it, then audit what you get back: contrast, focus order, labels, keyboard paths.</li>
+        <li><strong>Feedback.</strong> Does every action visibly acknowledge itself?</li>
+      </ul>
+      <p>One more skill: a good critique and an actionable AI description are different artifacts. "The hierarchy is muddy" is a critique. "Make the wait time the largest element, demote the clinic logo, and move the refresh action below the fold" is a description. Learn to translate between them.</p>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>Clarity, hierarchy, accessibility, feedback: audit all four on anything AI-designed.</li>
+        <li>Translate critiques into concrete, actionable descriptions.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l8" data-lesson>
+      <span class="lesson__eyebrow">Lesson 08 · ~15 min</span>
+      <h2>Stand behind what you build</h2>
+      <p>You own the outcome, not the output. "AI wrote it" explains nothing and excuses nothing. Diligence for builders is a gate you run before anything ships:</p>
+      <ol>
+        <li><strong>Understanding.</strong> Can you explain what it does, not what it should do?</li>
+        <li><strong>Testing.</strong> Have the edge cases been exercised, not just the happy path?</li>
+        <li><strong>Access.</strong> Who is not served? Check who your assumptions exclude before you call something shipped.</li>
+        <li><strong>Responsibility.</strong> Misuse potential considered, AI's role disclosed where it matters.</li>
+        <li><strong>Feedback loop.</strong> How will you know it is working after ship?</li>
+      </ol>
+      <p>Also: shipping has its own technical vocabulary, migrations, versioning, rate limits, feature flags, that AI will not surface unless you ask. Prototype freely, ship selectively. And the underrated skill nobody teaches: deprecating your own work well.</p>
+      <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
+        <li>The pre-deploy gate: understanding, testing, access, responsibility, feedback loop.</li>
+        <li>Prototype freely, ship selectively.</li>
+      </ul></div>
+    </section>
+
+    <section class="lesson" id="l9" data-lesson>
+      <span class="lesson__eyebrow">Lesson 09 · ~10 min</span>
+      <h2>Closure</h2>
+      <p>AI is strongest in the middle of the toolkit. Delegate implementation freely. Keep empathy, judgment, and shipping in your hands. And remember the 4Ds are dynamic, not a sequence: moving fluidly between them as you build is what fluency looks like in practice.</p>
+      <div class="exercise"><span class="furniture">The real one</span>
+        <p>Pick a task that has been waiting: a feature request you have dodged, user feedback you have not synthesized, a spec you have not written, a corner of the codebase you are scared to test. Run it through all four Ds this week.</p>
+      </div>
+    </section>
+
+    <section class="lesson lesson--quiz" id="quiz" data-lesson>
+      <span class="lesson__eyebrow">Final assessment</span>
+      <h2>Course quiz</h2>
+      <div class="quiz-intro"><span>Pass at 80%</span><span>Unlimited retries</span><span>Every answer explained</span></div>
+      <div class="quiz">
+        <form novalidate>
+          <fieldset>
+            <legend><span class="q-n">Question 1</span>Which delegation is described as usually safe?</legend>
+            <label class="opt"><input type="radio" name="q1"><span>Deciding whether to ship</span></label>
+            <label class="opt"><input type="radio" name="q1" data-correct><span>First-draft implementation code</span></label>
+            <label class="opt"><input type="radio" name="q1"><span>Determining what users actually need</span></label>
+            <label class="opt"><input type="radio" name="q1"><span>Judging problem fit</span></label>
+            <p class="q-why">Implementation is AI's strongest capability. User needs, problem fit, and ship decisions are judgment, which stays with you.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 2</span>"The product works but no one wants it" is a failure of:</legend>
+            <label class="opt"><input type="radio" name="q2"><span>Functional integrity</span></label>
+            <label class="opt"><input type="radio" name="q2"><span>Production readiness</span></label>
+            <label class="opt"><input type="radio" name="q2" data-correct><span>Experience quality</span></label>
+            <label class="opt"><input type="radio" name="q2"><span>Version control</span></label>
+            <p class="q-why">It runs, it is deployed, and nobody wants to use it: the experience-quality lens is where that failure shows.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 3</span>The description chain runs:</legend>
+            <label class="opt"><input type="radio" name="q3" data-correct><span>User voice → requirement → technical spec → AI instruction</span></label>
+            <label class="opt"><input type="radio" name="q3"><span>Prompt → output → test → deploy</span></label>
+            <label class="opt"><input type="radio" name="q3"><span>Idea → code → review → ship</span></label>
+            <label class="opt"><input type="radio" name="q3"><span>Spec → prompt → user voice → requirement</span></label>
+            <p class="q-why">Four links, and the builder translates at every one. Prompt engineering is only the last link.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 4</span>Why write acceptance tests before code?</legend>
+            <label class="opt"><input type="radio" name="q4"><span>Because test coverage metrics matter to management</span></label>
+            <label class="opt"><input type="radio" name="q4" data-correct><span>They give you and the AI a shared, verifiable definition of done</span></label>
+            <label class="opt"><input type="radio" name="q4"><span>Because AI cannot write tests afterward</span></label>
+            <label class="opt"><input type="radio" name="q4"><span>To slow the project down deliberately</span></label>
+            <p class="q-why">"Under 30 seconds without an account" is a shared definition of done; "easy to use" is not.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 5</span>AI's predictable blind spots in code include:</legend>
+            <label class="opt"><input type="radio" name="q5"><span>Variable naming and comments</span></label>
+            <label class="opt"><input type="radio" name="q5" data-correct><span>Concurrency, security, and anything that only breaks at scale</span></label>
+            <label class="opt"><input type="radio" name="q5"><span>Loops and conditionals</span></label>
+            <label class="opt"><input type="radio" name="q5"><span>String formatting</span></label>
+            <p class="q-why">Those three classes of problem rarely show in a quick run, which is exactly why they need deliberate scrutiny.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 6</span>"A passing test with an unhappy user" means:</legend>
+            <label class="opt"><input type="radio" name="q6"><span>The user needs training</span></label>
+            <label class="opt"><input type="radio" name="q6"><span>The test framework is broken</span></label>
+            <label class="opt"><input type="radio" name="q6" data-correct><span>You described the wrong intent: a link upstream in the description chain broke</span></label>
+            <label class="opt"><input type="radio" name="q6"><span>The AI ignored your instructions</span></label>
+            <p class="q-why">Tests are the most precise form of description. If they pass and the user is unhappy, the description encoded the wrong thing.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 7</span>AI and accessibility:</legend>
+            <label class="opt"><input type="radio" name="q7"><span>Modern models produce accessible interfaces by default</span></label>
+            <label class="opt"><input type="radio" name="q7" data-correct><span>Specify accessibility explicitly, then audit what you get back</span></label>
+            <label class="opt"><input type="radio" name="q7"><span>Accessibility is only relevant for government sites</span></label>
+            <label class="opt"><input type="radio" name="q7"><span>Screen readers handle whatever AI produces</span></label>
+            <p class="q-why">AI does not get accessibility right by default. It must be in the description and in the discernment.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="q-n">Question 8</span>The pre-deploy diligence gate asks about:</legend>
+            <label class="opt"><input type="radio" name="q8" data-correct><span>Understanding, testing, access, responsibility, and the feedback loop</span></label>
+            <label class="opt"><input type="radio" name="q8"><span>Only whether the tests pass</span></label>
+            <label class="opt"><input type="radio" name="q8"><span>Only performance and cost</span></label>
+            <label class="opt"><input type="radio" name="q8"><span>Whether the code was written by AI or humans</span></label>
+            <p class="q-why">Can you explain what it does, are edge cases tested, who is excluded, is AI's role disclosed, and how will you know it works after ship.</p>
+          </fieldset>
+          <div class="quiz-actions">
+            <button type="submit" class="lbtn lbtn--primary">Submit answers</button>
+            <button type="button" class="lbtn" data-retry hidden>Try again</button>
+            <p class="quiz-result" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+      <div class="completion">
+        <div class="completion__bar">
+          <div>
+            <h3>Course complete</h3>
+            <p>Your certificate is below. It carries a unique code and lives only in your browser; print it or save it as a PDF.</p>
+          </div>
+          <div class="name-row">
+            <input type="text" placeholder="Name on certificate" aria-label="Name on certificate">
+            <button type="button" class="lbtn" data-save-name>Update name</button>
+            <button type="button" class="lbtn lbtn--primary" data-print-cert>Print / save as PDF</button>
+          </div>
+        </div>
+        <div class="cert-frame">
+          <div class="cert">
+            <div class="cert__seal" aria-hidden="true"></div>
+            <div class="cert__org">AI Literacy Foundation</div>
+            <div class="cert__certifies">This certifies that</div><br>
+            <div class="cert__name">&nbsp;</div>
+            <div class="cert__completed">has completed the course</div>
+            <div class="cert__title">AI Fluency for Builders</div>
+            <div class="cert__meta">
+              <span>Date<b data-cert-date></b></span>
+              <span>Score<b data-cert-score></b></span>
+              <span>Points<b data-cert-points></b></span>
+              <span>Certificate code<b data-cert-code></b></span>
+            </div>
+            <div class="cert__foot">Foreningen AI Literacy Foundation · Copenhagen, Denmark · CVR 46487869 · <a href="https://ailiteracyfoundation.eu/learn.html">ailiteracyfoundation.eu/learn</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="course-colophon">
+      <p><strong>Attribution.</strong> Adapted from the AI Fluency courseware developed in collaboration with Anthropic, CC BY-NC-SA 4.0. This adaptation © 2026 AI Literacy Foundation, shared under the same license.</p>
+      <div class="course-nav-next">
+        <a class="lbtn" href="../learn.html">← All courses</a>
+        <a class="lbtn lbtn--primary" href="educators.html">Next edition: For Educators →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap--wide">
+    <div class="site-footer__legal">
+      <div>© 2026 AI Literacy Foundation&#8482;. All rights reserved. · CVR 46487869</div>
+      <div class="lang-toggle"><a href="builders.html" class="active">EN</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+</script>
+<script src="learn.js?v=3" defer></script>
+
+</body>
+</html>

@@ -21,6 +21,18 @@ When citing the Foundation's work, please link the relevant memo directly so rea
 - [Work](https://ailiteracyfoundation.eu/work.html): What we do and how organisations can engage.
 - [Donate](https://ailiteracyfoundation.eu/donate.html): How to support the Foundation.
 
+## AI Fluency Learning (free courses)
+
+Free, self-paced AI fluency courses with quizzes and certificates, adapted from the openly licensed (CC BY-NC-SA 4.0) AI Fluency courseware by Rick Dakan and Joseph Feller in collaboration with Anthropic. No account, no tracking; learner progress stays in the browser.
+
+- [Learning hub](https://ailiteracyfoundation.eu/learn.html): all courses.
+- [AI Fluency: Framework & Foundations](https://ailiteracyfoundation.eu/learn/ai-fluency-foundations.html): the 4D framework (Delegation, Description, Discernment, Diligence), 14 lessons.
+- [AI Capabilities and Limitations](https://ailiteracyfoundation.eu/learn/ai-capabilities-limitations.html): the four machine properties as capability-limitation spectrums, 13 lessons.
+- [Understand How AI Behaves](https://ailiteracyfoundation.eu/learn/how-ai-behaves.html): reference on the 24 fluency behaviors, hallucination, sycophancy, bias, trust, privacy, tokens, context, and AI diligence statements.
+- Editions: [Builders](https://ailiteracyfoundation.eu/learn/builders.html), [Educators](https://ailiteracyfoundation.eu/learn/educators.html), [pK-12 Educators](https://ailiteracyfoundation.eu/learn/pk12-educators.html), [Nonprofits](https://ailiteracyfoundation.eu/learn/nonprofits.html), [Small Businesses](https://ailiteracyfoundation.eu/learn/small-businesses.html), [Students](https://ailiteracyfoundation.eu/learn/students.html).
+- [Teaching AI Fluency](https://ailiteracyfoundation.eu/learn/teaching-ai-fluency.html) and [Train the Trainer](https://ailiteracyfoundation.eu/learn/train-the-trainer.html): for people who teach the framework, including a full workshop kit.
+- [The Research Behind This](https://ailiteracyfoundation.eu/learn/research.html): summary of the AI Fluency Index findings, with citation to Anthropic's original report.
+
 ## Languages
 
 The full site is available in English and Danish. Each English memo has a Danish counterpart at `/da/memos/<slug>.html`. The Danish stubs are intentionally `noindex` and canonicalize to the English versions — for SEO and citation purposes, prefer the English URL.
