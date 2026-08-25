@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css?v=polish6">
-<link rel="stylesheet" href="learn.css?v=4">
+<link rel="stylesheet" href="learn.css?v=11">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <body>
@@ -49,11 +49,24 @@
 
 <section class="course-hero">
   <div class="wrap--wide">
-    <a href="../learn.html" class="crumb">AI Fluency Learning · Reference</a>
-    <h1>Understand How AI Behaves</h1>
-    <p class="lede">The working reference behind the courses. Nine short readings you will come back to: what the behaviors of fluency actually look like, why models fail the ways they fail, what happens to your data, and how to disclose AI's role in your work.</p>
-    <div class="course-hero__meta">
-      <span>9 readings</span><span>Dip in as needed</span><span class="hl">Points</span>
+    <div class="course-hero__grid">
+      <div>
+      <a href="../learn.html" class="crumb">AI Fluency Learning · Reference</a>
+      <h1>Understand How AI Behaves</h1>
+      <p class="lede">The working reference behind the courses. Nine short readings you will come back to: what the behaviors of fluency actually look like, why models fail the ways they fail, what happens to your data, and how to disclose AI's role in your work.</p>
+      <div class="course-hero__meta">
+        <span>9 readings</span><span>Dip in as needed</span><span class="hl">Points</span>
+      </div>
+      </div>
+      <div class="course-ring">
+        <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Course progress">
+          <circle class="course-ring__track" cx="60" cy="60" r="54"/>
+          <circle class="course-ring__fill" cx="60" cy="60" r="54" stroke-dasharray="339.3" stroke-dashoffset="339.3"/>
+          <text class="course-ring__pct" x="60" y="58" text-anchor="middle" dominant-baseline="middle">0%</text>
+          <text class="course-ring__cap" x="60" y="78" text-anchor="middle">Complete</text>
+        </svg>
+        <div class="course-ring__foot">Not started</div>
+      </div>
     </div>
   </div>
 </section>
@@ -69,6 +82,7 @@
       <div class="course-rail__bar"><span></span></div>
       <span class="course-rail__pct">0 of 9 · 0%</span>
       <div class="course-rail__xp"><span>Points</span><b data-course-xp>0</b></div>
+      <div class="course-rail__passed" role="status"></div>
     </div>
     <ol>
       <li><a href="#l1"><span class="c" aria-hidden="true"></span> The four properties, at a glance</a></li>
@@ -113,7 +127,7 @@
     <section class="lesson" id="l2" data-lesson>
       <span class="lesson__eyebrow">Reading 02</span>
       <h2>The 24 fluency behaviors</h2>
-      <p>Research on tens of thousands of real conversations identified 24 concrete behaviors that mark fluent AI collaboration, grouped by competency. Use this as a checklist against your own habits.</p>
+      <p>The 4D framework defines 24 concrete behaviors that mark fluent AI collaboration, grouped by competency. Anthropic's AI Fluency Index measured the 11 of them that are directly observable in a chat transcript. Use the full list as a checklist against your own habits.</p>
       <h3>Description (8 behaviors)</h3>
       <ul>
         <li>Define the audience for the output.</li>
@@ -164,7 +178,7 @@
       <ul>
         <li>Ask for sources, then ask the model to check that its sources actually support the claim.</li>
         <li>Say up front: "it's okay if you don't know."</li>
-        <li>Ask how confident it is. Often the model can tell you its own uncertainty when asked directly.</li>
+        <li>Ask how confident it is, and treat the answer as a hint rather than a measurement. Stated confidence is only loosely related to accuracy, but asking often surfaces a hedge worth chasing.</li>
         <li>Open a new chat and ask it to find errors in the previous answer.</li>
         <li>Cross-reference anything critical against a source you already trust.</li>
       </ul>
@@ -173,7 +187,7 @@
     <section class="lesson" id="l4" data-lesson>
       <span class="lesson__eyebrow">Reading 04</span>
       <h2>What sycophancy is</h2>
-      <p>Sycophancy is the model telling you what you want to hear: agreeing with your factual error, changing answers based on how you phrase things, matching your stated preference instead of the truth. It arises because models are optimized for responses people approve of, and agreement gets approved.</p>
+      <p>Sycophancy is the model telling you what you want to hear: agreeing with your factual error, changing answers based on how you phrase things, matching your stated preference instead of the truth. It is thought to come in large part from training on human preference judgments: agreement tends to get approved.</p>
       <p>The line to hold: adaptation of tone, level, and concision is what you want; agreement on facts and on your wellbeing is not. Helpful adaptation versus harmful agreement.</p>
       <h3>When to suspect it</h3>
       <ul>
@@ -233,8 +247,8 @@
     <section class="lesson" id="l8" data-lesson>
       <span class="lesson__eyebrow">Reading 08</span>
       <h2>Tokens and context, why some inputs cost more</h2>
-      <p>What actually arrives at a model is a list of numbers, one per chunk of text from a learned vocabulary. A chunk with its numerical ID is called a token. Models use subword tokens as a middle ground: per-character would be slow and expensive, per-word would need a vocabulary too large and still miss rare words. "The tokenizer rocks" becomes [The][ token][izer][ rocks][.]</p>
-      <p>Cost intuitions that follow: common words are single cheap tokens; rare words get chopped into pieces; a 100-character URL costs more tokens than a 100-character sentence, because rare strings shatter. This vocabulary is baked in at training, which explains oddities like models miscounting letters inside words: the model learned what token 4062 means, not what the letters in "quick" are.</p>
+      <p>What actually arrives at a model is a list of numbers, one per chunk of text from a learned vocabulary. A chunk with its numerical ID is called a token. Models use subword tokens as a middle ground: per-character would be slow and expensive, per-word would need a vocabulary too large and still miss rare words. "The tokenizer rocks." splits into roughly [The][ token][izer][ rocks][.]; the exact split differs by tokenizer</p>
+      <p>Cost intuitions that follow: common words are single cheap tokens; rare words get chopped into pieces; a 100-character URL costs more tokens than a 100-character sentence, because rare strings shatter. This vocabulary is baked in at training, which explains oddities like models miscounting letters inside words: the model learned what a token means as a whole, not the letters inside it.</p>
       <h3>Context, the other half of cost</h3>
       <p>A model's knowledge is either baked into its weights during training (parametric memory, which emerged as a side effect of learning to predict text) or sitting in the current context window. The window is big, but most of it is filled with things you did not write: system instructions, tool calls, retrieved results. And context is re-sent every turn, so a short question late in a long conversation costs more than the same question fresh. Starting a new chat is often the cheapest and fastest way to get an answer.</p>
       <p>When conversations run very long, tools summarize the history and replace it (compaction); it is still a summary, and details can be lost. Written memory works differently: notes recorded in one conversation are inserted at the start of the next. Worth remembering there: your project, your preferences, your working relationships. Not worth remembering: ephemeral numbers and quotes, which should be looked up fresh rather than written down and hoped unchanged.</p>
@@ -294,7 +308,7 @@
     });
   }
 </script>
-<script src="learn.js?v=4" defer></script>
+<script src="learn.js?v=11" defer></script>
 
 </body>
 </html>

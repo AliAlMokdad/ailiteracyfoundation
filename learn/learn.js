@@ -65,6 +65,29 @@
   if (xpEl) xpEl.textContent = totalXP;
   if (crEl) crEl.textContent = credits;
 
+  /* ---------- hub: resume where you left off ---------- */
+  var resumeEl = document.querySelector('.resume');
+  if (resumeEl) {
+    var best = null;
+    COURSES.forEach(function (id) {
+      var s = store(id);
+      if (s.quiz && s.quiz.passed) return;
+      if (!(s.read || []).length && typeof s.at !== 'number') return;
+      if (!best || (s.ts || 0) > (best.s.ts || 0)) best = { id: id, s: s };
+    });
+    var card = best && document.querySelector('[data-course-status="' + best.id + '"]');
+    var link = card && card.closest('.course-card') && card.closest('.course-card').querySelector('h3 a');
+    if (best && link) {
+      var total = parseInt(card.getAttribute('data-lessons') || '0', 10);
+      var at = (typeof best.s.at === 'number' ? best.s.at : 0) + 1;
+      resumeEl.querySelector('.resume__title').textContent = link.textContent.trim();
+      resumeEl.querySelector('.resume__where').textContent = total ? 'Lesson ' + Math.min(at, total) + ' of ' + total : '';
+      var btn = resumeEl.querySelector('a.lbtn');
+      btn.setAttribute('href', link.getAttribute('href'));
+      resumeEl.classList.add('is-on');
+    }
+  }
+
   if (!courseEl) return;
 
   /* ---------- course state ---------- */
@@ -93,6 +116,22 @@
     if (bar) bar.style.width = p + '%';
     if (pct) pct.textContent = done + ' of ' + total + ' complete · ' + p + '%';
     if (xpChip) xpChip.textContent = courseXP(state);
+    var ring = document.querySelector('.course-ring__fill');
+    if (ring) {
+      var C = 2 * Math.PI * 54;
+      ring.setAttribute('stroke-dasharray', C.toFixed(1));
+      ring.setAttribute('stroke-dashoffset', (C * (1 - p / 100)).toFixed(1));
+    }
+    var ringPct = document.querySelector('.course-ring__pct');
+    if (ringPct) ringPct.textContent = p + '%';
+    var ringFoot = document.querySelector('.course-ring__foot');
+    if (ringFoot) ringFoot.textContent = done ? done + ' of ' + total + ' done' : 'Not started';
+    var passedEl = document.querySelector('.course-rail__passed');
+    if (passedEl) {
+      var isPassed = !!(state.quiz && state.quiz.passed);
+      passedEl.classList.toggle('is-on', isPassed);
+      passedEl.textContent = isPassed ? 'Passed, certificate earned' : '';
+    }
     lessons.forEach(function (s) {
       var li = railFor(s.id);
       if (li) li.classList.toggle('is-read', state.read.indexOf(s.id) >= 0);
@@ -100,7 +139,7 @@
   }
 
   function markRead(id) {
-    if (id && state.read.indexOf(id) < 0) { state.read.push(id); save(courseId, state); paint(); }
+    if (id && state.read.indexOf(id) < 0) { state.read.push(id); state.ts = Date.now(); save(courseId, state); paint(); }
   }
 
   /* ---------- learner name ---------- */
@@ -108,6 +147,24 @@
     var hello = document.querySelector('.course-rail__hello');
     var p = profile();
     if (hello) hello.textContent = p.name ? 'Learning as ' + p.name : '';
+    var card = document.querySelector('.begin-card');
+    if (card) {
+      card.classList.toggle('is-saved', !!p.name);
+      var note = card.querySelector('p');
+      if (note) {
+        while (note.firstChild) note.removeChild(note.firstChild);
+        var lead = document.createElement('strong');
+        if (p.name) {
+          lead.textContent = 'Ready, ' + p.name.split(' ')[0] + '.';
+          note.appendChild(lead);
+          note.appendChild(document.createTextNode(' This name goes on your certificate. Change it any time.'));
+        } else {
+          lead.textContent = 'Before you start:';
+          note.appendChild(lead);
+          note.appendChild(document.createTextNode(' add the name for your certificate. Progress and points stay in this browser.'));
+        }
+      }
+    }
     var beginInput = document.querySelector('.begin-card input[type="text"]');
     if (beginInput && p.name && !beginInput.value) beginInput.value = p.name;
     var certInput = document.querySelector('.completion input[type="text"]');
@@ -132,7 +189,10 @@
   var current = 0;
   var pgPrev, pgNext, pgPos;
 
-  function show(i, scroll) {
+  /* initial === true on first render: do not touch the hash there. Writing it
+     during a deferred script makes Chrome run its post-load fragment scroll and
+     dump the learner into the middle of the page. */
+  function show(i, scroll, initial) {
     current = Math.max(0, Math.min(lessons.length - 1, i));
     lessons.forEach(function (s, k) { s.classList.toggle('is-current', k === current); });
     railItems.forEach(function (li) { li.classList.remove('is-active'); });
@@ -157,9 +217,11 @@
         pgNext.removeAttribute('disabled');
       }
     }
+    body.classList.toggle('at-start', current === 0);
     body.classList.toggle('at-end', current === lessons.length - 1);
-    if (history.replaceState) history.replaceState(null, '', '#' + lessons[current].id);
+    if (!initial && history.replaceState) history.replaceState(null, '', '#' + lessons[current].id);
     state.at = current;
+    state.ts = Date.now();
     save(courseId, state);
     if (scroll !== false) {
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -210,7 +272,7 @@
       lessons.forEach(function (s, k) { if (firstUnread < 0 && state.read.indexOf(s.id) < 0) firstUnread = k; });
       if (firstUnread > 0) start = firstUnread;
     }
-    show(start, false);
+    show(start, false, true);
   }
 
   var railToggle = document.querySelector('.course-rail__toggle');
@@ -299,7 +361,9 @@
         best: Math.max(prevBest, correct),
         total: sets.length,
         passed: passed || !!(state.quiz && state.quiz.passed),
-        when: (state.quiz && state.quiz.passed && state.quiz.when) || new Date().toISOString().slice(0, 10)
+        when: (state.quiz && state.quiz.passed && state.quiz.when) || new Date().toISOString().slice(0, 10),
+        /* carry the minted seed so a retake never changes an issued code */
+        seed: state.quiz && state.quiz.seed
       };
       save(courseId, state);
       if (passed) {
@@ -340,10 +404,25 @@
       });
     }
 
-    /* certificate code: deterministic, human-checkable, no server.
-       AILF-<course>-<hash of name|course|date> in base32, grouped. */
+    /* Certificate code: minted once per earned certificate and stored, so it is
+       unique even for two learners with the same name on the same day, and stable
+       on every later view. Hash of name, course, date and a per-issue random seed,
+       rendered in a base32 alphabet without lookalike characters. */
     function certCode(name, when) {
-      var s = name + '|' + courseId + '|' + (when || '');
+      if (!state.quiz) return '';
+      if (!state.quiz.seed) {
+        var seed = '';
+        if (window.crypto && window.crypto.getRandomValues) {
+          var arr = new Uint32Array(2);
+          window.crypto.getRandomValues(arr);
+          seed = arr[0].toString(36) + arr[1].toString(36);
+        } else {
+          seed = Math.random().toString(36).slice(2) + Date.now().toString(36);
+        }
+        state.quiz.seed = seed;
+        save(courseId, state);
+      }
+      var s = name + '|' + courseId + '|' + (when || '') + '|' + state.quiz.seed;
       var h = 5381;
       for (var i = 0; i < s.length; i++) { h = ((h << 5) + h + s.charCodeAt(i)) >>> 0; }
       var alpha = 'ABCDEFGHJKMNPQRSTVWXYZ23456789';

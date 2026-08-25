@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Research Behind AI Fluency · AI Literacy Foundation</title>
-<meta name="description" content="What 50,000 real AI conversations reveal: iteration is the master variable, polished output suppresses scrutiny, discernment must be taught. Plus a team discussion guide.">
+<meta name="description" content="What 50,000 real AI conversations reveal: iteration tracks every other fluency behaviour, scrutiny falls where output looks finished, and discernment has to be taught. Plus a team discussion guide.">
 <meta name="theme-color" content="#F7F4EE">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ailiteracyfoundation.eu/learn/research.html">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://ailiteracyfoundation.eu/learn/research.html">
 <meta property="og:title" content="The Research Behind AI Fluency">
-<meta property="og:description" content="Iteration is the master variable, polished output suppresses scrutiny, and discernment must be taught. With a team discussion guide.">
+<meta property="og:description" content="Iteration tracks every other fluency behaviour, scrutiny falls where output looks finished, and discernment has to be taught. With a team discussion guide.">
 <meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css?v=polish6">
-<link rel="stylesheet" href="learn.css?v=4">
+<link rel="stylesheet" href="learn.css?v=11">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <body>
@@ -49,11 +49,24 @@
 
 <section class="course-hero">
   <div class="wrap--wide">
-    <a href="../learn.html" class="crumb">AI Fluency Learning · Research</a>
-    <h1>The Research Behind This</h1>
-    <p class="lede">The courses on this hub are not opinion. They rest on empirical research: Anthropic's AI Fluency Index, which measured concrete fluency behaviors across tens of thousands of real, anonymized conversations. Here is what it found, what it means for training, and how to discuss it with your team. We summarize the findings and cite the source; the data is theirs, and the numbers below are theirs.</p>
-    <div class="course-hero__meta">
-      <span>3 readings</span><span>~30 min</span><span>Discussion guide</span><span class="hl">Points</span>
+    <div class="course-hero__grid">
+      <div>
+      <a href="../learn.html" class="crumb">AI Fluency Learning · Research</a>
+      <h1>The Research Behind This</h1>
+      <p class="lede">The courses on this hub are not opinion. They rest on empirical research: Anthropic's AI Fluency Index, which measured concrete fluency behaviors across tens of thousands of real, anonymized conversations. Here is what it found, what it means for training, and how to discuss it with your team. We summarize the findings and cite the source.</p>
+      <div class="course-hero__meta">
+        <span>3 readings</span><span>~30 min</span><span>Discussion guide</span><span class="hl">Points</span>
+      </div>
+      </div>
+      <div class="course-ring">
+        <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Course progress">
+          <circle class="course-ring__track" cx="60" cy="60" r="54"/>
+          <circle class="course-ring__fill" cx="60" cy="60" r="54" stroke-dasharray="339.3" stroke-dashoffset="339.3"/>
+          <text class="course-ring__pct" x="60" y="58" text-anchor="middle" dominant-baseline="middle">0%</text>
+          <text class="course-ring__cap" x="60" y="78" text-anchor="middle">Complete</text>
+        </svg>
+        <div class="course-ring__foot">Not started</div>
+      </div>
     </div>
   </div>
 </section>
@@ -69,6 +82,7 @@
       <div class="course-rail__bar"><span></span></div>
       <span class="course-rail__pct">0 of 3 · 0%</span>
       <div class="course-rail__xp"><span>Points</span><b data-course-xp>0</b></div>
+      <div class="course-rail__passed" role="status"></div>
     </div>
     <ol>
       <li><a href="#l1"><span class="c" aria-hidden="true"></span> The AI Fluency Index</a></li>
@@ -83,8 +97,8 @@
       <span class="furniture">What you'll learn</span>
       <ul>
         <li>What 50,000 real conversations reveal about fluency</li>
-        <li>Why iteration is the master variable</li>
-        <li>Why polished output suppresses scrutiny: the artifact effect</li>
+        <li>Why iteration tracks every other fluency behaviour</li>
+        <li>Why scrutiny falls where output looks finished: the artifact effect</li>
         <li>How to run the team discussion and the three activities</li>
       </ul>
     </div>
@@ -94,13 +108,13 @@
     <section class="lesson" id="l1" data-lesson>
       <span class="lesson__eyebrow">Reading 01</span>
       <h2>The AI Fluency Index</h2>
-      <p><strong>Method.</strong> Using privacy-preserving analysis, researchers examined 9,830 multi-turn Claude conversations from one week in January 2026, testing for 11 of the 24 fluency behaviors, the ones directly observable in chat. (The other 13, like honesty about AI's role in submitted work, happen outside the conversation and are arguably the most consequential; qualitative study of those is planned.) Results were stable across days of the week and across six languages. The dataset has since grown past 50,000 conversations across chat and agentic coding tools.</p>
-      <h3>Finding one: iteration is the master variable</h3>
-      <p>85.7% of conversations involved iteration and refinement, and those conversations showed roughly double the fluency behaviors of one-shot exchanges (2.67 additional behaviors versus 1.33). Iterating users were 5.6 times more likely to question the model's reasoning and 4 times more likely to identify missing context. The single strongest thing you can do to get better with AI is stay in the conversation.</p>
+      <p><strong>Method</strong> (all figures in this reading are from <a href="https://www.anthropic.com/news/anthropic-education-report-the-ai-fluency-index" style="text-decoration:underline;">Anthropic's AI Fluency Index</a>, February 2026). Using privacy-preserving analysis, researchers examined 9,830 multi-turn Claude conversations from one week in January 2026, testing for 11 of the 24 fluency behaviors, the ones directly observable in chat. (The other 13, like honesty about AI's role in submitted work, happen outside the conversation and are arguably the most consequential; qualitative study of those is planned.) Results were stable across days of the week and across six languages. The dataset has since grown past 50,000 conversations across chat and agentic coding tools.</p>
+      <h3>Finding one: iteration tracks every other behaviour</h3>
+      <p>85.7% of the conversations involved iteration and refinement, and those conversations showed roughly double the fluency behaviors of conversations without it (2.67 additional behaviors versus 1.33). Conversations with iteration were 5.6 times more likely to include questioning the model's reasoning and 4 times more likely to include identifying missing context. Iteration is the behavior most strongly associated with every other one, which makes staying in the conversation the first habit worth building.</p>
       <h3>Finding two: the artifact paradox</h3>
-      <p>In the 12.3% of conversations that produced artifacts (documents, code, tools), users became <strong>more directive</strong>: clarifying goals (+14.7 percentage points), specifying format (+14.5), providing examples (+13.4), iterating (+9.7). But they became <strong>less evaluative</strong>: identifying missing context dropped 5.2 points, fact-checking dropped 3.7, questioning reasoning dropped 3.1. Polished-looking output suppresses critical evaluation, precisely where complex tasks make models weakest.</p>
+      <p>In the 12.3% of conversations that produced artifacts (documents, code, tools), the conversations were <strong>more directive</strong>: clarifying goals (+14.7 percentage points), specifying format (+14.5), providing examples (+13.4), iterating (+9.7). and <strong>less evaluative</strong>: identifying missing context dropped 5.2 points, fact-checking dropped 3.7, questioning reasoning dropped 3.1. Where the output looks finished, critical evaluation falls away, and that is precisely where complex tasks make models weakest.</p>
       <h3>Finding three: almost nobody sets the terms</h3>
-      <p>Only about 30% of users ever tell the AI how to interact with them. Instructions like "push back if my assumptions are wrong," "walk me through your reasoning before answering," and "tell me what you're uncertain about" change the dynamic of everything that follows, and most people never issue them.</p>
+      <p>Only about 30% of conversations included any instruction about how the AI should interact. Instructions like "push back if my assumptions are wrong," "walk me through your reasoning before answering," and "tell me what you're uncertain about" change the dynamic of everything that follows, and they are almost always absent.</p>
       <p><strong>Honest limits, stated by the researchers themselves:</strong> the sample skews toward early adopters, covers one platform and one week, uses binary classification, cannot see evaluation that happens in the user's head or outside the chat, and the findings are correlational, not causal.</p>
       <div class="takeaways"><span class="furniture">What to do with it</span><ul>
         <li>Treat the first response as a starting point, always.</li>
@@ -114,7 +128,7 @@
       <h2>A research-backed curriculum</h2>
       <p>Extending the Index across products revealed that fluency develops along two tracks that behave very differently, which has direct consequences for anyone building AI training.</p>
       <h3>Each product has a signature move</h3>
-      <p>The gateway behavior that lifts all other fluency indicators differs by surface. In conversational chat, it is <strong>iterating</strong>: users who refine through follow-ups grow on every other dimension, while one-message users show almost no critical evaluation. In agentic tools, where the AI works semi-independently, it is <strong>clarifying the goal</strong> before the work starts. Teach the signature move first; a curriculum that skips it builds on nothing.</p>
+      <p>The gateway behavior that lifts all other fluency indicators differs by surface. In conversational chat, it is <strong>iterating</strong>: conversations that refine through follow-ups score higher on every other dimension, while single-message conversations show almost no critical evaluation. In agentic tools, where the AI works semi-independently, it is <strong>clarifying the goal</strong> before the work starts. Teach the signature move first; a curriculum that skips it builds on nothing.</p>
       <h3>Description grows with practice; Discernment must be taught</h3>
       <p>Description skills, from in-the-moment shaping (add context, give examples) to durable configuration (standing instructions, project setups), grow organically with exposure. People find their way to them. Discernment does not: it fails to grow with tenure and fails to transfer from feature familiarity. Watching an AI work (reading its output, running its code) only catches errors you can see; it misses wrong assumptions, missing context, and plausible-but-false claims. A result that looks right can still encode the wrong approach.</p>
       <div class="callout"><span class="furniture">The training implication</span><p>If your training time is limited, concentrate it on Discernment, and close every learning session with a "now question it" step: is this usable, or does it need another round? Does the reasoning hold, or did it just sound confident? What would make this wrong?</p></div>
@@ -126,7 +140,7 @@
       <h2>A team discussion guide</h2>
       <p>For teams of any size: leadership groups, faculties, or any group that works with AI. Allow 45 to 60 minutes, have people skim reading one in advance, and pick two or three topics plus one activity.</p>
       <h3>Topic 1: what your team already does well</h3>
-      <p>Most people already show real fluency behaviors: 86% iterate, about half clarify goals, about 41% provide examples. Which behaviors do you think are strongest on your team, and which weakest? Do people iterate and push back, or accept the first output, and what drives that?</p>
+      <p>Most conversations already show real fluency behaviors: 86% include iteration, about half include goal clarification, about 41% include examples. Which behaviors do you think are strongest on your team, and which weakest? Do people iterate and push back, or accept the first output, and what drives that?</p>
       <h3>Topic 2: the iteration effect</h3>
       <p>Iteration correlates with everything, but correlation is not causation. What might explain the link? What barriers stop people iterating: time pressure, perceived effort, not knowing what to ask next? If you designed a team norm to encourage iteration, what would a good follow-up message look like?</p>
       <h3>Topic 3: the artifact effect</h3>
@@ -172,7 +186,7 @@
     });
   }
 </script>
-<script src="learn.js?v=4" defer></script>
+<script src="learn.js?v=11" defer></script>
 
 </body>
 </html>

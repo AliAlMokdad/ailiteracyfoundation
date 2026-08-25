@@ -10,3 +10,4 @@ _project-context/
 # Local tooling scratch (never deployed)
 .audit_tmp/
 .claude/
+.autoreview/

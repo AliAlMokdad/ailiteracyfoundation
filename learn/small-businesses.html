@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css?v=polish6">
-<link rel="stylesheet" href="learn.css?v=4">
+<link rel="stylesheet" href="learn.css?v=11">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <body>
@@ -61,11 +61,24 @@
 
 <section class="course-hero">
   <div class="wrap--wide">
-    <a href="../learn.html" class="crumb">AI Fluency Learning · Edition</a>
-    <h1>AI Fluency for Small Businesses</h1>
-    <p class="lede">The same 4D framework in a business voice, with one standard: every efficiency gain should translate to better customer service and more time for high-value work. Not AI for its own sake; AI in service of the business you already run.</p>
-    <div class="course-hero__meta">
-      <span>8 lessons</span><span>7-question quiz</span><span>~3 hours</span><span class="hl">Certificate + points</span>
+    <div class="course-hero__grid">
+      <div>
+      <a href="../learn.html" class="crumb">AI Fluency Learning · Edition</a>
+      <h1>AI Fluency for Small Businesses</h1>
+      <p class="lede">The same 4D framework in a business voice, with one standard: every efficiency gain should translate to better customer service and more time for high-value work. Not AI for its own sake; AI in service of the business you already run.</p>
+      <div class="course-hero__meta">
+        <span>8 lessons</span><span>7-question quiz</span><span>~3 hours</span><span class="hl">Certificate + points</span>
+      </div>
+      </div>
+      <div class="course-ring">
+        <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Course progress">
+          <circle class="course-ring__track" cx="60" cy="60" r="54"/>
+          <circle class="course-ring__fill" cx="60" cy="60" r="54" stroke-dasharray="339.3" stroke-dashoffset="339.3"/>
+          <text class="course-ring__pct" x="60" y="58" text-anchor="middle" dominant-baseline="middle">0%</text>
+          <text class="course-ring__cap" x="60" y="78" text-anchor="middle">Complete</text>
+        </svg>
+        <div class="course-ring__foot">Not started</div>
+      </div>
     </div>
   </div>
 </section>
@@ -81,6 +94,7 @@
       <div class="course-rail__bar"><span></span></div>
       <span class="course-rail__pct">0 of 9 · 0%</span>
       <div class="course-rail__xp"><span>Points</span><b data-course-xp>0</b></div>
+      <div class="course-rail__passed" role="status"></div>
     </div>
     <ol>
       <li><a href="#l1"><span class="c" aria-hidden="true"></span> Welcome</a></li>
@@ -98,7 +112,7 @@
   <div class="course-body">
 
     <div class="begin-card">
-      <p><strong>Before you start:</strong> put your name on the course. It goes on your certificate, and your progress and points stay in this browser only.</p>
+      <p><strong>Before you start:</strong> add the name for your certificate. Progress and points stay in this browser.</p>
       <div class="name-row">
         <input type="text" placeholder="Your name" aria-label="Your name">
         <button type="button" class="lbtn" data-begin-save>Save</button>
@@ -216,7 +230,7 @@
     <section class="lesson" id="l8" data-lesson>
       <span class="lesson__eyebrow">Lesson 08 · ~10 min</span>
       <h2>Next steps</h2>
-      <p>One real task this week: the quote template, the supplier comparison, the review responses you have been postponing. Run the loops. The framework is a loop, not a line, and your certificate is a conversation-starter in your network: most small business owners around you are earlier on this road than you now are.</p>
+      <p>One real task this week: the quote template, the supplier comparison, the review responses you have been postponing. Run the loops. The framework is a loop, not a line.</p>
     </section>
 
     <section class="lesson lesson--quiz" id="quiz" data-lesson>
@@ -292,7 +306,7 @@
         <div class="completion__bar">
           <div>
             <h3>Course complete</h3>
-            <p>Your certificate is below. It carries a unique code and lives only in your browser; print it or save it as a PDF.</p>
+            <p>Your certificate carries its own code. Print it or save it as a PDF.</p>
           </div>
           <div class="name-row">
             <input type="text" placeholder="Name on certificate" aria-label="Name on certificate">
@@ -351,7 +365,7 @@
     });
   }
 </script>
-<script src="learn.js?v=4" defer></script>
+<script src="learn.js?v=11" defer></script>
 
 </body>
 </html>

@@ -34,7 +34,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=polish6">
-<link rel="stylesheet" href="learn/learn.css?v=4">
+<link rel="stylesheet" href="learn/learn.css?v=11">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <body>
@@ -69,7 +69,7 @@
       <div class="learn-hero__grid">
       <div>
       <h1>Learn to work with AI, <em>on your own terms</em>.</h1>
-      <p class="lede">Free, self-paced courses on AI fluency: the skill of collaborating with AI effectively, efficiently, ethically, and safely. Built on the 4D framework. Quizzes, points, and a certificate with a unique code at the end of every course. No account, no tracking; everything stays in your own browser.</p>
+      <p class="lede">Free, self-paced courses on AI fluency: the skill of collaborating with AI effectively, efficiently, ethically, and safely. Built on the 4D framework. Quizzes, points, and a certificate with its own code at the end of every course. No account, no tracking; everything stays in your own browser.</p>
       <div class="hub-stats">
         <div class="hub-stat"><b>12</b><span>Courses and kits</span></div>
         <div class="hub-stat"><b data-hub-xp>0</b><span>Your points</span></div>
@@ -107,10 +107,18 @@
         <figcaption>The 4D framework: Delegation, Description, Discernment, Diligence. Two loops you move between without thinking about which one you are in.</figcaption>
       </figure>
       </div>
-      <div class="journey">
-        <div><span class="jn">Step 01</span><span class="jt">Build the foundation</span><div class="jd">The framework, then the machine: two courses, taken in order.</div></div>
-        <div><span class="jn">Step 02</span><span class="jt">Take it to your world</span><div class="jd">Six editions that speak your language: builders to students.</div></div>
-        <div><span class="jn">Step 03</span><span class="jt">Teach it forward</span><div class="jd">The teaching course, the workshop kit, and the research.</div></div>
+      <nav class="journey" aria-label="Learning path">
+        <a href="#start-here"><span class="jn">Step 01</span><span class="jt">Build the foundation</span><div class="jd">The framework, then the machine: two courses, taken in order.</div></a>
+        <a href="#editions"><span class="jn">Step 02</span><span class="jt">Take it to your world</span><div class="jd">Six editions that speak your language: builders to students.</div></a>
+        <a href="#teach"><span class="jn">Step 03</span><span class="jt">Teach it forward</span><div class="jd">The teaching course, the workshop kit, and the research.</div></a>
+      </nav>
+      <div class="resume" role="region" aria-label="Continue learning">
+        <div>
+          <span class="resume__label">Pick up where you left off</span>
+          <div class="resume__title"></div>
+          <div class="resume__where"></div>
+        </div>
+        <a class="lbtn" href="#">Continue →</a>
       </div>
     </div>
   </section>
@@ -118,7 +126,6 @@
   <style>#start-here .course-card{border-top:3px solid var(--accent)}#start-here .course-grid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}#start-here .course-card h3{font-size:clamp(1.35rem,2vw,1.6rem)}</style>
   <section class="learn-section" id="start-here">
     <div class="wrap--wide">
-      <span class="section-kicker">Step 01</span>
       <h2>Start here</h2>
       <p class="section-sub">Two courses that build the foundation: the human side (how you collaborate) and the machine side (what the technology can and cannot do). Take them in order.</p>
       <div class="course-grid">
@@ -146,7 +153,6 @@
 
   <section class="learn-section" id="editions">
     <div class="wrap--wide">
-      <span class="section-kicker">Step 02</span>
       <h2>Choose your edition</h2>
       <p class="section-sub">The same framework, rebuilt for your world. Each edition speaks your language, uses your examples, and ends with its own quiz and certificate.</p>
       <div class="course-grid">
@@ -192,7 +198,6 @@
 
   <section class="learn-section" id="teach">
     <div class="wrap--wide">
-      <span class="section-kicker">Step 03</span>
       <h2>Teach and facilitate</h2>
       <p class="section-sub">For the people who bring AI fluency to others: teachers, trainers, team leads, and anyone running a workshop.</p>
       <div class="course-grid">
@@ -211,7 +216,7 @@
         <article class="course-card">
           <div class="course-card__kicker"><span>Research</span><span class="course-card__status" data-course-status="research" data-lessons="3" hidden></span></div>
           <h3><a href="learn/research.html">The Research Behind This</a></h3>
-          <p>What 50,000 real conversations reveal: iteration is the master variable, polished output suppresses scrutiny, and discernment must be taught.</p>
+          <p>What Anthropic's AI Fluency Index found across 50,000 real conversations: iteration tracks every other fluency behaviour, scrutiny falls where output looks finished, and discernment has to be taught.</p>
           <div class="course-card__meta">3 readings · discussion guide</div>
         </article>
       </div>
@@ -220,7 +225,7 @@
 
   <section class="learn-section">
     <div class="wrap">
-      <p class="learn-note"><strong>Where this comes from, honestly.</strong> These courses are the AI Literacy Foundation's adaptation of the AI Fluency courseware developed by Prof. Rick Dakan (Ringling College of Art and Design) and Prof. Joseph Feller (University College Cork) in collaboration with Anthropic, shared under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" style="text-decoration:underline;">CC BY-NC-SA 4.0</a> license. Our adaptation is shared under the same license: free, for non-commercial use, with attribution. Quiz results and certificates live only in your browser and are self-declared; they are a learning tool, not an accredited qualification.</p>
+      <p class="learn-note"><strong>Where this comes from, honestly.</strong> These courses adapt the AI Fluency courseware by Prof. Rick Dakan (Ringling College of Art and Design) and Prof. Joseph Feller (University College Cork), developed with Anthropic and shared under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" style="text-decoration:underline;">CC BY-NC-SA 4.0</a>. This adaptation carries the same license: free, non-commercial, with attribution. Quiz results and certificates are self-declared and live in your browser; a learning tool, not an accredited qualification.</p>
     </div>
   </section>
 
@@ -283,7 +288,7 @@
     });
   }
 </script>
-<script src="learn/learn.js?v=4" defer></script>
+<script src="learn/learn.js?v=11" defer></script>
 <script src="motion.js?v=polish1" defer></script>
 
 </body>

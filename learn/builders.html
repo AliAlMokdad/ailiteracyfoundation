@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css?v=polish6">
-<link rel="stylesheet" href="learn.css?v=4">
+<link rel="stylesheet" href="learn.css?v=11">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <body>
@@ -61,11 +61,24 @@
 
 <section class="course-hero">
   <div class="wrap--wide">
-    <a href="../learn.html" class="crumb">AI Fluency Learning · Edition</a>
-    <h1>AI Fluency for Builders</h1>
-    <p class="lede">For product people, designers, and makers who own the full arc from customer problem to shipped solution. Two axioms carry this edition: delegating implementation is usually safe, delegating judgment is usually not. And most AI failures trace back to description, discernment, or diligence failures made earlier.</p>
-    <div class="course-hero__meta">
-      <span>9 lessons</span><span>8-question quiz</span><span>~3 hours</span><span class="hl">Certificate + points</span>
+    <div class="course-hero__grid">
+      <div>
+      <a href="../learn.html" class="crumb">AI Fluency Learning · Edition</a>
+      <h1>AI Fluency for Builders</h1>
+      <p class="lede">For product people, designers, and makers who own the full arc from customer problem to shipped solution. Two axioms carry this edition: delegating implementation is usually safe, delegating judgment is usually not. And most AI failures trace back to description, discernment, or diligence failures made earlier.</p>
+      <div class="course-hero__meta">
+        <span>9 lessons</span><span>8-question quiz</span><span>~3 hours</span><span class="hl">Certificate + points</span>
+      </div>
+      </div>
+      <div class="course-ring">
+        <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Course progress">
+          <circle class="course-ring__track" cx="60" cy="60" r="54"/>
+          <circle class="course-ring__fill" cx="60" cy="60" r="54" stroke-dasharray="339.3" stroke-dashoffset="339.3"/>
+          <text class="course-ring__pct" x="60" y="58" text-anchor="middle" dominant-baseline="middle">0%</text>
+          <text class="course-ring__cap" x="60" y="78" text-anchor="middle">Complete</text>
+        </svg>
+        <div class="course-ring__foot">Not started</div>
+      </div>
     </div>
   </div>
 </section>
@@ -81,6 +94,7 @@
       <div class="course-rail__bar"><span></span></div>
       <span class="course-rail__pct">0 of 10 · 0%</span>
       <div class="course-rail__xp"><span>Points</span><b data-course-xp>0</b></div>
+      <div class="course-rail__passed" role="status"></div>
     </div>
     <ol>
       <li><a href="#l1"><span class="c" aria-hidden="true"></span> Welcome, and the builder brief</a></li>
@@ -99,7 +113,7 @@
   <div class="course-body">
 
     <div class="begin-card">
-      <p><strong>Before you start:</strong> put your name on the course. It goes on your certificate, and your progress and points stay in this browser only.</p>
+      <p><strong>Before you start:</strong> add the name for your certificate. Progress and points stay in this browser.</p>
       <div class="name-row">
         <input type="text" placeholder="Your name" aria-label="Your name">
         <button type="button" class="lbtn" data-begin-save>Save</button>
@@ -222,7 +236,7 @@
         <li><strong>Functional integrity.</strong> Does it work on real inputs? The common AI failure: passes unit tests, breaks on data the prompt never covered.</li>
         <li><strong>Production readiness.</strong> Error handling, logging, performance under load, security posture.</li>
         <li><strong>Problem fit.</strong> Is this even the right solution to the actual problem?</li>
-        <li><strong>Experience quality.</strong> Would someone want to use it? "Works but no one wants it" is an experience-quality failure.</li>
+        <li><strong>Experience quality.</strong> Would someone want to use it? Functional but confusing, slow or graceless is an experience-quality failure.</li>
         <li><strong>Responsible impact.</strong> Who could this harm, exclude, or mislead?</li>
       </ol>
       <div class="callout"><span class="furniture">Blind spots and taste</span><p>AI has predictable blind spots in concurrency, security, and anything that only breaks at scale. And taste is a builder skill: AI delivers functional; making it worth using is on you.</p></div>
@@ -303,12 +317,12 @@
             <p class="q-why">Implementation is AI's strongest capability. User needs, problem fit, and ship decisions are judgment, which stays with you.</p>
           </fieldset>
           <fieldset>
-            <legend><span class="q-n">Question 2</span>"The product works but no one wants it" is a failure of:</legend>
+            <legend><span class="q-n">Question 2</span>Users can finish the task, but they call the flow confusing and give up halfway. Which lens catches this?</legend>
             <label class="opt"><input type="radio" name="q2"><span>Functional integrity</span></label>
             <label class="opt"><input type="radio" name="q2"><span>Production readiness</span></label>
             <label class="opt"><input type="radio" name="q2" data-correct><span>Experience quality</span></label>
             <label class="opt"><input type="radio" name="q2"><span>Version control</span></label>
-            <p class="q-why">It runs, it is deployed, and nobody wants to use it: the experience-quality lens is where that failure shows.</p>
+            <p class="q-why">The build is functional and it solves the right problem; what fails is the experience of using it. Problem fit would be the lens if the product solved the wrong problem in the first place.</p>
           </fieldset>
           <fieldset>
             <legend><span class="q-n">Question 3</span>The description chain runs:</legend>
@@ -369,7 +383,7 @@
         <div class="completion__bar">
           <div>
             <h3>Course complete</h3>
-            <p>Your certificate is below. It carries a unique code and lives only in your browser; print it or save it as a PDF.</p>
+            <p>Your certificate carries its own code. Print it or save it as a PDF.</p>
           </div>
           <div class="name-row">
             <input type="text" placeholder="Name on certificate" aria-label="Name on certificate">
@@ -428,7 +442,7 @@
     });
   }
 </script>
-<script src="learn.js?v=4" defer></script>
+<script src="learn.js?v=11" defer></script>
 
 </body>
 </html>

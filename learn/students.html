@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css?v=polish6">
-<link rel="stylesheet" href="learn.css?v=4">
+<link rel="stylesheet" href="learn.css?v=11">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <body>
@@ -61,11 +61,24 @@
 
 <section class="course-hero">
   <div class="wrap--wide">
-    <a href="../learn.html" class="crumb">AI Fluency Learning · Edition</a>
-    <h1>AI Fluency for Students</h1>
-    <p class="lede">The whole edition in one sentence: transform AI from a tool that does work for you into a partner that helps you do your work better. The harder path of genuine learning with AI is the one that leads to real capability, and this course makes that path practical.</p>
-    <div class="course-hero__meta">
-      <span>5 lessons</span><span>8-question quiz</span><span>~2 hours</span><span class="hl">Certificate + points</span>
+    <div class="course-hero__grid">
+      <div>
+      <a href="../learn.html" class="crumb">AI Fluency Learning · Edition</a>
+      <h1>AI Fluency for Students</h1>
+      <p class="lede">The whole edition in one sentence: transform AI from a tool that does work for you into a partner that helps you do your work better. The harder path of genuine learning with AI is the one that leads to real capability, and this course makes that path practical.</p>
+      <div class="course-hero__meta">
+        <span>5 lessons</span><span>8-question quiz</span><span>~2 hours</span><span class="hl">Certificate + points</span>
+      </div>
+      </div>
+      <div class="course-ring">
+        <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Course progress">
+          <circle class="course-ring__track" cx="60" cy="60" r="54"/>
+          <circle class="course-ring__fill" cx="60" cy="60" r="54" stroke-dasharray="339.3" stroke-dashoffset="339.3"/>
+          <text class="course-ring__pct" x="60" y="58" text-anchor="middle" dominant-baseline="middle">0%</text>
+          <text class="course-ring__cap" x="60" y="78" text-anchor="middle">Complete</text>
+        </svg>
+        <div class="course-ring__foot">Not started</div>
+      </div>
     </div>
   </div>
 </section>
@@ -81,6 +94,7 @@
       <div class="course-rail__bar"><span></span></div>
       <span class="course-rail__pct">0 of 6 · 0%</span>
       <div class="course-rail__xp"><span>Points</span><b data-course-xp>0</b></div>
+      <div class="course-rail__passed" role="status"></div>
     </div>
     <ol>
       <li><a href="#l1"><span class="c" aria-hidden="true"></span> Welcome</a></li>
@@ -95,7 +109,7 @@
   <div class="course-body">
 
     <div class="begin-card">
-      <p><strong>Before you start:</strong> put your name on the course. It goes on your certificate, and your progress and points stay in this browser only.</p>
+      <p><strong>Before you start:</strong> add the name for your certificate. Progress and points stay in this browser.</p>
       <div class="name-row">
         <input type="text" placeholder="Your name" aria-label="Your name">
         <button type="button" class="lbtn" data-begin-save>Save</button>
@@ -117,7 +131,7 @@
     <section class="lesson" id="l1" data-lesson>
       <span class="lesson__eyebrow">Lesson 01 · ~10 min</span>
       <h2>Welcome</h2>
-      <p>You are studying at the exact moment the tools changed. AI can write your essay, solve your problem set, and summarize your reading, which is precisely the problem: everything it does for you is something you did not learn to do. The skill this course teaches is using the same power the other way around, so that AI makes you more capable instead of less.</p>
+      <p>AI can write your essay, solve your problem set, and summarize your reading, which is precisely the problem: everything it does for you is something you did not learn to do. The skill this course teaches is using the same power the other way around, so that AI makes you more capable instead of less.</p>
       <p>The 4Ds apply here as everywhere (see <a href="ai-fluency-foundations.html" style="text-decoration:underline;">Framework &amp; Foundations</a>): decide what belongs with AI, describe well, judge what comes back, and take responsibility. For students, one rule sits on top of all four.</p>
       <div class="callout"><span class="furniture">The standing rule</span><p>You must be able to explain and apply everything you submit, even if AI helped. If you cannot, the work is not yours yet, whatever the file name says.</p></div>
     </section>
@@ -197,7 +211,7 @@
       <div class="exercise"><span class="furniture">The empathy flip</span>
         <p>Before finalizing, consider how you would want your classmates, your professors, and one day your employees to use AI, and which uses would make you uncomfortable if others did them. Anything on that list belongs on your own red-line list too.</p>
       </div>
-      <p>Close with the claim this whole edition rests on: your humanity, your specific talents, experiences, and perspectives, remains uniquely valuable and irreplaceable. The point of fluency is to keep it that way.</p>
+      <p>Close with the claim this whole edition rests on: your specific talents, experience and perspective remain the part no tool supplies.</p>
       <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
         <li>Red lines, transparency, skill-sharpness, reflection loop.</li>
         <li>The empathy flip finds the red lines you did not want to admit.</li>
@@ -285,7 +299,7 @@
         <div class="completion__bar">
           <div>
             <h3>Course complete</h3>
-            <p>Your certificate is below. It carries a unique code and lives only in your browser; print it or save it as a PDF.</p>
+            <p>Your certificate carries its own code. Print it or save it as a PDF.</p>
           </div>
           <div class="name-row">
             <input type="text" placeholder="Name on certificate" aria-label="Name on certificate">
@@ -344,7 +358,7 @@
     });
   }
 </script>
-<script src="learn.js?v=4" defer></script>
+<script src="learn.js?v=11" defer></script>
 
 </body>
 </html>

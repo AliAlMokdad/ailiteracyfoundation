@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css?v=polish6">
-<link rel="stylesheet" href="learn.css?v=4">
+<link rel="stylesheet" href="learn.css?v=11">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <body>
@@ -61,11 +61,24 @@
 
 <section class="course-hero">
   <div class="wrap--wide">
-    <a href="../learn.html" class="crumb">AI Fluency Learning · Course 02</a>
-    <h1>AI Capabilities and Limitations</h1>
-    <p class="lede">The 4D framework teaches you how to collaborate with AI. This course teaches you how AI is able to work with you. Together they are one system: human competencies on one side, machine properties on the other. Four properties explain most of what you will ever see a language model do, brilliantly or badly.</p>
-    <div class="course-hero__meta">
-      <span>13 lessons</span><span>10-question quiz</span><span>~3.5 hours</span><span class="hl">Certificate + points</span>
+    <div class="course-hero__grid">
+      <div>
+      <a href="../learn.html" class="crumb">AI Fluency Learning · Course 02</a>
+      <h1>AI Capabilities and Limitations</h1>
+      <p class="lede">The 4D framework teaches you how to collaborate with AI. This course teaches you how AI is able to work with you. Together they are one system: human competencies on one side, machine properties on the other. Four properties explain most of what you will ever see a language model do, brilliantly or badly.</p>
+      <div class="course-hero__meta">
+        <span>13 lessons</span><span>10-question quiz</span><span>~3.5 hours</span><span class="hl">Certificate + points</span>
+      </div>
+      </div>
+      <div class="course-ring">
+        <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Course progress">
+          <circle class="course-ring__track" cx="60" cy="60" r="54"/>
+          <circle class="course-ring__fill" cx="60" cy="60" r="54" stroke-dasharray="339.3" stroke-dashoffset="339.3"/>
+          <text class="course-ring__pct" x="60" y="58" text-anchor="middle" dominant-baseline="middle">0%</text>
+          <text class="course-ring__cap" x="60" y="78" text-anchor="middle">Complete</text>
+        </svg>
+        <div class="course-ring__foot">Not started</div>
+      </div>
     </div>
   </div>
 </section>
@@ -81,6 +94,7 @@
       <div class="course-rail__bar"><span></span></div>
       <span class="course-rail__pct">0 of 14 · 0%</span>
       <div class="course-rail__xp"><span>Points</span><b data-course-xp>0</b></div>
+      <div class="course-rail__passed" role="status"></div>
     </div>
     <ol>
       <li><a href="#l1"><span class="c" aria-hidden="true"></span> One system, two sides</a></li>
@@ -103,7 +117,7 @@
   <div class="course-body">
 
     <div class="begin-card">
-      <p><strong>Before you start:</strong> put your name on the course. It goes on your certificate, and your progress and points stay in this browser only.</p>
+      <p><strong>Before you start:</strong> add the name for your certificate. Progress and points stay in this browser.</p>
       <div class="name-row">
         <input type="text" placeholder="Your name" aria-label="Your name">
         <button type="button" class="lbtn" data-begin-save>Save</button>
@@ -126,7 +140,7 @@
       <span class="lesson__eyebrow">Lesson 01 · ~10 min</span>
       <h2>One system, two sides</h2>
       <p>Every frustrating AI experience you have had has a mechanical explanation. The model that wrote a beautiful summary and then invented a citation, the assistant that forgot your instruction from twenty messages ago, the draft that followed your request exactly and still missed the point: none of these are mysteries, and none of them are random. They come from four properties that stay stable even as models improve. The boundaries shift; the properties remain the same.</p>
-      <p>That stability is what makes this course worth your time. Learn the four properties once and you can diagnose failures on any model, this year or in five years.</p>
+      <p>Learn the four properties once and you can diagnose failures on any model, this year or in five years.</p>
       <div class="exercise"><span class="furniture">Foundation exercise, do this now</span>
         <p>List four to six real AI tasks from your own recent work. For each, note whether it worked on the first try or needed rework. Then ask an AI model for one likely failure mode of each task, and push back where its answer does not match your experience. Keep this list; the whole course revisits it.</p>
       </div>
@@ -162,7 +176,7 @@
       <p><strong>Pre-training</strong> produces a document completer. It has read enormous amounts of text and learned to continue any passage plausibly, but it has no concept of helping you. <strong>Fine-tuning</strong> then layers assistant behavior on top, using human judgments: treat input as a request, answer helpfully, decline harmful asks.</p>
       <p>Because fine-tuning is steered by human preferences, it leaves human-shaped fingerprints:</p>
       <ul>
-        <li><strong>A pull toward sycophancy.</strong> Agreeing feels helpful, so models drift toward telling you what you seem to want to hear.</li>
+        <li><strong>A pull toward sycophancy.</strong> Agreement tends to get approved, so models drift toward telling you what you seem to want to hear.</li>
         <li><strong>A default toward verbosity.</strong> Longer answers were often rated as better.</li>
         <li><strong>Occasional over-caution.</strong> Declining borderline requests was rewarded.</li>
         <li><strong>Loose calibration.</strong> The confidence in the prose is not a reliable measure of how likely the content is to be right.</li>
@@ -211,7 +225,7 @@
     <section class="lesson" id="l6" data-lesson>
       <span class="lesson__eyebrow">Lesson 06 · ~12 min</span>
       <h2>Knowledge</h2>
-      <p>The wrong question is "does the AI know this?" The right question is "how well-represented was this in what it read, and when did it stop reading?" A model's knowledge is frozen at its training cutoff and weighted by how often things appeared.</p>
+      <p>The wrong question is "does the AI know this?" The right question is "how well-represented was this in what it read, and when did it stop reading?" What the model holds in its own weights is fixed at its training cutoff and shaped by how often things appeared. Anything newer has to arrive through search, a document you supply, or a tool.</p>
       <p>The failure modes follow directly:</p>
       <ul>
         <li><strong>Staleness.</strong> True-then is not true-now. Laws change, prices change, people change jobs.</li>
@@ -234,7 +248,7 @@
       <h2>How meaning becomes a place</h2>
       <p>Search by matching strings fails at meaning: a search for "car" misses "automobile" and misses "my Civic needs new brakes." For decades, engineers patched this by hand: synonym lists, stemming rules, click patterns. Then came a better idea: what if meaning could be a place?</p>
       <p>Imagine placing documents on two named axes, say "how much this is about dinosaurs" and "how much this is about roller coasters." A question can be plotted in the same space, and the nearest documents are the most relevant, even with zero words in common. Add a third axis and it still works. At four dimensions the picture in your head gives out, but the mathematics keeps working. Real embedding models use around a thousand axes, and here is the key: nobody named them. The dimensions are emergent from training. You cannot interrogate dimension 847; meaning is in there, but no axis has a label.</p>
-      <p>An embedding model takes any text, three words or three paragraphs, and returns a fixed-length list of numbers: the address where that text lives relative to everything else. Similarity is measured by direction (cosine similarity): 1 means identical direction, 0 unrelated, -1 opposite. An encyclopedia lands somewhere in the middle of everything, close to everything and far from nothing.</p>
+      <p>An embedding model takes any text, three words or three paragraphs, and returns a fixed-length list of numbers: the address where that text lives relative to everything else. Similarity is measured by direction (cosine similarity): 1 means identical direction, 0 unrelated, -1 opposite. A text that covers many topics at once tends to sit between them rather than close to any one, which is why long mixed documents are usually split before they are embedded.</p>
       <p>This is the machinery behind "chat with your documents" tools and every serious AI search product: embed the question, find the nearest chunks, answer from what was found.</p>
       <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
         <li>Embeddings turn meaning into coordinates; similar meanings live near each other.</li>
@@ -266,11 +280,11 @@
       <span class="lesson__eyebrow">Lesson 09 · ~12 min</span>
       <h2>Lost in the middle</h2>
       <p>Try this memory test on yourself: read a list of fifteen words once, look away, and write down what you remember. Almost everyone recalls the first few and the last few, and loses the middle. Psychologists call it the serial position effect.</p>
-      <p>Language models show the same U-shaped curve. Research at Stanford in 2023 (Liu et al.) found that accuracy on retrieving a key fact can drop by more than thirty percent when that fact sits in the middle of the context rather than at the edges. The performance pattern is well measured; why it happens is still being studied.</p>
+      <p>Language models often show the same U-shaped curve. Research at Stanford in 2023 (Liu et al.) found that accuracy on retrieving a key fact can drop by more than thirty percent when that fact sits in the middle of the context rather than at the edges. The effect varies by model and task, some models handled the test almost perfectly, and why it happens is still being studied.</p>
       <p>The prompting consequence is direct. Dangerous pattern: a key instruction buried mid-thread. Safer pattern: key instruction up front, and repeated at the end for long contexts. And the deeper lesson about context engineering: every piece of context you add pushes other pieces further into the middle.</p>
       <div class="callout"><span class="furniture">The keeper</span><p>More context does not equal better results. Curate ruthlessly, place strategically, and repeat what matters. The fix is not more; it is smarter.</p></div>
       <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
-        <li>Models attend to the edges of the window; the middle sags.</li>
+        <li>Retrieval from the middle of a long context is often weaker than from either edge.</li>
         <li>Put the crucial instruction first, repeat it last, and cut what does not earn its place.</li>
       </ul></div>
     </section>
@@ -346,7 +360,7 @@
       <p>The whole course in one sentence: fluent AI use is not about memorizing every failure mode; it is about holding a small, clear model of the machine in your head, so that when something goes wrong you can recognize which kind of wrong it is.</p>
       <p>The properties stay stable, but where the lines sit will keep moving as models improve. Re-run the probes from this course on any new model you adopt, and you will map its edges in an afternoon.</p>
       <div class="exercise"><span class="furniture">Closing exercise</span>
-        <p>Pick one task from your lesson-one list and commit to one concrete change this week: a verification step for specifics, standing context for a recurring task, a checkpoint in a long chain, or stating the goal rather than just the instruction. Write it down. One change, actually made, beats ten understood.</p>
+        <p>Pick one task from your lesson-one list and commit to one concrete change this week: a verification step for specifics, standing context for a recurring task, a checkpoint in a long chain, or stating the goal rather than just the instruction. Write it down.</p>
       </div>
       <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
         <li>Hold the small clear model; diagnose by property.</li>
@@ -398,7 +412,7 @@
             <label class="opt"><input type="radio" name="q5" data-correct><span>A pull toward sycophancy: agreeing with what you seem to want</span></label>
             <label class="opt"><input type="radio" name="q5"><span>Refusing all opinion questions</span></label>
             <label class="opt"><input type="radio" name="q5"><span>Always answering in one sentence</span></label>
-            <p class="q-why">Human raters rewarded agreeable answers, so the pull toward agreement is baked in. Verbosity, over-caution, and loose calibration are the other fingerprints.</p>
+            <p class="q-why">Human raters tended to reward agreeable answers, which is the leading explanation for the pull toward agreement. Verbosity, over-caution, and loose calibration are the other fingerprints.</p>
           </fieldset>
           <fieldset>
             <legend><span class="q-n">Question 6</span>Which property is described as "a cliff, not a gradient"?</legend>
@@ -452,7 +466,7 @@
         <div class="completion__bar">
           <div>
             <h3>Course complete</h3>
-            <p>Your certificate is below. It carries a unique code and lives only in your browser; print it or save it as a PDF.</p>
+            <p>Your certificate carries its own code. Print it or save it as a PDF.</p>
           </div>
           <div class="name-row">
             <input type="text" placeholder="Name on certificate" aria-label="Name on certificate">
@@ -511,7 +525,7 @@
     });
   }
 </script>
-<script src="learn.js?v=4" defer></script>
+<script src="learn.js?v=11" defer></script>
 
 </body>
 </html>
