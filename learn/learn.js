@@ -50,7 +50,7 @@
       notYet: 'Not yet. {c} of {t} correct ({p}%). The explanation under each question shows why. Unlimited retries.',
       retake: 'Retake this quiz', submit: 'Submit answers',
       allDone: 'Revisit any course \u2192',
-      allDoneNote: 'You have finished all twelve. Everything stays open if you want to come back to it.',
+      allDoneNote: 'You have finished the path. Every course stays open if you want to come back to one.',
       needsName: 'needs a name', addNameAbove: 'Add your name above', addNameFirst: 'Add your name first',
       updateName: 'Update the name', putOnCert: 'Put it on the certificate'
     },
@@ -88,7 +88,7 @@
       notYet: 'Ikke endnu. {c} ud af {t} rigtige ({p}%). Forklaringen under hvert sp\u00f8rgsm\u00e5l viser hvorfor. Ubegr\u00e6nsede fors\u00f8g.',
       retake: 'Tag testen igen', submit: 'Send svar',
       allDone: 'Se et kursus igen \u2192',
-      allDoneNote: 'Du har gennemf\u00f8rt alle tolv. Alt bliver st\u00e5ende, hvis du vil vende tilbage til det.',
+      allDoneNote: 'Du har gennemf\u00f8rt forl\u00f8bet. Alle kurser bliver st\u00e5ende, hvis du vil vende tilbage til et af dem.',
       needsName: 'mangler et navn', addNameAbove: 'Skriv dit navn ovenfor', addNameFirst: 'Skriv dit navn f\u00f8rst',
       updateName: 'Ret navnet', putOnCert: 'S\u00e6t det p\u00e5 beviset'
     }
@@ -263,8 +263,10 @@
         var at = (typeof inProgress.s.at === 'number' ? inProgress.s.at : 0) + 1;
         if (whereEl && l.lessons && !whereEl.hasAttribute('data-locked')) whereEl.textContent = T('onLesson', { n: Math.min(at, l.lessons), m: l.lessons });
       }
-    } else if (started > 0 && COURSES.every(isComplete)) {
-      /* nothing left to point at, so stop pretending there is */
+    } else if (started > 0 && doneIn(STAGES.foundation) >= 2 && doneIn(STAGES.edition) >= 1
+               && doneIn(STAGES.teach) >= STAGES.teach.length) {
+      /* the path is finished. There may be editions left, but the learner was told to
+         take one, so pointing them at a course they already completed is a lie. */
       actionEl.setAttribute('href', '#start-here');
       actionEl.textContent = T('allDone');
       if (whereEl && !whereEl.hasAttribute('data-locked')) {
