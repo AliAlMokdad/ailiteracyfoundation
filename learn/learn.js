@@ -25,7 +25,6 @@
       continueTo: 'Continue: {title} \u2192', continueStage1: 'Continue stage 1: {title} \u2192',
       stage2: 'Stage 2: choose your edition \u2192', stage3To: 'Stage 3: {title} \u2192',
       stage3: 'Stage 3: teach it forward \u2192', readResearch: 'Read the research behind this \u2192',
-      startFramework: 'Start with the framework \u2192',
       onLesson: 'You are on lesson {n} of {m}.',
       noStoreHub: 'No sign-up and no tracking. This browser is blocking storage, so nothing here will be remembered once you leave the page.',
       noStoreCourse: 'This browser is blocking storage, so this course cannot remember your progress.',
@@ -49,7 +48,7 @@
       passed: 'You passed. {c} of {t} correct ({p}%).',
       passedBefore: 'This attempt: {c} of {t}. Your earlier pass and certificate stand.',
       notYet: 'Not yet. {c} of {t} correct ({p}%). The explanation under each question shows why. Unlimited retries.',
-      retake: 'Retake this quiz', submit: 'Submit answers', tryAgain: 'Try again',
+      retake: 'Retake this quiz', submit: 'Submit answers',
       needsName: 'needs a name', addNameAbove: 'Add your name above', addNameFirst: 'Add your name first',
       updateName: 'Update the name', putOnCert: 'Put it on the certificate'
     },
@@ -61,8 +60,7 @@
       optionalFac: 'Valgfrit, for undervisere', teachDone: '{n} af 3 f\u00e6rdige',
       continueTo: 'Forts\u00e6t: {title} \u2192', continueStage1: 'Forts\u00e6t trin 1: {title} \u2192',
       stage2: 'Trin 2: v\u00e6lg din udgave \u2192', stage3To: 'Trin 3: {title} \u2192',
-      stage3: 'Trin 3: giv det videre \u2192', readResearch: 'L\u00e6s forskningen bag \u2192',
-      startFramework: 'Begynd med rammev\u00e6rket \u2192',
+      stage3: 'Trin 3: l\u00e6r det videre \u2192', readResearch: 'L\u00e6s forskningen bag \u2192',
       onLesson: 'Du er p\u00e5 lektion {n} af {m}.',
       noStoreHub: 'Ingen oprettelse og ingen sporing. Denne browser blokerer lagring, s\u00e5 intet her bliver husket, n\u00e5r du forlader siden.',
       noStoreCourse: 'Denne browser blokerer lagring, s\u00e5 dette kursus kan ikke huske, hvor langt du er n\u00e5et.',
@@ -86,7 +84,7 @@
       passed: 'Du best\u00e5r. {c} ud af {t} rigtige ({p}%).',
       passedBefore: 'Dette fors\u00f8g: {c} ud af {t}. Din tidligere best\u00e5else og dit bevis st\u00e5r ved magt.',
       notYet: 'Ikke endnu. {c} ud af {t} rigtige ({p}%). Forklaringen under hvert sp\u00f8rgsm\u00e5l viser hvorfor. Ubegr\u00e6nsede fors\u00f8g.',
-      retake: 'Tag testen igen', submit: 'Send svar', tryAgain: 'Pr\u00f8v igen',
+      retake: 'Tag testen igen', submit: 'Send svar',
       needsName: 'mangler et navn', addNameAbove: 'Skriv dit navn ovenfor', addNameFirst: 'Skriv dit navn f\u00f8rst',
       updateName: 'Ret navnet', putOnCert: 'S\u00e6t det p\u00e5 beviset'
     }

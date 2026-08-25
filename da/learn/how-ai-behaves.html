@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Forstå, hvordan AI opfører sig · AI Literacy Foundation</title>
+<meta name="description" content="Den praktiske reference om AI-adfærd: de 24 AI Fluency-adfærdsmønstre, hallucination, behagesyge, bias, tillid som en drejeknap, privatliv, tokens, kontekst, og hvordan du skriver en AI diligence-erklæring.">
+<meta name="theme-color" content="#F7F4EE">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ailiteracyfoundation.eu/da/learn/how-ai-behaves.html">
+  <link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/how-ai-behaves.html">
+  <link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/how-ai-behaves.html">
+  <link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/how-ai-behaves.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ailiteracyfoundation.eu/da/learn/how-ai-behaves.html">
+<meta property="og:title" content="Forstå, hvordan AI opfører sig">
+<meta property="og:description" content="Den praktiske reference: 24 AI Fluency-adfærdsmønstre, hallucination, behagesyge, bias, tillid, privatliv, tokens, kontekst og AI diligence-erklæringen.">
+<meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css?v=polish6">
+<link rel="stylesheet" href="../../learn/learn.css?v=39">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="brand"><span class="dot" aria-hidden="true"></span>AI Literacy Foundation<sup class="brand-tm" aria-hidden="true">™</sup></a>
+    <nav class="nav" id="nav" aria-label="Primær">
+      <a href="../index.html">Forside</a>
+      <a href="../roadmap.html">AI-køreplanen</a>
+      <a href="../ai-economic-index.html">AI-økonomiindeks</a>
+      <a href="../ai-jobs.html">AI &amp; job</a>
+      <a href="../learn.html" aria-current="page">AI Fluency Learning</a>
+      <a href="../work.html">Det vi gør</a>
+      <a href="../memos.html">Memoer</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="../donate.html" class="cta-donate">Støt os</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="course-hero">
+  <div class="wrap--wide">
+    <div class="course-hero__grid">
+      <div>
+      <a href="../learn.html" class="crumb">AI Fluency Learning · Reference</a>
+      <h1>Forstå, hvordan AI opfører sig</h1>
+      <p class="lede">Den praktiske reference bag kurserne. Ni korte læsninger, du vil vende tilbage til: hvordan AI Fluency-adfærd faktisk ser ud, hvorfor modeller fejler på de måder, de gør, hvad der sker med dine data, og hvordan du fortæller om AI's rolle i dit arbejde.</p>
+      <div class="course-hero__meta">
+        <span>9 læsninger</span><span>Læs efter behov</span><span class="hl">Point</span>
+      </div>
+      </div>
+      <div class="course-ring">
+        <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Kursusfremskridt">
+          <circle class="course-ring__track" cx="60" cy="60" r="54"/>
+          <circle class="course-ring__fill" cx="60" cy="60" r="54" stroke-dasharray="339.3" stroke-dashoffset="339.3"/>
+          <text class="course-ring__pct" x="60" y="58" text-anchor="middle" dominant-baseline="middle">0%</text>
+          <text class="course-ring__cap" x="60" y="78" text-anchor="middle">Fuldført</text>
+        </svg>
+        <div class="course-ring__foot">Ikke påbegyndt</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="course-shell wrap--wide" data-course="behaves">
+
+  <aside class="course-rail" aria-label="Læsninger">
+    <a href="../learn.html" class="course-rail__back">← Alle kurser</a>
+    <div class="course-rail__title">Forstå, hvordan AI opfører sig</div>
+    <div class="course-rail__hello"></div>
+    <button class="course-rail__toggle" aria-expanded="false">Vis læsninger</button>
+    <div class="course-rail__progress course-rail__progress--top">
+      <div class="course-rail__bar"><span></span></div>
+      <span class="course-rail__pct">0 af 9 · 0%</span>
+      <div class="course-rail__xp"><span>Point</span><b data-course-xp>0</b></div>
+      <div class="course-rail__passed" role="status"></div>
+    </div>
+    <ol>
+      <li><a href="#l1"><span class="c" aria-hidden="true"></span> De fire egenskaber kort fortalt</a></li>
+      <li><a href="#l2"><span class="c" aria-hidden="true"></span> De 24 AI Fluency-adfærdsmønstre</a></li>
+      <li><a href="#l3"><span class="c" aria-hidden="true"></span> Hvorfor AI-modeller hallucinerer</a></li>
+      <li><a href="#l4"><span class="c" aria-hidden="true"></span> Hvad behagesyge er</a></li>
+      <li><a href="#l5"><span class="c" aria-hidden="true"></span> Hvorfor bias findes</a></li>
+      <li><a href="#l6"><span class="c" aria-hidden="true"></span> Kan du stole på det, AI fortæller dig?</a></li>
+      <li><a href="#l7"><span class="c" aria-hidden="true"></span> Hvad ved AI om dig?</a></li>
+      <li><a href="#l8"><span class="c" aria-hidden="true"></span> Tokens og kontekst</a></li>
+      <li><a href="#diligence-statement"><span class="c" aria-hidden="true"></span> Sådan skriver du en AI diligence-erklæring</a></li>
+    </ol>
+  </aside>
+
+  <div class="course-body">
+
+    <div class="objectives">
+      <span class="furniture">Det lærer du</span>
+      <ul>
+        <li>Brug de 24 AI Fluency-adfærdsmønstre som en tjekliste for dine egne vaner</li>
+        <li>Opdag hallucination, behagesyge og bias, og brug modgrebene</li>
+        <li>Behandl tillid som en drejeknap, der passer til indsatsen</li>
+        <li>Skriv en AI diligence-erklæring med alle fem elementer</li>
+      </ul>
+    </div>
+
+    
+
+    <section class="lesson" id="l1" data-lesson>
+      <span class="lesson__eyebrow">Læsning 01</span>
+      <h2>De fire egenskaber kort fortalt</h2>
+      <p>Den fulde gennemgang findes i <a href="ai-capabilities-limitations.html" style="text-decoration:underline;">AI's muligheder og begrænsninger</a>; dette er køleskabsversionen.</p>
+      <div class="table-scroll"><table>
+        <tr><th>Egenskab</th><th>Spørgsmålet den besvarer</th><th>Typiske fejl</th><th>Hvad flytter grænsen</th></tr>
+        <tr><td><strong>Forudsigelse af næste token</strong></td><td>Hvor kommer AI-svar fra? En ekstremt avanceret autocomplete, ikke en søgemaskine.</td><td>Hallucination, hvor plausibelt ikke er det samme som sandt; opdigtning koncentreret i detaljer; glat prosa rundt om et gæt</td><td>Kildehenvisninger og kildeforankring, begrænset generering, generator-verifikator-sløjfer</td></tr>
+        <tr><td><strong>Viden</strong></td><td>Hvad ved den faktisk? Det den har læst, og hvornår den holdt op med at læse.</td><td>Forældet viden; ujævn dækning af nicheområder og lokale forhold; kildeamnesi, hvor "jeg læste det et sted" ikke er en kildehenvisning</td><td>Websøgning, søgning i dine dokumenter, værktøjer til realtidsdata</td></tr>
+        <tr><td><strong>Arbejdshukommelse</strong></td><td>Hvad er den opmærksom på lige nu? Kontekst er løftestang, indtil du rammer kanten.</td><td>Hårde længdegrænser; tabt i midten; ingen vedvarende hukommelse som standard</td><td>Hukommelsesfunktioner, projekter, komprimering, vedhæftninger</td></tr>
+        <tr><td><strong>Styrbarhed</strong></td><td>Hvor meget har du kontrol? Den følger instruktioner ved at fortsætte et mønster, ikke ved at forstå hensigt.</td><td>Resonnementet glider; bogstav over ånd; prompt injection, hvor anden tekst i konteksten også kan styre den</td><td>System prompts, synlig udvidet tænkning, kodekørsel</td></tr>
+      </table></div>
+    </section>
+
+    <section class="lesson" id="l2" data-lesson>
+      <span class="lesson__eyebrow">Læsning 02</span>
+      <h2>De 24 AI Fluency-adfærdsmønstre</h2>
+      <p>4D-rammeværket definerer 24 konkrete adfærdsmønstre, der kendetegner flydende AI-samarbejde, grupperet efter kompetence. Anthropics AI Fluency Index målte de 11 af dem, der kan observeres direkte i en chatudskrift. Brug hele listen som en tjekliste for dine egne vaner.</p>
+      <h3>Description (8 adfærdsmønstre)</h3>
+      <ul>
+        <li>Definér målgruppen for outputtet.</li>
+        <li>Angiv format og struktur.</li>
+        <li>Formidl den tone og stil, der passer til din stemme.</li>
+        <li>Del komplekse opgaver op i trin.</li>
+        <li>Byg videre på tidligere udvekslinger: samarbejde, ikke enkeltstående forespørgsler.</li>
+        <li>Giv eksempler på, hvordan godt ser ud.</li>
+        <li>Fortæl AI'en, hvordan den skal interagere med dig: "vær direkte og udfordr mine antagelser", "stil afklarende spørgsmål først."</li>
+        <li>Sæt grænser for, hvad den ikke skal gøre: "foreslå ikke løsninger endnu", "hold dig til de oplysninger, jeg har givet."</li>
+      </ul>
+      <h3>Delegation (7 adfærdsmønstre)</h3>
+      <ul>
+        <li>Afklar dit mål, før du spørger.</li>
+        <li>Rådfør dig med AI'en om tilgangen før udførelse: "hvilket rammeværk vil du foreslå?"</li>
+        <li>Genkend, når en opgave ikke passer til AI: for personlig, for høj indsats, eller når du selv har brug for at tænke den igennem.</li>
+        <li>Overvej styrker og svagheder på forhånd, og planlæg, hvor ekstra verifikation skal ligge.</li>
+        <li>Bliv involveret i stedet for bare at acceptere output: en samarbejdspartner, ikke en automat.</li>
+        <li>Vælg det rette værktøj og den rette tilgang til hver opgave.</li>
+        <li>Tilpas, hvem der gør hvad, efterhånden som arbejdet udvikler sig: "denne del kræver mit direkte input, lad mig tage over."</li>
+      </ul>
+      <h3>Discernment (5 adfærdsmønstre)</h3>
+      <ul>
+        <li>Tjek fakta og påstande, der betyder noget.</li>
+        <li>Læg mærke til, når resonnementet ikke holder: "den konklusion følger ikke."</li>
+        <li>Genkend manglende kontekst, og tilføj den proaktivt: "du ved ikke, at vi prøvede det her sidste år."</li>
+        <li>Vurdér, om samarbejdet bevæger sig fremad: "vi bliver ved med at køre i ring, lad mig formulere det på ny."</li>
+        <li>Læg mærke til, når kommunikationsstilen ikke virker: "du er for enig, udfordr min tænkning mere."</li>
+      </ul>
+      <h3>Diligence (4 adfærdsmønstre)</h3>
+      <ul>
+        <li>Vær opmærksom på, hvilke oplysninger du deler: beskriv uden at navngive, og husk, at en betegnelse, du kan spore tilbage til en person, er et pseudonym, ikke anonymitet.</li>
+        <li>Vær ærlig om AI's rolle, når det betyder noget.</li>
+        <li>Tag ansvar for det, du deler eller indsender: "er jeg klar til at stå inde for dette som mit eget?"</li>
+        <li>Overvej konsekvenserne af at udgive arbejdet: "hvad kan gå galt, hvis dette bliver brugt ud over min hensigt?"</li>
+      </ul>
+      <div class="exercise"><span class="furniture">Selvscorekort</span>
+        <p>Indsæt nogle få af dine egne nylige AI-samtaler i en model, og bed den identificere, hvilke af disse 24 adfærdsmønstre der optræder, og hvilke der aldrig gør. Det er undersøgende, ikke en formel vurdering, men det viser dig din profil på ti minutter.</p>
+      </div>
+    </section>
+
+    <section class="lesson" id="l3" data-lesson>
+      <span class="lesson__eyebrow">Læsning 03</span>
+      <h2>Hvorfor AI-modeller hallucinerer</h2>
+      <p>Hallucination er ofte værre end en almindelig fejl, fordi AI'en virker meget sikker og måske endda argumenterer for, at den har ret. Mekanismen er enkel: sparsom træningsdækning plus trænet hjælpsomhed. Hvor modellen ved lidt, forsøger den stadig at hjælpe, så den gætter, som en bedrevidende ven, der siger noget selvsikkert forkert i stedet for at indrømme, at han ikke ved det.</p>
+      <p><strong>Hvor hallucinationer samler sig:</strong> specifikke fakta, statistikker og kildehenvisninger; obskure, nicheprægede eller meget nye emner; virkelige, men ikke berømte, personer og steder; præcise datoer, navne og tal.</p>
+      <h3>Taktikker der virker</h3>
+      <ul>
+        <li>Bed om kilder, og bed derefter modellen kontrollere, at kilderne faktisk understøtter påstanden.</li>
+        <li>Sig på forhånd: "det er okay, hvis du ikke ved det."</li>
+        <li>Spørg, hvor sikker den er, og behandl svaret som et fingerpeg, ikke en måling. Angivet sikkerhed hænger kun løst sammen med nøjagtighed, men spørgsmålet bringer ofte et forbehold frem, som er værd at følge op på.</li>
+        <li>Åbn en ny chat, og bed den finde fejl i det tidligere svar.</li>
+        <li>Krydstjek alt kritisk mod en kilde, du allerede stoler på.</li>
+      </ul>
+    </section>
+
+    <section class="lesson" id="l4" data-lesson>
+      <span class="lesson__eyebrow">Læsning 04</span>
+      <h2>Hvad behagesyge er</h2>
+      <p>Behagesyge er, når modellen fortæller dig det, du gerne vil høre: den er enig i din faktuelle fejl, ændrer svar ud fra, hvordan du formulerer ting, og følger din udtrykte præference i stedet for sandheden. Man mener, at det i høj grad kommer fra træning på menneskers præferencevurderinger, hvor enighed ofte bliver godkendt.</p>
+      <p>Hold fast i grænsen: tilpasning af tone, niveau og korthed er det, du ønsker; enighed om fakta og om dit velbefindende er det ikke. Hjælpsom tilpasning over for skadelig enighed.</p>
+      <h3>Hvornår du skal mistænke det</h3>
+      <ul>
+        <li>Du fremsatte et subjektivt synspunkt som et faktum.</li>
+        <li>Du henviste til en ekspertkilde i dit spørgsmål.</li>
+        <li>Dit spørgsmål var vinklet med et bestemt synspunkt.</li>
+        <li>Du bad direkte om bekræftelse.</li>
+        <li>Der er følelsesmæssige indsatser på spil.</li>
+        <li>Samtalen har kørt meget længe.</li>
+      </ul>
+      <h3>Taktikker der virker</h3>
+      <ul>
+        <li>Brug neutralt, faktasøgende sprog.</li>
+        <li>Prompt efter nøjagtighed eller modargumenter: "argumentér imod dette."</li>
+        <li>Formulér spørgsmålet igen uden din holdning i det.</li>
+        <li>Start en ny samtale.</li>
+        <li>Træd et skridt tilbage, og spørg et menneske, du har tillid til.</li>
+      </ul>
+    </section>
+
+    <section class="lesson" id="l5" data-lesson>
+      <span class="lesson__eyebrow">Læsning 05</span>
+      <h2>Hvorfor bias findes</h2>
+      <p>Bias i AI rækker ud over stereotyper. Det omfatter også, at modellen som standard hælder mod bestemte typer svar eller perspektiver og giver svar af højere kvalitet på nogle sprog end på andre. Årsagen er strukturel: modeller gengiver mønstrene, inklusive ulighederne, i deres træningsdata. Det, dataene behandlede som "normalt", bliver modellens normal.</p>
+      <p>Seriøse udviklere tester for dette. En offentliggjort tilgang bruger parrede prompts: Bed modellen argumentere for hver side af samme omstridte emne, og tjek for samme dybde, indsats og afslagsrater på tværs af tusindvis af promptpar.</p>
+      <h3>Taktikker der virker</h3>
+      <ul>
+        <li>Skub tilbage på ensidige svar, og bed om nuancer.</li>
+        <li>Sig eksplicit, at du vil have en ærlig diskussion, ikke en behagelig.</li>
+        <li>Bed om evidens, og tjek selv linksene.</li>
+        <li>Stil det samme spørgsmål fra forskellige vinkler, og sammenlign.</li>
+      </ul>
+    </section>
+
+    <section class="lesson" id="l6" data-lesson>
+      <span class="lesson__eyebrow">Læsning 06</span>
+      <h2>Kan du stole på det, AI fortæller dig?</h2>
+      <p>Omformulér spørgsmålet. Tillid til AI er en drejeknap, du skruer på, ikke en kontakt, du tænder og slukker. Du ville ikke tvivle på din læge, hvis hun anbefalede flere grøntsager, men du ville måske have en second opinion før en operation: samme tillid, forskellig indsats, forskelligt behov for verifikation.</p>
+      <p>Pålidelighed følger træningsdækningen. På almindelige, godt dækkede emner er modellen normalt præcis. På nichedetaljer, meget nye begivenheder og privat information er den mere tilbøjelig til at tage fejl eller finde på, og den lyder lige sikker uanset hvad. Modellen markerer ikke pålideligt sine egne svage punkter; den del er dit ansvar.</p>
+      <p>Pas på poleringsbias: rene afsnit og smuk formatering får vores hjerner til at konkludere "det her må være korrekt", hvilket sænker kontrollen netop dér, hvor den burde stige.</p>
+      <div class="callout"><span class="furniture">Vanen</span><p>Tilpas din kontrol til indsatsen. Spørg: Hvad sker der, hvis dette viser sig at være forkert? En brainstormliste med festtemaer behøver ingen verifikation. En citeret statistik, der skal ind i din rapport, gør, mod en kilde du allerede stoler på, før du handler på den.</p></div>
+    </section>
+
+    <section class="lesson" id="l7" data-lesson>
+      <span class="lesson__eyebrow">Læsning 07</span>
+      <h2>Hvad ved AI om dig?</h2>
+      <p>Folk spørger AI om ting, de ikke ville udsende offentligt: helbredsbekymringer, pengespørgsmål, udkast til svære e-mails. Hvor ender de oplysninger så? De kan bevæge sig gennem fire steder: noget af det lever kun i samtalen; noget bliver liggende i produktet, i hukommelsesfunktioner eller gemte chats; lidt kan nå længere, for eksempel ind i fremtidig træning, hvor politikkerne tillader det; og undervejs findes der som regel en indstilling, der giver dig kontrol.</p>
+      <h3>De praktiske regler</h3>
+      <ul>
+        <li>Kend dit værktøjs politik for opbevaring og træning, før du deler noget følsomt. En udbyder uden klare kontroller er et advarselstegn.</li>
+        <li>Foretræk at beskrive frem for at navngive: De fleste opgaver fungerer lige så godt med "en kollega" i stedet for et navn, "Kunde A" i stedet for en kunde.</li>
+        <li>Andre menneskers data kræver mere forsigtighed end dine egne. Navne, helbredsoplysninger og identificerende oplysninger om andre hører som regel ikke hjemme i et AI-værktøj uden deres samtykke.</li>
+        <li>Hvis noget går galt: Slet samtalen, brug platformens anmodning om sletning, og følg din organisations protokol.</li>
+      </ul>
+    </section>
+
+    <section class="lesson" id="l8" data-lesson>
+      <span class="lesson__eyebrow">Læsning 08</span>
+      <h2>Tokens og kontekst, hvorfor nogle input koster mere</h2>
+      <p>Det, der faktisk når frem til en model, er en liste af tal, ét for hver tekstbid fra et indlært ordforråd. En bid med sit numeriske ID kaldes en token. Modeller bruger subword tokens som et kompromis: tegn for tegn ville være langsomt og dyrt, ord for ord ville kræve et alt for stort ordforråd og stadig overse sjældne ord. "The tokenizer rocks." deles omtrent som [The][ token][izer][ rocks][.]; den præcise opdeling afhænger af tokenizer</p>
+      <p>De omkostningsintuitioner, der følger: almindelige ord er enkelte billige tokens; sjældne ord hakkes i stykker; en URL på 100 tegn koster flere tokens end en sætning på 100 tegn, fordi sjældne strenge splintrer. Dette ordforråd er indbygget ved træningen, hvilket forklarer mærkeligheder som modeller, der tæller bogstaver inde i ord forkert: modellen lærte, hvad en token betyder som helhed, ikke bogstaverne inde i den.</p>
+      <h3>Kontekst, den anden halvdel af omkostningen</h3>
+      <p>En models viden er enten indbygget i dens vægte under træning, parametric memory, som opstod som en bivirkning af at lære at forudsige tekst, eller ligger i den aktuelle context window. Vinduet er stort, men det meste af det er fyldt med ting, du ikke har skrevet: systeminstruktioner, tool calls, hentede resultater. Og kontekst sendes igen ved hver tur, så et kort spørgsmål sent i en lang samtale koster mere end det samme spørgsmål i en frisk samtale. At starte en ny chat er ofte den billigste og hurtigste måde at få et svar på.</p>
+      <p>Når samtaler bliver meget lange, opsummerer værktøjer historikken og erstatter den, compaction. Det er stadig et resumé, og detaljer kan gå tabt. Skriftlig hukommelse fungerer anderledes: Noter fra én samtale indsættes i starten af den næste. Værd at huske der: dit projekt, dine præferencer, dine arbejdsrelationer. Ikke værd at huske: flygtige tal og citater, som bør slås op på ny i stedet for at blive skrevet ned og håbet uændrede.</p>
+    </section>
+
+    <section class="lesson" id="diligence-statement" data-lesson>
+      <span class="lesson__eyebrow">Læsning 09</span>
+      <h2>Sådan skriver du en AI diligence-erklæring</h2>
+      <p>En diligence-erklæring er metodeafsnittet for dit AI-samarbejde: hvad AI gjorde, hvad du gjorde, og hvordan du verificerede resultatet. Den bygger tillid, viser professionel dømmekraft, beskytter dig ved at dokumentere din rolle og hjælper din organisation med at lære, hvad der faktisk virker. Og en kulturel sandhed: Hvis det føles skræmmende at fortælle om AI-brug på din arbejdsplads, er det miljø næppe godt rustet til at håndtere AI generelt.</p>
+      <h3>De fem elementer i en stærk erklæring</h3>
+      <ol>
+        <li><strong>Hvad AI hjalp med.</strong> Navngiv opgaverne. Et vagt "AI bidrog til dette" er ubrugeligt.</li>
+        <li><strong>Hvilket værktøj.</strong> At navngive det faktiske værktøj slår "en AI-assistent." Navngiv flere, hvis du brugte flere.</li>
+        <li><strong>Hvad du gennemgik, og hvordan du var involveret.</strong> Hvordan du drev arbejdet, gav feedback og verificerede. Konkret.</li>
+        <li><strong>Hvad du ændrede.</strong> Hvor din ekspertise reviderede eller tilsidesatte AI'en. Det er her, din professionelle dømmekraft er mest synlig.</li>
+        <li><strong>Hvem der har ansvaret.</strong> Ansvarssætningen, der gør en oplysning til en forpligtelse.</li>
+      </ol>
+      <div class="callout"><span class="furniture">En skabelon, du kan tilpasse</span><p>"Ved udarbejdelsen af dette dokument samarbejdede jeg med [værktøj] for at få hjælp til [opgaver]. Jeg bekræfter, at alt AI-genereret og samskabt indhold er blevet grundigt gennemgået. Det endelige output afspejler præcist min forståelse, ekspertise og tilsigtede mening. Selvom AI-assistance var vigtig, har jeg det fulde ansvar for indholdet, dets nøjagtighed og dets præsentation."</p></div>
+      <h3>Sådan skriver du den med AI i fire trin</h3>
+      <ol>
+        <li>Beskriv dit projekt og AI's rolle konkret, og bed om et udkast til erklæring.</li>
+        <li>Gennemgå og finpuds udkastet. Ret alt, hvad det overdriver eller underspiller.</li>
+        <li>Tilpas efter målgruppe: Et internt notat og en formel indsendelse kræver forskellige længder. Bed om to versioner.</li>
+        <li>Verificér selve erklæringen. Hvis den siger, at du tjekkede alle kildehenvisninger, skal du sikre dig, at det er sandt.</li>
+      </ol>
+      <p>Ofte spurgt, ærligt besvaret: Har din organisation endnu ingen politik? Start alligevel; de tidlige brugere former normerne. Skader oplysning troværdigheden? Konkret oplysning øger den; uklarhed er det, der virker dårligt. Genbruge erklæringer? Genbrug strukturen, aldrig indholdet.</p>
+    </section>
+
+    <div class="course-colophon">
+      <p><strong>Kreditering.</strong> Tilpasset fra AI Fluency-vejledningerne udviklet i samarbejde med Anthropic, CC BY-NC-SA 4.0. Denne tilpasning © 2026 AI Literacy Foundation, delt under samme licens.</p>
+      <div class="course-nav-next">
+        <a class="lbtn" href="../learn.html#start-here">← Kurser i trin 1</a>
+        <a class="lbtn lbtn--primary" href="../learn.html">Tilbage til forløbet →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap--wide">
+    <div class="site-footer__legal">
+      <div>© 2026 AI Literacy Foundation&#8482;. Alle rettigheder forbeholdt. · CVR 46487869</div>
+      <div class="lang-toggle"><a href="../../learn/how-ai-behaves.html">EN</a><a href="how-ai-behaves.html" class="active">DA</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+</script>
+<script src="../../learn/learn.js?v=39" defer></script>
+
+</body>
+</html>

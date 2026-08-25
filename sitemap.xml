@@ -174,17 +174,239 @@
   </url>
   <url><loc>https://ailiteracyfoundation.eu/ai-jobs.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://ailiteracyfoundation.eu/da/ai-jobs.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn/ai-fluency-foundations.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn/ai-capabilities-limitations.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn/how-ai-behaves.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn/builders.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn/educators.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn/pk12-educators.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn/nonprofits.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn/small-businesses.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn/students.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn/teaching-ai-fluency.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn/train-the-trainer.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ailiteracyfoundation.eu/learn/research.html</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn/ai-capabilities-limitations.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/ai-capabilities-limitations.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/ai-capabilities-limitations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/ai-capabilities-limitations.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn/ai-capabilities-limitations.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/ai-capabilities-limitations.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/ai-capabilities-limitations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/ai-capabilities-limitations.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn/ai-fluency-foundations.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/ai-fluency-foundations.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/ai-fluency-foundations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/ai-fluency-foundations.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn/ai-fluency-foundations.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/ai-fluency-foundations.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/ai-fluency-foundations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/ai-fluency-foundations.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn/builders.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/builders.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/builders.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/builders.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn/builders.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/builders.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/builders.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/builders.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn/educators.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/educators.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/educators.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/educators.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn/educators.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/educators.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/educators.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/educators.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn/how-ai-behaves.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/how-ai-behaves.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/how-ai-behaves.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/how-ai-behaves.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn/how-ai-behaves.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/how-ai-behaves.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/how-ai-behaves.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/how-ai-behaves.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn/nonprofits.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/nonprofits.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/nonprofits.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/nonprofits.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn/nonprofits.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/nonprofits.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/nonprofits.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/nonprofits.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn/pk12-educators.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/pk12-educators.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/pk12-educators.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/pk12-educators.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn/pk12-educators.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/pk12-educators.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/pk12-educators.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/pk12-educators.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/research.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/research.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/research.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/research.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/research.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/research.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn/small-businesses.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/small-businesses.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/small-businesses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/small-businesses.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn/small-businesses.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/small-businesses.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/small-businesses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/small-businesses.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn/students.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/students.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/students.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/students.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn/students.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/students.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/students.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/students.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn/teaching-ai-fluency.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/teaching-ai-fluency.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/teaching-ai-fluency.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/teaching-ai-fluency.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn/teaching-ai-fluency.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/teaching-ai-fluency.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/teaching-ai-fluency.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/teaching-ai-fluency.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/learn/train-the-trainer.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/train-the-trainer.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/train-the-trainer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/train-the-trainer.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/learn/train-the-trainer.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/learn/train-the-trainer.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/learn/train-the-trainer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/learn/train-the-trainer.html"/>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

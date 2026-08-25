@@ -240,7 +240,10 @@
 .is-paged.at-start .objectives { display: block; }
 .is-paged .course-colophon { display: none; }
 .is-paged.at-end .course-colophon { display: block; }
-.is-paged .lesson.is-current { display: block; }
+.is-paged .lesson.is-current { display: block; animation: lesson-in 0.22s var(--ease) both; }
+/* Turning a page should feel like turning a page. Short enough not to delay reading,
+   long enough that the eye follows the change instead of being snapped to it. */
+@keyframes lesson-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 .pager { display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-top: 1px solid var(--line); margin-top: clamp(1.5rem, 4vw, 2.25rem); padding-top: 1.25rem; }
 .pager__pos { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-quiet); }
 .pager .lbtn[disabled] { opacity: 0.35; cursor: default; pointer-events: none; }
@@ -389,4 +392,5 @@
 @media (prefers-reduced-motion: reduce) {
   .course-card, .course-card:hover { transform: none; transition: none; }
   .course-rail__bar > span { transition: none; }
+  .is-paged .lesson.is-current { animation: none; }
 }
