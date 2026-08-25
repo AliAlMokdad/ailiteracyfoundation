@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css?v=polish6">
-<link rel="stylesheet" href="learn.css?v=14">
+<link rel="stylesheet" href="learn.css?v=34">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <body>
@@ -67,7 +67,7 @@
       <h1>AI Capabilities and Limitations</h1>
       <p class="lede">The 4D framework teaches you how to collaborate with AI. This course teaches you how AI is able to work with you. Together they are one system: human competencies on one side, machine properties on the other. Four properties explain most of what you will ever see a language model do, brilliantly or badly.</p>
       <div class="course-hero__meta">
-        <span>13 lessons</span><span>10-question quiz</span><span>~3.5 hours</span><span class="hl">Certificate + points</span>
+        <span>13 lessons</span><span>1 knowledge check</span><span>10-question quiz</span><span>~3.5 hours</span><span class="hl">Certificate + points</span>
       </div>
       </div>
       <div class="course-ring">
@@ -206,9 +206,9 @@
       <span class="lesson__eyebrow">Lesson 05 · ~15 min</span>
       <h2>Build the machine yourself</h2>
       <p>The best way to demystify next-token prediction is to build the simplest version of it: a Markov chain, invented in 1906. Take five text messages from a friend. Tally which word follows which, turning the tallies into a table. Normalize each row into probabilities. Now generate: start with a word, look up its row, and <strong>sample</strong> the next word from the distribution. Repeat.</p>
-      <p>The sampling choices you can make map directly to real model parameters. Always pick the highest-probability word: greedy decoding, repetitive and dull. Sample proportionally to the probabilities: temperature. Boost the likely words: low temperature. Cut off everything below a threshold: top-p. Keep only the top few options: top-k. Pick anything at random: chaos.</p>
+      <p>The sampling choices you can make map directly to real model parameters. Always take the highest-probability word: greedy decoding, repetitive and dull. Sample from the distribution as it stands: temperature 1. Sharpen it so the likely words dominate, or flatten it so unlikely ones get a real chance: lower or raise the temperature. Keep the smallest set of words whose probabilities add up to p and sample from those: top-p, also called nucleus sampling. Keep only the k most likely words: top-k.</p>
       <div class="callout"><span class="furniture">The bridge</span><p>Your Markov chain reads the last word, looks up one row, and samples. A modern language model reads the entire conversation, runs it through billions of parameters, and then samples the same way. Training is radically different, but the final step, choose the next token from a probability distribution, is the same move. The model trades the explainability of tallied words for vastly more context.</p></div>
-      <p>Historical anchors: Markov, 1906. Word-pair models powered phone keyboards around 2010. Recurrent networks around 2015. Transformers arrived in 2017 and changed everything.</p>
+      <p>Historical anchors: Markov, 1906. Word-pair models behind predictive phone keyboards. Recurrent networks were doing language modelling by 2010 and sequence-to-sequence translation by 2014. Transformers arrived in 2017 and changed everything.</p>
       <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
         <li>Generation is sampling from a probability distribution, in a 1906 Markov chain and in today's models alike.</li>
         <li>Temperature, top-p, and top-k are just different sampling rules on that distribution.</li>
@@ -252,7 +252,7 @@
     <section class="lesson" id="l8" data-lesson>
       <span class="lesson__eyebrow">Lesson 08 · ~12 min</span>
       <h2>Working memory</h2>
-      <p>Everything the model is paying attention to lives in a fixed-size context window. This property is hard-edged in a way the others are not: things work until they do not. It is a cliff, not a gradient, and silent truncation is the failure mode; you will not always be warned.</p>
+      <p>Everything the model is paying attention to lives in a fixed-size context window, and two different things are true about it. The limit itself is hard-edged: past it, content is dropped, the truncation is often silent, and you will not always be warned. Inside the limit it is not hard-edged at all. How reliably the model uses what is there varies with position and with how much you have put in, which is the next section.</p>
       <div class="callout"><span class="furniture">The sentence people forget</span><p>The model does not learn from your corrections. It only responds to what is currently in context. Correct it today and, in a fresh conversation tomorrow, the correction is gone unless something wrote it down.</p></div>
       <p>What pushes the edge out: memory features, conversation compaction, project spaces, larger windows, and multi-agent workflows that split work across several contexts. Working memory is also what Description acts on: structure your context, front-load what matters, and know when to start fresh.</p>
       <div class="exercise"><span class="furniture">Try it: three probes</span>
@@ -408,12 +408,12 @@
             <p class="q-why">Human raters tended to reward agreeable answers, which is the leading explanation for the pull toward agreement. Verbosity, over-caution, and loose calibration are the other fingerprints.</p>
           </fieldset>
           <fieldset>
-            <legend><span class="q-n">Question 6</span>Which property is described as "a cliff, not a gradient"?</legend>
-            <label class="opt"><input type="radio" name="q6"><span>Knowledge</span></label>
-            <label class="opt"><input type="radio" name="q6"><span>Steerability</span></label>
-            <label class="opt"><input type="radio" name="q6" data-correct><span>Working memory</span></label>
-            <label class="opt"><input type="radio" name="q6"><span>Next-token prediction</span></label>
-            <p class="q-why">The context window is hard-edged: things work until they silently do not.</p>
+            <legend><span class="q-n">Question 6</span>Which statement about the context window is right?</legend>
+            <label class="opt"><input type="radio" name="q6"><span>Both the limit and retrieval inside it degrade gradually</span></label>
+            <label class="opt"><input type="radio" name="q6" data-correct><span>The limit is hard-edged, and retrieval inside it varies with position</span></label>
+            <label class="opt"><input type="radio" name="q6"><span>The limit is hard-edged, and everything inside it is read equally well</span></label>
+            <label class="opt"><input type="radio" name="q6"><span>Neither the limit nor position affects what the model can use</span></label>
+            <p class="q-why">Past the limit, content is dropped, often silently. Inside the limit it is a gradient: Liu et al. found accuracy on a key fact can fall by more than thirty percent when it sits in the middle rather than at the edges.</p>
           </fieldset>
           <fieldset>
             <legend><span class="q-n">Question 7</span>The "lost in the middle" effect means:</legend>
@@ -459,7 +459,7 @@
         <div class="completion__bar">
           <div>
             <h3>Course complete</h3>
-            <p>Add your name, then print the certificate or save it as a PDF. It carries its own code, and it lives in this browser only, so keep the file.</p>
+            <p>Add your name, then print or save as PDF. The record lives in this browser only, so keep the file.</p>
           </div>
           <div class="name-row">
             <input type="text" placeholder="Your full name" aria-label="Your name for the certificate">
@@ -518,7 +518,7 @@
     });
   }
 </script>
-<script src="learn.js?v=14" defer></script>
+<script src="learn.js?v=34" defer></script>
 
 </body>
 </html>

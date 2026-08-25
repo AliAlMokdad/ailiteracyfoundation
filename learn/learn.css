@@ -95,8 +95,10 @@
 .course-hero h1 { font-size: clamp(2.1rem, 4.5vw, 3.4rem); line-height: 1.06; letter-spacing: -0.02em; max-width: 22ch; margin-bottom: 1.1rem; }
 .course-hero .lede { font-size: var(--fs-lg); color: #CFC9BC; max-width: 62ch; line-height: 1.6; }
 .course-hero__meta { display: flex; gap: 0.5rem 0; flex-wrap: wrap; margin-top: 1.75rem; align-items: baseline; }
+/* the dot belongs to the item before it, so wrapping never starts a line with one */
 .course-hero__meta span { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.04em; color: #CFC9BC; }
-.course-hero__meta span + span::before { content: "·"; margin: 0 0.7rem; color: #8A857A; }
+.course-hero__meta span:not(:last-child)::after { content: "·"; margin: 0 0.7rem; color: #8A857A; }
+
 .course-hero__meta span.hl { color: var(--accent-soft); }
 
 /* ================= Player shell ================= */
@@ -111,7 +113,7 @@
 .course-rail ol { border-top: 1px solid var(--line-soft); padding-top: 0.5rem; }
 .course-rail li a { display: flex; gap: 0.65rem; align-items: baseline; font-family: var(--sans); font-size: 0.8125rem; line-height: 1.4; color: var(--ink-quiet); padding: 0.45rem 0.55rem; transition: color 0.2s var(--ease), background 0.2s var(--ease); border-radius: 6px; }
 .course-rail li a:hover { color: var(--ink); }
-.course-rail li .c { flex: 0 0 auto; width: 14px; height: 14px; border: 1.5px solid var(--line); border-radius: 50%; position: relative; top: 2px; transition: all 0.25s var(--ease); }
+.course-rail li .c { flex: 0 0 auto; width: 14px; height: 14px; border: 1.5px solid var(--line); border-radius: 50%; position: relative; top: 2px; transition: background 0.25s var(--ease), border-color 0.25s var(--ease); }
 .course-rail li.is-read .c { background: var(--accent); border-color: var(--accent); }
 .course-rail li.is-read .c::after { content: ""; position: absolute; inset: 3px 3.5px; border-left: 1.5px solid var(--bg); border-bottom: 1.5px solid var(--bg); transform: rotate(-45deg) translateY(-1px); }
 .course-rail li.is-active a { color: var(--ink); font-weight: 500; background: var(--bg-deep); box-shadow: inset 3px 0 0 var(--accent); }
@@ -124,7 +126,7 @@
 .course-rail__passed { display: none; font-family: var(--sans); font-size: var(--fs-xs); color: #3D6841; margin-top: 0.6rem; align-items: center; gap: 0.4rem; }
 .course-rail__passed.is-on { display: flex; }
 .course-rail__passed::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: #4A7A4E; flex: 0 0 auto; }
-.course-rail__xp { display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.75rem; padding: 0.6rem 0.8rem; background: var(--bg-deep); border-radius: 8px; font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-soft); }
+.course-rail__xp { display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.7rem; padding: 0.5rem 0 0; border-top: 1px solid var(--line-soft); font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-soft); }
 .course-rail__xp b { color: var(--accent-deep); font-weight: 500; font-size: var(--fs-sm); }
 .course-rail__toggle { display: none; font-family: var(--sans); font-weight: 500; font-size: var(--fs-sm); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem 1rem; cursor: pointer; width: 100%; text-align: left; }
 .course-rail__toggle::after { content: "▾"; float: right; color: var(--accent-deep); }
@@ -145,6 +147,9 @@
 .objectives { margin-bottom: clamp(1.75rem, 4vw, 2.5rem); }
 .objectives .furniture { margin-bottom: 0.9rem; }
 .objectives ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; padding: 0; margin: 0; list-style: none; }
+/* every course states four objectives, which auto-fit lays out as 3 + 1 orphan */
+.objectives ul:has(> li:nth-child(4):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 620px) { .objectives ul:has(> li:nth-child(4):last-child) { grid-template-columns: minmax(0, 1fr); } }
 .objectives li { font-family: var(--sans); font-size: var(--fs-sm); line-height: 1.5; color: var(--ink-soft); background: var(--bg-elev); border: 1px solid var(--line); border-radius: 10px; padding: 0.9rem 1.1rem 0.9rem 2.5rem; position: relative; }
 .objectives li::before { content: ""; position: absolute; left: 1rem; top: 1.15rem; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
 
@@ -171,6 +176,9 @@
 
 /* concept cards: wide grid that breaks out of the reading column */
 .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.9rem; margin: 1.5rem 0; }
+/* exactly four cards would sit 3 + 1 and orphan the fourth; a set of four is a 2x2 */
+.concept-grid:has(> .cc:nth-child(4):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 620px) { .concept-grid:has(> .cc:nth-child(4):last-child) { grid-template-columns: minmax(0, 1fr); } }
 .concept-grid .cc { background: var(--bg-elev); border: 1px solid var(--line); border-radius: 10px; padding: 1.15rem 1.25rem; }
 .concept-grid .cc b { font-family: var(--sans); font-size: var(--fs-sm); font-weight: 600; color: var(--ink); display: block; margin-bottom: 0.35rem; }
 .concept-grid .cc b .n { font-family: var(--mono); color: var(--accent); font-weight: 500; margin-right: 0.4rem; }
@@ -210,7 +218,7 @@
 .check .check__q { font-weight: 500; color: var(--ink); margin-bottom: 0.85rem; font-size: var(--fs-md); }
 .check { counter-reset: copt; }
 .check .opt { counter-increment: copt; display: flex; align-items: flex-start; gap: 0.7rem; border: 1px solid var(--line); border-radius: 9px; padding: 0.8rem 1.05rem; margin-bottom: 0.5rem; cursor: pointer; font-family: var(--sans); font-size: var(--fs-sm); line-height: 1.5; color: var(--ink-soft); background: var(--bg); transition: border-color 0.2s var(--ease); width: 100%; text-align: left; }
-.check .opt::before { content: counter(copt, upper-alpha); flex: 0 0 auto; width: 22px; height: 22px; border: 1px solid var(--line); border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 0.7rem; color: var(--ink-quiet); transition: all 0.2s var(--ease); }
+.check .opt::before { content: counter(copt, upper-alpha); flex: 0 0 auto; width: 22px; height: 22px; border: 1px solid var(--line); border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 0.7rem; color: var(--ink-quiet); transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease); }
 .check .opt:hover { border-color: var(--accent-soft); }
 .check .opt:hover::before { border-color: var(--accent); color: var(--accent-deep); }
 .check.is-done .opt.is-picked::before, .check.is-done .opt.is-answer::before { background: var(--accent); border-color: var(--accent); color: var(--bg); }
@@ -241,7 +249,8 @@
 
 .quiz-intro { display: flex; gap: 0; flex-wrap: wrap; align-items: baseline; margin-bottom: 1.75rem; }
 .quiz-intro span { font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-quiet); letter-spacing: 0.04em; }
-.quiz-intro span + span::before { content: "·"; margin: 0 0.65rem; color: var(--line); }
+.quiz-intro span:not(:last-child)::after { content: "·"; margin: 0 0.65rem; color: var(--line); }
+
 .quiz fieldset { border: 0; margin: 0 0 1.9rem; padding: 0; counter-reset: qopt; }
 .quiz legend { font-weight: 500; font-size: var(--fs-md); color: var(--ink); margin-bottom: 0.8rem; line-height: 1.45; }
 .quiz .q-n { font-family: var(--mono); font-size: var(--fs-xs); color: var(--accent-deep); display: block; margin-bottom: 0.3rem; letter-spacing: 0.06em; }
@@ -249,7 +258,7 @@
 .quiz .opt:hover { border-color: var(--accent-soft); }
 .quiz .opt { counter-increment: qopt; position: relative; }
 .quiz .opt input { position: absolute; opacity: 0; pointer-events: none; }
-.quiz .opt::before { content: counter(qopt, upper-alpha); flex: 0 0 auto; width: 22px; height: 22px; border: 1px solid var(--line); border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 0.7rem; color: var(--ink-quiet); transition: all 0.2s var(--ease); }
+.quiz .opt::before { content: counter(qopt, upper-alpha); flex: 0 0 auto; width: 22px; height: 22px; border: 1px solid var(--line); border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 0.7rem; color: var(--ink-quiet); transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease); }
 .quiz .opt:hover::before { border-color: var(--accent); color: var(--accent-deep); }
 .quiz .opt:has(input:checked)::before { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 .quiz fieldset.is-correct .opt:has(input:checked)::before { background: #4A7A4E; border-color: #4A7A4E; }
@@ -270,14 +279,22 @@
 
 .completion { display: none; margin-top: 2.25rem; }
 .completion.is-open { display: block; }
-.completion__bar { border: 1px solid var(--line); border-radius: 12px 12px 0 0; border-bottom: 0; background: var(--bg-deep); padding: 1.4rem 1.75rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.completion__bar { border: 1px solid var(--line); border-radius: 12px; background: var(--bg-deep); margin-bottom: 1.15rem; padding: 1.4rem 1.75rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .completion__bar h3 { font-size: var(--fs-xl); margin: 0 0 0.2rem; }
 .completion__bar p { font-family: var(--sans); font-size: var(--fs-sm); color: var(--ink-soft); margin: 0; max-width: 52ch; }
 .completion .name-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.completion .name-row[hidden], .completion .cert-frame[hidden] { display: none; }
+.course-rail__passed.is-link { cursor: pointer; color: var(--accent-deep); }
+.course-rail__passed.is-link::after { content: " \2192"; }
+.course-rail__passed.is-link:hover { text-decoration: underline; }
+.course-rail__passed.is-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.course-rail__warn { font-family: var(--sans); font-size: var(--fs-xs); line-height: 1.45; color: var(--accent-deep); margin: 0.7rem 0 0; }
+.course-rail__passed.is-part { color: var(--ink-quiet); }
+.course-rail__passed.is-part::before { background: var(--accent); }
 .completion input[type="text"] { font-family: var(--sans); font-size: var(--fs-sm); padding: 0.6rem 0.95rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: var(--ink); min-width: 210px; }
 .completion input[type="text"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
-.cert-frame { border: 1px solid var(--line); border-radius: 0 0 12px 12px; padding: clamp(1rem, 3vw, 2.25rem); background: var(--bg-deep); }
+.cert-frame { border: 1px solid var(--line); border-radius: 12px; padding: clamp(1rem, 3vw, 2.25rem); background: var(--bg-deep); }
 .cert { border: 1.5px solid var(--ink); background: var(--bg); position: relative; padding: clamp(1.75rem, 4.5vw, 3.25rem) clamp(1.5rem, 4vw, 3rem); text-align: center; }
 .cert::before { content: ""; position: absolute; inset: 7px; border: 1px solid var(--accent-soft); pointer-events: none; }
 .cert__seal { width: 54px; height: 54px; margin: 0 auto 1.2rem; border: 1.5px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; }
@@ -285,13 +302,13 @@
 .cert__seal::after { content: ""; width: 13px; height: 13px; border-radius: 50%; background: var(--accent); }
 .cert__org { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-quiet); margin-bottom: 0.4rem; }
 .cert__certifies { font-family: var(--sans); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-quiet); margin: 1.4rem 0 0.7rem; }
-.cert__name { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); font-style: italic; color: var(--ink); border-bottom: 1px solid var(--ink); display: inline-block; padding: 0 1.5rem 0.4rem; min-width: 50%; line-height: 1.2; }
+.cert__name { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem); font-style: italic; color: var(--ink); border-bottom: 1px solid var(--ink); display: inline-block; padding: 0 1.5rem 0.62rem; min-width: 50%; line-height: 1.2; }
 .cert__completed { font-family: var(--sans); font-size: var(--fs-sm); color: var(--ink-soft); margin: 1rem 0 0.35rem; }
 .cert__title { font-size: clamp(1.4rem, 3.2vw, 2rem); line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 1.6rem; }
 .cert__meta { display: flex; justify-content: center; gap: clamp(1rem, 4vw, 3rem); flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 1.2rem; font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-quiet); }
 .cert__meta b { display: block; color: var(--ink); font-weight: 500; margin-top: 0.15rem; letter-spacing: 0.04em; }
 .cert__foot { font-family: var(--sans); font-size: var(--fs-xs); color: var(--ink-quiet); margin-top: 1.3rem; }
-.cert__foot a { color: var(--accent-deep); }
+.cert__foot a { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 2px; }
 
 /* ================= Colophon + buttons ================= */
 
@@ -309,6 +326,12 @@
 
 /* ================= Print: certificate only ================= */
 
+/* The print button exists to produce the certificate, and the saved PDF is the thing
+   a learner keeps, so give it a real page: landscape, centred, filling it. Named, so
+   that printing a lesson stays portrait. Browsers without named-page support simply
+   fall back to the default page, which is what this had before. */
+@page cert { size: A4 landscape; margin: 12mm; }
+
 @media print {
   body.printing-cert .site-header, body.printing-cert .course-hero, body.printing-cert .course-rail,
   body.printing-cert .site-footer, body.printing-cert .begin-card, body.printing-cert .objectives,
@@ -318,9 +341,12 @@
   body.printing-cert .completion__bar { display: none !important; }
   body.printing-cert .lesson--quiz { display: block !important; border: 0; padding: 0; }
   body.printing-cert .course-shell { display: block; padding: 0; }
-  body.printing-cert .completion { display: block; margin: 0; }
+  body.printing-cert .completion { display: block; margin: 0; page: cert; }
   body.printing-cert .cert-frame { border: 0; padding: 0; background: none; border-radius: 0; }
-  body.printing-cert .cert { border-color: #000; }
+  /* align-items:center, or the column stretches every child to full width and the
+     signature rule and the meta hairline run the whole span of the page */
+  body.printing-cert .cert { border-color: #000; min-height: 168mm; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+  body.printing-cert .cert > * { max-width: 100%; }
 }
 
 /* ================= Responsive ================= */
@@ -333,11 +359,30 @@
 }
 
 @media (max-width: 900px) {
-  .course-shell { grid-template-columns: 1fr; gap: 1.5rem; }
+  .course-shell { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
   .course-rail { position: static; max-height: none; border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.25rem; background: var(--bg-elev); }
+  /* the h1 states the course title directly above this box; saying it twice is furniture */
+  .course-rail__title { display: none; }
   .course-rail ol { display: none; }
   .course-rail.is-expanded ol { display: block; margin-top: 0.5rem; }
   .course-rail__toggle { display: inline-flex; }
+  /* On a phone this box sits between the course opening and the first word of the
+     lesson, so every row it keeps has to earn its height. Progress and points share
+     one line, the greeting goes (the completion card says it), and the lesson list
+     stays behind the disclosure. */
+  .course-rail { display: flex; flex-direction: column; gap: 0.55rem; padding: 0.85rem 1rem; }
+  .course-rail__hello { display: none; }
+  .course-rail__back { margin-bottom: 0; order: 1; }
+  .course-rail__progress--top { order: 2; margin: 0; padding-bottom: 0; border-bottom: 0;
+    display: grid; grid-template-columns: 1fr auto; grid-template-areas: "pct xp" "bar bar" "pass pass";
+    align-items: baseline; gap: 0.45rem 0.9rem; }
+  .course-rail__pct { grid-area: pct; }
+  .course-rail__xp { grid-area: xp; margin: 0; padding: 0; background: none; border-radius: 0; gap: 0.45rem; }
+  .course-rail__bar { grid-area: bar; }
+  .course-rail__passed { grid-area: pass; margin-top: 0.45rem; }
+  .course-rail__warn { order: 2; margin-top: 0; }
+  .course-rail__toggle { order: 3; }
+  .course-rail ol, .course-rail.is-expanded ol { order: 4; }
   .begin-card { flex-direction: column; align-items: flex-start; }
 }
 

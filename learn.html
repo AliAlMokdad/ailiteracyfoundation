@@ -34,9 +34,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=polish6">
-<link rel="stylesheet" href="learn/learn.css?v=14">
+<link rel="stylesheet" href="learn/learn.css?v=34">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
+<!-- ANTI_SLOP_BRIEF
+  1 BOLD MOVE: the architecture is the design. One lesson on screen at a time in a
+    paginated player with a persistent progress rail, not a scroll of text. The learner
+    always knows where they are, how far in, and what finishing looks like.
+  2 TYPE: the AILF house stack only. Source Serif 4 for lesson and certificate display,
+    Inter for interface and body, JetBrains Mono for eyebrows, meta and codes. No new family.
+  3 COLOUR: AILF tokens only. Cream ground, ink text, terracotta reserved for state and
+    nothing else: progress, the active lesson, a correct answer, the certificate rule.
+    Each course opens on one dark ink hero, the single high-contrast move on the page.
+  4 CONTENT SHAPE: the 4D framework is the spine. Every course runs lessons, inline
+    checks, quiz, certificate. Sourced from the Anthropic AI Fluency courseware
+    (Dakan and Feller, Ringling College and University College Cork, CC BY-NC-SA 4.0).
+  5 VERIFIABLE: points arithmetic, certificate code format and stability across retake
+    and rename, the 80 percent pass threshold, axe clean at WCAG 2 AA, no horizontal
+    overflow at 360 and 390, and keyboard operation of every check and quiz.
+-->
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
@@ -74,7 +90,7 @@
         <a class="lbtn lbtn--primary" href="learn/ai-fluency-foundations.html" data-next-action>Start with the framework →</a>
         <a class="lbtn" href="#start-here">See all twelve</a>
       </div>
-      <p class="learn-note-inline" data-next-where>No sign-up and no tracking. Your progress is saved in this browser, so it stays on this device.</p>
+      <p class="learn-note-inline" data-next-where>No sign-up and no tracking. Your progress is saved in this browser.</p>
       <div class="hub-stats" data-hub-stats hidden>
         <div class="hub-stat"><b data-hub-xp>0</b><span>Your points</span></div>
         <div class="hub-stat"><b data-hub-credits>0</b><span>Your certificates</span></div>
@@ -138,7 +154,7 @@
   <style>#start-here .course-card{border-top:3px solid var(--accent)}#start-here .course-grid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}#start-here .course-card h3{font-size:clamp(1.35rem,2vw,1.6rem)}</style>
   <section class="learn-section" id="start-here">
     <div class="wrap--wide">
-      <h2>Start here</h2>
+      <h2>The foundation</h2>
       <p class="section-sub">The human side, then the machine side. Take them in order; the reference is there whenever you need to look something up.</p>
       <div class="course-grid">
         <article class="course-card">
@@ -171,7 +187,7 @@
         <article class="course-card">
           <div class="course-card__kicker"><span>Edition</span><span class="course-card__status" data-course-status="builders" data-lessons="10" hidden></span></div>
           <h3><a href="learn/builders.html">For Builders</a></h3>
-          <p>For product people, designers, and makers. Delegating implementation is usually safe; delegating judgment is usually not.</p>
+          <p>For product people, designers, and makers. AI is strongest at first drafts of implementation; what to build and whether it ships stay yours.</p>
           <div class="course-card__meta">9 lessons · quiz · certificate</div>
         </article>
         <article class="course-card">
@@ -300,7 +316,7 @@
     });
   }
 </script>
-<script src="learn/learn.js?v=14" defer></script>
+<script src="learn/learn.js?v=34" defer></script>
 <script src="motion.js?v=polish1" defer></script>
 
 </body>
