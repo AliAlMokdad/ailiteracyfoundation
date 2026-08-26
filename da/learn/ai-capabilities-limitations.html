@@ -215,7 +215,7 @@
       <h2>Byg maskinen selv</h2>
       <p>Den bedste måde at afmystificere næste-token-forudsigelse på er at bygge den enkleste version af det: en Markov-kæde, opfundet i 1906. Tag fem tekstbeskeder fra en ven. Tæl, hvilket ord der følger hvilket, og lav en tabel ud af tallene. Normaliser hver række til sandsynligheder. Generer nu: start med et ord, slå dets række op, og <strong>sample</strong> det næste ord fra fordelingen. Gentag.</p>
       <p>De sampling-valg, du kan træffe, svarer direkte til reelle modelparametre. Tag altid ordet med den højeste sandsynlighed: greedy decoding, gentagende og kedeligt. Sample fra fordelingen, som den er: temperature 1. Skærp den, så de sandsynlige ord dominerer, eller udjævn den, så usandsynlige ord får en reel chance: sænk eller hæv temperature. Behold det mindste sæt af ord, hvis sandsynligheder summerer til p, og sample fra dem: top-p, også kaldet nucleus sampling. Behold kun de k mest sandsynlige ord: top-k.</p>
-      <div class="callout"><span class="furniture">Broen</span><p>Din Markov-kæde læser det sidste ord, slår en række op og sampler. En moderne sprogmodel læser hele samtalen, kører den gennem milliarder af parametre og sampler derefter på samme måde. Træningen er radikalt anderledes, men det sidste trin, at vælge det næste token fra en sandsynlighedsfordeling, er den samme bevægelse. Modellen bytter forklarbarheden af optalte ord ud med langt mere kontekst.</p></div>
+      <div class="callout"><span class="furniture">Broen</span><p>Din Markov-kæde læser det sidste ord, slår en række op og sampler. En moderne sprogmodel læser hele samtalen, kører den gennem milliarder af parametre og vælger derefter fra den resulterende fordeling på samme måde, enten ved at sample eller ved at tage det mest sandsynlige token. Træningen er radikalt anderledes, men det sidste trin, at vælge det næste token fra en sandsynlighedsfordeling, er den samme bevægelse. Modellen bytter forklarbarheden af optalte ord ud med langt mere kontekst.</p></div>
       <p>Historiske ankerpunkter: Markov, 1906. Ordparmodeller bag forudsigende telefontastaturer. Rekurrente netværk udførte sprogmodellering i 2010 og sekvens-til-sekvens-oversættelse i 2014. Transformers ankom i 2017 og ændrede alt.</p>
       <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
         <li>Generering er sampling fra en sandsynlighedsfordeling, både i en Markov-kæde fra 1906 og i nutidens modeller.</li>
@@ -272,7 +272,7 @@
         <p>Beslut derefter: Hvilke af dine tilbagevendende opgaver kræver stående kontekst (et projekt, gemte instruktioner, referencedokumenter), og hvilke er fine med en kold start?</p>
       </div>
       <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
-        <li>Arbejdshukommelse er en afgrund; afkortning er tavs.</li>
+        <li>Arbejdshukommelse er en afgrund; indhold droppes eller afvises, og afkortning er ofte tavs.</li>
         <li>Ingen læring på tværs af sessioner som standard; det, der er vigtigt, skal skrives ned et sted, hvor det bliver genlæst.</li>
       </ul></div>
     </section>
@@ -421,7 +421,7 @@
             <label class="opt"><input type="radio" name="q6" data-correct><span>Grænsen er skarp, og genfinding inden for den varierer med position</span></label>
             <label class="opt"><input type="radio" name="q6"><span>Grænsen er skarp, og alt inden for den læses lige godt</span></label>
             <label class="opt"><input type="radio" name="q6"><span>Hverken grænsen eller positionen påvirker, hvad modellen kan bruge</span></label>
-            <p class="q-why">Efter grænsen droppes indhold, ofte uden varsel. Inden for grænsen er det en gradient: Liu et al. fandt, at nøjagtigheden af en vigtig kendsgerning kan falde med mere end tredive procent, når den sidder i midten frem for i kanterne.</p>
+            <p class="q-why">Efter grænsen droppes indhold, eller anmodningen afvises, ofte uden varsel. Inden for grænsen er det en gradient: Liu et al. fandt, at nøjagtigheden af en vigtig kendsgerning kan falde med mere end tredive procent, når den sidder i midten frem for i kanterne.</p>
           </fieldset>
           <fieldset>
             <legend><span class="q-n">Spørgsmål 7</span>Effekten "lost in the middle" betyder:</legend>
