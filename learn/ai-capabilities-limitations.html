@@ -213,7 +213,7 @@
       <div class="callout"><span class="furniture">The bridge</span><p>Your Markov chain reads the last word, looks up one row, and samples. A modern language model reads the entire conversation, runs it through billions of parameters, and then picks from the resulting distribution the same way, by sampling or by taking the most likely token. Training is radically different, but the final step, choose the next token from a probability distribution, is the same move. The model trades the explainability of tallied words for vastly more context.</p></div>
       <p>Historical anchors: Markov, 1906. Word-pair models behind predictive phone keyboards. Recurrent networks were doing language modelling by 2010 and sequence-to-sequence translation by 2014. Transformers arrived in 2017 and changed everything.</p>
       <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
-        <li>Generation is sampling from a probability distribution, in a 1906 Markov chain and in today's models alike.</li>
+        <li>Generation selects a token from a probability distribution, in a 1906 Markov chain and in today's models alike, by sampling or by taking the most likely one.</li>
         <li>Temperature, top-p, and top-k are just different sampling rules on that distribution.</li>
       </ul></div>
     </section>
@@ -376,7 +376,7 @@
             <label class="opt"><input type="radio" name="q1" data-correct><span>By repeatedly predicting the next fragment of text</span></label>
             <label class="opt"><input type="radio" name="q1"><span>By copying the closest matching document from training</span></label>
             <label class="opt"><input type="radio" name="q1"><span>By following hand-written grammar rules</span></label>
-            <p class="q-why">Generation is prediction: the model samples the next token from a probability distribution, over and over.</p>
+            <p class="q-why">Generation is prediction: the model selects the next token from a probability distribution, over and over.</p>
           </fieldset>
           <fieldset>
             <legend><span class="q-n">Question 2</span>Where does fabricated content concentrate most?</legend>
