@@ -20,7 +20,7 @@
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "AI's muligheder og begrænsninger",
-  "description": "Opbyg en præcis mental model af, hvad sprogmodeller kan og ikke kan: next-token prediction, viden, arbejdshukommelse og styrbarhed. 13 lektioner, test, bevis. Gratis.",
+  "description": "Opbyg en præcis mental model af, hvad sprogmodeller kan og ikke kan: næste-token-forudsigelse, viden, arbejdshukommelse og styrbarhed. 13 lektioner, test, bevis. Gratis.",
   "provider": {
     "@id": "https://ailiteracyfoundation.eu/#organization"
   },
@@ -37,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../styles.css?v=polish6">
-<link rel="stylesheet" href="../../learn/learn.css?v=45">
+<link rel="stylesheet" href="../../learn/learn.css?v=46">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <body>
@@ -108,7 +108,7 @@
       <li><a href="#l1"><span class="c" aria-hidden="true"></span> Ét system, to sider</a></li>
       <li><a href="#l2"><span class="c" aria-hidden="true"></span> Hvad vi mener med AI</a></li>
       <li><a href="#l3"><span class="c" aria-hidden="true"></span> Hvordan AI får sin karakter</a></li>
-      <li><a href="#l4"><span class="c" aria-hidden="true"></span> Forudsigelse af næste token</a></li>
+      <li><a href="#l4"><span class="c" aria-hidden="true"></span> Næste-token-forudsigelse</a></li>
       <li><a href="#l5"><span class="c" aria-hidden="true"></span> Byg maskinen selv</a></li>
       <li><a href="#l6"><span class="c" aria-hidden="true"></span> Viden</a></li>
       <li><a href="#l7"><span class="c" aria-hidden="true"></span> Hvordan mening bliver et sted</a></li>
@@ -158,7 +158,7 @@
       <p>Kursets centrale redskab: hver af de fire egenskaber er et <strong>spektrum</strong> fra evne til begrænsning, og jo længere til højre din opgave sidder, jo mere bør du verificere og kompensere.</p>
       <div class="table-scroll"><table>
         <tr><th>Egenskab</th><th>Evnezone</th><th>Begrænsningszone</th></tr>
-        <tr><td><strong>Forudsigelse af næste token</strong></td><td>Velkendte veje: opsummer, omformater, almindelige koncepter</td><td>Nyt område, sparsomme mønstre, hvor som helst "sandt" skal adskilles fra "lyder sandt"</td></tr>
+        <tr><td><strong>Næste-token-forudsigelse</strong></td><td>Velkendte veje: opsummer, omformater, almindelige koncepter</td><td>Nyt område, sparsomme mønstre, hvor som helst "sandt" skal adskilles fra "lyder sandt"</td></tr>
         <tr><td><strong>Viden</strong></td><td>Hyppige, konsistente, velrepræsenterede emner</td><td>Sjældne, efter modellens vidensgrænse, nicheprægede, lokale eller omstridte emner</td></tr>
         <tr><td><strong>Arbejdshukommelse</strong></td><td>Passer komfortabelt i kontekstvinduet, nuværende session</td><td>Meget lange dokumenter, forventer kontinuitet på tværs af sessioner: den bratte kant</td></tr>
         <tr><td><strong>Styrbarhed</strong></td><td>Korte, konkrete, verificerbare instruktioner</td><td>Lange ræsonnementskæder, abstrakte anmodninger, indbygget præcision</td></tr>
@@ -195,7 +195,7 @@
       <span class="lesson__eyebrow">Lektion 04 · ~12 min</span>
       <h2>Næste-token-forudsigelse</h2>
       <p>En sprogmodel genererer tekst ved gentagne gange at forudsige det næste fragment. Den ene egenskab giver dig både flydende sprog og hallucination. På opgaver, der ligner mønstre, den har set mange gange, producerer forudsigelsen fremragende arbejde. I nyt eller sparsomt område producerer den noget plausibelt, og plausibelt er ikke det samme som sandt.</p>
-      <div class="callout"><span class="furniture">Hvor fabrikation koncentreres</span><p>Fabrikation koncentrerer sig om specifikke detaljer: navne, datoer, statistikker, citater, URL'er og udsagn. Jo mere præcis en påstand er, desto mere berettiger den kontrol.</p></div>
+      <div class="callout"><span class="furniture">Hvor fabrikation koncentreres</span><p>Fabrikation koncentrerer sig om specifikke detaljer: navne, datoer, statistikker, kildehenvisninger, URL'er og citater. Jo mere præcis en påstand er, desto mere berettiger den kontrol.</p></div>
       <p>Denne egenskab er grundlaget for Discernment. At vide, at outputtet blev genereret, ikke hentet, fortæller dig, hvilken kontrol du skal anvende. Flydende prosa kan dække over et gæt.</p>
       <div class="exercise"><span class="furniture">Prøv det: de tre tests</span>
         <ol>
@@ -213,7 +213,7 @@
     <section class="lesson" id="l5" data-lesson>
       <span class="lesson__eyebrow">Lektion 05 · ~15 min</span>
       <h2>Byg maskinen selv</h2>
-      <p>Den bedste måde at afmystificere forudsigelse af næste token på er at bygge den enkleste version af det: en Markov-kæde, opfundet i 1906. Tag fem tekstbeskeder fra en ven. Tæl, hvilket ord der følger hvilket, og lav en tabel ud af tallene. Normaliser hver række til sandsynligheder. Generer nu: start med et ord, slå dets række op, og <strong>sample</strong> det næste ord fra fordelingen. Gentag.</p>
+      <p>Den bedste måde at afmystificere næste-token-forudsigelse på er at bygge den enkleste version af det: en Markov-kæde, opfundet i 1906. Tag fem tekstbeskeder fra en ven. Tæl, hvilket ord der følger hvilket, og lav en tabel ud af tallene. Normaliser hver række til sandsynligheder. Generer nu: start med et ord, slå dets række op, og <strong>sample</strong> det næste ord fra fordelingen. Gentag.</p>
       <p>De sampling-valg, du kan træffe, svarer direkte til reelle modelparametre. Tag altid ordet med den højeste sandsynlighed: greedy decoding, gentagende og kedeligt. Sample fra fordelingen, som den er: temperature 1. Skærp den, så de sandsynlige ord dominerer, eller udjævn den, så usandsynlige ord får en reel chance: sænk eller hæv temperature. Behold det mindste sæt af ord, hvis sandsynligheder summerer til p, og sample fra dem: top-p, også kaldet nucleus sampling. Behold kun de k mest sandsynlige ord: top-k.</p>
       <div class="callout"><span class="furniture">Broen</span><p>Din Markov-kæde læser det sidste ord, slår en række op og sampler. En moderne sprogmodel læser hele samtalen, kører den gennem milliarder af parametre og sampler derefter på samme måde. Træningen er radikalt anderledes, men det sidste trin, at vælge det næste token fra en sandsynlighedsfordeling, er den samme bevægelse. Modellen bytter forklarbarheden af optalte ord ud med langt mere kontekst.</p></div>
       <p>Historiske ankerpunkter: Markov, 1906. Ordparmodeller bag forudsigende telefontastaturer. Rekurrente netværk udførte sprogmodellering i 2010 og sekvens-til-sekvens-oversættelse i 2014. Transformers ankom i 2017 og ændrede alt.</p>
@@ -260,7 +260,7 @@
     <section class="lesson" id="l8" data-lesson>
       <span class="lesson__eyebrow">Lektion 08 · ~12 min</span>
       <h2>Arbejdshukommelse</h2>
-      <p>Alt, hvad modellen er opmærksom på, lever i et kontekstvindue af fast størrelse, og to forskellige ting er sande om det. Grænsen i sig selv er skarp: Ud over den droppes indhold, afkortningen er ofte tavs, og du vil ikke altid blive advaret. Inden for grænsen er den slet ikke skarp. Hvor pålideligt modellen bruger det, der er der, varierer med position og med hvor meget du har lagt ind.</p>
+      <p>Alt, hvad modellen er opmærksom på, lever i et kontekstvindue af fast størrelse, og to forskellige ting er sande om det. Grænsen i sig selv er skarp: Ud over den droppes indhold, eller anmodningen afvises, alt efter produktet, og en afkortning er ofte tavs. Inden for grænsen er den slet ikke skarp. Hvor pålideligt modellen bruger det, der er der, varierer med position og med hvor meget du har lagt ind.</p>
       <div class="callout"><span class="furniture">Sætningen folk glemmer</span><p>Modellen lærer ikke af dine rettelser. Den reagerer kun på det, der aktuelt er i kontekst. Ret den i dag, og i en ny samtale i morgen er rettelsen væk, medmindre noget har skrevet den ned.</p></div>
       <p>Hvad der udvider grænsen: hukommelsesfunktioner, samtalekomprimering, projektområder, større vinduer og multi-agent-arbejdsgange, der fordeler arbejdet på tværs af flere kontekster. Arbejdshukommelse er også det, Description handler om: Strukturér din kontekst, læg det vigtigste forrest, og vid, hvornår du skal starte forfra.</p>
       <div class="exercise"><span class="furniture">Prøv det: tre tests</span>
@@ -292,7 +292,7 @@
 
     <section class="lesson" id="l10" data-lesson>
       <span class="lesson__eyebrow">Lektion 10 · ~12 min</span>
-      <h2>Styring</h2>
+      <h2>Styrbarhed</h2>
       <p>Modeller følger instruktioner ved at fortsætte et mønster, ikke ved at forstå intentionen. Der er altid et gab mellem det, du mente, og det, der landede, og de fleste af de interessante fejl lever i det gab.</p>
       <p>To fejltyper, du skal kende ved navn:</p>
       <ul>
@@ -386,7 +386,7 @@
           <fieldset>
             <legend><span class="q-n">Spørgsmål 2</span>Hvor koncentreres fabrikeret indhold mest?</legend>
             <label class="opt"><input type="radio" name="q2"><span>I generelle resuméer af almindelige emner</span></label>
-            <label class="opt"><input type="radio" name="q2" data-correct><span>I detaljer: navne, datoer, statistikker, citater, URL'er</span></label>
+            <label class="opt"><input type="radio" name="q2" data-correct><span>I detaljer: navne, datoer, statistikker, kildehenvisninger, URL'er</span></label>
             <label class="opt"><input type="radio" name="q2"><span>I korte svar</span></label>
             <label class="opt"><input type="radio" name="q2"><span>Kun i kreativ skrivning</span></label>
             <p class="q-why">Jo mere præcis en påstand er, jo mere berettiger den til kontrol. Det er i detaljerne, at hallucinationer opstår.</p>
@@ -526,7 +526,7 @@
     });
   }
 </script>
-<script src="../../learn/learn.js?v=45" defer></script>
+<script src="../../learn/learn.js?v=46" defer></script>
 
 </body>
 </html>

@@ -665,7 +665,7 @@
         best: Math.max(prevBest, correct),
         total: sets.length,
         passed: passed || !!(state.quiz && state.quiz.passed),
-        when: (state.quiz && state.quiz.passed && state.quiz.when) || new Date().toISOString().slice(0, 10),
+        when: (state.quiz && state.quiz.passed && state.quiz.when) || (function (d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); })(new Date()),
         /* carry the issued code and its seed, so neither a retake nor a later
            correction to the name can change a certificate already given out */
         seed: state.quiz && state.quiz.seed,
