@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>AI's muligheder og begrænsninger · AI Literacy Foundation</title>
-<meta name="description" content="Opbyg en præcis mental model af, hvad sprogmodeller kan og ikke kan: next-token prediction, viden, arbejdshukommelse og styrbarhed. 13 lektioner, test, bevis. Gratis.">
+<meta name="description" content="Opbyg en præcis mental model af, hvad sprogmodeller kan og ikke kan: næste-token-forudsigelse, viden, arbejdshukommelse og styrbarhed. 13 lektioner, test, bevis. Gratis.">
 <meta name="theme-color" content="#F7F4EE">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ailiteracyfoundation.eu/da/learn/ai-capabilities-limitations.html">
@@ -126,7 +126,7 @@
 
 
     <div class="objectives">
-      <span class="furniture">Hvad du lærer</span>
+      <span class="furniture">Det lærer du</span>
       <ul>
         <li>Husk maskinens fire egenskaber: næste-token-forudsigelse, viden, arbejdshukommelse og styrbarhed</li>
         <li>Placer enhver opgave på evne-begrænsningsspektret, før du stoler på outputtet</li>
@@ -140,12 +140,12 @@
     <section class="lesson" id="l1" data-lesson>
       <span class="lesson__eyebrow">Lektion 01 · ~10 min</span>
       <h2>Ét system, to sider</h2>
-      <p>Enhver frustrerende AI-oplevelse, du har haft, har en mekanisk forklaring. Modellen, der skrev et smukt resumé og derefter opfandt en kilde, assistenten, der glemte din instruktion fra tyve beskeder siden, udkastet, der fulgte din anmodning præcist og stadig misforstod pointen: intet af dette er mysterier, og intet af det er tilfældigt. De stammer fra fire egenskaber, der forbliver stabile, selv når modellerne forbedres. Grænserne flytter sig; egenskaberne forbliver de samme.</p>
+      <p>Enhver frustrerende AI-oplevelse, du har haft, har en mekanisk forklaring. Modellen, der skrev et smukt resumé og derefter opfandt en kilde, assistenten, der glemte din instruktion fra tyve beskeder siden, udkastet, der fulgte din anmodning præcist og stadig misforstod pointen: intet af dette er mysterier, og intet af det er tilfældigt. De stammer fra fire egenskaber, der forbliver stabile, selv når modellerne forbedres.</p>
       <p>Lær de fire egenskaber én gang, og du kan diagnosticere fejl på enhver model, i år eller om fem år.</p>
       <div class="exercise"><span class="furniture">Grundlæggende øvelse, gør dette nu</span>
         <p>Lav en liste over fire til seks reelle AI-opgaver fra dit eget nylige arbejde. For hver opgave skal du notere, om den lykkedes i første forsøg eller krævede omarbejdning. Bed derefter en AI-model om én sandsynlig fejlmåde for hver opgave, og korriger, hvis dens svar ikke stemmer overens med din erfaring. Gem denne liste; hele kurset vender tilbage til den.</p>
       </div>
-      <div class="takeaways"><span class="furniture">Vigtigste pointer</span><ul>
+      <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
         <li>Fire egenskaber forklarer de fleste succeser og fiaskoer.</li>
         <li>Egenskaber forbliver stabile på tværs af modelgenerationer; kun grænserne flytter sig.</li>
       </ul></div>
@@ -216,7 +216,7 @@
       <p>Den bedste måde at afmystificere forudsigelse af næste token på er at bygge den enkleste version af det: en Markov-kæde, opfundet i 1906. Tag fem tekstbeskeder fra en ven. Tæl, hvilket ord der følger hvilket, og lav en tabel ud af tallene. Normaliser hver række til sandsynligheder. Generer nu: start med et ord, slå dets række op, og <strong>sample</strong> det næste ord fra fordelingen. Gentag.</p>
       <p>De sampling-valg, du kan træffe, svarer direkte til reelle modelparametre. Tag altid ordet med den højeste sandsynlighed: greedy decoding, gentagende og kedeligt. Sample fra fordelingen, som den er: temperature 1. Skærp den, så de sandsynlige ord dominerer, eller udjævn den, så usandsynlige ord får en reel chance: sænk eller hæv temperature. Behold det mindste sæt af ord, hvis sandsynligheder summerer til p, og sample fra dem: top-p, også kaldet nucleus sampling. Behold kun de k mest sandsynlige ord: top-k.</p>
       <div class="callout"><span class="furniture">Broen</span><p>Din Markov-kæde læser det sidste ord, slår en række op og sampler. En moderne sprogmodel læser hele samtalen, kører den gennem milliarder af parametre og sampler derefter på samme måde. Træningen er radikalt anderledes, men det sidste trin, at vælge det næste token fra en sandsynlighedsfordeling, er den samme bevægelse. Modellen bytter forklarbarheden af optalte ord ud med langt mere kontekst.</p></div>
-      <p>Historiske ankerpunkter: Markov, 1906. Ordparmodeller bag forudsigende telefon-tastaturer. Rekurrente netværk udførte sprogmodellering i 2010 og sekvens-til-sekvens-oversættelse i 2014. Transformers ankom i 2017 og ændrede alt.</p>
+      <p>Historiske ankerpunkter: Markov, 1906. Ordparmodeller bag forudsigende telefontastaturer. Rekurrente netværk udførte sprogmodellering i 2010 og sekvens-til-sekvens-oversættelse i 2014. Transformers ankom i 2017 og ændrede alt.</p>
       <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
         <li>Generering er sampling fra en sandsynlighedsfordeling, både i en Markov-kæde fra 1906 og i nutidens modeller.</li>
         <li>Temperature, top-p og top-k er blot forskellige sampling-regler for den fordeling.</li>
@@ -250,7 +250,7 @@
       <p>Søgning, der matcher strenge, mislykkes med mening: En søgning efter "bil" overser "automobil" og overser "min Civic skal have nye bremser". I årtier lappede ingeniører dette manuelt med synonymlister, stammereduktion og klikmønstre. Så kom en bedre idé: Hvad nu hvis mening kunne være et sted?</p>
       <p>Forestil dig at placere dokumenter på to navngivne akser, f.eks. "hvor meget dette handler om dinosaurer" og "hvor meget dette handler om rutsjebaner". Et spørgsmål kan plottes i samme rum, og de nærmeste dokumenter er de mest relevante, selv med nul ord til fælles. Tilføj en tredje akse, og det virker stadig. Ved fire dimensioner giver billedet i dit hoved op, men matematikken fortsætter med at virke. Reelle indlejringsmodeller bruger omkring tusind akser, og her er nøglen: Ingen navngav dem. Dimensionerne opstår fra træningen. Du kan ikke udspørge dimension 847; mening er derinde, men ingen akse har en etiket.</p>
       <p>En indlejringsmodel tager enhver tekst, tre ord eller tre afsnit, og returnerer en liste af tal med fast længde: Adressen, hvor den tekst lever i forhold til alt andet. Ligheder måles efter retning (cosinuslighed): 1 betyder identisk retning, 0 urelateret, -1 modsat. En tekst, der dækker mange emner på én gang, har tendens til at ligge imellem dem snarere end tæt på en enkelt, hvilket er grunden til, at lange blandede dokumenter normalt opdeles, før de indlejres.</p>
-      <p>Dette er maskineriet bag "chat med dine dokumenter"-værktøjer og ethvert seriøst AI-søgeprodukt: Indlejre spørgsmålet, find de nærmeste tekstbidder, svar ud fra det fundne.</p>
+      <p>Dette er maskineriet bag "chat med dine dokumenter"-værktøjer og ethvert seriøst AI-søgeprodukt: Indlejr spørgsmålet, find de nærmeste tekstbidder, svar ud fra det fundne.</p>
       <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
         <li>Indlejringer omdanner mening til koordinater; lignende betydninger ligger tæt på hinanden.</li>
         <li>Dimensionerne er indlærte, uetiketterede og opståede, og matematikken virker, hvor intuitionen giver op.</li>
@@ -260,9 +260,9 @@
     <section class="lesson" id="l8" data-lesson>
       <span class="lesson__eyebrow">Lektion 08 · ~12 min</span>
       <h2>Arbejdshukommelse</h2>
-      <p>Alt, hvad modellen er opmærksom på, lever i et kontekstvindue af fast størrelse, og to forskellige ting er sande om det. Grænsen i sig selv er skarp: Ud over den droppes indhold, afkortningen er ofte tavs, og du vil ikke altid blive advaret. Inden for grænsen er den slet ikke skarp. Hvor pålideligt modellen bruger det, der er der, varierer med position og med hvor meget du har lagt ind, hvilket er det næste afsnit.</p>
+      <p>Alt, hvad modellen er opmærksom på, lever i et kontekstvindue af fast størrelse, og to forskellige ting er sande om det. Grænsen i sig selv er skarp: Ud over den droppes indhold, afkortningen er ofte tavs, og du vil ikke altid blive advaret. Inden for grænsen er den slet ikke skarp. Hvor pålideligt modellen bruger det, der er der, varierer med position og med hvor meget du har lagt ind.</p>
       <div class="callout"><span class="furniture">Sætningen folk glemmer</span><p>Modellen lærer ikke af dine rettelser. Den reagerer kun på det, der aktuelt er i kontekst. Ret den i dag, og i en ny samtale i morgen er rettelsen væk, medmindre noget har skrevet den ned.</p></div>
-      <p>Hvad der udvider grænsen: hukommelsesfunktioner, samtale-komprimering, projektområder, større vinduer og multi-agent-arbejdsgange, der fordeler arbejdet på tværs af flere kontekster. Arbejdshukommelse er også det, Description handler om: Strukturér din kontekst, læg det vigtigste forrest, og vid, hvornår du skal starte forfra.</p>
+      <p>Hvad der udvider grænsen: hukommelsesfunktioner, samtalekomprimering, projektområder, større vinduer og multi-agent-arbejdsgange, der fordeler arbejdet på tværs af flere kontekster. Arbejdshukommelse er også det, Description handler om: Strukturér din kontekst, læg det vigtigste forrest, og vid, hvornår du skal starte forfra.</p>
       <div class="exercise"><span class="furniture">Prøv det: tre tests</span>
         <ol>
           <li><strong>Kold start versus leveret.</strong> Spørg om dit projekt uden kontekst, og derefter igen med dit dokument vedhæftet. Mål forskellen.</li>
@@ -283,7 +283,7 @@
       <p>Prøv denne hukommelsestest på dig selv: Læs en liste med femten ord én gang, kig væk, og skriv ned, hvad du husker. Næsten alle husker de første par og de sidste par og glemmer midten. Psykologer kalder det seriel positionseffekt.</p>
       <p>Sprogmodeller viser ofte den samme U-formede kurve. Forskning fra Stanford i 2023 (Liu et al.) viste, at nøjagtigheden ved genfinding af en nøgleoplysning kan falde med mere end tredive procent, når denne oplysning sidder midt i konteksten snarere end i kanterne. Effekten varierer efter model og opgave, nogle modeller håndterede testen næsten perfekt, og hvorfor det sker, studeres stadig.</p>
       <p>Prompting-konsekvensen er direkte. Farligt mønster: En nøgleinstruktion begravet midt i tråden. Sikrere mønster: Nøgleinstruktion forrest og gentaget til sidst for lange kontekster. Og den dybere lektion om kontekst-engineering: Hvert stykke kontekst, du tilføjer, skubber andre stykker længere ind i midten.</p>
-      <div class="callout"><span class="furniture">Vogteren</span><p>Mere kontekst er ikke lig med bedre resultater. Kuratér hensynsløst, placer strategisk, og gentag det, der er vigtigt. Løsningen er ikke mere; den er smartere.</p></div>
+      <div class="callout"><span class="furniture">Værd at huske</span><p>Mere kontekst er ikke lig med bedre resultater. Kuratér hensynsløst, placer strategisk, og gentag det, der er vigtigt.</p></div>
       <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
         <li>Genfinding fra midten af en lang kontekst er ofte svagere end fra begge ender.</li>
         <li>Sæt den afgørende instruktion først, gentag den sidst, og skær det væk, der ikke fortjener sin plads.</li>
@@ -308,7 +308,7 @@
         </ol>
       </div>
       <p>Den praksisændring, dette foreskriver: prompt med format og mål sammen, og indsæt kontrolpunkter undervejs i opgaver med flere trin.</p>
-      <div class="takeaways"><span class="furniture">Vigtigste pointer</span><ul>
+      <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
         <li>Instruktioner er mønstre, der skal fortsættes, så hensigten kan misforstås, mens ordlyden adlydes.</li>
         <li>Angiv målet, ikke kun instruktionen, og indsæt kontrolpunkter i lange kæder.</li>
       </ul></div>
@@ -322,7 +322,7 @@
       <p><strong>Scenarie 2: "Gør den mere professionel."</strong> Uden målet griber modellen til stiv formalitet. Med angivelse af målgruppe og kanal omformulerer den budskabet til den person, der faktisk modtager det.</p>
       <p><strong>Scenarie 3: "Tilføj flere detaljer."</strong> Hvert punkt svulmer op til et afsnit: bogstavet er fulgt, dokumentet er blevet dårligere. Det virkelige mål var kun at udvide de punkter, der driver en beslutning.</p>
       <div class="callout"><span class="furniture">Resuméet, ordret værd at huske</span><p>Hver instruktion har et hul mellem bogstav og ånd. Du lukker det ved at angive målet.</p></div>
-      <div class="takeaways"><span class="furniture">Vigtigste pointer</span><ul>
+      <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
         <li>Kortere = fremhæv anmodningen. Mere professionel = omformuler til målgruppen. Flere detaljer = uddyb det, der driver beslutningen.</li>
         <li>Modellen kan kun se ordene; giv den målet bag dem.</li>
       </ul></div>
@@ -332,9 +332,9 @@
       <span class="lesson__eyebrow">Lektion 12 · ~10 min</span>
       <h2>Når egenskaber støder sammen</h2>
       <p>De fleste reelle fejl opstår, når to egenskaber krydser hinanden. Når du kan navngive hvilke to, ved du, hvilken løsning du skal gribe til.</p>
-      <p>De fire egenskaber, som en-linjes personligheder: next-token prediction <em>genererer det, der lyder rigtigt</em>. Viden <em>ved, hvad den er trænet på</em>. Arbejdshukommelse <em>er opmærksom på det, der er tæt på</em>. Styrbarhed <em>følger den tydeligste instruktion</em>.</p>
+      <p>De fire egenskaber, som enlinjes personligheder: næste-token-forudsigelse <em>genererer det, der lyder rigtigt</em>. Viden <em>ved, hvad den er trænet på</em>. Arbejdshukommelse <em>er opmærksom på det, der er tæt på</em>. Styrbarhed <em>følger den tydeligste instruktion</em>.</p>
       <ul>
-        <li><strong>Hallucineret citation</strong> = next-token prediction, der støder sammen med viden: sparsomt område plus flydende generering.</li>
+        <li><strong>Hallucineret citation</strong> = næste-token-forudsigelse, der støder sammen med viden: sparsomt område plus flydende generering.</li>
         <li><strong>Drift i lange samtaler</strong> = arbejdshukommelse kolliderer med styrbarhed: din tidlige instruktion gled i baggrunden, og mere diskrete instruktioner tog over.</li>
       </ul>
       <p>Løsningsmenuen: verificer detaljer, genopfrisk kontekst, uddeleger præcist arbejde til kodeeksekvering, og bed om modspil. Denne diagnostiske handling er anvendt Discernment: du evaluerer bedre, når du ved, hvilken type fejl du ser på.</p>
@@ -345,11 +345,11 @@
         <button type="button" class="opt" data-correct>Næste-token-forudsigelse + viden</button>
         <button type="button" class="opt">Viden + arbejdshukommelse</button>
         <button type="button" class="opt">Styrbarhed + næste-token-forudsigelse</button>
-        <p class="check__why">Spars viden plus flydende generering: den genererer det, der lyder rigtigt, netop der, hvor den ved mindst. Løsningen er at verificere detaljer, ikke at gentage spørgsmålet højere.</p>
+        <p class="check__why">Sparsom viden plus flydende generering: den genererer det, der lyder rigtigt, netop der, hvor den ved mindst. Løsningen er at verificere detaljer, ikke at gentage spørgsmålet højere.</p>
         <span class="check__award"></span>
       </div>
 
-      <div class="takeaways"><span class="furniture">Nøglepunkter</span><ul>
+      <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
         <li>Navngiv de to kolliderende egenskaber, og den rigtige løsning følger.</li>
         <li>Diagnose er en Discernment-færdighed, og den kan læres.</li>
       </ul></div>
@@ -363,7 +363,7 @@
       <div class="exercise"><span class="furniture">Afsluttende øvelse</span>
         <p>Vælg én opgave fra din lektion-én-liste, og forpligt dig til én konkret ændring denne uge: et verificeringstrin for detaljer, en fast kontekst for en tilbagevendende opgave, et kontrolpunkt i en lang kæde, eller at angive målet i stedet for blot instruktionen. Skriv det ned.</p>
       </div>
-      <div class="takeaways"><span class="furniture">Nøglepunkter</span><ul>
+      <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
         <li>Hold den lille, klare model; diagnosticer ud fra egenskaber.</li>
         <li>Én konkret ændring denne uge.</li>
       </ul></div>
@@ -400,15 +400,15 @@
             <p class="q-why">Tillid placeres pr. opgave ved at spørge, hvor opgaven befinder sig på hvert af de fire spektre.</p>
           </fieldset>
           <fieldset>
-            <legend><span class="q-n">Spørgsmål 4</span>Hvad producerer alene forhåndstræning?</legend>
+            <legend><span class="q-n">Spørgsmål 4</span>Hvad producerer alene pre-training?</legend>
             <label class="opt"><input type="radio" name="q4" data-correct><span>En dokumentkompletterer uden begreb om at hjælpe dig</span></label>
             <label class="opt"><input type="radio" name="q4"><span>En sikker og hjælpsom assistent</span></label>
             <label class="opt"><input type="radio" name="q4"><span>En søgemaskine</span></label>
             <label class="opt"><input type="radio" name="q4"><span>En regelstyret chatbot</span></label>
-            <p class="q-why">Forhåndstræning resulterer i en tekstkompletterer. Finjustering med menneskelige vurderinger tilføjer assistentadfærden.</p>
+            <p class="q-why">Pre-training resulterer i en tekstkompletterer. Fine-tuning med menneskelige vurderinger tilføjer assistentadfærden.</p>
           </fieldset>
           <fieldset>
-            <legend><span class="q-n">Spørgsmål 5</span>Hvilket er et kendt fingeraftryk af finjustering med menneskelige præferencer?</legend>
+            <legend><span class="q-n">Spørgsmål 5</span>Hvilket er et kendt fingeraftryk af fine-tuning med menneskelige præferencer?</legend>
             <label class="opt"><input type="radio" name="q5"><span>Perfekt faktisk nøjagtighed</span></label>
             <label class="opt"><input type="radio" name="q5" data-correct><span>En tendens til behagesyge: at være enig i det, du ser ud til at ønske</span></label>
             <label class="opt"><input type="radio" name="q5"><span>At afvise alle meningsspørgsmål</span></label>

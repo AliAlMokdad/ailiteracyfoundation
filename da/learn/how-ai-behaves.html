@@ -123,7 +123,7 @@
         <tr><td><strong>Forudsigelse af næste token</strong></td><td>Hvor kommer AI-svar fra? En ekstremt avanceret autocomplete, ikke en søgemaskine.</td><td>Hallucination, hvor plausibelt ikke er det samme som sandt; opdigtning koncentreret i detaljer; glat prosa rundt om et gæt</td><td>Kildehenvisninger og kildeforankring, begrænset generering, generator-verifikator-sløjfer</td></tr>
         <tr><td><strong>Viden</strong></td><td>Hvad ved den faktisk? Det den har læst, og hvornår den holdt op med at læse.</td><td>Forældet viden; ujævn dækning af nicheområder og lokale forhold; kildeamnesi, hvor "jeg læste det et sted" ikke er en kildehenvisning</td><td>Websøgning, søgning i dine dokumenter, værktøjer til realtidsdata</td></tr>
         <tr><td><strong>Arbejdshukommelse</strong></td><td>Hvad er den opmærksom på lige nu? Kontekst er løftestang, indtil du rammer kanten.</td><td>Hårde længdegrænser; tabt i midten; ingen vedvarende hukommelse som standard</td><td>Hukommelsesfunktioner, projekter, komprimering, vedhæftninger</td></tr>
-        <tr><td><strong>Styrbarhed</strong></td><td>Hvor meget har du kontrol? Den følger instruktioner ved at fortsætte et mønster, ikke ved at forstå hensigt.</td><td>Resonnementet glider; bogstav over ånd; prompt injection, hvor anden tekst i konteksten også kan styre den</td><td>System prompts, synlig udvidet tænkning, kodekørsel</td></tr>
+        <tr><td><strong>Styrbarhed</strong></td><td>Hvor meget har du kontrol? Den følger instruktioner ved at fortsætte et mønster, ikke ved at forstå hensigt.</td><td>Resonnementet glider; bogstav over ånd; prompt injection, hvor anden tekst i konteksten også kan styre den</td><td>Systemprompts, synlig udvidet tænkning, kodekørsel</td></tr>
       </table></div>
     </section>
 
@@ -191,7 +191,7 @@
       <span class="lesson__eyebrow">Læsning 04</span>
       <h2>Hvad behagesyge er</h2>
       <p>Behagesyge er, når modellen fortæller dig det, du gerne vil høre: den er enig i din faktuelle fejl, ændrer svar ud fra, hvordan du formulerer ting, og følger din udtrykte præference i stedet for sandheden. Man mener, at det i høj grad kommer fra træning på menneskers præferencevurderinger, hvor enighed ofte bliver godkendt.</p>
-      <p>Hold fast i grænsen: tilpasning af tone, niveau og korthed er det, du ønsker; enighed om fakta og om dit velbefindende er det ikke. Hjælpsom tilpasning over for skadelig enighed.</p>
+      <p>Hold fast i grænsen: tilpasning af tone, niveau og korthed er det, du ønsker; enighed om fakta og om dit velbefindende er det ikke.</p>
       <h3>Hvornår du skal mistænke det</h3>
       <ul>
         <li>Du fremsatte et subjektivt synspunkt som et faktum.</li>
@@ -250,11 +250,11 @@
     <section class="lesson" id="l8" data-lesson>
       <span class="lesson__eyebrow">Læsning 08</span>
       <h2>Tokens og kontekst, hvorfor nogle input koster mere</h2>
-      <p>Det, der faktisk når frem til en model, er en liste af tal, ét for hver tekstbid fra et indlært ordforråd. En bid med sit numeriske ID kaldes en token. Modeller bruger subword tokens som et kompromis: tegn for tegn ville være langsomt og dyrt, ord for ord ville kræve et alt for stort ordforråd og stadig overse sjældne ord. "The tokenizer rocks." deles omtrent som [The][ token][izer][ rocks][.]; den præcise opdeling afhænger af tokenizer</p>
+      <p>Det, der faktisk når frem til en model, er en liste af tal, ét for hver tekstbid fra et indlært ordforråd. En bid med sit numeriske ID kaldes en token. Modeller bruger subword tokens som et kompromis: tegn for tegn ville være langsomt og dyrt, ord for ord ville kræve et alt for stort ordforråd og stadig overse sjældne ord. "The tokenizer rocks." deles omtrent som [The][ token][izer][ rocks][.]; den præcise opdeling afhænger af den enkelte tokenizer</p>
       <p>De omkostningsintuitioner, der følger: almindelige ord er enkelte billige tokens; sjældne ord hakkes i stykker; en URL på 100 tegn koster flere tokens end en sætning på 100 tegn, fordi sjældne strenge splintrer. Dette ordforråd er indbygget ved træningen, hvilket forklarer mærkeligheder som modeller, der tæller bogstaver inde i ord forkert: modellen lærte, hvad en token betyder som helhed, ikke bogstaverne inde i den.</p>
       <h3>Kontekst, den anden halvdel af omkostningen</h3>
-      <p>En models viden er enten indbygget i dens vægte under træning, parametric memory, som opstod som en bivirkning af at lære at forudsige tekst, eller ligger i den aktuelle context window. Vinduet er stort, men det meste af det er fyldt med ting, du ikke har skrevet: systeminstruktioner, tool calls, hentede resultater. Og kontekst sendes igen ved hver tur, så et kort spørgsmål sent i en lang samtale koster mere end det samme spørgsmål i en frisk samtale. At starte en ny chat er ofte den billigste og hurtigste måde at få et svar på.</p>
-      <p>Når samtaler bliver meget lange, opsummerer værktøjer historikken og erstatter den, compaction. Det er stadig et resumé, og detaljer kan gå tabt. Skriftlig hukommelse fungerer anderledes: Noter fra én samtale indsættes i starten af den næste. Værd at huske der: dit projekt, dine præferencer, dine arbejdsrelationer. Ikke værd at huske: flygtige tal og citater, som bør slås op på ny i stedet for at blive skrevet ned og håbet uændrede.</p>
+      <p>En models viden er enten indbygget i dens vægte under træning, parametric memory, som opstod som en bivirkning af at lære at forudsige tekst, eller ligger i det aktuelle context window. Vinduet er stort, men det meste af det er fyldt med ting, du ikke har skrevet: systeminstruktioner, tool calls, hentede resultater. Og kontekst sendes igen ved hver tur, så et kort spørgsmål sent i en lang samtale koster mere end det samme spørgsmål i en frisk samtale. At starte en ny chat er ofte den billigste og hurtigste måde at få et svar på.</p>
+      <p>Når samtaler bliver meget lange, opsummerer værktøjer historikken og erstatter den, compaction. Det er stadig et resumé, og detaljer kan gå tabt. Skriftlig hukommelse fungerer anderledes: Noter fra én samtale indsættes i starten af den næste. Værd at huske der: dit projekt, dine præferencer, dine arbejdsrelationer. Ikke værd at huske: flygtige tal og citater, som bør slås op på ny i stedet for at blive skrevet ned i håb om, at de forbliver uændrede.</p>
     </section>
 
     <section class="lesson" id="diligence-statement" data-lesson>
@@ -283,7 +283,7 @@
     <div class="course-colophon">
       <p><strong>Kreditering.</strong> Tilpasset fra AI Fluency-vejledningerne udviklet i samarbejde med Anthropic, CC BY-NC-SA 4.0. Denne tilpasning © 2026 AI Literacy Foundation, delt under samme licens.</p>
       <div class="course-nav-next">
-        <a class="lbtn" href="../learn.html#start-here">← Kurser i trin 1</a>
+        <a class="lbtn" href="../learn.html#start-here">← Kurser i Trin 1</a>
         <a class="lbtn lbtn--primary" href="../learn.html">Tilbage til forløbet →</a>
       </div>
     </div>
