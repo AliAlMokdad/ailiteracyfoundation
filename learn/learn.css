@@ -396,3 +396,116 @@
   .course-rail__bar > span { transition: none; }
   .is-paged .lesson.is-current { animation: none; }
 }
+
+/* ==========================================================================
+   ELEVATION PASS
+   One bold move: the two loops come alive. Everything else gets quieter so
+   that move reads. The motif is "something drawing along a path", and it now
+   repeats four times: the hero loops travel, the course ring draws itself in,
+   a rule draws across a card on hover, and the rail circles fill.
+   No new copy. Motion, layout and depth only.
+   ========================================================================== */
+
+:root {
+  /* Depth from ONE implied light, above and slightly front. Layered, not a
+     single harsh box, so cards read as lifted paper rather than Bootstrap. */
+  --lift-1: 0 1px 2px -1px rgba(21, 20, 15, .06), 0 2px 8px -4px rgba(21, 20, 15, .05);
+  --lift-2: 0 2px 4px -2px rgba(21, 20, 15, .07), 0 12px 28px -12px rgba(21, 20, 15, .10);
+  /* Motion durations on a scale, like any other token. */
+  --dur-1: .18s;
+  --dur-2: .32s;
+  --dur-3: .6s;
+}
+
+/* ---------- THE BOLD MOVE: the loops run -------------------------------- */
+/* pathLength="100" normalises each ellipse, so "14 86" is a 14 percent arc on
+   both loops regardless of their very different circumferences. The inner loop
+   runs faster because it is the moment-to-moment cycle; the outer is strategic
+   and slow. That speed difference is the whole point. */
+.loop-run {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 14 86;
+  stroke-dashoffset: 0;
+  animation: loop-travel linear infinite;
+}
+.loop-run--outer { stroke: var(--ink);    stroke-width: 3; opacity: .5;  animation-duration: 19s; }
+.loop-run--inner { stroke: var(--accent); stroke-width: 3; opacity: .85; animation-duration: 7s; }
+@keyframes loop-travel { to { stroke-dashoffset: -100; } }
+
+/* The hub diagram is the focal object, so let it settle before it starts. */
+.loops-figure svg { overflow: visible; }
+
+/* ---------- Cards: internals align, and the hover draws ------------------ */
+/* Subgrid so the eyebrow, title, body and meta line up across every card in a
+   row even when the descriptions are different lengths. That single change is
+   what separates a considered grid from six boxes that happen to sit together. */
+@supports (grid-template-rows: subgrid) {
+  .course-grid { grid-auto-rows: auto; }
+  .course-card { display: grid; grid-template-rows: subgrid; grid-row: span 4; align-content: start; }
+  .course-card > h3 { align-self: start; }
+}
+
+.course-card {
+  box-shadow: var(--lift-1);
+  transition: border-color var(--dur-2) var(--ease),
+              transform var(--dur-2) var(--ease),
+              box-shadow var(--dur-2) var(--ease);
+}
+/* The old rule painted a 3px bar in --line-soft along the bottom: invisible
+   against the card, so it was pure weight. Replaced by a rule that DRAWS, the
+   same gesture as the travelling loop. */
+.course-card::after {
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-3) var(--ease);
+}
+.course-card:hover,
+.course-card:focus-within {
+  border-color: var(--accent-soft);
+  transform: translateY(-3px);
+  box-shadow: var(--lift-2);
+}
+.course-card:hover::after,
+.course-card:focus-within::after { transform: scaleX(1); }
+
+/* ---------- The stage band reads as progression ------------------------- */
+.path > a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-3) var(--ease);
+}
+.path > a:hover::after { transform: scaleX(1); }
+
+/* ---------- The course ring draws itself in ----------------------------- */
+/* It already animates stroke-dashoffset on change. This makes the FIRST paint
+   a draw rather than a jump, so the ring joins the same motif. */
+.course-ring__fill { animation: ring-draw 1.1s var(--ease-out) both; }
+@keyframes ring-draw { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------- Entrance choreography --------------------------------------- */
+/* Staggered along reading order, not everything at once. Only applied once JS
+   confirms support, so a no-JS visitor never sees hidden content. */
+.js-reveal [data-rise] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+  transition-delay: var(--rise-delay, 0ms);
+}
+.js-reveal [data-rise].is-in { opacity: 1; transform: none; }
+
+/* ---------- Reduced motion: nothing travels, nothing rises -------------- */
+@media (prefers-reduced-motion: reduce) {
+  .loop-run { display: none; }
+  .course-card::after,
+  .path > a::after { transition: none; }
+  .course-ring__fill { animation: none; }
+  .js-reveal [data-rise] { opacity: 1; transform: none; transition: none; }
+}

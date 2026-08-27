@@ -239,12 +239,14 @@ body {
    The footer rule stays a descendant selector because that link is nested in a
    <ul><li>, and .site-footer__grid excludes the language toggle (which lives in
    .site-footer__legal) and any in-body links. */
+@media (max-width: 940px) {
+  .nav > a[href$="ai-jobs.html"] { display: none !important; }
+}
 @media (max-width: 760px) {
-  .nav > a[href$="ai-jobs.html"],
   .site-footer__grid a[href$="ai-jobs.html"] { display: none !important; }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 940px) {
   .site-header__inner { padding: 0.75rem var(--gutter); gap: 0.75rem; }
   .nav-toggle { display: inline-flex; }
   .nav {
@@ -312,7 +314,7 @@ body {
   }
 }
 /* Hide injected mobile lang toggle on desktop (it lives inside the .nav which is desktop-visible too) */
-@media (min-width: 761px) {
+@media (min-width: 941px) {
   .nav-lang-mobile { display: none !important; }
 }
 

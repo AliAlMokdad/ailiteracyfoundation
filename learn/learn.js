@@ -805,3 +805,72 @@
   greet();
   paint();
 })();
+
+/* ---------------------------------------------------------------------------
+   Entrance choreography. Tags its own targets, so no HTML changes anywhere.
+   Reveals in reading order with a small stagger, once, on first approach.
+   Skipped entirely under reduced motion, and skipped if IntersectionObserver
+   is missing, in which case nothing is ever hidden.
+   --------------------------------------------------------------------------- */
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;
+
+  var GROUPS = [
+    ['.learn-hero h1, .learn-hero .lede, .learn-cta, .learn-note-inline, .loops-figure', 70],
+    ['.path > a', 60],
+    ['.course-card', 55],
+    ['.learn-section > .wrap--wide > h2, .learn-section .section-sub', 60]
+  ];
+
+  var targets = [];
+  GROUPS.forEach(function (g) {
+    var nodes = document.querySelectorAll(g[0]);
+    for (var i = 0; i < nodes.length; i++) targets.push([nodes[i], g[1]]);
+  });
+  if (!targets.length) return;
+
+  document.documentElement.classList.add('js-reveal');
+  targets.forEach(function (t) { t[0].setAttribute('data-rise', ''); });
+
+  var io = new IntersectionObserver(function (entries) {
+    /* stagger within the batch that crosses together, so a row of cards
+       arrives as a sequence rather than a slab */
+    var shown = 0;
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var step = Number(e.target.getAttribute('data-step')) || 60;
+      e.target.style.setProperty('--rise-delay', (shown++ * step) + 'ms');
+      e.target.classList.add('is-in');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+
+  targets.forEach(function (t) {
+    t[0].setAttribute('data-step', t[1]);
+    io.observe(t[0]);
+  });
+
+  /* Guarantee one: anything already on screen reveals immediately, so the fold
+     is never blank while waiting for a scroll that may never come. */
+  requestAnimationFrame(function () {
+    var vh = window.innerHeight || 800, shown = 0;
+    targets.forEach(function (t) {
+      var el = t[0];
+      if (el.classList.contains('is-in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) {
+        el.style.setProperty('--rise-delay', (shown++ * t[1]) + 'ms');
+        el.classList.add('is-in');
+        io.unobserve(el);
+      }
+    });
+  });
+
+  /* Guarantee two: a hard failsafe. Whatever happened, nothing stays invisible. */
+  setTimeout(function () {
+    targets.forEach(function (t) {
+      if (!t[0].classList.contains('is-in')) { t[0].style.transitionDelay = '0ms'; t[0].classList.add('is-in'); }
+    });
+  }, 2500);
+})();
