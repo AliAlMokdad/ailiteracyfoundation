@@ -757,3 +757,175 @@
 @media print {
   .learn-section:has(.course-grid--featured) { background: none; border-color: #000; }
 }
+
+/* ==========================================================================
+   VISUAL IDENTITY PASS (v50)
+   The syllabus spine now starts at the first pixel of the hub and continues
+   into every course page. One grammar everywhere: hairline rules, one
+   numeral system (serif for the index, mono for meta and codes), terracotta
+   spent only on state, focus and progress. The leftover card chrome from the
+   twelve-card grid (lifted tiles, pills, left accent bars, radius soup) goes.
+   Copy, information architecture and every JS hook are untouched.
+   ========================================================================== */
+
+:root {
+  /* the one "correct" colour, mixed from the house ladder instead of a kit green */
+  --ok: color-mix(in oklab, #3A5A3C 82%, var(--ink));
+  --ok-bg: color-mix(in oklab, var(--bg-deep) 72%, #3A5A3C);
+  /* cream on ink, as steps of the same two tokens */
+  --on-ink-soft: color-mix(in oklab, var(--bg) 72%, var(--ink));
+  --on-ink-quiet: color-mix(in oklab, var(--bg) 55%, var(--ink));
+  --on-ink-line: color-mix(in oklab, var(--bg) 18%, transparent);
+}
+
+/* ---------- The spine starts at the hero ---------------------------------- */
+.learn-hero > .wrap--wide {
+  display: grid;
+  grid-template-columns: var(--numcol) minmax(0, 1fr);
+  column-gap: var(--numgap);
+}
+.learn-hero__grid,
+.learn-hero .path,
+.learn-hero .resume { grid-column: 2; }
+.learn-hero h1 { text-wrap: balance; }
+.path { border-bottom: 0; margin-top: clamp(2.25rem, 5vw, 3.5rem); }
+.path > a { padding: 1.15rem 1.35rem 1.15rem 0; border-left: 0; }
+.path > a + a { padding-left: 1.35rem; border-left: 1px solid var(--line); }
+.path__n { color: var(--ink-quiet); letter-spacing: 0.08em; }
+.path > a.is-active .path__n { color: var(--accent-deep); }
+.hub-stat { border-left: 0; padding-left: 0; }
+.hub-stat + .hub-stat { border-left: 1px solid var(--line); padding-left: 2.25rem; }
+.section-kicker { color: var(--ink-quiet); letter-spacing: 0.08em; }
+.learn-section > .wrap--wide > .section-num,
+.course-card__num { color: color-mix(in oklab, var(--ink) 24%, transparent); }
+
+/* ---------- Stage 2 joins the ledger: peers in column 2, no card chrome --- */
+.learn-section > .wrap--wide > .course-grid--editions { grid-column: 2; }
+.course-grid--editions { gap: 0 clamp(1.5rem, 3vw, 2.5rem); }
+.course-grid--editions .course-card {
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.15rem 0 1.25rem;
+  gap: 0.45rem;
+}
+.course-grid--editions .course-card::after { transform: none; background: transparent; height: 2px; }
+.course-grid--editions .course-card[data-progress]::after {
+  background: linear-gradient(to right, var(--accent) var(--p, 0%), transparent var(--p, 0%));
+}
+.course-grid--editions .course-card:hover,
+.course-grid--editions .course-card:focus-within { transform: none; box-shadow: none; border-color: var(--line); }
+.course-grid--editions .course-card h3 a { transition: color var(--dur-2) var(--ease); }
+.course-grid--editions .course-card:hover h3 a,
+.course-grid--editions .course-card:focus-within h3 a { color: var(--accent-deep); }
+.course-grid--editions .course-card__meta { border-top: 0; padding-top: 0.35rem; }
+.course-card__status {
+  border-radius: 0;
+  background: none;
+  padding: 0;
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+  color: var(--accent-deep);
+}
+
+/* ---------- Focus is one gesture on the whole row, never a stretched link - */
+.course-card h3 a:focus-visible { outline: none; }
+.course-card:focus-within { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (hover: none) {
+  .course-card:hover { transform: none; }
+}
+.lbtn { transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease); }
+.lbtn:active { transform: scale(0.98); }
+
+/* ---------- Course hero: a folio page, not a dark banner ------------------ */
+.course-hero { padding: clamp(3.25rem, 7vw, 5rem) 0 clamp(2.5rem, 5vw, 3.75rem); }
+.course-hero h1 { font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.02; letter-spacing: -0.03em; max-width: 18ch; text-wrap: balance; }
+.course-hero .lede { color: var(--on-ink-soft); }
+.course-hero .crumb { color: var(--on-ink-quiet); letter-spacing: 0.14em; margin-bottom: 1.5rem; }
+.course-hero .crumb a:hover { color: var(--bg); }
+.course-hero__meta span { color: var(--on-ink-quiet); }
+.course-hero__meta span:not(:last-child)::after { color: var(--on-ink-line); }
+.course-hero__meta span.hl { color: var(--accent-soft); }
+/* the ring is an instrument, not a KPI sticker */
+.course-ring svg { width: 96px; height: 96px; }
+.course-ring__track { stroke: var(--on-ink-line); stroke-width: 2; }
+.course-ring__fill { stroke-width: 2; animation: none; }
+.course-ring__pct { font-size: 1.25rem; }
+.course-ring__cap { fill: var(--on-ink-quiet); }
+.course-ring__foot { color: var(--on-ink-quiet); }
+
+/* ---------- The rail is the course's numeral column ----------------------- */
+.course-rail__bar { height: 1px; border-radius: 0; background: var(--line); overflow: visible; }
+.course-rail__bar > span { border-radius: 0; height: 2px; margin-top: -0.5px; }
+.course-rail ol { counter-reset: rail; }
+.course-rail li { counter-increment: rail; }
+.course-rail li a { border-radius: 0; padding: 0.42rem 0; gap: 0.7rem; font-variant-numeric: tabular-nums; }
+.course-rail li a::after {
+  content: counter(rail, decimal-leading-zero);
+  margin-left: auto;
+  padding-left: 0.5rem;
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  color: var(--ink-quiet);
+  letter-spacing: 0.04em;
+}
+.course-rail li.is-active a { background: none; box-shadow: none; font-weight: 500; color: var(--ink); }
+.course-rail li.is-active a::after { color: var(--accent-deep); }
+.course-rail li .c { width: 10px; height: 10px; top: 3px; }
+.course-rail li.is-read .c::after { inset: 2px 2.5px; border-width: 0 0 1.25px 1.25px; }
+.course-rail__xp b { color: var(--ink); }
+
+/* ---------- Lesson interiors join the hairline grammar -------------------- */
+.lesson h2 { font-size: clamp(1.85rem, 3.2vw, 2.6rem); line-height: 1.08; }
+.lesson__eyebrow { letter-spacing: 0.1em; margin-bottom: 0.65rem; }
+.lesson__num { color: var(--ink-quiet); }
+.lesson li::marker { color: var(--ink-quiet); }
+.concept-grid { gap: 0 clamp(1.25rem, 3vw, 1.75rem); }
+.concept-grid .cc { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 0.85rem 0 1rem; }
+.concept-grid .cc b .n { color: var(--ink-quiet); }
+.exercise { background: none; border-radius: 0; border-top: 1px dashed var(--line); padding: 1.1rem 0 0.2rem; }
+.begin-card,
+.callout { border: 0; border-top: 1px solid var(--ink); border-radius: 0; background: none; padding: 1.2rem 0 1.15rem; }
+.begin-card.is-saved { border-top-color: var(--ink); }
+.check { border: 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); border-radius: 0; background: none; padding: 1.3rem 0 1.4rem; }
+.check .opt, .quiz .opt { border-radius: 4px; }
+.check .check__why { border-left: 0; border-top: 1px solid var(--accent); padding: 0.85rem 0 0; background: none; }
+.quiz .q-why { border-left: 0; border-top: 1px solid var(--line); padding: 0.7rem 0 0; }
+.completion__bar { border-radius: 0; border: 0; border-top: 1px solid var(--ink); background: none; padding: 1.3rem 0; }
+.course-rail__toggle { border-radius: 4px; }
+
+/* ---------- One "correct" colour, from the tokens ------------------------- */
+.path > a.is-done .path__s,
+.course-rail__passed,
+.quiz-result.pass { color: var(--ok); }
+.course-rail__passed::before { background: var(--ok); }
+.begin-card.is-saved { border-top-color: var(--ok); }
+.check.is-done .opt.is-picked.is-right,
+.quiz fieldset.is-correct .opt:has(input:checked) { border-color: var(--ok); background: var(--ok-bg); }
+.check.is-done .opt.is-answer,
+.quiz fieldset.is-wrong .opt.is-answer { border-color: var(--ok); }
+.quiz fieldset.is-correct .opt:has(input:checked)::before,
+.quiz fieldset.is-wrong .opt.is-answer::before { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+
+/* ---------- Certificate: fewer ornaments, the code is the object ---------- */
+.cert-frame { border: 0; border-radius: 0; }
+.cert { border-radius: 0; }
+.cert::before { display: none; }
+.cert__seal { width: 0.6rem; height: 0.6rem; margin: 0 auto 1.4rem; border: 0; border-radius: 0; background: var(--accent); }
+.cert__seal::before, .cert__seal::after { display: none; }
+.cert__org { letter-spacing: 0.16em; }
+.cert__name { padding: 0 1rem 0.5rem; font-size: clamp(1.9rem, 4.5vw, 3rem); }
+.cert__meta b { font-size: var(--fs-sm); letter-spacing: 0.08em; }
+
+/* ---------- Responsive and reduced motion -------------------------------- */
+@media (max-width: 700px) {
+  .learn-hero > .wrap--wide { display: block; }
+}
+@media (max-width: 900px) {
+  .course-rail { border-radius: 0; border: 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); background: none; padding: 0.85rem 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lbtn:active { transform: none; }
+}
