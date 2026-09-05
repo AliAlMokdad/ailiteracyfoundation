@@ -509,3 +509,251 @@
   .course-ring__fill { animation: none; }
   .js-reveal [data-rise] { opacity: 1; transform: none; transition: none; }
 }
+
+/* ==========================================================================
+   SYLLABUS PASS (v49)
+   The hub used to be twelve identical cards in three identical rows, which
+   gave a course everyone should take the same weight as an edition most
+   people skip. Now weight follows the path: Stage 1 is two large numbered
+   rows on a tinted band, Stage 2 is a compact set of peer cards (you choose
+   one, so you scan), Stage 3 is a quiet ledger. One shared numeral column
+   runs down the whole page and carries the stage numbers and the 01 / 02,
+   so every section head and every foundation row aligns to the same line.
+   Motif: numerals. No new colour, no new family, no new copy.
+   ========================================================================== */
+
+:root {
+  --numcol: clamp(3.25rem, 6vw, 5.5rem);
+  --numgap: clamp(1.25rem, 3vw, 2.75rem);
+}
+
+/* ---------- Section heads share the numeral column ----------------------- */
+.learn-section > .wrap--wide {
+  display: grid;
+  grid-template-columns: var(--numcol) minmax(0, 1fr);
+  column-gap: var(--numgap);
+  align-items: start;
+}
+.learn-section > .wrap--wide > .section-kicker,
+.learn-section > .wrap--wide > h2,
+.learn-section > .wrap--wide > .section-sub { grid-column: 2; }
+.learn-section > .wrap--wide > .course-grid { grid-column: 1 / -1; }
+.learn-section > .wrap--wide > .section-kicker { margin-bottom: 0.75rem; }
+.learn-section > .wrap--wide > h2 {
+  position: relative;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin-bottom: 0.6rem;
+}
+/* the stage number is a real, aria-hidden element in the numeral column, on the
+   same grid row as the heading; generated content on a heading would be read aloud */
+.learn-section > .wrap--wide > .section-kicker { grid-row: 1; }
+.learn-section > .wrap--wide > .section-num,
+.learn-section > .wrap--wide > h2 { grid-row: 2; }
+.learn-section > .wrap--wide > .section-sub { grid-row: 3; }
+.learn-section > .wrap--wide > .course-grid { grid-row: 4; }
+.learn-section > .wrap--wide > .section-num {
+  grid-column: 1;
+  align-self: start;
+  margin-top: -0.08em;
+  text-align: right;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(3.5rem, 7vw, 6.25rem);
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+  color: color-mix(in oklab, var(--ink) 16%, transparent);
+  font-variant-numeric: lining-nums;
+  pointer-events: none;
+}
+.learn-section .section-sub { margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem); }
+
+/* ---------- Stage 1: the tinted band and two large rows ------------------ */
+.learn-section:has(.course-grid--featured) {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(2.75rem, 6vw, 4.5rem) 0 clamp(2.5rem, 5vw, 3.75rem);
+}
+.course-grid--featured { display: block; }
+.course-grid--featured .course-card {
+  display: grid;
+  grid-template-columns: var(--numcol) minmax(0, 1fr) minmax(0, 15rem);
+  grid-template-areas: "num kicker kicker" "num title meta" "num desc meta";
+  column-gap: var(--numgap);
+  row-gap: 0.45rem;
+  align-content: start;
+  align-items: start;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  padding: clamp(1.6rem, 3vw, 2.4rem) 0;
+  grid-row: auto;
+  grid-template-rows: auto;
+}
+.course-grid--featured .course-card:last-child { border-bottom: 1px solid var(--line); }
+.course-grid--featured .course-card:hover,
+.course-grid--featured .course-card:focus-within { transform: none; box-shadow: none; border-color: var(--line); }
+.course-grid--featured .course-card:hover h3 a,
+.course-grid--featured .course-card:focus-within h3 a { color: var(--accent-deep); }
+.course-grid--featured .course-card h3 a { transition: color var(--dur-2) var(--ease); }
+.course-card__num {
+  grid-area: num;
+  font-family: var(--serif);
+  font-size: clamp(2.75rem, 5.5vw, 5rem);
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+  color: color-mix(in oklab, var(--ink) 16%, transparent);
+  text-align: right;
+  font-variant-numeric: lining-nums;
+  margin-top: 0.1em;
+}
+.course-grid--featured .course-card__kicker { grid-area: kicker; justify-content: flex-start; gap: 0.9rem; }
+.course-card--featured h3 {
+  grid-area: title;
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+.course-grid--featured .course-card p {
+  grid-area: desc;
+  font-size: var(--fs-base);
+  line-height: 1.55;
+  max-width: 62ch;
+  margin-top: 0.25rem;
+}
+.course-grid--featured .course-card__meta {
+  grid-area: meta;
+  margin-top: 0;
+  padding: 0.15rem 0 0 var(--numgap);
+  border-top: 0;
+  border-left: 1px solid var(--line);
+  flex-direction: column;
+  gap: 0.45rem;
+  align-self: start;
+  justify-content: flex-start;
+  line-height: 1.6;
+}
+/* the meta line becomes a short column, closed by an arrow that nudges on hover */
+.course-grid--featured .course-card__meta::after {
+  content: "\2192";
+  font-family: var(--sans);
+  color: var(--accent-deep);
+  margin-top: 0.15rem;
+  transition: transform var(--dur-2) var(--ease);
+}
+.course-grid--featured .course-card:hover .course-card__meta::after,
+.course-grid--featured .course-card:focus-within .course-card__meta::after { transform: translateX(6px); }
+/* the reference row is a different kind of row: its label sits where the
+   numerals are, so nobody reads it as a missing 03 */
+.course-grid--featured .course-card--ref { grid-template-areas: "kicker title meta" "kicker desc meta"; }
+.course-grid--featured .course-card--ref .course-card__kicker { flex-direction: column; align-items: flex-end; text-align: right; gap: 0.4rem; padding-top: 0.3rem; }
+.course-card--ref h3 { grid-area: title; font-size: var(--fs-xl); line-height: 1.2; max-width: 30ch; }
+.course-card--ref p { max-width: 62ch; }
+
+/* ---------- Stage 2: compact peer cards, three across --------------------- */
+.course-grid--editions { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.course-grid--editions .course-card { padding: 1.25rem 1.3rem 1.1rem; gap: 0.5rem; }
+.course-grid--editions .course-card h3 { font-size: var(--fs-lg); line-height: 1.25; }
+.course-grid--editions .course-card p { font-size: var(--fs-sm); }
+.course-grid--editions .course-card__meta { padding-top: 0.65rem; }
+
+/* ---------- Stage 3: a quiet ledger --------------------------------------- */
+.course-grid--teach { display: block; }
+.course-grid--teach .course-card {
+  display: grid;
+  grid-template-columns: var(--numcol) minmax(0, 1fr) minmax(0, 15rem);
+  grid-template-areas: "kicker title meta" "kicker desc meta";
+  column-gap: var(--numgap);
+  row-gap: 0.35rem;
+  align-items: start;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.35rem 0 1.4rem;
+  grid-row: auto;
+  grid-template-rows: auto;
+}
+.course-grid--teach .course-card:last-child { border-bottom: 1px solid var(--line); }
+.course-grid--teach .course-card:hover,
+.course-grid--teach .course-card:focus-within { transform: none; box-shadow: none; border-color: var(--line); }
+.course-grid--teach .course-card h3 a { transition: color var(--dur-2) var(--ease); }
+.course-grid--teach .course-card:hover h3 a,
+.course-grid--teach .course-card:focus-within h3 a { color: var(--accent-deep); }
+.course-grid--teach .course-card__kicker { grid-area: kicker; flex-direction: column; align-items: flex-start; gap: 0.4rem; padding-top: 0.35rem; }
+.course-grid--teach .course-card h3 { grid-area: title; font-size: var(--fs-xl); line-height: 1.2; }
+.course-grid--teach .course-card p { grid-area: desc; max-width: 62ch; }
+.course-grid--teach .course-card__meta { grid-area: meta; margin-top: 0; padding: 0.35rem 0 0 var(--numgap); border-top: 0; border-left: 1px solid var(--line); flex-direction: column; gap: 0.3rem; align-self: stretch; }
+
+/* ---------- Progress edge: visible at rest, not only on hover ------------- */
+/* The elevation pass made ::after a rule that draws on hover (scaleX(0) at
+   rest). That same ::after is the progress edge when the card has
+   data-progress, so a returning learner's progress was hidden until hover. */
+.course-card[data-progress]::after { transform: none; height: 3px; }
+.course-card[data-progress]:hover::after,
+.course-card[data-progress]:focus-within::after { transform: none; }
+
+/* ---------- Course page: objectives as a numbered list, not four boxes --- */
+.objectives ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(1.5rem, 3vw, 2.5rem); counter-reset: obj; padding: 0; margin: 0; list-style: none; }
+.objectives li {
+  counter-increment: obj;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0.75rem 0 0.8rem 2.4rem;
+  color: var(--ink);
+}
+.objectives li:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+.objectives li::before {
+  content: counter(obj, decimal-leading-zero);
+  width: auto; height: auto; border-radius: 0; background: none;
+  left: 0; top: 0.85rem;
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  color: var(--accent-deep);
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Responsive ---------------------------------------------------- */
+@media (max-width: 1000px) {
+  .course-grid--editions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .course-grid--featured .course-card,
+  .course-grid--teach .course-card { grid-template-columns: var(--numcol) minmax(0, 1fr); }
+  .course-grid--featured .course-card { grid-template-areas: "num kicker" "num title" "num desc" "num meta"; }
+  .course-grid--featured .course-card--ref { grid-template-areas: "kicker title" "kicker desc" "kicker meta"; }
+  .course-grid--teach .course-card { grid-template-areas: "kicker title" "kicker desc" "kicker meta"; }
+  .course-grid--featured .course-card__meta,
+  .course-grid--teach .course-card__meta { border-left: 0; padding-left: 0; padding-top: 0.5rem; flex-direction: row; gap: 0.5rem; align-self: start; }
+  .course-grid--featured .course-card__meta::after { margin-top: 0; margin-left: 0.25rem; }
+}
+@media (max-width: 700px) {
+  .learn-section > .wrap--wide { display: block; }
+  .learn-section > .wrap--wide > .section-num { display: none; }
+  .course-grid--editions { grid-template-columns: minmax(0, 1fr); }
+  .course-grid--featured .course-card { grid-template-columns: minmax(0, 1fr); grid-template-areas: "num" "kicker" "title" "desc" "meta"; row-gap: 0.5rem; }
+  .course-grid--featured .course-card--ref { grid-template-areas: "kicker" "title" "desc" "meta"; }
+  .course-grid--featured .course-card--ref .course-card__kicker { flex-direction: row; align-items: baseline; text-align: left; padding-top: 0; }
+  .course-card__num { text-align: left; font-size: 2.25rem; margin: 0 0 0.25rem; }
+  .course-grid--teach .course-card { grid-template-columns: minmax(0, 1fr); grid-template-areas: "kicker" "title" "desc" "meta"; }
+  .course-grid--teach .course-card__kicker { flex-direction: row; align-items: baseline; padding-top: 0; }
+  .objectives ol { grid-template-columns: minmax(0, 1fr); }
+  .objectives li:nth-last-child(-n+2) { border-bottom: 0; }
+  .objectives li:last-child { border-bottom: 1px solid var(--line); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .course-grid--featured .course-card__meta::after,
+  .course-grid--featured .course-card:hover .course-card__meta::after,
+  .course-grid--featured .course-card:focus-within .course-card__meta::after { transition: none; transform: none; }
+}
+@media print {
+  .learn-section:has(.course-grid--featured) { background: none; border-color: #000; }
+}

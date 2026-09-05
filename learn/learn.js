@@ -820,7 +820,7 @@
     ['.learn-hero h1, .learn-hero .lede, .learn-cta, .learn-note-inline, .loops-figure', 70],
     ['.path > a', 60],
     ['.course-card', 55],
-    ['.learn-section > .wrap--wide > h2, .learn-section .section-sub', 60]
+    ['.learn-section > .wrap--wide > .section-kicker, .learn-section > .wrap--wide > h2, .learn-section .section-sub', 60]
   ];
 
   var targets = [];

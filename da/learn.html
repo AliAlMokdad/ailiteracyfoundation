@@ -38,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css?v=polish7">
-<link rel="stylesheet" href="../learn/learn.css?v=48">
+<link rel="stylesheet" href="../learn/learn.css?v=49">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <!-- ANTI_SLOP_BRIEF
@@ -157,25 +157,26 @@
     </div>
   </section>
 
-  <style>#start-here .course-card{border-top:3px solid var(--accent)}#start-here .course-grid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}#start-here .course-card h3{font-size:clamp(1.35rem,2vw,1.6rem)}</style>
   <section class="learn-section" id="start-here">
     <div class="wrap--wide">
+      <span class="section-kicker">Trin 1 · Byg fundamentet</span>
+      <span class="section-num" aria-hidden="true">1</span>
       <h2>Fundamentet</h2>
       <p class="section-sub">Den menneskelige side, derefter maskinsiden. Tag dem i rækkefølge; opslagsværket er der, når du har brug for at slå noget op.</p>
-      <div class="course-grid">
-        <article class="course-card">
+      <div class="course-grid course-grid--featured">
+        <article class="course-card course-card--featured"><span class="course-card__num" aria-hidden="true">01</span>
           <div class="course-card__kicker"><span>Kursus 01</span><span class="course-card__status" data-course-status="foundations" data-lessons="14" hidden></span></div>
           <h3><a href="learn/ai-fluency-foundations.html">AI Fluency: Rammeværk og fundament</a></h3>
           <p>Det fulde 4D-rammeværk: Delegation, Description, Discernment og Diligence, med de tre måder folk interagerer med AI og et praksisprojekt, der løber gennem hele kurset.</p>
           <div class="course-card__meta">13 lektioner · test · bevis</div>
         </article>
-        <article class="course-card">
+        <article class="course-card course-card--featured"><span class="course-card__num" aria-hidden="true">02</span>
           <div class="course-card__kicker"><span>Kursus 02</span><span class="course-card__status" data-course-status="capabilities" data-lessons="14" hidden></span></div>
           <h3><a href="learn/ai-capabilities-limitations.html">AI's muligheder og begrænsninger</a></h3>
           <p>En præcis mental model af maskinen: næste-token-forudsigelse, viden, arbejdshukommelse og styrbarhed, hver et spektrum fra kapacitet til begrænsning.</p>
           <div class="course-card__meta">13 lektioner · test · bevis</div>
         </article>
-        <article class="course-card">
+        <article class="course-card course-card--ref">
           <div class="course-card__kicker"><span>Opslagsværk</span><span class="course-card__status" data-course-status="behaves" data-lessons="9" hidden></span></div>
           <h3><a href="learn/how-ai-behaves.html">Forstå, hvordan AI opfører sig</a></h3>
           <p>Arbejdsopslagsværket: de 24 fluency-adfærdsmønstre, hallucination, behagesyge, bias, tillid som en skala, tokens, kontekst, og hvordan man skriver en AI diligence-erklæring.</p>
@@ -187,9 +188,11 @@
 
   <section class="learn-section" id="editions">
     <div class="wrap--wide">
+      <span class="section-kicker">Trin 2 · Brug det i dit arbejde</span>
+      <span class="section-num" aria-hidden="true">2</span>
       <h2>Vælg din udgave</h2>
       <p class="section-sub">Det samme rammeværk i sproget for én type arbejde. Tag den, der passer til dit; du behøver ikke de andre.</p>
-      <div class="course-grid">
+      <div class="course-grid course-grid--editions">
         <article class="course-card">
           <div class="course-card__kicker"><span>Udgave</span><span class="course-card__status" data-course-status="builders" data-lessons="10" hidden></span></div>
           <h3><a href="learn/builders.html">Til udviklere</a></h3>
@@ -232,9 +235,11 @@
 
   <section class="learn-section" id="teach">
     <div class="wrap--wide">
+      <span class="section-kicker">Trin 3 · Lær det videre</span>
+      <span class="section-num" aria-hidden="true">3</span>
       <h2>Undervis og faciliter</h2>
       <p class="section-sub">Til alle, der skal formidle dette til en gruppe andre mennesker.</p>
-      <div class="course-grid">
+      <div class="course-grid course-grid--teach">
         <article class="course-card">
           <div class="course-card__kicker"><span>Kursus</span><span class="course-card__status" data-course-status="teaching" data-lessons="8" hidden></span></div>
           <h3><a href="learn/teaching-ai-fluency.html">Undervisning i AI Fluency</a></h3>
@@ -320,7 +325,7 @@
     });
   }
 </script>
-<script src="../learn/learn.js?v=48" defer></script>
+<script src="../learn/learn.js?v=49" defer></script>
 <script src="../motion.js?v=polish1" defer></script>
 
 </body>

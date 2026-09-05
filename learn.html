@@ -37,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=polish7">
-<link rel="stylesheet" href="learn/learn.css?v=48">
+<link rel="stylesheet" href="learn/learn.css?v=49">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
 <!-- ANTI_SLOP_BRIEF
@@ -156,25 +156,26 @@
     </div>
   </section>
 
-  <style>#start-here .course-card{border-top:3px solid var(--accent)}#start-here .course-grid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}#start-here .course-card h3{font-size:clamp(1.35rem,2vw,1.6rem)}</style>
   <section class="learn-section" id="start-here">
     <div class="wrap--wide">
+      <span class="section-kicker">Stage 1 · Build the foundation</span>
+      <span class="section-num" aria-hidden="true">1</span>
       <h2>The foundation</h2>
       <p class="section-sub">The human side, then the machine side. Take them in order; the reference is there whenever you need to look something up.</p>
-      <div class="course-grid">
-        <article class="course-card">
+      <div class="course-grid course-grid--featured">
+        <article class="course-card course-card--featured"><span class="course-card__num" aria-hidden="true">01</span>
           <div class="course-card__kicker"><span>Course 01</span><span class="course-card__status" data-course-status="foundations" data-lessons="14" hidden></span></div>
           <h3><a href="learn/ai-fluency-foundations.html">AI Fluency: Framework &amp; Foundations</a></h3>
           <p>The 4D framework in full: Delegation, Description, Discernment, and Diligence, with the three ways people engage with AI and a practice project threaded through the whole course.</p>
           <div class="course-card__meta">13 lessons · quiz · certificate</div>
         </article>
-        <article class="course-card">
+        <article class="course-card course-card--featured"><span class="course-card__num" aria-hidden="true">02</span>
           <div class="course-card__kicker"><span>Course 02</span><span class="course-card__status" data-course-status="capabilities" data-lessons="14" hidden></span></div>
           <h3><a href="learn/ai-capabilities-limitations.html">AI Capabilities and Limitations</a></h3>
           <p>An accurate mental model of the machine: next-token prediction, knowledge, working memory, and steerability, each a spectrum from capability to limitation.</p>
           <div class="course-card__meta">13 lessons · quiz · certificate</div>
         </article>
-        <article class="course-card">
+        <article class="course-card course-card--ref">
           <div class="course-card__kicker"><span>Reference</span><span class="course-card__status" data-course-status="behaves" data-lessons="9" hidden></span></div>
           <h3><a href="learn/how-ai-behaves.html">Understand How AI Behaves</a></h3>
           <p>The working reference: the 24 fluency behaviors, hallucination, sycophancy, bias, trust as a dial, tokens, context, and how to write an AI diligence statement.</p>
@@ -186,9 +187,11 @@
 
   <section class="learn-section" id="editions">
     <div class="wrap--wide">
+      <span class="section-kicker">Stage 2 · Take it to your work</span>
+      <span class="section-num" aria-hidden="true">2</span>
       <h2>Choose your edition</h2>
       <p class="section-sub">The same framework in the language of one kind of work. Take the one that matches yours; you do not need the others.</p>
-      <div class="course-grid">
+      <div class="course-grid course-grid--editions">
         <article class="course-card">
           <div class="course-card__kicker"><span>Edition</span><span class="course-card__status" data-course-status="builders" data-lessons="10" hidden></span></div>
           <h3><a href="learn/builders.html">For Builders</a></h3>
@@ -231,9 +234,11 @@
 
   <section class="learn-section" id="teach">
     <div class="wrap--wide">
+      <span class="section-kicker">Stage 3 · Teach it forward</span>
+      <span class="section-num" aria-hidden="true">3</span>
       <h2>Teach and facilitate</h2>
       <p class="section-sub">For anyone who has to bring this to a room full of other people.</p>
-      <div class="course-grid">
+      <div class="course-grid course-grid--teach">
         <article class="course-card">
           <div class="course-card__kicker"><span>Course</span><span class="course-card__status" data-course-status="teaching" data-lessons="8" hidden></span></div>
           <h3><a href="learn/teaching-ai-fluency.html">Teaching AI Fluency</a></h3>
@@ -319,7 +324,7 @@
     });
   }
 </script>
-<script src="learn/learn.js?v=48" defer></script>
+<script src="learn/learn.js?v=49" defer></script>
 <script src="motion.js?v=polish1" defer></script>
 
 </body>
