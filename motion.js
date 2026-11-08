@@ -1,4 +1,4 @@
-/* AI Literacy Foundation — motion.js
+/* AI Literacy Foundation: motion.js
    - Scroll-triggered reveal via IntersectionObserver
    - Count-up for status numbers
    - Rotating word in hero headlines

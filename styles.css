@@ -1,4 +1,4 @@
-/* AI Literacy Foundation — design system v2 */
+/* AI Literacy Foundation: design system v2 */
 
 :root {
   /* Warm-cream palette */
@@ -896,7 +896,7 @@ a.inline-link:hover {
   cursor: progress;
 }
 
-/* SUCCESS PANEL — shown after form submission */
+/* SUCCESS PANEL: shown after form submission */
 .form-success {
   margin-top: 2rem;
   padding: 2.25rem;
@@ -1226,7 +1226,7 @@ a.inline-link:hover {
 .donate-block:hover::before { height: 100%; }
 .donate-block h3 { color: var(--ink); margin-bottom: 0.75rem; }
 
-/* BACK TO TOP — appears after scrolling, smooth return */
+/* BACK TO TOP: appears after scrolling, smooth return */
 .scroll-top {
   position: fixed;
   bottom: clamp(1rem, 3vh, 1.75rem);
@@ -1276,7 +1276,7 @@ a.inline-link:hover {
   .scroll-top svg { transition: none; }
 }
 
-/* SCROLL PROGRESS — thin terracotta bar at top of viewport */
+/* SCROLL PROGRESS: thin terracotta bar at top of viewport */
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -1297,7 +1297,7 @@ a.inline-link:hover {
   .scroll-progress { display: none; }
 }
 
-/* CHAPTER INDICATOR — sticky "Part 01 / 03 · The issues" on roadmap */
+/* CHAPTER INDICATOR: sticky "Part 01 / 03 · The issues" on roadmap */
 .chapter-indicator {
   position: fixed;
   left: clamp(1rem, 3vw, 2rem);
@@ -1351,7 +1351,7 @@ a.inline-link:hover {
   .chapter-indicator { transition: opacity 0.01ms; }
 }
 
-/* AUDIENCE STATEMENT — quiet manifesto line, home page */
+/* AUDIENCE STATEMENT: quiet manifesto line, home page */
 .section--statement {
   padding-top: clamp(2rem, 5vh, 3.5rem);
   padding-bottom: clamp(2rem, 5vh, 3.5rem);
@@ -1368,7 +1368,7 @@ a.inline-link:hover {
   text-wrap: balance;
 }
 
-/* ROTATOR — rotating word in headlines */
+/* ROTATOR: rotating word in headlines */
 .rotator {
   display: inline-block;
   color: var(--accent);
@@ -1524,7 +1524,7 @@ a.inline-link:hover {
     transition: border-color 240ms var(--ease), transform 200ms var(--ease), box-shadow 240ms var(--ease);
     -webkit-tap-highlight-color: transparent;
   }
-  /* Numbers hidden on phone — cleaner look */
+  /* Numbers hidden on phone, cleaner look */
   .quick-button__num { display: none; }
   .quick-button::before {
     content: "";
@@ -1680,7 +1680,7 @@ a.inline-link:hover {
   /* Legal block: 1 column */
   .legal-block { padding: 1.25rem; grid-template-columns: 1fr; gap: 0.75rem; }
 
-  /* Footer: minimal on mobile — Contact form link + copyright + lang toggle */
+  /* Footer: minimal on mobile: Contact form link + copyright + lang toggle */
   .site-footer { padding: 1.75rem 0 1.5rem; margin-top: 2rem; }
   .site-footer__grid {
     grid-template-columns: 1fr;

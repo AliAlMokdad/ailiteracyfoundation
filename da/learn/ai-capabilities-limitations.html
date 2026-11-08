@@ -281,7 +281,7 @@
       <span class="lesson__eyebrow">Lektion 09 · ~12 min</span>
       <h2>Tabt i midten</h2>
       <p>Prøv denne hukommelsestest på dig selv: Læs en liste med femten ord én gang, kig væk, og skriv ned, hvad du husker. Næsten alle husker de første par og de sidste par og glemmer midten. Psykologer kalder det seriel positionseffekt.</p>
-      <p>Sprogmodeller viser ofte den samme U-formede kurve. Forskning fra Stanford i 2023 (Liu et al.) viste, at nøjagtigheden ved genfinding af en nøgleoplysning kan falde med mere end tredive procent, når denne oplysning sidder midt i konteksten snarere end i kanterne. Effekten varierer efter model og opgave, nogle modeller håndterede testen næsten perfekt, og hvorfor det sker, studeres stadig.</p>
+      <p>Sprogmodeller viser ofte den samme U-formede kurve. Forskning fra Stanford i 2023 (Liu et al.) viste, at nøjagtigheden ved genfinding af en nøgleoplysning kan falde med mere end 30%, når denne oplysning sidder midt i konteksten snarere end i kanterne. Effekten varierer efter model og opgave, nogle modeller håndterede testen næsten perfekt, og hvorfor det sker, studeres stadig.</p>
       <p>Prompting-konsekvensen er direkte. Farligt mønster: En nøgleinstruktion begravet midt i tråden. Sikrere mønster: Nøgleinstruktion forrest og gentaget til sidst for lange kontekster. Og den dybere lektion om kontekst-engineering: Hvert stykke kontekst, du tilføjer, skubber andre stykker længere ind i midten.</p>
       <div class="callout"><span class="furniture">Værd at huske</span><p>Mere kontekst er ikke lig med bedre resultater. Kuratér hensynsløst, placer strategisk, og gentag det, der er vigtigt.</p></div>
       <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
@@ -421,7 +421,7 @@
             <label class="opt"><input type="radio" name="q6" data-correct><span>Grænsen er skarp, og genfinding inden for den varierer med position</span></label>
             <label class="opt"><input type="radio" name="q6"><span>Grænsen er skarp, og alt inden for den læses lige godt</span></label>
             <label class="opt"><input type="radio" name="q6"><span>Hverken grænsen eller positionen påvirker, hvad modellen kan bruge</span></label>
-            <p class="q-why">Efter grænsen droppes indhold, eller anmodningen afvises, ofte uden varsel. Inden for grænsen er det en gradient: Liu et al. fandt, at nøjagtigheden af en vigtig kendsgerning kan falde med mere end tredive procent, når den sidder i midten frem for i kanterne.</p>
+            <p class="q-why">Efter grænsen droppes indhold, eller anmodningen afvises, ofte uden varsel. Inden for grænsen er det en gradient: Liu et al. fandt, at nøjagtigheden af en vigtig kendsgerning kan falde med mere end 30%, når den sidder i midten frem for i kanterne.</p>
           </fieldset>
           <fieldset>
             <legend><span class="q-n">Spørgsmål 7</span>Effekten "lost in the middle" betyder:</legend>
@@ -429,7 +429,7 @@
             <label class="opt"><input type="radio" name="q7" data-correct><span>Information placeret midt i konteksten får mindre opmærksomhed end information i kanterne</span></label>
             <label class="opt"><input type="radio" name="q7"><span>Prompts af mellemlængde klarer sig dårligst</span></label>
             <label class="opt"><input type="radio" name="q7"><span>Modeller mister overblikket over mellemliggende ræsonnementstrin</span></label>
-            <p class="q-why">Liu et al. (2023) målte over tredive procent tab af nøjagtighed for en vigtig kendsgerning placeret midt i konteksten versus i kanterne. Placer afgørende instruktioner først og gentag dem til sidst.</p>
+            <p class="q-why">Liu et al. (2023) målte over 30% tab af nøjagtighed for en vigtig kendsgerning placeret midt i konteksten versus i kanterne. Placer afgørende instruktioner først og gentag dem til sidst.</p>
           </fieldset>
           <fieldset>
             <legend><span class="q-n">Spørgsmål 8</span>Fejl af typen "bogstav frem for ånd" opstår, fordi:</legend>

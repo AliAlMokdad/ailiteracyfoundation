@@ -276,7 +276,7 @@
       <span class="lesson__eyebrow">Lesson 09 · ~12 min</span>
       <h2>Lost in the middle</h2>
       <p>Try this memory test on yourself: read a list of fifteen words once, look away, and write down what you remember. Almost everyone recalls the first few and the last few, and loses the middle. Psychologists call it the serial position effect.</p>
-      <p>Language models often show the same U-shaped curve. Research at Stanford in 2023 (Liu et al.) found that accuracy on retrieving a key fact can drop by more than thirty percent when that fact sits in the middle of the context rather than at the edges. The effect varies by model and task, some models handled the test almost perfectly, and why it happens is still being studied.</p>
+      <p>Language models often show the same U-shaped curve. Research at Stanford in 2023 (Liu et al.) found that accuracy on retrieving a key fact can drop by more than 30% when that fact sits in the middle of the context rather than at the edges. The effect varies by model and task, some models handled the test almost perfectly, and why it happens is still being studied.</p>
       <p>The prompting consequence is direct. Dangerous pattern: a key instruction buried mid-thread. Safer pattern: key instruction up front, and repeated at the end for long contexts. And the deeper lesson about context engineering: every piece of context you add pushes other pieces further into the middle.</p>
       <div class="callout"><span class="furniture">The keeper</span><p>More context does not equal better results. Curate ruthlessly, place strategically, and repeat what matters.</p></div>
       <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
@@ -416,7 +416,7 @@
             <label class="opt"><input type="radio" name="q6" data-correct><span>The limit is hard-edged, and retrieval inside it varies with position</span></label>
             <label class="opt"><input type="radio" name="q6"><span>The limit is hard-edged, and everything inside it is read equally well</span></label>
             <label class="opt"><input type="radio" name="q6"><span>Neither the limit nor position affects what the model can use</span></label>
-            <p class="q-why">Past the limit, content is dropped or the request is refused, often silently. Inside the limit it is a gradient: Liu et al. found accuracy on a key fact can fall by more than thirty percent when it sits in the middle rather than at the edges.</p>
+            <p class="q-why">Past the limit, content is dropped or the request is refused, often silently. Inside the limit it is a gradient: Liu et al. found accuracy on a key fact can fall by more than 30% when it sits in the middle rather than at the edges.</p>
           </fieldset>
           <fieldset>
             <legend><span class="q-n">Question 7</span>The "lost in the middle" effect means:</legend>
@@ -424,7 +424,7 @@
             <label class="opt"><input type="radio" name="q7" data-correct><span>Information placed mid-context gets less attention than information at the edges</span></label>
             <label class="opt"><input type="radio" name="q7"><span>Middle-length prompts perform worst</span></label>
             <label class="opt"><input type="radio" name="q7"><span>Models lose track of intermediate reasoning steps</span></label>
-            <p class="q-why">Liu et al. (2023) measured over thirty percent accuracy loss for a key fact placed mid-context versus at the edges. Put crucial instructions first and repeat them last.</p>
+            <p class="q-why">Liu et al. (2023) measured over 30% accuracy loss for a key fact placed mid-context versus at the edges. Put crucial instructions first and repeat them last.</p>
           </fieldset>
           <fieldset>
             <legend><span class="q-n">Question 8</span>"Letter over spirit" failures happen because:</legend>

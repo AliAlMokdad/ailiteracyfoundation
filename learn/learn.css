@@ -418,7 +418,7 @@
 }
 
 /* ---------- THE BOLD MOVE: the loops run -------------------------------- */
-/* pathLength="100" normalises each ellipse, so "14 86" is a 14 percent arc on
+/* pathLength="100" normalises each ellipse, so "14 86" is a 14% arc on
    both loops regardless of their very different circumferences. The inner loop
    runs faster because it is the moment-to-moment cycle; the outer is strategic
    and slow. That speed difference is the whole point. */

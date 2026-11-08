@@ -13,6 +13,7 @@ var RAMP = [
 ];
 function tier(rank, total){ var q=rank/total; if(q<0.25)return 0; if(q<0.5)return 1; if(q<0.75)return 2; return 3; }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function topicName(n){ return String(n).replace(/ \u2014 /g,', '); }
 function refocus(sel){ try{ var el=document.querySelector(sel); if(el&&el.focus) el.focus(); }catch(e){} }
 function fmtIdx(v){ return v.toFixed(2)+'×'; }
 
@@ -87,7 +88,7 @@ var US = (function(){
     var deltaLine = pinned && pinned.abbr!==s.abbr ? ('<div class="aei-pdelta">Versus <b>'+esc(pinned.name.replace('Washington, D.C.','D.C.'))+'</b>: '+(s.idx/pinned.idx).toFixed(2)+'× its intensity</div>') : '';
     var topics = list && list.length ? list.map(function(t,i){
       var val = topicMode==='freq'? ((t.pct!=null?t.pct.toFixed(1):'-')+'%') : ((t.ratio!=null?t.ratio.toFixed(1):'-')+'×');
-      return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(t.name)+'</span><span class="tv">'+val+'</span></li>';
+      return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(topicName(t.name))+'</span><span class="tv">'+val+'</span></li>';
     }).join('') : '<li><span class="tn" style="color:var(--ink-quiet)">Not published for this state.</span></li>';
     el.innerHTML=
       '<p class="ph">Usage rank '+s.rank+' of '+total+'</p>'+
@@ -175,7 +176,7 @@ function geoView(cfg){
     var deltaLine = pinned && pinned.code!==c.code ? ('<div class="aei-pdelta">Versus <b>'+esc(pinned.name)+'</b>: '+(c.idx/pinned.idx).toFixed(2)+'× its intensity</div>') : '';
     var topics = list && list.length ? list.map(function(t,i){
       var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1):'-')+'%'):((t.ratio!=null?t.ratio.toFixed(1):'-')+'×');
-      return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(t.name)+'</span><span class="tv">'+val+'</span></li>';
+      return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(topicName(t.name))+'</span><span class="tv">'+val+'</span></li>';
     }).join('') : '<li><span class="tn" style="color:var(--ink-quiet)">Topic detail not published for this country.</span></li>';
     var shareTxt = c.share>0 ? (c.share.toFixed(2)+'% of all measured usage') : 'Share not published';
     el(G.panel).innerHTML=
@@ -255,7 +256,7 @@ var DENMARK = (function(){
     var tp=(D.countryTopics&&D.countryTopics.DNK)||{freq:[],dist:[]};
     var tl=topicMode==='freq'?tp.freq:tp.dist;
     var cap=topicMode==='freq'?'Most frequent topics in Denmark':'Topics most distinctive to Denmark, versus the world';
-    var topics=(tl&&tl.length)?tl.map(function(t,i){ var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1):'-')+'%'):((t.ratio!=null?t.ratio.toFixed(1):'-')+'×'); return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(t.name)+'</span><span class="tv">'+val+'</span></li>'; }).join(''):'<li><span class="tn" style="color:var(--ink-quiet)">Not published.</span></li>';
+    var topics=(tl&&tl.length)?tl.map(function(t,i){ var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1):'-')+'%'):((t.ratio!=null?t.ratio.toFixed(1):'-')+'×'); return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(topicName(t.name))+'</span><span class="tv">'+val+'</span></li>'; }).join(''):'<li><span class="tn" style="color:var(--ink-quiet)">Not published.</span></li>';
     var autonomy=sn.ai_autonomy_mean!=null?sn.ai_autonomy_mean.toFixed(1):'-';
     box.innerHTML=
       '<div class="aei-dkgrid">'+
