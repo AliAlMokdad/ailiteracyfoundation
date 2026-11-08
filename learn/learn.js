@@ -9,6 +9,42 @@
 (function () {
   'use strict';
 
+  // Scrolls jump instead of glide for readers who ask for reduced motion.
+  var SMOOTH = (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ? 'auto' : 'smooth';
+
+  // Course pages do not load motion.js, so their menu gets its keyboard and closing
+  // behaviour here: focus moves into it when opened from the keyboard, Escape closes it
+  // and returns focus, a tap outside or on a link closes it.
+  (function () {
+    if (document.querySelector('script[src*="motion.js"]')) return;
+    var nav = document.getElementById('nav');
+    var toggle = document.getElementById('navToggle');
+    if (!nav || !toggle) return;
+    toggle.setAttribute('aria-controls', 'nav');
+    function close(focusToggle) {
+      if (!nav.classList.contains('is-open')) return;
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      if (focusToggle) toggle.focus();
+    }
+    toggle.addEventListener('click', function (e) {
+      if (e.detail !== 0) return;
+      setTimeout(function () {
+        if (!nav.classList.contains('is-open')) return;
+        var first = nav.querySelector('a');
+        if (first) first.focus();
+      }, 0);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(true); });
+    document.addEventListener('click', function (e) {
+      if (nav.contains(e.target) || toggle.contains(e.target)) return;
+      close(false);
+    });
+    nav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { close(false); });
+    });
+  })();
+
 
   /* ---------- language ----------
      The page declares its language and the player follows it. Sentences are whole
@@ -339,7 +375,7 @@
       var comp = document.querySelector('.completion');
       if (comp) {
         window.requestAnimationFrame(function () {
-          comp.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          comp.scrollIntoView({ behavior: SMOOTH, block: 'start' });
         });
       }
     };
@@ -593,8 +629,12 @@
     var key = check.getAttribute('data-check') || ('c' + idx);
     var opts = Array.prototype.slice.call(check.querySelectorAll('.opt'));
     var award = check.querySelector('.check__award');
+    var why = check.querySelector('.check__why');
+    if (award) award.setAttribute('role', 'status');
 
     function settle(picked, first) {
+      // the picked button is about to be disabled; keep keyboard focus on the explanation
+      var hadFocus = !!picked && document.activeElement === picked;
       check.classList.add('is-done');
       opts.forEach(function (o) {
         o.disabled = true;
@@ -607,6 +647,10 @@
       if (award) {
         award.textContent = state.checks[key] ? T('checkAward') :
           (first ? T('checkMiss') : '');
+      }
+      if (hadFocus && why) {
+        why.setAttribute('tabindex', '-1');
+        why.focus({ preventScroll: true });
       }
     }
 
@@ -641,7 +685,7 @@
       if (unanswered.length) {
         result.textContent = T('answerAll', { n: unanswered.length });
         result.className = 'quiz-result fail';
-        unanswered[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        unanswered[0].scrollIntoView({ behavior: SMOOTH, block: 'center' });
         return;
       }
       var correct = 0;
@@ -694,9 +738,9 @@
         completion.classList.add('is-open');
         greet();
         renderCert();
-        completion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        completion.scrollIntoView({ behavior: SMOOTH, block: 'start' });
       }
-      if (!passed) result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (!passed) result.scrollIntoView({ behavior: SMOOTH, block: 'center' });
     });
 
     function clearAttempt() {
@@ -709,7 +753,7 @@
       if (retry) retry.hidden = true;
       var sb = form.querySelector('button[type="submit"]');
       if (sb) sb.textContent = T('submit');
-      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      form.scrollIntoView({ behavior: SMOOTH, block: 'start' });
     }
     form.addEventListener('click', function (ev) {
       var sb = ev.target.closest('button[type="submit"]');
@@ -791,8 +835,13 @@
           return;
         }
         document.body.classList.add('printing-cert');
+        // remove the print-only state after the print dialog, not on a timer: where print()
+        // returns before the page is captured, a timer would print the whole page instead
+        window.addEventListener('afterprint', function done() {
+          document.body.classList.remove('printing-cert');
+          window.removeEventListener('afterprint', done);
+        });
         window.print();
-        setTimeout(function () { document.body.classList.remove('printing-cert'); }, 300);
       });
     }
 

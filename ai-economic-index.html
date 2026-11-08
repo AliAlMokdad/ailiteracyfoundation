@@ -23,8 +23,8 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=polish7">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=polish8">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"AI Economic Index","url":"https://ailiteracyfoundation.eu/ai-economic-index.html","inLanguage":"en","description":"An interactive, public reading of the Anthropic Economic Index open data: Claude usage by US state, by country, and by kind of work.","isPartOf":{"@type":"WebSite","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"publisher":{"@type":"NonprofitOrganization","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"mainEntity":{"@type":"Dataset","name":"Anthropic Economic Index","creator":{"@type":"Organization","name":"Anthropic"},"license":"https://creativecommons.org/licenses/by/4.0/","isBasedOn":"https://www.anthropic.com/research/economic-index-june-2026-report","temporalCoverage":"2026-05","description":"Claude.ai usage metrics aggregated by geography and task, released 2026-06-26."}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ailiteracyfoundation.eu/"},{"@type":"ListItem","position":2,"name":"AI Economic Index","item":"https://ailiteracyfoundation.eu/ai-economic-index.html"}]}</script>
 <style>
@@ -284,6 +284,7 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="site-header__inner">
     <a href="index.html" class="brand">AI Literacy Foundation<sup class="brand-tm" aria-hidden="true">&#8482;</sup></a>
@@ -311,7 +312,7 @@
 <p class="aei-eyebrow"><span class="sig" aria-hidden="true"></span>Data &middot; The AI economy</p>
 <h1 class="aei-h1">Where people put AI to <em>work</em></h1>
 <p class="aei-lede">A public reading of the Anthropic Economic Index open data. It shows how people used the Claude AI assistant across US states, countries, and kinds of work in May 2026. It is one assistant's usage, not the whole economy.</p>
-<div class="aei-stats" id="aeiStats" aria-label="Headline figures"></div>
+<div class="aei-stats" id="aeiStats" role="group" aria-label="Headline figures"></div>
 </div>
 </div>
 </section>
@@ -322,7 +323,7 @@
 
 <div class="aei-note">
   <span class="aei-note-lbl">How to read this</span>
-  <b>This is Claude.ai usage, not all AI.</b> The Usage Index compares a place's share of that usage with its share of the world's working-age population: 1.0 is proportional, above is higher than expected, below is lower. Small figures are withheld for privacy, so a blank means not published, not zero, and percentages need not add to 100.
+  <b>This is Claude.ai usage, not all AI.</b> The Usage Index compares a place's share of that usage with its share of the working-age population (the world's for countries, the US's for US states): 1.0 is proportional, above is higher than expected, below is lower. Small figures are withheld for privacy, so a blank means not published, not zero, and shares need not add to 100%.
 </div>
 
 <p class="aei-mobile-note">This wide interactive view is built for a larger screen. Open this page on a laptop or desktop to explore the maps, rankings, and charts.</p>
@@ -354,7 +355,7 @@
     <p>European countries ordered by their Usage Index, with Denmark highlighted. Ranks here are within Europe. Pin any country to compare the rest against it.</p>
   </div>
   <div class="aei-controls">
-    <div class="aei-legend" id="euLegend" aria-label="Usage Index colour tiers"></div>
+    <div class="aei-legend" id="euLegend" aria-label="Usage Index color tiers"></div>
     <div class="aei-baseline">
       <button class="aei-dkpin" id="euDkPin" type="button">Benchmark Denmark</button>
       <span class="aei-basechip" id="euBaseChip"></span>
@@ -376,16 +377,16 @@
 <div class="aei-view" id="view-us">
   <div class="aei-viewhead">
     <h2>The United States, state by state</h2>
-    <p>Each tile is a state, placed roughly by geography and coloured by its Usage Index. Select any state for its rank, its most frequent topics, and the topics most distinctive to it. Pin a state to compare the rest against it.</p>
+    <p>Each tile is a state, placed roughly by geography and colored by its Usage Index. Select any state for its rank, its most frequent topics, and the topics most distinctive to it. Pin a state to compare the rest against it.</p>
   </div>
   <div class="aei-controls">
-    <div class="aei-legend" id="usLegend" aria-label="Usage Index colour tiers"></div>
+    <div class="aei-legend" id="usLegend" aria-label="Usage Index color tiers"></div>
     <div class="aei-baseline">
       <span class="aei-basechip" id="usBaseChip"></span>
     </div>
   </div>
   <div class="aei-grid">
-    <div class="aei-card aei-map" id="usMap" role="group" aria-label="US states, sized equally and coloured by Usage Index"></div>
+    <div class="aei-card aei-map" id="usMap" role="group" aria-label="US states, sized equally and colored by Usage Index"></div>
     <div class="aei-card">
       <div class="aei-boardhead"><span id="usBoardTitle">States by Usage Index</span><span>Index</span></div>
       <div class="aei-board" id="usBoard"></div>
@@ -401,7 +402,7 @@
     <p>Every published country, ordered by its Usage Index. AI Literacy Foundation is based in Copenhagen, so Denmark is one tap away as a benchmark. Pin any country to compare the rest against it.</p>
   </div>
   <div class="aei-controls">
-    <div class="aei-legend" id="worldLegend" aria-label="Usage Index colour tiers"></div>
+    <div class="aei-legend" id="worldLegend" aria-label="Usage Index color tiers"></div>
     <div class="aei-baseline">
       <button class="aei-dkpin" id="dkPin" type="button">Benchmark Denmark</button>
       <span class="aei-basechip" id="worldBaseChip"></span>
@@ -534,6 +535,6 @@
 <script>const toggle=document.getElementById('navToggle'),nav=document.getElementById('nav');if(toggle&&nav){toggle.addEventListener('click',()=>{const o=nav.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(o));});document.addEventListener('click',e=>{if(!nav.contains(e.target)&&!toggle.contains(e.target)&&nav.classList.contains('is-open')){nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}});}</script>
 <script src="ai-economic-index.data.js?v=1"></script>
 <script src="ai-economic-index.js?v=6" defer></script>
-<script src="motion.js?v=polish1" defer></script>
+<script src="motion.js?v=polish2" defer></script>
 </body>
 </html>

@@ -14,7 +14,7 @@ var RAMP = [
 function tier(rank, total){ var q=rank/total; if(q<0.25)return 0; if(q<0.5)return 1; if(q<0.75)return 2; return 3; }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 function refocus(sel){ try{ var el=document.querySelector(sel); if(el&&el.focus) el.focus(); }catch(e){} }
-function fmtIdx(v){ return v.toFixed(2)+'×'; }
+function fmtIdx(v){ return v.toFixed(2).replace('.',',')+'×'; }
 var STATE_NAMES={AK:'Alaska',AL:'Alabama',AR:'Arkansas',AZ:'Arizona',CA:'Californien',CO:'Colorado',CT:'Connecticut',DC:'Washington, D.C.',DE:'Delaware',FL:'Florida',GA:'Georgia',HI:'Hawaii',IA:'Iowa',ID:'Idaho',IL:'Illinois',IN:'Indiana',KS:'Kansas',KY:'Kentucky',LA:'Louisiana',MA:'Massachusetts',MD:'Maryland',ME:'Maine',MI:'Michigan',MN:'Minnesota',MO:'Missouri',MS:'Mississippi',MT:'Montana',NC:'North Carolina',ND:'North Dakota',NE:'Nebraska',NH:'New Hampshire',NJ:'New Jersey',NM:'New Mexico',NV:'Nevada',NY:'New York',OH:'Ohio',OK:'Oklahoma',OR:'Oregon',PA:'Pennsylvania',RI:'Rhode Island',SC:'South Carolina',SD:'South Dakota',TN:'Tennessee',TX:'Texas',UT:'Utah',VA:'Virginia',VT:'Vermont',WA:'Washington',WI:'Wisconsin',WV:'West Virginia',WY:'Wyoming'};
 var COUNTRY_NAMES={AUS:'Australien',SGP:'Singapore',CHE:'Schweiz',LUX:'Luxembourg',NZL:'New Zealand',CAN:'Canada',NOR:'Norge',ISL:'Island',MLT:'Malta',FRA:'Frankrig',NLD:'Nederlandene',USA:'USA',BEL:'Belgien',KOR:'Sydkorea',DNK:'Danmark',GBR:'Storbritannien',PRT:'Portugal',IRL:'Irland',EST:'Estland',CYP:'Cypern',ISR:'Israel',SWE:'Sverige',ARE:'Forenede Arabiske Emirater',ESP:'Spanien',AUT:'Østrig',DEU:'Tyskland',LVA:'Letland',LTU:'Litauen',FIN:'Finland',SVN:'Slovenien',TWN:'Taiwan',JPN:'Japan',URY:'Uruguay',CHL:'Chile',CZE:'Tjekkiet',GEO:'Georgien',HRV:'Kroatien',MUS:'Mauritius',ITA:'Italien',PRI:'Puerto Rico',QAT:'Qatar',CRI:'Costa Rica',GRC:'Grækenland',BHR:'Bahrain',ARG:'Argentina',MDA:'Moldova',SVK:'Slovakiet',TUN:'Tunesien',MNG:'Mongoliet',ROU:'Rumænien',BGR:'Bulgarien',POL:'Polen',SRB:'Serbien',PAN:'Panama',COL:'Colombia',HUN:'Ungarn',PER:'Peru',TTO:'Trinidad og Tobago',ALB:'Albanien',MKD:'Nordmakedonien',BRA:'Brasilien',LBN:'Libanon',ARM:'Armenien',SAU:'Saudi-Arabien',KWT:'Kuwait',MAR:'Marokko',MYS:'Malaysia',UKR:'Ukraine',OMN:'Oman',THA:'Thailand',KAZ:'Kasakhstan',DOM:'Den Dominikanske Republik',JAM:'Jamaica',JOR:'Jordan',TUR:'Tyrkiet',MEX:'Mexico',BIH:'Bosnien-Hercegovina',PRY:'Paraguay',SLV:'El Salvador',ECU:'Ecuador',BOL:'Bolivia',DZA:'Algeriet',LKA:'Sri Lanka',VNM:'Vietnam',BWA:'Botswana',IDN:'Indonesien',ZAF:'Sydafrika',NAM:'Namibia',PHL:'Filippinerne',AZE:'Aserbajdsjan',PSE:'Palæstina',NPL:'Nepal',SEN:'Senegal',BEN:'Benin',CMR:'Cameroun',GHA:'Ghana',GTM:'Guatemala',EGY:'Egypten',KGZ:'Kirgisistan',KEN:'Kenya',PAK:'Pakistan',CIV:'Elfenbenskysten',IND:'Indien',UZB:'Usbekistan',HND:'Honduras',COG:'Republikken Congo',IRQ:'Irak',NGA:'Nigeria',TGO:'Togo',KHM:'Cambodja',RWA:'Rwanda',ZWE:'Zimbabwe',BFA:'Burkina Faso',ZMB:'Zambia',HTI:'Haiti',BGD:'Bangladesh',UGA:'Uganda',AGO:'Angola',MDG:'Madagaskar',MOZ:'Mozambique',TZA:'Tanzania'};
 var TOPIC_NAMES={'AI agent design':'Design af AI-agenter','AI app building':'Bygning af AI-apps','AI image generation':'AI-billedgenerering','API debugging':'API-fejlfinding','Account and billing':'Konto og fakturering','Accounting and bookkeeping':'Regnskab og bogføring','Animal behavior':'Dyreadfærd','Automated pipelines':'Automatiserede pipelines','Backend architecture':'Backend-arkitektur','Booking and scheduling':'Booking og planlægning','Business compliance':'Forretningscompliance','Business ideation':'Forretningsideer','Business operations':'Forretningsdrift','Buying and investing':'Køb og investering','CRM':'CRM','Career interview prep':'Forberedelse til jobsamtaler','Career navigation':'Karrierevalg','Certification and training':'Certificering og træning','Code design':'Kodedesign','Companionship and conversation':'Selskab og samtale','Company and deal research':'Virksomheds- og aftaleanalyse','Conversation and meeting intelligence':'Samtale- og mødeanalyse','Cooking':'Madlavning','Customer support and service':'Kundesupport og service','Dashboards and charts':'Dashboards og diagrammer','Data analysis':'Dataanalyse','Debugging':'Fejlfinding','Destination research':'Research om rejsemål','Dev environment setup':'Opsætning af udviklingsmiljø','Document transformation':'Dokumentomformning','Editing and rewriting':'Redigering og omskrivning','Education and learning - other':'Uddannelse og læring, andet','Emotional Wellbeing and Support':'Følelsesmæssig trivsel og støtte','Entertainment and Recreation':'Underholdning og fritid','Entitlements and rules':'Rettigheder og regler','Fashion shopping':'Modeindkøb','Fiction writing':'Skønlitterær skrivning','Financial modeling':'Finansiel modellering','Finding the best price':'At finde den bedste pris','Formatted writing':'Formateret skrivning','Gaming':'Gaming','Hobbies and lifestyle - other':'Hobbyer og livsstil, andet','Home furnishing and decor':'Boligindretning og dekoration','Home renovation':'Boligrenovering','Home tech setup':'Opsætning af hjemmeteknologi','Homework':'Lektier','Industry and sector knowledge':'Branche- og sektorkendskab','Instructional design':'Undervisningsdesign','Language and linguistics':'Sprog og lingvistik','Math and CS theory':'Matematik og datalogisk teori','Media discovery':'Medieopdagelse','Medical Questions':'Medicinske spørgsmål','Outdoor and garden':'Udendørs og have','Personal messages':'Personlige beskeder','Personal records':'Personlige dokumenter','Photo and video editing':'Foto- og videoredigering','Physical crafting':'Fysisk håndarbejde','Politics and public record':'Politik og offentlige kilder','Promotional writing':'Promoverende tekster','Publishing and announcements':'Udgivelse og annonceringer','Quality scoring':'Kvalitetsvurdering','Quant trading':'Kvantitativ handel','Reference and fact-finding':'Opslag og faktatjek','Reference documentation':'Referencedokumentation','Regulatory rules':'Regulatoriske regler','Relocation and travel':'Flytning og rejser','Research and evidence':'Research og dokumentation','Sales and revenue ops - other':'Salg og revenue operations, andet','Science':'Naturvidenskab','Self-presentation writing':'Selvpræsentation','Self-reflection':'Selvrefleksion','Server infrastructure':'Serverinfrastruktur','Shell and systems code':'Shell- og systemkode','Slide decks':'Præsentationer','Social science':'Samfundsvidenskab','Software development - other':'Softwareudvikling, andet','Software how-to':'Softwarevejledning','Spoken writing':'Mundtlig formidling på skrift','Starting a business':'At starte virksomhed','Structured extraction':'Struktureret udtræk','Summarizing':'Opsummering','Translation':'Oversættelse','Trend tracking':'Trendovervågning','Vehicles and motors':'Køretøjer og motorer','Video scripts':'Videomanuskripter','Web front-end':'Webfrontend','Wellness and fitness':'Velvære og fitness','Workplace writing':'Arbejdspladstekster'};
@@ -34,8 +34,8 @@ function daArtifact(label){ return ARTIFACT_NAMES[label]||String(label).replace(
   var el=document.getElementById('aeiStats'); if(!el)return;
   var s=D.snapshot||{};
   var cards=[
-    {n:(s.USA&&s.USA.usage_per_capita_index?s.USA.usage_per_capita_index.toFixed(2):'3.87')+'×', k:"USA's brugsindeks, maj 2026"},
-    {n:(s.DNK&&s.DNK.usage_per_capita_index?s.DNK.usage_per_capita_index.toFixed(2):'3.57')+'×', k:'Danmarks brugsindeks'},
+    {n:(s.USA&&s.USA.usage_per_capita_index?s.USA.usage_per_capita_index.toFixed(2).replace('.',','):'3,87')+'×', k:"USA's brugsindeks, maj 2026"},
+    {n:(s.DNK&&s.DNK.usage_per_capita_index?s.DNK.usage_per_capita_index.toFixed(2).replace('.',','):'3,57')+'×', k:'Danmarks brugsindeks'},
     {n:Math.round(s.global&&s.global.collaboration_bucket_augmentation_pct?s.global.collaboration_bucket_augmentation_pct:51)+'%', k:'Samarbejdende brug, globalt'},
     {n:(D.meta&&D.meta.n_countries?D.meta.n_countries:D.countries.length), k:'Lande målt'}
   ];
@@ -64,7 +64,7 @@ var US = (function(){
       var p=POS[s.abbr]; if(!p)return;
       var x=p[0]*STEP, y=p[1]*STEP, r=RAMP[s.t];
       parts.push(
-        '<g class="aei-tile" data-abbr="'+s.abbr+'" tabindex="0" role="button" aria-label="'+esc(s.daName)+', Brugsindeks '+s.idx.toFixed(2)+', brugsplacering '+s.rank+' af '+total+'. Vælg for at se detaljer.">'+
+        '<g class="aei-tile" data-abbr="'+s.abbr+'" tabindex="0" role="button" aria-label="'+esc(s.daName)+', Brugsindeks '+s.idx.toFixed(2).replace('.',',')+', brugsplacering '+s.rank+' af '+total+'. Vælg for at se detaljer.">'+
         '<rect x="'+x+'" y="'+y+'" width="'+TILE+'" height="'+TILE+'" rx="5" fill="'+r.bg+'" stroke="rgba(255,255,255,.55)" stroke-width="1"></rect>'+
         '<text x="'+(x+TILE/2)+'" y="'+(y+TILE/2+3.5)+'" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="'+r.tx+'" style="pointer-events:none">'+s.abbr+'</text>'+
         '</g>');
@@ -77,12 +77,12 @@ var US = (function(){
     document.getElementById('usBoardTitle').textContent = pinned? ('Sammenlignet med '+shortName(pinned.daName)) : 'Delstater efter brugsindeks';
     var rows=states.map(function(s){
       var r=RAMP[s.t];
-      var dl = pinned? ('<span class="dl">'+ (s.idx/pinned.idx).toFixed(2) +'×</span>') : '';
+      var dl = pinned? ('<span class="dl">'+ (s.idx/pinned.idx).toFixed(2).replace('.',',') +'×</span>') : '';
       return '<button class="aei-row'+(s.abbr===sel?' sel':'')+'" data-abbr="'+s.abbr+'">'+
         '<span class="rk">'+s.rank+'</span>'+
         '<span class="sq" style="background:'+r.bg+'"></span>'+
         '<span class="nm">'+esc(s.daName)+'</span>'+
-        '<span class="vl">'+s.idx.toFixed(2)+'</span>'+ dl +
+        '<span class="vl">'+s.idx.toFixed(2).replace('.',',')+'</span>'+ dl +
         '</button>';
     });
     document.getElementById('usBoard').innerHTML=rows.join('');
@@ -97,9 +97,9 @@ var US = (function(){
     var fillW=Math.min(100, s.idx/scaleMax*100);
     var tickL=(1/scaleMax*100);
     var pinned=base?byAbbr[base]:null;
-    var deltaLine = pinned && pinned.abbr!==s.abbr ? ('<div class="aei-pdelta">Sammenlignet med <b>'+esc(shortName(pinned.daName))+'</b>: '+(s.idx/pinned.idx).toFixed(2)+'× af udgangspunktets intensitet</div>') : '';
+    var deltaLine = pinned && pinned.abbr!==s.abbr ? ('<div class="aei-pdelta">Sammenlignet med <b>'+esc(shortName(pinned.daName))+'</b>: '+(s.idx/pinned.idx).toFixed(2).replace('.',',')+'× af udgangspunktets intensitet</div>') : '';
     var topics = list && list.length ? list.map(function(t,i){
-      var val = topicMode==='freq'? ((t.pct!=null?t.pct.toFixed(1):'-')+'%') : ((t.ratio!=null?t.ratio.toFixed(1):'-')+'×');
+      var val = topicMode==='freq'? ((t.pct!=null?t.pct.toFixed(1).replace('.',','):'-')+'%') : ((t.ratio!=null?t.ratio.toFixed(1).replace('.',','):'-')+'×');
       return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(daTopic(t))+'</span><span class="tv">'+val+'</span></li>';
     }).join('') : '<li><span class="tn" style="color:var(--ink-quiet)">Ikke offentliggjort for denne delstat.</span></li>';
     el.innerHTML=
@@ -108,12 +108,12 @@ var US = (function(){
       '<div class="aei-pidxrow"><span class="aei-pidx">'+fmtIdx(s.idx)+'</span><span class="aei-pidxlbl">Brugsindeks</span></div>'+
       deltaLine+
       '<div class="aei-meter"><div class="fill" style="width:'+fillW.toFixed(0)+'%"></div><span class="tick" style="left:'+tickL.toFixed(1)+'%"></span></div>'+
-      '<div class="aei-metercap"><span>0</span><span>1,0 forventet</span><span>4.0</span></div>'+
+      '<div class="aei-metercap"><span>0</span><span>1,0 forventet</span><span>4,0</span></div>'+
       (ex.collaboration_bucket_augmentation_pct!=null?
         '<div class="aei-pdiv"></div><div class="aei-mini">'+
         '<div class="aei-minicell"><div class="mv">'+Math.round(ex.collaboration_bucket_augmentation_pct)+'%</div><div class="mk">Samarbejde</div></div>'+
         '<div class="aei-minicell"><div class="mv">'+(ex.use_case_work_pct!=null?Math.round(ex.use_case_work_pct):'--')+'%</div><div class="mk">Arbejde</div></div>'+
-        '<div class="aei-minicell"><div class="mv">'+(ex.ai_autonomy_mean!=null?ex.ai_autonomy_mean.toFixed(1):'--')+'</div><div class="mk">Autonomi / 5</div></div>'+
+        '<div class="aei-minicell"><div class="mv">'+(ex.ai_autonomy_mean!=null?ex.ai_autonomy_mean.toFixed(1).replace('.',','):'--')+'</div><div class="mk">Autonomi / 5</div></div>'+
         '</div>':'')+
       '<div class="aei-topichead"><span class="cap">'+esc(cap)+'</span></div>'+
       '<div class="aei-seg mini" role="group" aria-label="Emnerangering"><button data-tm="freq" aria-pressed="'+(topicMode==='freq')+'">Hyppige</button><button data-tm="dist" aria-pressed="'+(topicMode==='dist')+'">Kendetegnende</button></div>'+
@@ -164,18 +164,18 @@ function geoView(cfg){
   function buildGrid(){
     el(G.grid).innerHTML=countries.map(function(c){
       var r=RAMP[c.t];
-      return '<button class="aei-ctile'+(c.code===sel?' sel':'')+(c.code===base?' base':'')+'" data-code="'+c.code+'" style="background:'+r.bg+';color:'+r.tx+'" aria-label="'+esc(c.name)+', Brugsindeks '+c.idx.toFixed(2)+', brugsplacering '+c.rank+'. Vælg for at se detaljer.">'+
-        '<span class="cc">'+esc(c.code)+'</span><span class="cv">'+c.idx.toFixed(2)+'</span></button>';
+      return '<button class="aei-ctile'+(c.code===sel?' sel':'')+(c.code===base?' base':'')+'" data-code="'+c.code+'" style="background:'+r.bg+';color:'+r.tx+'" aria-label="'+esc(c.name)+', Brugsindeks '+c.idx.toFixed(2).replace('.',',')+', brugsplacering '+c.rank+'. Vælg for at se detaljer.">'+
+        '<span class="cc">'+esc(c.code)+'</span><span class="cv">'+c.idx.toFixed(2).replace('.',',')+'</span></button>';
     }).join('');
   }
   function buildBoard(){
     var pinned=base?byCode[base]:null;
     el(G.board).innerHTML=countries.map(function(c){
       var r=RAMP[c.t];
-      var dl=pinned?('<span class="dl">'+(c.idx/pinned.idx).toFixed(2)+'×</span>'):'';
+      var dl=pinned?('<span class="dl">'+(c.idx/pinned.idx).toFixed(2).replace('.',',')+'×</span>'):'';
       return '<button class="aei-row'+(c.code===sel?' sel':'')+'" data-code="'+c.code+'">'+
         '<span class="rk">'+c.rank+'</span><span class="sq" style="background:'+r.bg+'"></span>'+
-        '<span class="nm">'+esc(c.name)+'</span><span class="vl">'+c.idx.toFixed(2)+'</span>'+dl+'</button>';
+        '<span class="nm">'+esc(c.name)+'</span><span class="vl">'+c.idx.toFixed(2).replace('.',',')+'</span>'+dl+'</button>';
     }).join('');
   }
   function panel(){
@@ -185,19 +185,19 @@ function geoView(cfg){
     var cap = topicMode==='freq'? ('Hyppigste emner i '+c.name) : ('Mest kendetegnende emner for '+c.name+', i forhold til verden');
     var fillW=Math.min(100,c.idx/scaleMax*100), tickL=(1/scaleMax*100);
     var pinned=base?byCode[base]:null;
-    var deltaLine = pinned && pinned.code!==c.code ? ('<div class="aei-pdelta">Sammenlignet med <b>'+esc(pinned.name)+'</b>: '+(c.idx/pinned.idx).toFixed(2)+'× af udgangspunktets intensitet</div>') : '';
+    var deltaLine = pinned && pinned.code!==c.code ? ('<div class="aei-pdelta">Sammenlignet med <b>'+esc(pinned.name)+'</b>: '+(c.idx/pinned.idx).toFixed(2).replace('.',',')+'× af udgangspunktets intensitet</div>') : '';
     var topics = list && list.length ? list.map(function(t,i){
-      var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1):'-')+'%'):((t.ratio!=null?t.ratio.toFixed(1):'-')+'×');
+      var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1).replace('.',','):'-')+'%'):((t.ratio!=null?t.ratio.toFixed(1).replace('.',','):'-')+'×');
       return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(daTopic(t))+'</span><span class="tv">'+val+'</span></li>';
     }).join('') : '<li><span class="tn" style="color:var(--ink-quiet)">Emnedata er ikke offentliggjort for dette land.</span></li>';
-    var shareTxt = c.share>0 ? (c.share.toFixed(2)+'% af al målt brug') : 'Andel ikke offentliggjort';
+    var shareTxt = c.share>0 ? (c.share.toFixed(2).replace('.',',')+'% af al målt brug') : 'Andel ikke offentliggjort';
     el(G.panel).innerHTML=
       '<p class="ph">Brugsplacering '+c.rank+' af '+total+rankNote+'</p>'+
       '<div class="aei-pname">'+esc(c.name)+'</div>'+
       '<div class="aei-pidxrow"><span class="aei-pidx">'+fmtIdx(c.idx)+'</span><span class="aei-pidxlbl">Brugsindeks</span></div>'+
       deltaLine+
       '<div class="aei-meter"><div class="fill" style="width:'+fillW.toFixed(0)+'%"></div><span class="tick" style="left:'+tickL.toFixed(1)+'%"></span></div>'+
-      '<div class="aei-metercap"><span>0</span><span>1,0 forventet</span><span>'+scaleMax.toFixed(1)+'</span></div>'+
+      '<div class="aei-metercap"><span>0</span><span>1,0 forventet</span><span>'+scaleMax.toFixed(1).replace('.',',')+'</span></div>'+
       '<div class="aei-pdelta" style="margin-top:.55rem">'+esc(shareTxt)+'</div>'+
       '<div class="aei-pdiv"></div>'+
       '<div class="aei-topichead"><span class="cap">'+esc(cap)+'</span></div>'+
@@ -215,7 +215,7 @@ function geoView(cfg){
     var arr=(cfg.shareData||[]).slice(0,15); if(!arr.length){ el(G.share).innerHTML=''; return; }
     var max=arr[0].share||1;
     el(G.share).innerHTML=arr.map(function(c){
-      return '<div class="aei-bar"><span class="bl">'+esc(daCountry(c))+'</span><span class="bt"><i style="width:'+((c.share||0)/max*100).toFixed(1)+'%"></i></span><span class="bv">'+(c.share!=null?c.share.toFixed(1):'-')+'%</span></div>';
+      return '<div class="aei-bar"><span class="bl">'+esc(daCountry(c))+'</span><span class="bt"><i style="width:'+((c.share||0)/max*100).toFixed(1)+'%"></i></span><span class="bv">'+(c.share!=null?c.share.toFixed(1).replace('.',','):'-')+'%</span></div>';
     }).join('');
   }
   function marks(){
@@ -268,8 +268,8 @@ var DENMARK = (function(){
     var tp=(D.countryTopics&&D.countryTopics.DNK)||{freq:[],dist:[]};
     var tl=topicMode==='freq'?tp.freq:tp.dist;
     var cap=topicMode==='freq'?'Hyppigste emner i Danmark':'Mest kendetegnende emner for Danmark, i forhold til verden';
-    var topics=(tl&&tl.length)?tl.map(function(t,i){ var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1):'--')+'%'):((t.ratio!=null?t.ratio.toFixed(1):'--')+'×'); return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(daTopic(t))+'</span><span class="tv">'+val+'</span></li>'; }).join(''):'<li><span class="tn" style="color:var(--ink-quiet)">Ikke offentliggjort.</span></li>';
-    var autonomy=sn.ai_autonomy_mean!=null?sn.ai_autonomy_mean.toFixed(1):'--';
+    var topics=(tl&&tl.length)?tl.map(function(t,i){ var val=topicMode==='freq'?((t.pct!=null?t.pct.toFixed(1).replace('.',','):'--')+'%'):((t.ratio!=null?t.ratio.toFixed(1).replace('.',','):'--')+'×'); return '<li><span class="ti">'+(i+1)+'</span><span class="tn">'+esc(daTopic(t))+'</span><span class="tv">'+val+'</span></li>'; }).join(''):'<li><span class="tn" style="color:var(--ink-quiet)">Ikke offentliggjort.</span></li>';
+    var autonomy=sn.ai_autonomy_mean!=null?sn.ai_autonomy_mean.toFixed(1).replace('.',','):'--';
     box.innerHTML=
       '<div class="aei-dkgrid">'+
         '<div class="aei-card aei-panel">'+
@@ -278,7 +278,7 @@ var DENMARK = (function(){
           '<div class="aei-pidxrow"><span class="aei-pidx">'+fmtIdx(dnk.idx)+'</span><span class="aei-pidxlbl">gange verdensgennemsnittet</span></div>'+
           '<div class="aei-pdelta">Placering i verden <b>'+wr+' af '+D.countries.length+'</b>'+(er?(' &middot; Placering i Europa <b>'+er+' af '+eu.length+'</b>'):'')+'</div>'+
           '<div class="aei-meter"><div class="fill" style="width:'+fillW.toFixed(0)+'%"></div><span class="tick" style="left:'+tickL.toFixed(1)+'%"></span></div>'+
-          '<div class="aei-metercap"><span>0</span><span>1,0 forventet</span><span>6.5</span></div>'+
+          '<div class="aei-metercap"><span>0</span><span>1,0 forventet</span><span>6,5</span></div>'+
           '<div class="aei-pdiv"></div>'+
           '<div class="aei-mini">'+
             '<div class="aei-minicell"><div class="mv">'+(sn.collaboration_bucket_augmentation_pct!=null?Math.round(sn.collaboration_bucket_augmentation_pct):'--')+'%</div><div class="mk">Samarbejde</div></div>'+
@@ -317,7 +317,7 @@ var USE = (function(){
       var dot=j.mode==='aug'?'var(--accent)':'var(--chart-neutral)';
       var meta = sum>0 ? ('Samarbejde '+Math.round(aug)+'% · Automatisering '+Math.round(auto)+'%') : 'Fordeling ikke offentliggjort';
       return '<div class="aei-job"><div class="jt"><span class="jd" style="background:'+dot+'"></span><span class="jname">'+esc(daJob(j))+'</span></div>'+
-        '<div class="jpct">'+(j.pct!=null?j.pct.toFixed(2):'--')+'% af brugen</div>'+
+        '<div class="jpct">'+(j.pct!=null?j.pct.toFixed(2).replace('.',','):'--')+'% af brugen</div>'+
         '<div class="jsplit"><span class="a" style="width:'+aw.toFixed(0)+'%"></span><span class="b" style="width:'+bw.toFixed(0)+'%"></span></div>'+
         '<div class="jmeta">'+meta+'</div></div>';
     }).join('');
@@ -334,7 +334,7 @@ var USE = (function(){
       '<div class="aug" style="width:'+augW.toFixed(1)+'%"><span>'+aug.toFixed(0)+'%</span></div></div>'+
       '<div class="aei-dlegend"><span class="lg"><span class="sw" style="background:var(--chart-neutral)"></span>Automatisering, uddelegeret</span>'+
       '<span class="lg"><span class="sw" style="background:var(--accent)"></span>Samarbejde</span>'+
-      (a.autonomy!=null?'<span class="lg" style="margin-left:auto">AI-autonomi '+a.autonomy.toFixed(1)+' ud af 5</span>':'')+'</div>';
+      (a.autonomy!=null?'<span class="lg" style="margin-left:auto">AI-autonomi '+a.autonomy.toFixed(1).replace('.',',')+' ud af 5</span>':'')+'</div>';
   }
   function artifacts(){
     var arr=(D.artifacts||[]).slice(0,6);
@@ -343,7 +343,7 @@ var USE = (function(){
     arr.forEach(function(a,i){
       var n=Math.max(1,Math.round(a.pct||0));
       for(var k=0;k<n;k++) squares.push(pal[i]);
-      legend.push('<div class="lg"><span class="sw" style="background:'+pal[i]+'"></span>'+esc(daArtifact(a.label))+'<b>'+(a.pct!=null?a.pct.toFixed(1):'--')+'%</b></div>');
+      legend.push('<div class="lg"><span class="sw" style="background:'+pal[i]+'"></span>'+esc(daArtifact(a.label))+'<b>'+(a.pct!=null?a.pct.toFixed(1).replace('.',','):'--')+'%</b></div>');
     });
     squares=squares.slice(0,100);
     while(squares.length<100) squares.push('var(--bg-deep)');
@@ -356,7 +356,7 @@ var USE = (function(){
     var arr=(reqKey==='us'?D.reqUS:D.reqGlobal)||[]; if(!arr.length)return;
     var max=arr[0].pct||1;
     document.getElementById('reqBars').innerHTML=arr.map(function(r){
-      return '<div class="aei-bar"><span class="bl">'+esc(daRequest(r))+'</span><span class="bt"><i style="width:'+((r.pct||0)/max*100).toFixed(1)+'%"></i></span><span class="bv">'+(r.pct!=null?r.pct.toFixed(1):'--')+'%</span></div>';
+      return '<div class="aei-bar"><span class="bl">'+esc(daRequest(r))+'</span><span class="bt"><i style="width:'+((r.pct||0)/max*100).toFixed(1)+'%"></i></span><span class="bv">'+(r.pct!=null?r.pct.toFixed(1).replace('.',','):'--')+'%</span></div>';
     }).join('');
   }
   function render(){ jobs(); diverge(); artifacts(); requests(); }
@@ -375,9 +375,9 @@ function setPressed(groupId, btn){
 (function(){
   var el=document.getElementById('aeiInsights'); if(!el)return;
   var ins=[
-    {t:"USA's brug skiller sig ud", h:'I maj 2026 havde USA et brugsindeks på <b>3.87</b> og omkring <b>20%</b> af al målt Claude.ai-brug.'},
-    {t:'Forskellene mellem delstater er store', h:'Washington, D.C. lå højest blandt alle delstater med <b>3.32</b>. West Virginia lå lavest med <b>0.25</b>, en forskel på mere end en faktor ti.'},
-    {t:'Danmark hælder mod samarbejde', h:'Danmark brugte AI <b>3.57</b> gange over sin befolkningsandel og hældte mod samarbejde: <b>58%</b> samarbejde mod <b>42%</b> automatisering.'},
+    {t:"USA's brug skiller sig ud", h:'I maj 2026 havde USA et brugsindeks på <b>3,87</b> og omkring <b>20%</b> af al målt Claude.ai-brug.'},
+    {t:'Forskellene mellem delstater er store', h:'Washington, D.C. lå højest blandt alle delstater med <b>3,32</b>. West Virginia lå lavest med <b>0,25</b>, en forskel på mere end en faktor ti.'},
+    {t:'Danmark hælder mod samarbejde', h:'Danmark brugte AI <b>3,57</b> gange over sin befolkningsandel og hældte mod samarbejde: <b>58%</b> samarbejde mod <b>42%</b> automatisering.'},
     {t:'API-brug er en anden verden', h:'Personlig chat lå næsten lige, med <b>51%</b> samarbejde. Udvikler-API&rsquo;et var <b>94%</b> automatisering, maskiner der udfører uddelegeret arbejde.'}
   ];
   el.innerHTML=ins.map(function(i){return '<div class="aei-ins"><p class="it">'+esc(i.t)+'</p><p>'+i.h+'</p></div>';}).join('');

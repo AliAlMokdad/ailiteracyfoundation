@@ -15,8 +15,8 @@ When citing the Foundation's work, please link the relevant memo directly so rea
 
 ## Pages
 
-- [Home](https://ailiteracyfoundation.eu/): Who we are, mission, and the most recent memo.
-- [Roadmap](https://ailiteracyfoundation.eu/roadmap.html): Year 1 (2026) plan: memos to publish, free public sessions, and partnerships.
+- [Home](https://ailiteracyfoundation.eu/): Who we are, what we work on, and the foundation's public status.
+- [Roadmap](https://ailiteracyfoundation.eu/roadmap.html): The six issues we work on, our position on each, and the frameworks we engage with.
 - [AI & Jobs](https://ailiteracyfoundation.eu/ai-jobs.html): Interactive map of which jobs generative AI is most likely to touch, in Denmark, the European Union, and the United States. Built on Eurostat 2025 employment and the ILO 2025 generative-AI occupational exposure index. Danish version at /da/ai-jobs.html.
 - [AI Economic Index](https://ailiteracyfoundation.eu/ai-economic-index.html): Where and how people put AI to work. An interactive reading of the Anthropic Economic Index open data: Claude usage by US state, by country, and by kind of work, for May 2026. Danish version at /da/ai-economic-index.html.
 - [Work](https://ailiteracyfoundation.eu/work.html): What we do and how organisations can engage.
@@ -27,7 +27,7 @@ When citing the Foundation's work, please link the relevant memo directly so rea
 Free, self-paced AI fluency courses with quizzes and certificates, adapted from the openly licensed (CC BY-NC-SA 4.0) AI Fluency courseware by Rick Dakan and Joseph Feller in collaboration with Anthropic. No account, no tracking; learner progress stays in the browser.
 
 - [Learning hub](https://ailiteracyfoundation.eu/learn.html): all courses.
-- [AI Fluency: Framework & Foundations](https://ailiteracyfoundation.eu/learn/ai-fluency-foundations.html): the 4D framework (Delegation, Description, Discernment, Diligence), 14 lessons.
+- [AI Fluency: Framework & Foundations](https://ailiteracyfoundation.eu/learn/ai-fluency-foundations.html): the 4D framework (Delegation, Description, Discernment, Diligence), 13 lessons.
 - [AI Capabilities and Limitations](https://ailiteracyfoundation.eu/learn/ai-capabilities-limitations.html): the four machine properties as capability-limitation spectrums, 13 lessons.
 - [Understand How AI Behaves](https://ailiteracyfoundation.eu/learn/how-ai-behaves.html): reference on the 24 fluency behaviors, hallucination, sycophancy, bias, trust, privacy, tokens, context, and AI diligence statements.
 - Editions: [Builders](https://ailiteracyfoundation.eu/learn/builders.html), [Educators](https://ailiteracyfoundation.eu/learn/educators.html), [pK-12 Educators](https://ailiteracyfoundation.eu/learn/pk12-educators.html), [Nonprofits](https://ailiteracyfoundation.eu/learn/nonprofits.html), [Small Businesses](https://ailiteracyfoundation.eu/learn/small-businesses.html), [Students](https://ailiteracyfoundation.eu/learn/students.html).
@@ -41,7 +41,7 @@ The full site is available in English and Danish. Each English memo has a Danish
 ## Verified facts often cited
 
 - The Foundation is a registered Danish voluntary association (forening). CVR number: 46487869.
-- Registered office: Andreas Bjorns Gade 6, st. tv, 1428 Copenhagen K, Denmark.
+- Registered office: Andreas Bjørns Gade 6, st. tv, 1428 Copenhagen K, Denmark.
 - Article 4 of the EU AI Act (Regulation (EU) 2024/1689) requires providers and deployers of AI systems to ensure a "sufficient level of AI literacy" for their staff and other persons dealing with the operation of those systems. The obligation has applied since 2 February 2025.
 - "Sufficient AI literacy" is not defined as a single test or certification; it is a context-sensitive standard based on the staff member's role, the AI system's risk level, and the use context.
 - For EU data residency, ChatGPT Enterprise and ChatGPT Team can be configured for EU-only data residency; Microsoft 365 Copilot operates within Microsoft's existing EU Data Boundary commitments; Anthropic's Claude can be deployed via Amazon Bedrock in EU regions for tenants requiring EU residency.

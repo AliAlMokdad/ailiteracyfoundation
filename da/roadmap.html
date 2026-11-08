@@ -29,8 +29,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=polish7">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=polish8">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 <link rel="mask-icon" href="/favicon.svg?v=2" color="#B05433">
@@ -69,7 +69,6 @@
 }
 </script>
 
-<meta name="google-site-verification" content="VERIFY_CODE">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELL147GRCZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -613,7 +612,7 @@
             <li><a href="#issue-1">Alignment og sikkerhed</a></li>
             <li><a href="#issue-2">Gennemsigtighed og forklarbarhed</a></li>
             <li><a href="#issue-3">AI-dannelse som offentligt gode</a></li>
-            <li><a href="#issue-4">Asymmetrien om sædet</a></li>
+            <li><a href="#issue-4">Hvem der har en plads ved bordet</a></li>
             <li><a href="#issue-5">Udrulning i højrisiko-sammenhænge</a></li>
             <li><a href="#issue-6">Koncentration af kapacitet</a></li>
             </ol>
@@ -641,7 +640,7 @@
         </li>
         <li id="issue-4">
           <div class="rm-item-body">
-            <h3>Asymmetrien om sædet</h3>
+            <h3>Hvem der har en plads ved bordet</h3>
             <p>Det meste AI er designet af udviklere, der ser ned gennem deres produkters tragt. De mennesker, AI berører, herunder ansøgere, klagere, patienter, fordrevne familier og frontmedarbejdere, har ingen plads ved bordet, hvor systemet bygges. Vi arbejder med den asymmetri.</p>
           </div>
         </li>
@@ -728,7 +727,7 @@
       <div class="rm-frame-band">
         <div class="rm-frame-band__head">
           <div class="rm-label">Del tre. Rammeværker vi engagerer os i</div>
-          <h2>Aligneret med de største rammeværker for ansvarlig AI. Specifik i vores bidrag.</h2>
+          <h2>I tråd med de største rammeværker for ansvarlig AI. Specifik i vores bidrag.</h2>
         </div>
         <div class="rm-frame-band__lede">
           <p>Foreningens arbejde er en del af en bredere samtale. Vi engagerer os i de største internationale rammeværker og reguleringer, der former ansvarlig AI: EU's AI-forordning, persondataforordningen (GDPR), OECD's AI-principper, UNESCO's anbefaling om AI-etik og Europarådets konvention om kunstig intelligens.</p>
@@ -764,14 +763,14 @@
 
       <p class="rm-frame-close">Vores bidrag er at bringe disse forpligtelser ind i en specifik kontekst: dansk civilsamfund, den offentlige sektor, små og mellemstore organisationer og de fællesskaber, der berøres mest af AI-udrulning. Vi oversætter brede principper til praktiske, brugbare forpligtelser for organisationer og mennesker, der ikke har direkte adgang til de rum, hvor standarderne skrives.</p>
 
-      <p class="rm-pullout">"Vi har ikke til hensigt at gentage de store institutioners arbejde. Vi har til hensigt at oversætte det til noget, som de, der er nedstrøms for det, kan bruge."</p>
+      <p class="rm-pullout">“Vi har ikke til hensigt at gentage de store institutioners arbejde. Vi har til hensigt at oversætte det til noget, som de, der er nedstrøms for det, kan bruge.”</p>
     </div>
   </section>
 
   <section class="section" data-reveal>
     <div class="rm-wrap">
       <div class="rm-close">
-        <h2>Hvad dette ser ud som i praksis.</h2>
+        <h2>Sådan ser det ud i praksis.</h2>
         <p class="rm-close-lede">Køreplanen ovenfor bliver til arbejde. Arbejdet er det, vi gør.</p>
         <div class="hero-cta">
         <a href="work.html" class="btn btn--primary">Se det vi gør <span class="arrow">→</span></a>
@@ -835,16 +834,17 @@
     });
   }
 </script>
-<script src="../motion.js?v=polish1" defer></script>
+<script src="../motion.js?v=polish2" defer></script>
 
 <!-- Roadmap hero globe: embedded geometry (no CDN) + scoped, self-contained renderer -->
-<script src="../roadmap-globe-geo.js"></script>
+<script src="../roadmap-globe-geo.js?v=2" defer></script>
 <script>
 /* AI Literacy Foundation roadmap globe (Danish). Scoped to .rmglobe, no globals leak, no external fetch.
    Anthropic-homepage style: the globe travels west to east, zooms out to the whole planet
    mid-travel and zooms into each country as a dense terracotta dot-field, types a short line,
    and holds (longer on Denmark, the home). No political borders. Respects prefers-reduced-motion. */
-(function () {
+// runs after the deferred geometry file, so it no longer holds up the rest of the page
+document.addEventListener('DOMContentLoaded', function () {
   'use strict';
   var root = document.querySelector('.rmglobe');
   if (!root) return;
@@ -1149,7 +1149,7 @@
   }
   window.addEventListener('resize', function () { mobile = (window.innerWidth < 900) || (window.matchMedia && window.matchMedia('(pointer:coarse)').matches); resize(); if (reduce) draw(); }, { passive: true });
   if ('ResizeObserver' in window && stage) { try { new ResizeObserver(function () { resize(); if (reduce) draw(); }).observe(stage); } catch (e) {} }
-})();
+});
 </script>
 
 </body>

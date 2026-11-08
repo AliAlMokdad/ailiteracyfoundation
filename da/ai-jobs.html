@@ -19,11 +19,12 @@
 <meta property="og:image" content="https://ailiteracyfoundation.eu/og-image.png">
 <link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/ai-jobs.html">
 <link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/ai-jobs.html">
+<link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/ai-jobs.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=polish7">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=polish8">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"AI & job","url":"https://ailiteracyfoundation.eu/da/ai-jobs.html","inLanguage":"da","description":"Hvilke job generativ AI mest sandsynligt berører, i Danmark, EU og USA.","isPartOf":{"@type":"WebSite","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"publisher":{"@type":"NonprofitOrganization","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"}}</script>
 <style>
 .aij{margin-top:1.25rem}
@@ -86,7 +87,7 @@
 .aij-panel{position:sticky;top:1rem;background:var(--bg-elev);border:1px solid var(--line);border-radius:12px;padding:1.25rem 1.35rem 1.35rem}
 .aij-panel .ph{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-quiet);margin:0 0 .7rem}
 .aij-panel .ph::before{content:"";width:14px;height:1px;background:var(--accent)}
-.aij-pt{font-family:var(--serif);font-size:1.4rem;line-height:1.16;letter-spacing:-.012em;margin:0 0 1rem;color:var(--ink);text-wrap:balance}
+.aij-pt{font-family:var(--serif);font-weight:500;font-size:1.4rem;line-height:1.16;letter-spacing:-.012em;margin:0 0 1rem;color:var(--ink);text-wrap:balance}
 .aij-panel[data-empty="true"] .aij-pt{color:var(--ink-quiet)}
 .aij-hint{font-family:var(--sans);font-size:var(--fs-sm);color:var(--ink-quiet);line-height:1.55;margin:.25rem 0 0}
 .aij-rows{display:grid;grid-template-columns:auto 1fr;gap:.6rem .9rem;font-size:var(--fs-sm);margin:0}
@@ -210,6 +211,7 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Spring til indhold</a>
 <header class="site-header">
   <div class="site-header__inner">
     <a href="index.html" class="brand">AI Literacy Foundation<sup class="brand-tm" aria-hidden="true">&#8482;</sup></a>
@@ -256,9 +258,9 @@
 <div class="aij-stats" id="aijStats"></div>
 <div class="aij-grid">
   <div class="aij-map" id="aijMap" role="group" aria-label="Stillinger med størrelse efter beskæftigelse og farve efter AI-udsathed"></div>
-  <aside class="aij-panel" data-empty="true">
+  <div class="aij-panel" data-empty="true">
     <p class="ph">Valgt stilling</p>
-    <h3 class="aij-pt" id="aijPt">Vælg en stilling</h3>
+    <p class="aij-pt" id="aijPt">Vælg en stilling</p>
     <p class="aij-hint" id="aijHint">Peg på eller vælg en firkant for at se dens AI-udsathed, hvor mange der har den, og dens andel af arbejdsstyrken. Varmere felter er mere udsatte.</p>
     <dl class="aij-rows" id="aijRows" hidden>
       <dt>AI-udsathed</dt><dd><span class="aij-chip" id="aijPe"></span></dd>
@@ -266,7 +268,7 @@
       <dt>Andel af arbejdsstyrken</dt><dd id="aijPs"></dd>
     </dl>
     <p class="aij-extra" id="aijExtra" hidden></p>
-  </aside>
+  </div>
 </div>
 <p class="aij-phint">Tryk på en stilling for detaljer. Sorteret fra mest til mindst udsat.</p>
 <div class="aij-plist" id="aijPlist" aria-label="Stillinger med størrelse efter beskæftigelse og farve efter AI-udsathed"></div>
@@ -589,6 +591,6 @@ let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(rend
 
 </script>
 <script>const toggle=document.getElementById('navToggle'),nav=document.getElementById('nav');if(toggle&&nav){toggle.addEventListener('click',()=>{const o=nav.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(o));});document.addEventListener('click',e=>{if(!nav.contains(e.target)&&!toggle.contains(e.target)&&nav.classList.contains('is-open')){nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}});}</script>
-<script src="../motion.js?v=polish1" defer></script>
+<script src="../motion.js?v=polish2" defer></script>
 </body>
 </html>

@@ -62,6 +62,8 @@ img, svg { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 button { background: none; border: none; cursor: pointer; font: inherit; color: inherit; }
 ul, ol { list-style: none; }
+/* Bold maps to the loaded semibold (600) so the browser never fakes a heavier serif. */
+strong, b { font-weight: 600; }
 
 body {
   font-family: var(--serif);
@@ -140,31 +142,6 @@ body {
 }
 .brand:hover { opacity: 0.7; }
 
-/* Brand pulse mark */
-.brand .dot {
-  position: relative;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  flex-shrink: 0;
-}
-.brand .dot::before,
-.brand .dot::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1px solid var(--accent);
-  opacity: 0;
-  animation: signal 2.8s var(--ease-out) infinite;
-}
-.brand .dot::after { animation-delay: 1.4s; }
-@keyframes signal {
-  0% { transform: scale(1); opacity: 0.7; }
-  100% { transform: scale(3.2); opacity: 0; }
-}
-
 .nav { display: flex; align-items: center; gap: 2rem; }
 .nav a {
   font-family: var(--sans);
@@ -172,6 +149,7 @@ body {
   font-weight: 400;
   color: var(--ink-soft);
   position: relative;
+  white-space: nowrap;
   transition: color 200ms var(--ease);
 }
 .nav a::after {
@@ -246,7 +224,13 @@ body {
   .site-footer__grid a[href$="ai-jobs.html"] { display: none !important; }
 }
 
-@media (max-width: 940px) {
+/* The full desktop row (brand, seven tabs, Support us) needs about 1210px in English, so
+   below 1181px the menu folds into the toggle instead of wrapping each tab onto two or three
+   lines (seen at 1024px). Between 1181px and 1279px the tabs sit a little closer. */
+@media (min-width: 1181px) and (max-width: 1279px) {
+  .nav { gap: 1.5rem; }
+}
+@media (max-width: 1180px) {
   .site-header__inner { padding: 0.75rem var(--gutter); gap: 0.75rem; }
   .nav-toggle { display: inline-flex; }
   .nav {
@@ -275,7 +259,7 @@ body {
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--line-soft);
   }
-  .nav a:last-child { border-bottom: none; }
+  .nav > a:last-of-type { border-bottom: none; }
   .nav a::after { display: none; }
   .cta-donate { padding: 0.55rem 1rem; }
   /* Language toggle injected by motion.js into the mobile nav */
@@ -314,7 +298,7 @@ body {
   }
 }
 /* Hide injected mobile lang toggle on desktop (it lives inside the .nav which is desktop-visible too) */
-@media (min-width: 941px) {
+@media (min-width: 1181px) {
   .nav-lang-mobile { display: none !important; }
 }
 
@@ -479,6 +463,10 @@ body {
   height: 1px;
   background: var(--accent);
 }
+
+/* Long Danish compounds ("nonprofitorganisationer") must never push a heading past a phone
+   screen; this only breaks a word that cannot fit a line on its own. */
+h1, h2, h3, h4 { overflow-wrap: break-word; }
 
 h2 {
   font-family: var(--serif);
@@ -976,6 +964,8 @@ a.inline-link:hover {
 }
 .site-footer__heading {
   font-size: var(--fs-xs);
+  line-height: 1.3;
+  max-width: none;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1243,7 +1233,9 @@ a.inline-link:hover {
   cursor: pointer;
   opacity: 0;
   transform: translateY(12px) scale(0.96);
-  transition: opacity 320ms var(--ease), transform 320ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease), box-shadow 220ms var(--ease);
+  /* visibility keeps the hidden button out of the keyboard order; it switches off only after the fade */
+  transition: opacity 320ms var(--ease), transform 320ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease), box-shadow 220ms var(--ease), visibility 0s linear 320ms;
+  visibility: hidden;
   z-index: 95;
   box-shadow: 0 4px 14px -4px rgba(21, 20, 15, 0.18);
   pointer-events: none;
@@ -1253,6 +1245,8 @@ a.inline-link:hover {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;
+  visibility: visible;
+  transition: opacity 320ms var(--ease), transform 320ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease), box-shadow 220ms var(--ease), visibility 0s;
 }
 .scroll-top:hover {
   background: var(--accent);
@@ -1386,6 +1380,9 @@ a.inline-link:hover {
   transition: opacity 360ms var(--ease-out), transform 360ms var(--ease-out);
   will-change: opacity, transform;
 }
+.rotator--fluid {
+  transition: opacity 360ms var(--ease-out), transform 360ms var(--ease-out), width 420ms var(--ease-in-out);
+}
 .rotator.is-out {
   opacity: 0;
   transform: translateY(-10px);
@@ -1394,6 +1391,11 @@ a.inline-link:hover {
   opacity: 0;
   transform: translateY(10px);
   transition: none;
+}
+/* While the next word waits unseen, only the width moves; it fades in once the slot fits.
+   Must come after .rotator.is-in, which has the same weight. */
+.rotator--fluid.is-in {
+  transition: width 420ms var(--ease-in-out);
 }
 @media (prefers-reduced-motion: reduce) {
   .rotator, .rotator.is-out, .rotator.is-in { opacity: 1; transform: none; transition: none; }
@@ -1451,10 +1453,17 @@ a.inline-link:hover {
   }
   [data-reveal] { opacity: 1; transform: none; }
   .hero-fade { opacity: 1; transform: none; animation: none; }
-  .brand .dot::before,
-  .brand .dot::after,
   .hero-mark .signal::before { animation: none; box-shadow: none; }
 }
+
+/* Without JavaScript nothing would ever reveal, so show everything as written. */
+@media (scripting: none) {
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* An element marked hidden stays hidden, whatever display rule a component sets
+   (the AI & Jobs stats rows showed empty on load because display:grid outranked it). */
+[hidden] { display: none !important; }
 
 /* PRINT */
 @media print {
@@ -1875,6 +1884,7 @@ a.inline-link:hover {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
+    gap: 0.3em; /* flex drops the space before the arrow in "Contact form →" */
     line-height: 1.35;
   }
   .site-footer ul li { margin-bottom: 0; }

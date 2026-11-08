@@ -35,8 +35,8 @@
 }</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../styles.css?v=polish7">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css?v=polish8">
 <link rel="stylesheet" href="../../learn/learn.css?v=50">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
@@ -156,7 +156,7 @@
       <h2>Hvad vi mener med AI</h2>
       <p>Det meste AI i verden er ikke generativt. Spamfiltre, anbefalingssystemer og svindeldetektion er alle AI, og ingen af dem skriver tekst. Dette kursus handler om transformer-baserede sprogmodeller: systemer, der producerer nyt indhold ét token ad gangen.</p>
       <p>Kursets centrale redskab: hver af de fire egenskaber er et <strong>spektrum</strong> fra evne til begrænsning, og jo længere til højre din opgave sidder, jo mere bør du verificere og kompensere.</p>
-      <div class="table-scroll"><table>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Hvad vi mener med AI"><table>
         <tr><th>Egenskab</th><th>Evnezone</th><th>Begrænsningszone</th></tr>
         <tr><td><strong>Næste-token-forudsigelse</strong></td><td>Velkendte veje: opsummer, omformater, almindelige koncepter</td><td>Nyt område, sparsomme mønstre, hvor som helst "sandt" skal adskilles fra "lyder sandt"</td></tr>
         <tr><td><strong>Viden</strong></td><td>Hyppige, konsistente, velrepræsenterede emner</td><td>Sjældne, efter modellens vidensgrænse, nicheprægede, lokale eller omstridte emner</td></tr>
@@ -303,7 +303,7 @@
       <div class="exercise"><span class="furniture">Prøv det: tre tests</span>
         <ol>
           <li>Giv en præcis, verificerbar formatinstruktion ("præcis fem punkter, hvert på under tolv ord"). Dette er inden for modellens kapacitet, og den bør ramme plet.</li>
-          <li>Giv en opgave med fire eller fem afhængige trin direkte, og derefter igen med et kontrolpunkt efter trin to ("stop og vis mig, før du fortsætter"). Sammenlign fejlprocenterne.</li>
+          <li>Giv en opgave med fire eller fem afhængige trin direkte, og derefter igen med et kontrolpunkt efter trin to ("stop og vis mig, før du fortsætter"). Sammenlign, hvor ofte den fejler.</li>
           <li>Sig "gør dette kortere" alene, og derefter "gør dette kortere; målet er at fastholde en travl leders opmærksomhed på hovedresultatet." Sammenlign, hvad der blev skåret væk.</li>
         </ol>
       </div>
@@ -321,7 +321,7 @@
       <p><strong>Scenarie 1: "Gør den kortere."</strong> Jordan beder om en kortere e-mail. Modellen skærer pligtskyldigt seks sætninger ned til fire: instruktionen er fulgt. Men Jordans virkelige mål var at få en travl leder til at se anmodningen om godkendelse. Den målformulerede version starter med "Har brug for din godkendelse inden fredag" og lader emnelinjen gøre arbejdet. Samme instruktion, forskelligt resultat, fordi målet blev udtalt.</p>
       <p><strong>Scenarie 2: "Gør den mere professionel."</strong> Uden målet griber modellen til stiv formalitet. Med angivelse af målgruppe og kanal omformulerer den budskabet til den person, der faktisk modtager det.</p>
       <p><strong>Scenarie 3: "Tilføj flere detaljer."</strong> Hvert punkt svulmer op til et afsnit: bogstavet er fulgt, dokumentet er blevet dårligere. Det virkelige mål var kun at udvide de punkter, der driver en beslutning.</p>
-      <div class="callout"><span class="furniture">Resuméet, ordret værd at huske</span><p>Hver instruktion har et hul mellem bogstav og ånd. Du lukker det ved at angive målet.</p></div>
+      <div class="callout"><span class="furniture">Resuméet, værd at huske ordret</span><p>Hver instruktion har et hul mellem bogstav og ånd. Du lukker det ved at angive målet.</p></div>
       <div class="takeaways"><span class="furniture">Hovedpointer</span><ul>
         <li>Kortere = fremhæv anmodningen. Mere professionel = omformuler til målgruppen. Flere detaljer = uddyb det, der driver beslutningen.</li>
         <li>Modellen kan kun se ordene; giv den målet bag dem.</li>
@@ -510,7 +510,7 @@
 <footer class="site-footer">
   <div class="wrap--wide">
     <div class="site-footer__legal">
-      <div>© 2026 AI Literacy Foundation&#8482;. Alle rettigheder forbeholdt. · CVR 46487869</div>
+      <div>© 2026 AI Literacy Foundation&#8482;. Kursustekst delt under CC BY-NC-SA 4.0. · CVR 46487869</div>
       <div class="lang-toggle"><a href="../../learn/ai-capabilities-limitations.html">EN</a><a href="ai-capabilities-limitations.html" class="active">DA</a></div>
     </div>
   </div>
@@ -526,7 +526,7 @@
     });
   }
 </script>
-<script src="../../learn/learn.js?v=49" defer></script>
+<script src="../../learn/learn.js?v=50" defer></script>
 
 </body>
 </html>

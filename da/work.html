@@ -63,13 +63,12 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=polish7">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=polish8">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 <link rel="mask-icon" href="/favicon.svg?v=2" color="#B05433">
 
-<meta name="google-site-verification" content="VERIFY_CODE">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELL147GRCZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -117,7 +116,7 @@
   <section class="section" data-reveal>
     <div class="wrap">
       <div class="section-label">Programmer</div>
-      <h2>Seks linjer arbejde, designet til at være brugbare.</h2>
+      <h2>Seks arbejdsområder, designet til at være brugbare.</h2>
 
       <div class="services">
 
@@ -198,7 +197,7 @@
       <h3 style="margin-top:2.5rem;margin-bottom:1.25rem;" id="founder">Stifteren</h3>
       <div class="founder-block">
         <div class="founder-portrait-wrap">
-          <img class="founder-portrait" src="/ali-al-mokdad.png" alt="Portræt af Ali Al Mokdad, stifter af AI Literacy Foundation" width="905" height="654" loading="lazy">
+          <img class="founder-portrait" src="/ali-al-mokdad-portrait.jpg" alt="Portræt af Ali Al Mokdad, stifter af AI Literacy Foundation" width="480" height="480" loading="lazy">
         </div>
         <div class="prose">
           <p><strong>Ali Al Mokdad</strong> er stifter og eksekutiv formand for AI Literacy Foundation. Han er en strategisk seniorleder med omfattende tværfunktionel erfaring og en dokumenteret track record for at levere organisatorisk transformation i komplekse miljøer, herunder fjerntliggende lokationer og konfliktramte regioner. Han har haft lederstillinger hos internationale ikke-statslige organisationer, FN-agenturer, Den Internationale Føderation af Røde Kors- og Røde Halvmåne-selskaber samt donorinstitutioner og drevet reformer inden for governance, drift og institutionel strategi. Hans ekspertise omfatter governance, organisationspsykologi og strategisk nonprofit-ledelse.</p>
@@ -326,10 +325,10 @@
 
   if (location.search.indexOf('send=error') >= 0) {
     var err = document.getElementById('cf-error');
-    if (err) { err.classList.add('error'); err.scrollIntoView({behavior:'smooth',block:'center'}); }
+    if (err) { err.classList.add('error'); err.scrollIntoView({behavior:(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth',block:'center'}); }
   }
 </script>
-<script src="../motion.js?v=polish1" defer></script>
+<script src="../motion.js?v=polish2" defer></script>
 
 </body>
 </html>

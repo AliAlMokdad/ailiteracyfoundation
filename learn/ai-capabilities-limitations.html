@@ -30,8 +30,8 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=polish7">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=polish8">
 <link rel="stylesheet" href="learn.css?v=50">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 </head>
@@ -151,7 +151,7 @@
       <h2>What we mean by AI</h2>
       <p>Most AI in the world is not generative. Spam filters, recommendation engines, and fraud detection are all AI, and none of them write text. This course is about transformer-based language models: systems that produce new content one token at a time.</p>
       <p>The course's central device: each of the four properties is a <strong>spectrum</strong> from capability to limitation, and the further right your task sits, the more you should verify and compensate.</p>
-      <div class="table-scroll"><table>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="What we mean by AI"><table>
         <tr><th>Property</th><th>Capability zone</th><th>Limitation zone</th></tr>
         <tr><td><strong>Next-token prediction</strong></td><td>Well-worn paths: summarize, reformat, common concepts</td><td>Novel territory, sparse patterns, anywhere "true" must be separated from "sounds true"</td></tr>
         <tr><td><strong>Knowledge</strong></td><td>Frequent, consistent, well-represented topics</td><td>Rare, post-cutoff, niche, local, or contested topics</td></tr>
@@ -211,7 +211,7 @@
       <p>The best way to demystify next-token prediction is to build the simplest version of it: a Markov chain, invented in 1906. Take five text messages from a friend. Tally which word follows which, turning the tallies into a table. Normalize each row into probabilities. Now generate: start with a word, look up its row, and <strong>sample</strong> the next word from the distribution. Repeat.</p>
       <p>The sampling choices you can make map directly to real model parameters. Always take the highest-probability word: greedy decoding, repetitive and dull. Sample from the distribution as it stands: temperature 1. Sharpen it so the likely words dominate, or flatten it so unlikely ones get a real chance: lower or raise the temperature. Keep the smallest set of words whose probabilities reach or exceed p and sample from those: top-p, also called nucleus sampling. Keep only the k most likely words: top-k.</p>
       <div class="callout"><span class="furniture">The bridge</span><p>Your Markov chain reads the last word, looks up one row, and samples. A modern language model reads what fits in its context window, runs it through billions of parameters, and then picks from the resulting distribution the same way, by sampling or by taking the most likely token. Training is radically different, but the final step, choose the next token from a probability distribution, is the same move. The model trades the explainability of tallied words for vastly more context.</p></div>
-      <p>Historical anchors: Markov, 1906. Word-pair models behind predictive phone keyboards. Recurrent networks were doing language modelling by 2010 and sequence-to-sequence translation by 2014. Transformers arrived in 2017 and changed everything.</p>
+      <p>Historical anchors: Markov, 1906. Word-pair models behind predictive phone keyboards. Recurrent networks were doing language modeling by 2010 and sequence-to-sequence translation by 2014. Transformers arrived in 2017 and changed everything.</p>
       <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
         <li>Generation selects a token from a probability distribution, in a 1906 Markov chain and in today's models alike, by sampling or by taking the most likely one.</li>
         <li>Temperature, top-p, and top-k are just different sampling rules on that distribution.</li>
@@ -316,7 +316,7 @@
       <p><strong>Scenario 1: "Make it shorter."</strong> Jordan asks for a shorter email. The model dutifully cuts six sentences to four: instruction honored. But Jordan's real goal was getting a skimming executive to see the sign-off request. The goal-stated version leads with "Need your sign-off by Friday" and makes the subject line do work. Same instruction, different outcome, because the goal was said aloud.</p>
       <p><strong>Scenario 2: "Make it more professional."</strong> Without the goal, the model reaches for stiff formality. With the audience and channel stated, it reframes the message for the person actually receiving it.</p>
       <p><strong>Scenario 3: "Add more detail."</strong> Every bullet balloons into a paragraph: letter honored, document worse. The real goal was expanding only the points that drive a decision.</p>
-      <div class="callout"><span class="furniture">The summary, verbatim worth keeping</span><p>Every instruction has a gap between letter and spirit. You close it by stating the goal.</p></div>
+      <div class="callout"><span class="furniture">The summary worth keeping verbatim</span><p>Every instruction has a gap between letter and spirit. You close it by stating the goal.</p></div>
       <div class="takeaways"><span class="furniture">Key takeaways</span><ul>
         <li>Shorter = surface the ask. More professional = reframe for the audience. More detail = expand what drives the decision.</li>
         <li>The model can only see the words; give it the goal behind them.</li>
@@ -505,7 +505,7 @@
 <footer class="site-footer">
   <div class="wrap--wide">
     <div class="site-footer__legal">
-      <div>© 2026 AI Literacy Foundation&#8482;. All rights reserved. · CVR 46487869</div>
+      <div>© 2026 AI Literacy Foundation&#8482;. Course text shared under CC BY-NC-SA 4.0. · CVR 46487869</div>
       <div class="lang-toggle"><a href="ai-capabilities-limitations.html" class="active">EN</a><a href="../da/learn/ai-capabilities-limitations.html">DA</a></div>
     </div>
   </div>
@@ -521,7 +521,7 @@
     });
   }
 </script>
-<script src="learn.js?v=49" defer></script>
+<script src="learn.js?v=50" defer></script>
 
 </body>
 </html>

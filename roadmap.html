@@ -28,8 +28,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=polish7">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=polish8">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 <link rel="mask-icon" href="/favicon.svg?v=2" color="#B05433">
@@ -67,7 +67,6 @@
 }
 </script>
 
-<meta name="google-site-verification" content="VERIFY_CODE">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELL147GRCZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -762,7 +761,7 @@
   
       <p class="rm-frame-close">Our contribution is to bring these commitments into a specific context: Danish civil society, the public sector, small and medium-sized organizations, and the communities most affected by AI deployment. We translate broad principles into practical, usable obligations for organizations and people who do not have direct access to the rooms where standards are written.</p>
   
-      <p class="rm-pullout">"We do not aim to replicate the work of large institutions. We aim to translate it into something usable for those who are downstream of it."</p>
+      <p class="rm-pullout">“We do not aim to replicate the work of large institutions. We aim to translate it into something usable for those who are downstream of it.”</p>
     </div>
   </section>
 
@@ -833,16 +832,17 @@
     });
   }
 </script>
-<script src="motion.js?v=polish1" defer></script>
+<script src="motion.js?v=polish2" defer></script>
 
 <!-- Roadmap hero globe: embedded geometry (no CDN) + scoped, self-contained renderer -->
-<script src="roadmap-globe-geo.js"></script>
+<script src="roadmap-globe-geo.js?v=2" defer></script>
 <script>
 /* AI Literacy Foundation roadmap globe. Scoped to .rmglobe, no globals leak, no external fetch.
    Anthropic-homepage style: the globe travels west to east, zooms out to the whole planet
    mid-travel and zooms into each country as a dense terracotta dot-field, types a short line,
    and holds (longer on Denmark, the home). No political borders. Respects prefers-reduced-motion. */
-(function () {
+// runs after the deferred geometry file, so it no longer holds up the rest of the page
+document.addEventListener('DOMContentLoaded', function () {
   'use strict';
   var root = document.querySelector('.rmglobe');
   if (!root) return;
@@ -1149,7 +1149,7 @@
   }
   window.addEventListener('resize', function () { mobile = (window.innerWidth < 900) || (window.matchMedia && window.matchMedia('(pointer:coarse)').matches); resize(); if (reduce) draw(); }, { passive: true });
   if ('ResizeObserver' in window && stage) { try { new ResizeObserver(function () { resize(); if (reduce) draw(); }).observe(stage); } catch (e) {} }
-})();
+});
 </script>
 
 </body>

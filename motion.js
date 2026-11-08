@@ -23,8 +23,9 @@
   var navEl = document.getElementById('nav');
   var navToggle = document.getElementById('navToggle');
   if (navEl && navToggle) {
-    // Inject EN/DA language toggle into the mobile nav (only visible when nav opens on mobile)
-    try {
+    // Inject EN/DA language toggle into the mobile nav (only visible when nav opens on mobile).
+    // Not on the error page: it is served for any missing address, so its "twin" is missing too.
+    if (!document.querySelector('.error-page')) try {
       var path = window.location.pathname;
       var isDa = path.indexOf('/da/') === 0 || path === '/da' || path.indexOf('/da/') !== -1;
       // Compute partner URL: EN <-> DA mirror
@@ -48,6 +49,18 @@
         : '<span class="active" aria-current="page">EN</span><span aria-hidden="true">·</span><a href="' + partnerHref + '">DA</a>';
       navEl.appendChild(langWrap);
     } catch (e) { /* ignore */ }
+
+    // The menu sits before its toggle in the page, so after opening it Tab would skip it.
+    // Move focus to the first item (only for a keyboard press; a tap leaves focus alone).
+    navToggle.setAttribute('aria-controls', navEl.id || 'nav');
+    navToggle.addEventListener('click', function (e) {
+      if (e.detail !== 0) return; // a mouse or touch click; keyboard activation reports 0
+      setTimeout(function () {
+        if (!navEl.classList.contains('is-open')) return;
+        var first = navEl.querySelector('a');
+        if (first) first.focus();
+      }, 0);
+    });
 
     navEl.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
@@ -159,7 +172,7 @@
   }
 
   // ---- Rotating word ----
-  function lockRotatorWidth(el, words) {
+  function measureWords(el, words) {
     var measurer = document.createElement('span');
     var s = getComputedStyle(el);
     measurer.style.position = 'absolute';
@@ -172,13 +185,12 @@
     measurer.style.letterSpacing = s.letterSpacing;
     measurer.style.fontVariant = s.fontVariant;
     document.body.appendChild(measurer);
-    var max = 0;
-    words.forEach(function (w) {
+    var widths = words.map(function (w) {
       measurer.textContent = w;
-      if (measurer.offsetWidth > max) max = measurer.offsetWidth;
+      return Math.ceil(measurer.getBoundingClientRect().width);
     });
     document.body.removeChild(measurer);
-    if (max > 0) el.style.minWidth = Math.ceil(max) + 'px';
+    return widths;
   }
 
   function setupRotator(el) {
@@ -187,18 +199,38 @@
     catch (e) { return; }
     if (!Array.isArray(words) || words.length < 2) return;
 
-    // Lock width to the widest word so layout doesn't reflow on swap
-    // Wait for fonts before measuring so we get accurate width
-    var doLock = function () { lockRotatorWidth(el, words); };
+    // A word at the end of a line keeps the width of the widest word, so nothing reflows on
+    // a swap. A word in the middle of a sentence ("We think in public.") would leave a gap
+    // before the rest of the sentence, so there the width follows each word and the rest of
+    // the line glides to its new place. Measured after the fonts load, again on resize.
+    var after = el.nextSibling;
+    var fluid = !!(after && after.nodeType === 3 && /[^\s.,;:!?]/.test(after.textContent));
+    var widths = null;
+    var i = 0;
+    var doLock = function () {
+      widths = measureWords(el, words);
+      if (fluid) {
+        if (prefersReduced) return;
+        el.classList.add('rotator--fluid');
+        el.style.width = widths[i] + 'px';
+      } else {
+        var max = Math.max.apply(null, widths);
+        if (max > 0) el.style.minWidth = max + 'px';
+      }
+    };
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(doLock);
     } else {
       doLock();
     }
+    var resizeTimer = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(doLock, 150);
+    });
 
     if (prefersReduced) return;
 
-    var i = 0;
     var holdMs = 2400;   // how long each word holds
     var swapMs = 360;    // exit duration
     var started = false;
@@ -210,6 +242,12 @@
         el.textContent = words[i];
         el.classList.remove('is-out');
         el.classList.add('is-in');
+        if (fluid && widths) {
+          // the slot resizes while the new word is still unseen, then the word fades in
+          el.style.width = widths[i] + 'px';
+          setTimeout(function () { el.classList.remove('is-in'); }, 440);
+          return;
+        }
         requestAnimationFrame(function () {
           requestAnimationFrame(function () {
             el.classList.remove('is-in');
