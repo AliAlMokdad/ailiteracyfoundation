@@ -432,4 +432,40 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/memos/05-ai-act-omnibus.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/memos/05-ai-act-omnibus.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/memos/05-ai-act-omnibus.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/memos/05-ai-act-omnibus.html"/>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/memos/05-ai-act-omnibus.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/memos/05-ai-act-omnibus.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/memos/05-ai-act-omnibus.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/memos/05-ai-act-omnibus.html"/>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/memos/06-start-to-end.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/memos/06-start-to-end.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/memos/06-start-to-end.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/memos/06-start-to-end.html"/>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ailiteracyfoundation.eu/da/memos/06-start-to-end.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ailiteracyfoundation.eu/memos/06-start-to-end.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://ailiteracyfoundation.eu/da/memos/06-start-to-end.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ailiteracyfoundation.eu/memos/06-start-to-end.html"/>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
 </urlset>
