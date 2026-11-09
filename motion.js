@@ -370,3 +370,239 @@
     });
   });
 })();
+
+/* Edge field (desktop only).
+   Etched contour lines with stippled shading in the outer margins, never over the
+   reading column. Drifts slowly, flows with scroll, ripples around the cursor.
+   Off on touch, narrow screens, Save-Data and print; one still frame under
+   reduced motion. Self-contained: a failure here cannot affect anything else. */
+(function () {
+  'use strict';
+  try {
+    if (!window.matchMedia || !window.requestAnimationFrame) return;
+    var conn = navigator.connection;
+    if (conn && conn.saveData) return;
+    var mq = window.matchMedia('(min-width: 1100px) and (hover: hover) and (pointer: fine)');
+    var rq = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    /* 2D simplex noise (after Gustavson), seeded so the plate is the same on every visit. */
+    var perm = new Uint8Array(512);
+    var GX = [1, -1, 1, -1, 1, -1, 0, 0], GY = [1, 1, -1, -1, 0, 0, 1, -1];
+    (function () {
+      var p = new Uint8Array(256), i, j, tmp, s = 20260427;
+      for (i = 0; i < 256; i++) p[i] = i;
+      for (i = 255; i > 0; i--) {
+        s = (Math.imul(s, 1664525) + 1013904223) >>> 0;
+        j = s % (i + 1); tmp = p[i]; p[i] = p[j]; p[j] = tmp;
+      }
+      for (i = 0; i < 512; i++) perm[i] = p[i & 255];
+    })();
+    var F2 = 0.5 * (Math.sqrt(3) - 1), G2 = (3 - Math.sqrt(3)) / 6;
+    function noise(xin, yin) {
+      var s = (xin + yin) * F2, i = Math.floor(xin + s), j = Math.floor(yin + s);
+      var t0 = (i + j) * G2, x0 = xin - (i - t0), y0 = yin - (j - t0);
+      var i1 = x0 > y0 ? 1 : 0, j1 = 1 - i1;
+      var x1 = x0 - i1 + G2, y1 = y0 - j1 + G2, x2 = x0 - 1 + 2 * G2, y2 = y0 - 1 + 2 * G2;
+      var ii = i & 255, jj = j & 255, n = 0, g, q;
+      q = 0.5 - x0 * x0 - y0 * y0;
+      if (q > 0) { g = perm[ii + perm[jj]] & 7; q *= q; n += q * q * (GX[g] * x0 + GY[g] * y0); }
+      q = 0.5 - x1 * x1 - y1 * y1;
+      if (q > 0) { g = perm[ii + i1 + perm[jj + j1]] & 7; q *= q; n += q * q * (GX[g] * x1 + GY[g] * y1); }
+      q = 0.5 - x2 * x2 - y2 * y2;
+      if (q > 0) { g = perm[ii + 1 + perm[jj + 1]] & 7; q *= q; n += q * q * (GX[g] * x2 + GY[g] * y2); }
+      return 70 * n;
+    }
+
+    var CELL = 12, DOT_STEP = 2, PARALLAX = 0.35;
+    var LEVELS = [-0.7, -0.52, -0.34, -0.16, 0.02, 0.2, 0.38, 0.56, 0.74];
+    var ACCENT = 4; /* index of the one terracotta line */
+    var INK = 'rgba(21, 20, 15, 0.16)', CLAY = 'rgba(176, 84, 51, 0.46)', DOTS = 'rgba(21, 20, 15, 0.13)';
+
+    var canvas = null, ctx = null, raf = 0, active = false;
+    var W = 0, H = 0, dpr = 1, band = 0, cols = 0, rows = 0, half = 0;
+    var field = null, xs = null;
+    var t = 0, last = 0, lastScroll = 0;
+    var printing = false;
+    var mx = -9999, my = -9999, px = -9999, py = -9999, lens = 0, lensTarget = 0;
+
+    function measure() {
+      W = window.innerWidth; H = window.innerHeight;
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      /* The band fades out just before the left edge of the widest text column on this page. */
+      var left = W, k, els = document.querySelectorAll('main .wrap, main .wrap--wide, main .wrap--data, main .wrap--narrow');
+      for (k = 0; k < els.length; k++) {
+        var r = els[k].getBoundingClientRect();
+        if (r.width < 240) continue;
+        var pl = parseFloat(getComputedStyle(els[k]).paddingLeft) || 0;
+        left = Math.min(left, r.left + pl);
+      }
+      if (left === W) left = Math.max(0, (W - 1180) / 2 + 40);
+      band = Math.max(0, Math.min(460, left - 12));
+      /* Sample columns: the left band, then the right band, mirrored. */
+      var n = Math.ceil(band / CELL) + 1, list = [];
+      for (k = 0; k < n; k++) list.push(k * CELL);
+      for (k = n - 1; k >= 0; k--) list.push(W - k * CELL);
+      xs = list; cols = list.length; half = n; rows = Math.ceil(H / CELL) + 1;
+      field = new Float32Array(cols * rows);
+    }
+
+    function sample(scrollY) {
+      var yo = scrollY * PARALLAX, a = t * 0.010, b = t * 0.006, c = t * 0.014;
+      var lr2 = 2 * 110 * 110, k = 0, useLens = lens > 0.002;
+      for (var j = 0; j < rows; j++) {
+        var y = j * CELL, fy = y + yo;
+        for (var i = 0; i < cols; i++, k++) {
+          var x = xs[i];
+          var v = 0.68 * noise(x / 330 + a, fy / 330 + b) + 0.32 * noise(x / 150 - c + 31.7, fy / 150 + 7.3);
+          if (useLens) {
+            var dx = x - px, dy = y - py, d2 = dx * dx + dy * dy;
+            if (d2 < 9 * lr2) v += 0.6 * lens * Math.exp(-d2 / lr2);
+          }
+          field[k] = v;
+        }
+      }
+    }
+
+    function contour(level) {
+      for (var j = 0; j < rows - 1; j++) {
+        var y0 = j * CELL, y1 = y0 + CELL;
+        for (var i = 0; i < cols - 1; i++) {
+          if (i === half - 1) continue; /* the gap between the two bands */
+          var x0 = xs[i], x1 = xs[i + 1];
+          var a = field[j * cols + i], b = field[j * cols + i + 1];
+          var c = field[(j + 1) * cols + i + 1], d = field[(j + 1) * cols + i];
+          var idx = (a > level ? 8 : 0) | (b > level ? 4 : 0) | (c > level ? 2 : 0) | (d > level ? 1 : 0);
+          if (idx === 0 || idx === 15) continue;
+          var tx = x0 + (x1 - x0) * (level - a) / (b - a);   /* top edge */
+          var ry = y0 + CELL * (level - b) / (c - b);        /* right edge */
+          var bx = x0 + (x1 - x0) * (level - d) / (c - d);   /* bottom edge */
+          var ly = y0 + CELL * (level - a) / (d - a);        /* left edge */
+          switch (idx) {
+            case 1: case 14: ctx.moveTo(x0, ly); ctx.lineTo(bx, y1); break;
+            case 2: case 13: ctx.moveTo(bx, y1); ctx.lineTo(x1, ry); break;
+            case 3: case 12: ctx.moveTo(x0, ly); ctx.lineTo(x1, ry); break;
+            case 4: case 11: ctx.moveTo(tx, y0); ctx.lineTo(x1, ry); break;
+            case 5: case 10:
+              /* Saddle: the asymptotic decider picks which diagonal stays connected. */
+              if ((a - level) * (c - level) - (b - level) * (d - level) >= 0) {
+                ctx.moveTo(tx, y0); ctx.lineTo(x1, ry); ctx.moveTo(x0, ly); ctx.lineTo(bx, y1);
+              } else {
+                ctx.moveTo(x0, ly); ctx.lineTo(tx, y0); ctx.moveTo(bx, y1); ctx.lineTo(x1, ry);
+              }
+              break;
+            case 6: case 9: ctx.moveTo(tx, y0); ctx.lineTo(bx, y1); break;
+            case 7: case 8: ctx.moveTo(x0, ly); ctx.lineTo(tx, y0); break;
+          }
+        }
+      }
+    }
+
+    function draw(scrollY) {
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.clearRect(0, 0, W, H);
+      sample(scrollY);
+      /* Stipple: dots on the high ground, like the shading on an engraved plate. */
+      ctx.fillStyle = DOTS;
+      for (var j = 0; j < rows; j += DOT_STEP) {
+        var y = j * CELL;
+        for (var i = 0; i < cols; i += DOT_STEP) {
+          var v = field[j * cols + i];
+          if (v > 0.3) { var s = v > 0.55 ? 1.6 : 1.1; ctx.fillRect(xs[i] - s / 2, y - s / 2, s, s); }
+        }
+      }
+      ctx.lineWidth = 0.9; ctx.strokeStyle = INK; ctx.beginPath();
+      for (var l = 0; l < LEVELS.length; l++) if (l !== ACCENT) contour(LEVELS[l]);
+      ctx.stroke();
+      ctx.lineWidth = 1.15; ctx.strokeStyle = CLAY; ctx.beginPath();
+      contour(LEVELS[ACCENT]);
+      ctx.stroke();
+      /* Fade every mark out before it reaches the text. */
+      ctx.globalCompositeOperation = 'destination-in';
+      var e1 = Math.min(0.49, band * 0.45 / W), e2 = Math.min(0.5, band / W);
+      var g = ctx.createLinearGradient(0, 0, W, 0);
+      g.addColorStop(0, 'rgba(0,0,0,1)'); g.addColorStop(e1, 'rgba(0,0,0,1)'); g.addColorStop(e2, 'rgba(0,0,0,0)');
+      g.addColorStop(1 - e2, 'rgba(0,0,0,0)'); g.addColorStop(1 - e1, 'rgba(0,0,0,1)'); g.addColorStop(1, 'rgba(0,0,0,1)');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'source-over';
+    }
+
+    function frame(now) {
+      raf = 0;
+      if (!active) return;
+      raf = requestAnimationFrame(frame);
+      if (last && now - last < 33) return; /* about 30 frames a second is plenty for ink */
+      var dt = last ? Math.min((now - last) / 1000, 0.1) : 0;
+      last = now;
+      var sy = window.scrollY || 0, dy = Math.abs(sy - lastScroll);
+      lastScroll = sy;
+      t += dt + Math.min(dy, 80) * 0.004; /* the plate flows a little faster while you scroll */
+      lens += (lensTarget - lens) * 0.08;
+      if (px > -9000) { px += (mx - px) * 0.18; py += (my - py) * 0.18; }
+      draw(sy);
+    }
+
+    function onMove(e) {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      mx = e.clientX; my = e.clientY;
+      if (px < -9000) { px = mx; py = my; }
+      lensTarget = (mx < band + 40 || mx > W - band - 40) ? 1 : 0;
+    }
+    function onLeave() { lensTarget = 0; }
+    function onResize() { sync(); }
+    function onVis() { if (document.hidden) halt(); else sync(); }
+
+    function build() {
+      canvas = document.createElement('canvas');
+      canvas.className = 'edge-field';
+      canvas.setAttribute('aria-hidden', 'true');
+      canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.6s ease';
+      var st = document.createElement('style');
+      st.textContent = '@media print{.edge-field{display:none!important}}';
+      document.head.appendChild(st);
+      document.body.appendChild(canvas);
+      ctx = canvas.getContext('2d');
+    }
+
+    function halt() {
+      active = false;
+      if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    }
+    function start() {
+      if (!canvas) build();
+      if (!ctx) return;
+      canvas.style.display = '';
+      measure();
+      if (band < 60) { hide(); return; } /* no margin worth drawing in */
+      if (rq.matches) { halt(); draw(0); }
+      else if (!active) { active = true; last = 0; lastScroll = window.scrollY || 0; raf = requestAnimationFrame(frame); }
+      requestAnimationFrame(function () { if (canvas) canvas.style.opacity = '1'; });
+    }
+    function hide() {
+      halt();
+      if (canvas) { canvas.style.opacity = '0'; canvas.style.display = 'none'; }
+    }
+    function sync() {
+      if (printing) { halt(); return; }
+      if (mq.matches && !document.hidden) start();
+      else if (!mq.matches) hide();
+      else halt();
+    }
+
+    function init() {
+      window.addEventListener('pointermove', onMove, { passive: true });
+      document.documentElement.addEventListener('pointerleave', onLeave);
+      window.addEventListener('blur', onLeave);
+      window.addEventListener('resize', onResize, { passive: true });
+      document.addEventListener('visibilitychange', onVis);
+      window.addEventListener('beforeprint', function () { printing = true; halt(); });
+      window.addEventListener('afterprint', function () { printing = false; sync(); });
+      var watch = function (q) { if (q.addEventListener) q.addEventListener('change', sync); else if (q.addListener) q.addListener(sync); };
+      watch(mq); watch(rq);
+      sync();
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+  } catch (err) { /* decorative only */ }
+})();
