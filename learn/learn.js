@@ -21,6 +21,15 @@
     var toggle = document.getElementById('navToggle');
     if (!nav || !toggle) return;
     toggle.setAttribute('aria-controls', 'nav');
+    var togglePath = toggle.querySelector('path');
+    var syncIcon = function () {
+      var open = toggle.getAttribute('aria-expanded') === 'true';
+      togglePath.setAttribute('d', open ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16');
+    };
+    if (togglePath) {
+      syncIcon(); // the menu may already be open if it was tapped before this script ran
+      if ('MutationObserver' in window) new MutationObserver(syncIcon).observe(toggle, { attributes: true, attributeFilter: ['aria-expanded'] });
+    }
     function close(focusToggle) {
       if (!nav.classList.contains('is-open')) return;
       nav.classList.remove('is-open');

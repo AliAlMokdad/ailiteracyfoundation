@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=polish8">
+<link rel="stylesheet" href="styles.css?v=polish9">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"AI & Jobs","url":"https://ailiteracyfoundation.eu/ai-jobs.html","inLanguage":"en","description":"Which jobs generative AI is most likely to touch, in Denmark, the European Union, and the United States.","isPartOf":{"@type":"WebSite","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"publisher":{"@type":"NonprofitOrganization","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"}}</script>
 <style>
 .aij{margin-top:1.25rem}
@@ -80,7 +80,7 @@
 .aij-tile:hover{outline-color:rgba(21,20,15,.55);z-index:3}
 .aij-tile.sel{outline-color:var(--ink);box-shadow:inset 0 0 0 2px var(--bg-elev),inset 0 0 0 3.5px var(--ink);z-index:5}
 .aij-tile:focus-visible{outline:3px solid var(--accent-deep);outline-offset:-3px;z-index:6}
-.aij-tile .l{font-family:var(--sans);font-weight:700;font-size:11px;line-height:1.14;word-break:break-word;pointer-events:none;color:#15140F}
+.aij-tile .l{font-family:var(--sans);font-weight:700;font-size:11px;line-height:1.14;overflow-wrap:normal;word-break:normal;hyphens:manual;pointer-events:none;color:#15140F}
 .aij-tile .x{font-family:var(--mono);font-weight:600;font-size:10px;margin-top:3px;pointer-events:none;color:#15140F}
 @keyframes aij-in{from{opacity:0;transform:scale(.965)}to{opacity:1;transform:scale(1)}}
 .aij-map.switching .aij-tile{animation:aij-in .34s var(--ease-out) both}
@@ -107,7 +107,7 @@
 .aij-prow-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .aij-prow-name{font-family:var(--sans);font-weight:600;font-size:14px;color:var(--ink);line-height:1.25}
 .aij-prow-val{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);white-space:nowrap}
-.aij-prow-bar{height:8px;border-radius:5px;background:var(--bg-deep);overflow:hidden;margin-top:8px}
+.aij-prow-bar{display:block;height:8px;border-radius:5px;background:var(--bg-deep);overflow:hidden;margin-top:8px}
 .aij-prow-bar i{display:block;height:100%;border-radius:5px;transition:width .35s var(--ease)}
 .aij-prow-detail{font-family:var(--serif);font-size:13px;color:var(--ink-soft);line-height:1.55;margin-top:10px;padding-right:4px}
 .aij-prow-detail b{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-quiet);display:block;margin-bottom:.25rem;font-weight:500}
@@ -124,8 +124,10 @@
   .aij-controls{justify-content:flex-start;gap:.85rem 1rem}
   .aij-seg{width:100%}
   .aij-seg button{flex:1;text-align:center;padding:.55rem .4rem}
-  .aij-legend{width:100%}
-  .aij-legbar{flex:1}
+  .aij-legend{display:grid;grid-template-columns:auto minmax(48px,1fr) auto;align-items:center;column-gap:.6rem;row-gap:.4rem;width:100%}
+  .aij-legcap{grid-column:1/-1}
+  .aij-legend #aijLo,.aij-legend #aijHi{white-space:nowrap}
+  .aij-legbar{width:auto}
   .aij-stat{flex:1 1 44%}
   .aij-note{padding:1rem 1.05rem;font-size:12.5px}
   .aij-h1{font-size:var(--fs-2xl)}
@@ -422,6 +424,14 @@ function render(){
       t.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(rc.d,t);}});
       el.appendChild(t);
     });
+    // A label that does not fit whole loses its number first, then itself, so no word is cut
+    // mid-letter and nothing is clipped; the occupation still shows on hover or select.
+    el.querySelectorAll('.aij-tile').forEach(t=>{
+      const over=()=>t.scrollWidth>t.clientWidth+1||t.scrollHeight>t.clientHeight+1;
+      if(!t.firstChild||!over())return;
+      const x=t.querySelector('.x');if(x)x.remove();
+      if(over()){t.innerHTML='';t.tabIndex=-1;}
+    });
   }
   const pl=$('aijPlist');
   if(pl){const arr=reg().items.slice().sort((a,b)=>b.e-a.e);
@@ -462,6 +472,8 @@ function switchReg(k,btn){
 document.querySelectorAll('.aij-seg button').forEach(b=>b.addEventListener('click',()=>switchReg(b.dataset.r,b)));
 renderStats();setLegend();render();
 let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(render,160);});
+// labels are fitted by measuring them, so measure again once the real fonts have loaded
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>render());
 
 </script>
 <script>
@@ -591,6 +603,6 @@ let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(rend
 
 </script>
 <script>const toggle=document.getElementById('navToggle'),nav=document.getElementById('nav');if(toggle&&nav){toggle.addEventListener('click',()=>{const o=nav.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(o));});document.addEventListener('click',e=>{if(!nav.contains(e.target)&&!toggle.contains(e.target)&&nav.classList.contains('is-open')){nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}});}</script>
-<script src="motion.js?v=polish2" defer></script>
+<script src="motion.js?v=polish3" defer></script>
 </body>
 </html>

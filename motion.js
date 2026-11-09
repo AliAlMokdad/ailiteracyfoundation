@@ -53,6 +53,16 @@
     // The menu sits before its toggle in the page, so after opening it Tab would skip it.
     // Move focus to the first item (only for a keyboard press; a tap leaves focus alone).
     navToggle.setAttribute('aria-controls', navEl.id || 'nav');
+    // The icon becomes a close cross while the menu is open (it used to turn sideways).
+    var togglePath = navToggle.querySelector('path');
+    var syncIcon = function () {
+      var open = navToggle.getAttribute('aria-expanded') === 'true';
+      togglePath.setAttribute('d', open ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16');
+    };
+    if (togglePath) {
+      syncIcon(); // the menu may already be open if it was tapped before this script ran
+      if ('MutationObserver' in window) new MutationObserver(syncIcon).observe(navToggle, { attributes: true, attributeFilter: ['aria-expanded'] });
+    }
     navToggle.addEventListener('click', function (e) {
       if (e.detail !== 0) return; // a mouse or touch click; keyboard activation reports 0
       setTimeout(function () {
@@ -160,6 +170,7 @@
     var duration = 1400;
     var start = performance.now();
     function tick(now) {
+      if (el.getAttribute('data-count-done')) return; // finished early, for example for printing
       var t = Math.min((now - start) / duration, 1);
       var eased = 1 - Math.pow(1 - t, 3);
       var value = Math.round(target * eased);
@@ -245,7 +256,7 @@
         if (fluid && widths) {
           // the slot resizes while the new word is still unseen, then the word fades in
           el.style.width = widths[i] + 'px';
-          setTimeout(function () { el.classList.remove('is-in'); }, 440);
+          setTimeout(function () { el.classList.remove('is-in'); }, 220);
           return;
         }
         requestAnimationFrame(function () {
@@ -314,7 +325,23 @@
       }
     });
   }, { threshold: 0.5 });
-  countTargets.forEach(function (el) { countObserver.observe(el); });
+  // Start every counter at 0 straight away. Its section reveals earlier than the counter
+  // triggers, so the final figure used to show for a moment, snap to 0 and count up again.
+  // Without JavaScript the real figures stay in the page.
+  countTargets.forEach(function (el) {
+    var n = parseInt(el.getAttribute('data-count'), 10);
+    if (!isNaN(n) && n > 0) el.textContent = '0';
+    countObserver.observe(el);
+  });
+  // Printing shows every section without scrolling, so the counters must print their real figures.
+  window.addEventListener('beforeprint', function () {
+    countTargets.forEach(function (el) {
+      var n = parseInt(el.getAttribute('data-count'), 10);
+      el.setAttribute('data-count-done', '1');
+      el.textContent = isNaN(n) ? '0' : n.toLocaleString();
+      countObserver.unobserve(el);
+    });
+  });
 })();
 
 /* ===== MEMO SHARE: copy-link fallback for Instagram (and anywhere) ===== */
