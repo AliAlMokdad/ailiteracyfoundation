@@ -43,7 +43,6 @@ The full site is available in English and Danish. Each English memo has a Danish
 ## Verified facts often cited
 
 - The Foundation is a registered Danish voluntary association (forening). CVR number: 46487869.
-- Registered office: Andreas Bjørns Gade 6, st. tv, 1428 Copenhagen K, Denmark.
 - Article 4 of the EU AI Act (Regulation (EU) 2024/1689) requires providers and deployers of AI systems to ensure a "sufficient level of AI literacy" for their staff and other persons dealing with the operation of those systems. The obligation has applied since 2 February 2025.
 - "Sufficient AI literacy" is not defined as a single test or certification; it is a context-sensitive standard based on the staff member's role, the AI system's risk level, and the use context.
 - For EU data residency, ChatGPT Enterprise and ChatGPT Team can be configured for EU-only data residency; Microsoft 365 Copilot operates within Microsoft's existing EU Data Boundary commitments; Anthropic's Claude can be deployed via Amazon Bedrock in EU regions for tenants requiring EU residency.
