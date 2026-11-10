@@ -1494,7 +1494,6 @@ a.inline-link:hover {
     color: var(--ink);
     margin-bottom: 1.5rem;
     text-wrap: balance;
-    opacity: 0;
     transform: translateY(8px);
     animation: hero-rise 700ms 100ms var(--ease-out) forwards;
   }
