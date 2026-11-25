@@ -2340,3 +2340,15 @@ body.home .status--ledger .status__foot {
   body.home .status--ledger .status__col--counts .status__value { font-size: 1.5rem; }
 }
 body.home .status--ledger .status__value--stacked > span { white-space: nowrap; }
+
+/* Smallest phones (320px): the English header row (brand, Support us, menu) was 17px too wide. */
+@media (max-width: 340px) {
+  .site-header__inner { gap: 0.5rem; padding-left: 1rem; padding-right: 1rem; }
+  .site-header .cta-donate { padding-left: 0.7rem; padding-right: 0.7rem; font-size: 0.875rem; }
+}
+
+/* Desktop tap targets: at least 24px tall (WCAG 2.5.8). */
+@media (min-width: 761px) {
+  .memo-page__back { min-height: 24px; display: inline-flex; align-items: center; }
+  .legal-block .legal-value a { display: inline-block; padding: 3px 0; }
+}
