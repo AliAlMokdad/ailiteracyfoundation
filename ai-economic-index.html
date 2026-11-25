@@ -284,6 +284,24 @@
   .aei *{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
 }
 </style>
+<!-- Google tag (GA4 + Google Ads) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ELL147GRCZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ELL147GRCZ', { anonymize_ip: true });
+  gtag('config', 'AW-18567335891');
+  window.ailfConv = function (k) {
+    var L = {"contact": "AW-18567335891/wttyCMKbx78dENOfzJVF", "email": "AW-18567335891/syjKCMubx78dENOfzJVF", "course_started": "AW-18567335891/gcdZCMWbx78dENOfzJVF", "course_completed": "AW-18567335891/QfYuCMibx78dENOfzJVF"};
+    if (L[k]) gtag('event', 'conversion', { send_to: L[k] });
+  };
+  if (/\/thanks\.html$/.test(location.pathname)) window.ailfConv('contact');
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="mailto:"]') : null;
+    if (a) window.ailfConv('email');
+  });
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>

@@ -432,6 +432,7 @@
       }
       if (go) { go.hidden = false; go.textContent = T('gotoUnread'); }
     } else {
+      if (!state.convDone) { state.convDone = 1; save(courseId, state); if (window.ailfConv) window.ailfConv('course_completed'); }
       if (head) head.textContent = T('courseComplete');
       if (note) note.textContent = T('certHow');
       if (row) row.hidden = false;
@@ -486,7 +487,11 @@
   }
 
   function markRead(id) {
-    if (id && state.read.indexOf(id) < 0) { state.read.push(id); state.ts = Date.now(); save(courseId, state); paint(); }
+    if (id && state.read.indexOf(id) < 0) {
+      var firstRead = state.read.length === 0;
+      state.read.push(id); state.ts = Date.now(); save(courseId, state); paint();
+      if (firstRead && window.ailfConv) window.ailfConv('course_started');
+    }
   }
 
   /* ---------- learner name ---------- */
