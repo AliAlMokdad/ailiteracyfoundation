@@ -41,7 +41,8 @@
       }
       var langWrap = document.createElement('div');
       langWrap.className = 'nav-lang-mobile';
-      langWrap.setAttribute('aria-label', 'Language');
+      langWrap.setAttribute('role', 'group');
+      langWrap.setAttribute('aria-label', isDa ? 'Sprog' : 'Language');
       // Active language is a <span>, not a dead-link <a href="#">. Prevents browser navigation,
       // hash-pollution in the URL, and a confusing focus target for keyboard users.
       langWrap.innerHTML = isDa
@@ -102,7 +103,7 @@
     scrollTopBtn = document.createElement('button');
     scrollTopBtn.className = 'scroll-top';
     scrollTopBtn.type = 'button';
-    scrollTopBtn.setAttribute('aria-label', 'Back to top');
+    scrollTopBtn.setAttribute('aria-label', (document.documentElement.lang || '').indexOf('da') === 0 ? 'Til toppen' : 'Back to top');
     scrollTopBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
     document.body.appendChild(scrollTopBtn);
     scrollTopBtn.addEventListener('click', function() {

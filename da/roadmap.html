@@ -32,7 +32,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="../styles.css?v=polish12">
+<link rel="stylesheet" href="../styles.css?v=polish13">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="apple-touch-icon" href="/favicon.svg?v=2">
 <link rel="mask-icon" href="/favicon.svg?v=2" color="#B05433">
@@ -109,7 +109,7 @@
 .rmglobe__canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
 .rmglobe__caption{margin-top:1.4rem;}
 .rmglobe__label{
-  font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.18em;
+  font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.08em;
   text-transform:uppercase;color:var(--accent);margin-bottom:.55rem;
   opacity:0;will-change:opacity,transform;
 }
@@ -191,7 +191,7 @@
 .rm-rail .rm-label{
   font-family: var(--mono);
   font-size: var(--fs-xs);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-quiet);
   display: inline-flex;
@@ -375,7 +375,7 @@
 .rm-frame-band .rm-label{
   font-family: var(--mono);
   font-size: var(--fs-xs);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-quiet);
   display: inline-flex;
@@ -449,7 +449,7 @@
 .rm-frame strong{
   font-family: var(--mono);
   font-size: var(--fs-xs);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
   font-weight: 500;
@@ -458,7 +458,7 @@
 .rm-frame:hover strong{ letter-spacing: 0.14em; }
 .rm-frame span{
   font-family: var(--sans);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   color: var(--ink);
   line-height: 1.45;
 }
@@ -521,7 +521,7 @@
   margin: 0 auto 1.75rem;
   text-align: center;
 }
-.rm-close .hero-cta{ justify-content: center; margin-top: 0; }
+.rm-close .hero-cta{ justify-content: center; margin-top: 2rem; }
 
 /* ---- Reduced motion: nothing here relies on motion, be explicit ---- */
 @media (prefers-reduced-motion: reduce){
@@ -598,7 +598,7 @@
       <div class="rmhero__text">
         <div class="hero-mark hero-fade"><span>AI-køreplanen</span></div>
         <h1 class="hero-fade hero-fade--2">De spørgsmål vi arbejder med, og de holdninger vi indtager.</h1>
-        <p class="lede hero-fade hero-fade--3">Kunstig intelligens er denne tids definerende teknologi. Spørgsmålene om, hvordan den bygges, anvendes og forvaltes, vil forme årtier. Denne side beskriver de udfordringer, vi arbejder med, de holdninger, vi indtager, og de rammeværker, vi engagerer os i.</p>
+        <p class="lede hero-fade hero-fade--3">Seks udfordringer, vores holdning til hver af dem og de rammeværker, vi forholder os til.</p>
       </div>
       <div class="rmglobe hero-fade hero-fade--4">
         <div class="rmglobe__stage">
@@ -619,7 +619,7 @@
         <div class="rm-rail">
           <div class="rm-label">Del et. Udfordringerne</div>
           <h2 class="rm-h2">Seks spørgsmål, som AI-samtalen samles om.</h2>
-          <p class="rm-intro">Disse er ikke unikke for os. Det er de spørgsmål, som internationale institutioner, nonprofitorganisationer, regulatorer og forskere arbejder med. Vi navngiver dem her i klart sprog, fordi halvdelen af problemet er at kunne tale om dem klart.</p>
+          <p class="rm-intro">Spørgsmålene er ikke vores alene. Internationale institutioner, nonprofitorganisationer, tilsynsmyndigheder og forskere arbejder også med dem. Her står de i klart sprog.</p>
           <nav aria-label="De seks udfordringer">
             <ol class="rm-toc">
             <li><a href="#issue-1">Alignment og sikkerhed</a></li>
@@ -740,10 +740,10 @@
       <div class="rm-frame-band">
         <div class="rm-frame-band__head">
           <div class="rm-label">Del tre. Rammeværker vi engagerer os i</div>
-          <h2>I tråd med de største rammeværker for ansvarlig AI. Specifik i vores bidrag.</h2>
+          <h2>Rammeværkerne, og hvad vi bidrager med.</h2>
         </div>
         <div class="rm-frame-band__lede">
-          <p>Foreningens arbejde er en del af en bredere samtale. Vi engagerer os i de største internationale rammeværker og reguleringer, der former ansvarlig AI: EU's AI-forordning, persondataforordningen (GDPR), OECD's AI-principper, UNESCO's anbefaling om AI-etik og Europarådets konvention om kunstig intelligens.</p>
+          <p>Vi forholder os til de største internationale rammeværker og reguleringer, der former ansvarlig AI: EU's AI-forordning, persondataforordningen (GDPR), OECD's AI-principper, UNESCO's anbefaling om AI-etik og Europarådets konvention om kunstig intelligens.</p>
         </div>
       </div>
 
@@ -784,9 +784,8 @@
     <div class="rm-wrap">
       <div class="rm-close">
         <h2>Sådan ser det ud i praksis.</h2>
-        <p class="rm-close-lede">Køreplanen ovenfor bliver til arbejde. Arbejdet er det, vi gør.</p>
         <div class="hero-cta">
-        <a href="work.html" class="btn btn--primary">Se det vi gør <span class="arrow">→</span></a>
+        <a href="work.html" class="btn btn--primary">Se det vi gør <span class="arrow" aria-hidden="true">→</span></a>
         <a href="donate.html" class="btn btn--ghost">Støt arbejdet</a>
         </div>
       </div>
@@ -848,7 +847,7 @@
     });
   }
 </script>
-<script src="../motion.js?v=polish5" defer></script>
+<script src="../motion.js?v=polish6" defer></script>
 
 <!-- Roadmap hero globe: embedded geometry (no CDN) + scoped, self-contained renderer -->
 <script src="../roadmap-globe-geo.js?v=2" defer></script>

@@ -26,7 +26,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="styles.css?v=polish12">
+<link rel="stylesheet" href="styles.css?v=polish13">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"AI Economic Index","url":"https://ailiteracyfoundation.eu/ai-economic-index.html","inLanguage":"en","description":"An interactive, public reading of the Anthropic Economic Index open data: Claude usage by US state, by country, and by kind of work.","isPartOf":{"@type":"WebSite","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"publisher":{"@type":"NonprofitOrganization","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"mainEntity":{"@type":"Dataset","name":"Anthropic Economic Index","creator":{"@type":"Organization","name":"Anthropic"},"license":"https://creativecommons.org/licenses/by/4.0/","isBasedOn":"https://www.anthropic.com/research/economic-index-june-2026-report","temporalCoverage":"2026-05","description":"Claude.ai usage metrics aggregated by geography and task, released 2026-06-26."}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ailiteracyfoundation.eu/"},{"@type":"ListItem","position":2,"name":"AI Economic Index","item":"https://ailiteracyfoundation.eu/ai-economic-index.html"}]}</script>
 <style>
@@ -43,7 +43,7 @@
 .aei-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 .85rem}
 .aei-eyebrow .sig{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-bg)}
 .aei-h1{font-family:var(--serif);font-weight:600;font-size:var(--fs-3xl);line-height:1.05;letter-spacing:-.01em;margin:0 0 .75rem;max-width:20ch;text-wrap:balance;color:var(--ink)}
-.aei-h1 em{font-style:italic;color:var(--accent)}
+.aei-h1 em{font-style:italic;color:var(--accent);font-weight:400}
 .aei-lede{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.5;color:var(--ink-soft);max-width:64ch;margin:0}
 .aei-hero .aei-eyebrow,.aei-hero .aei-h1,.aei-hero .aei-lede{opacity:0;animation:aeiRise .9s cubic-bezier(.2,.7,.2,1) forwards}
 .aei-hero .aei-eyebrow{animation-delay:.1s}
@@ -135,8 +135,8 @@
 .aei-ctile:focus-visible{outline:3px solid var(--accent-deep);outline-offset:2px;z-index:3}
 .aei-ctile.sel{outline:2.5px solid var(--ink);outline-offset:1px;z-index:3}
 .aei-ctile.base{outline:2.5px dashed var(--accent-deep);outline-offset:1px}
-.aei-ctile .cc{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.02em}
-.aei-ctile .cv{font-family:var(--mono);font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.aei-ctile .cc{font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:.02em}
+.aei-ctile .cv{font-family:var(--mono);font-size:15px;font-weight:500;font-variant-numeric:tabular-nums}
 
 /* Leaderboard */
 .aei-board{max-height:560px;overflow-y:auto;padding:2px;scrollbar-width:thin;scrollbar-color:var(--accent-soft) transparent}
@@ -147,10 +147,10 @@
 .aei-row:hover{background:var(--accent-bg)}
 .aei-row:focus-visible{outline:2px solid var(--accent-deep);outline-offset:-1px}
 .aei-row.sel{background:var(--accent-bg);box-shadow:inset 2px 0 0 var(--accent)}
-.aei-row .rk{font-family:var(--mono);font-size:12px;color:var(--ink-quiet);width:22px;flex:none;font-variant-numeric:tabular-nums}
+.aei-row .rk{font-family:var(--mono);font-size:14px;color:var(--ink-quiet);width:22px;flex:none;font-variant-numeric:tabular-nums}
 .aei-row .nm{flex:1;font-family:var(--sans);font-size:14px;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.aei-row .vl{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
-.aei-row .dl{font-family:var(--mono);font-size:11px;color:var(--ink-quiet);width:52px;text-align:right;font-variant-numeric:tabular-nums}
+.aei-row .vl{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+.aei-row .dl{font-family:var(--mono);font-size:14px;color:var(--ink-quiet);width:52px;text-align:right;font-variant-numeric:tabular-nums}
 .aei-row .sq{width:9px;height:9px;border-radius:3px;flex:none}
 
 /* Detail panel */
@@ -159,27 +159,27 @@
 .aei-panel .ph::before{content:"";width:14px;height:1px;background:var(--accent)}
 .aei-pname{font-family:var(--serif);font-size:1.65rem;font-weight:600;line-height:1.15;letter-spacing:-.012em;margin:0 0 .1rem;color:var(--ink);text-wrap:balance}
 .aei-pidxrow{display:flex;align-items:baseline;gap:.5rem;margin:.3rem 0 .1rem}
-.aei-pidx{font-family:var(--mono);font-size:1.9rem;font-weight:600;color:var(--accent-deep);font-variant-numeric:tabular-nums;line-height:1}
+.aei-pidx{font-family:var(--mono);font-size:1.9rem;font-weight:500;color:var(--accent-deep);font-variant-numeric:tabular-nums;line-height:1}
 .aei-pidxlbl{font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-quiet)}
 .aei-pdelta{font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-soft);margin:.35rem 0 0;min-height:1rem}
-.aei-pdelta b{color:var(--accent-deep)}
+.aei-pdelta b{color:var(--accent-deep);font-weight:500}
 /* baseline meter with 1.0 tick */
 .aei-meter{position:relative;height:9px;background:var(--bg-deep);border-radius:999px;overflow:visible;margin:.85rem 0 .3rem}
 .aei-meter .fill{height:100%;background:linear-gradient(90deg,var(--accent-soft),var(--accent));border-radius:999px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
 .aei-meter .tick{position:absolute;top:-3px;bottom:-3px;width:0;border-left:1.5px dashed var(--chart-neutral)}
-.aei-metercap{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--ink-quiet);letter-spacing:.03em}
+.aei-metercap{display:flex;justify-content:space-between;font-family:var(--mono);font-size:14px;color:var(--ink-quiet);letter-spacing:.03em}
 .aei-pdiv{height:1px;background:var(--line);margin:1rem 0}
 .aei-mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin:.2rem 0 0}
 .aei-minicell{background:var(--bg);border:1px solid var(--line-soft);border-radius:8px;padding:.55rem .5rem;text-align:center}
-.aei-minicell .mv{font-family:var(--mono);font-size:1rem;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
-.aei-minicell .mk{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-quiet);margin-top:.25rem;line-height:1.3}
+.aei-minicell .mv{font-family:var(--mono);font-size:1rem;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+.aei-minicell .mk{font-family:var(--mono);font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-quiet);margin-top:.25rem;line-height:1.3}
 .aei-topichead{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin:1rem 0 .7rem}
-.aei-topichead .cap{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);line-height:1.4}
+.aei-topichead .cap{font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:1.4}
 .aei-topics{list-style:none;margin:0;padding:0}
 .aei-topics li{display:flex;align-items:center;gap:.7rem;padding:.44rem 0}
-.aei-topics .ti{font-family:var(--mono);font-size:11px;color:var(--ink-quiet);width:16px;flex:none}
-.aei-topics .tn{flex:1;font-family:var(--sans);font-size:13px;color:var(--ink);min-width:0;line-height:1.4}
-.aei-topics .tv{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.aei-topics .ti{font-family:var(--mono);font-size:14px;color:var(--ink-quiet);width:16px;flex:none}
+.aei-topics .tn{flex:1;font-family:var(--sans);font-size:14px;color:var(--ink);min-width:0;line-height:1.4}
+.aei-topics .tv{font-family:var(--mono);font-size:14px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
 .aei-pinbtn{width:100%;margin-top:1rem;font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.6rem;cursor:pointer;transition:border-color .18s var(--ease),background .18s var(--ease)}
 .aei-pinbtn:hover{border-color:var(--accent-soft);background:var(--accent-bg)}
 .aei-pinbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -188,38 +188,38 @@
 /* World share bars (second lens) */
 .aei-share{margin-top:2.6rem}
 .aei-share h3{font-family:var(--serif);font-size:1.15rem;font-weight:600;margin:0 0 .2rem;color:var(--ink)}
-.aei-share p{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin:0 0 1rem}
+.aei-share p{font-family:var(--sans);font-size:var(--fs-base);color:var(--ink-soft);margin:0 0 1rem}
 .aei-bar{display:grid;grid-template-columns:150px 1fr 52px;align-items:center;gap:.8rem;margin-bottom:.5rem}
-.aei-bar .bl{font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.aei-bar .bl{font-family:var(--sans);font-size:14px;color:var(--ink-soft);text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .aei-bar .bt{height:20px;background:var(--bg-deep);border-radius:5px;overflow:hidden}
 .aei-bar .bt i{display:block;height:100%;background:linear-gradient(90deg,var(--accent-soft),var(--accent));border-radius:5px;transition:width .6s cubic-bezier(.2,.7,.2,1)}
-.aei-bar .bv{font-family:var(--mono);font-size:12px;color:var(--ink);font-variant-numeric:tabular-nums}
+.aei-bar .bv{font-family:var(--mono);font-size:14px;color:var(--ink);font-variant-numeric:tabular-nums}
 
 /* How people use AI view */
 .aei-usewrap{display:grid;grid-template-columns:1fr;gap:3.4rem}
 .aei-sub{margin:0}
 .aei-sub h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin:0 0 .3rem;color:var(--ink)}
-.aei-sub p{font-family:var(--sans);font-size:var(--fs-sm);color:var(--ink-soft);line-height:1.6;margin:0 0 1.1rem;max-width:74ch}
+.aei-sub p{font-family:var(--sans);font-size:var(--fs-base);color:var(--ink-soft);line-height:1.6;margin:0 0 1.1rem;max-width:74ch}
 .aei-jobs{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:10px}
 .aei-job{border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;background:var(--bg-elev);transition:border-color .2s var(--ease),transform .2s var(--ease)}
 .aei-job:hover{border-color:var(--accent-soft);transform:translateY(-2px)}
 .aei-job .jt{display:flex;align-items:flex-start;gap:.6rem}
 .aei-job .jd{width:12px;height:12px;border-radius:4px;flex:none;margin-top:3px}
 .aei-job .jname{font-family:var(--serif);font-size:14px;font-weight:600;line-height:1.25;color:var(--ink)}
-.aei-job .jpct{font-family:var(--mono);font-size:13px;color:var(--accent-deep);font-weight:500;margin-top:.55rem;font-variant-numeric:tabular-nums}
+.aei-job .jpct{font-family:var(--mono);font-size:14px;color:var(--accent-deep);font-weight:500;margin-top:.55rem;font-variant-numeric:tabular-nums}
 .aei-job .jsplit{height:6px;border-radius:5px;overflow:hidden;display:flex;margin-top:.6rem;background:var(--bg-deep)}
 .aei-job .jsplit .a{background:var(--accent)}
 .aei-job .jsplit .b{background:var(--chart-neutral)}
-.aei-job .jmeta{font-family:var(--mono);font-size:10.5px;color:var(--ink-quiet);margin-top:.45rem;letter-spacing:.02em}
+.aei-job .jmeta{font-family:var(--mono);font-size:14px;color:var(--ink-quiet);margin-top:.45rem;letter-spacing:.02em}
 
 /* diverging automation/augmentation */
 .aei-diverge{background:var(--bg-elev);border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.5rem}
 .aei-drow{display:grid;grid-template-columns:130px 1fr;align-items:center;gap:1rem;margin-bottom:.7rem}
-.aei-drow .dlab{font-family:var(--sans);font-size:13px;color:var(--ink);text-align:right}
+.aei-drow .dlab{font-family:var(--sans);font-size:14px;color:var(--ink);text-align:right}
 .aei-dtrack{display:flex;height:26px;border-radius:6px;overflow:hidden;background:var(--bg-deep)}
 .aei-dtrack .auto{background:var(--chart-neutral);display:flex;align-items:center;justify-content:flex-start;padding:0 .5rem}
 .aei-dtrack .aug{background:var(--accent);display:flex;align-items:center;justify-content:flex-end;padding:0 .5rem;margin-left:auto}
-.aei-dtrack span{font-family:var(--mono);font-size:11px;color:var(--bg);font-variant-numeric:tabular-nums}
+.aei-dtrack span{font-family:var(--mono);font-size:14px;color:var(--bg);font-variant-numeric:tabular-nums}
 .aei-dlegend{display:flex;gap:1.4rem;font-family:var(--mono);font-size:var(--fs-xs);color:var(--ink-quiet);margin-top:1rem}
 .aei-dlegend .lg{display:inline-flex;align-items:center;gap:.4rem}
 .aei-dlegend .sw{width:12px;height:12px;border-radius:3px}
@@ -231,7 +231,7 @@
 .aei-waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;max-width:360px}
 .aei-waffle span{aspect-ratio:1;border-radius:3px;background:var(--bg-deep)}
 .aei-wlegend{display:flex;flex-direction:column;gap:.4rem;margin-top:1rem}
-.aei-wlegend .lg{display:flex;align-items:center;gap:.55rem;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft)}
+.aei-wlegend .lg{display:flex;align-items:center;gap:.55rem;font-family:var(--sans);font-size:14px;color:var(--ink-soft)}
 .aei-wlegend .sw{width:12px;height:12px;border-radius:3px;flex:none}
 .aei-wlegend .lg b{font-family:var(--mono);color:var(--ink);font-weight:500;margin-left:auto;font-variant-numeric:tabular-nums}
 
@@ -239,7 +239,7 @@
 .aei-insights{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin:0}
 .aei-ins{background:var(--bg-elev);border:1px solid var(--line);border-top:2px solid var(--accent);border-radius:10px;padding:1.5rem 1.6rem}
 .aei-ins .it{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:.04em;text-transform:uppercase;color:var(--accent-deep);margin:0 0 .5rem;font-weight:500}
-.aei-ins p{font-family:var(--serif);font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0}
+.aei-ins p{font-family:var(--serif);font-size:var(--fs-base);line-height:1.55;color:var(--ink-soft);margin:0}
 .aei-ins p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 
 /* Denmark profile */
@@ -248,14 +248,14 @@
 .aei-cmp{margin:.2rem 0 0}
 .aei-cmp .crow{margin-bottom:1rem}
 .aei-cmp .crow:last-child{margin-bottom:0}
-.aei-cmp .rl{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--sans);font-size:13px;color:var(--ink-soft);margin-bottom:.4rem}
-.aei-cmp .rl b{font-family:var(--mono);color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+.aei-cmp .rl{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--sans);font-size:14px;color:var(--ink-soft);margin-bottom:.4rem}
+.aei-cmp .rl b{font-family:var(--mono);color:var(--ink);font-variant-numeric:tabular-nums;font-weight:500}
 .aei-cmp .b{height:11px;border-radius:5px;background:var(--bg-deep);overflow:hidden;margin-bottom:3px}
 .aei-cmp .b i{display:block;height:100%;border-radius:5px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
 .aei-cmp .b.dk i{background:var(--accent)}
 .aei-cmp .b.wd i{background:var(--chart-neutral)}
-.aei-cmp .tag{font-family:var(--mono);font-size:10px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-quiet)}
-.aei-dknote{font-family:var(--serif);font-size:13.5px;color:var(--ink-soft);line-height:1.6;margin:1rem 0 0;font-style:italic}
+.aei-cmp .tag{font-family:var(--mono);font-size:14px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-quiet)}
+.aei-dknote{font-family:var(--serif);font-size:var(--fs-base);color:var(--ink-soft);line-height:1.6;margin:1rem 0 0;font-style:italic}
 .aei-dktopics{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media(max-width:1080px){.aei-dkgrid,.aei-dktopics{grid-template-columns:1fr}}
 
@@ -277,7 +277,7 @@
 }
 @media(max-width:760px){
   .aei-labonly{display:none}
-  .aei-mobile-note{display:block;font-family:var(--sans);font-size:var(--fs-sm);color:var(--ink-soft);background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:1.1rem 1.2rem;line-height:1.65;margin:1.5rem 0}
+  .aei-mobile-note{display:block;font-family:var(--sans);font-size:var(--fs-base);color:var(--ink-soft);background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:1.1rem 1.2rem;line-height:1.65;margin:1.5rem 0}
   .aei-stats{grid-template-columns:1fr 1fr}
 }
 @media(prefers-reduced-motion:reduce){
@@ -342,7 +342,7 @@
 <div class="aei" data-reveal>
 
 <div class="aei-note">
-  <span class="aei-note-lbl">How to read this</span>
+  <span class="aei-note-lbl">What the index measures</span>
   <b>This is Claude.ai usage, not all AI.</b> The Usage Index compares a place's share of that usage with its share of the working-age population (the world's for countries, the US's for US states): 1.0 is proportional, above is higher than expected, below is lower. Small figures are withheld for privacy, so a blank means not published, not zero, and shares need not add to 100%.
 </div>
 
@@ -440,7 +440,7 @@
   </div>
   <div class="aei-share">
     <h3>Share of all Claude.ai usage</h3>
-    <p>A different lens. Not per person, but each country's slice of total measured usage. The United States alone is about a fifth of it.</p>
+    <p>Each country's share of total measured usage, not usage per person. The United States alone is about a fifth of it.</p>
     <div id="worldShare"></div>
   </div>
 </div>
@@ -449,7 +449,7 @@
 <div class="aei-view" id="view-use">
   <div class="aei-viewhead">
     <h2>How people use AI</h2>
-    <p>Not where, but what for. The occupations whose tasks appear most, whether people delegate work or collaborate on it, and the things Claude actually produces.</p>
+    <p>What people use it for: the occupations whose tasks appear most, whether people delegate work or collaborate on it, and what Claude produces.</p>
   </div>
   <div class="aei-usewrap">
 
@@ -556,6 +556,6 @@
 <script>const toggle=document.getElementById('navToggle'),nav=document.getElementById('nav');if(toggle&&nav){toggle.addEventListener('click',()=>{const o=nav.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(o));});document.addEventListener('click',e=>{if(!nav.contains(e.target)&&!toggle.contains(e.target)&&nav.classList.contains('is-open')){nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}});}</script>
 <script src="ai-economic-index.data.js?v=1"></script>
 <script src="ai-economic-index.js?v=6" defer></script>
-<script src="motion.js?v=polish5" defer></script>
+<script src="motion.js?v=polish6" defer></script>
 </body>
 </html>

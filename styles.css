@@ -38,7 +38,7 @@
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
 
   /* Type scale */
-  --fs-xs: 0.75rem;
+  --fs-xs: 0.875rem;
   --fs-sm: 0.875rem;
   --fs-base: 1rem;
   --fs-md: 1.0625rem;
@@ -319,7 +319,7 @@ body {
   margin-bottom: 2rem;
   font-family: var(--mono);
   font-size: var(--fs-xs);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-quiet);
 }
@@ -347,7 +347,7 @@ body {
 .eyebrow {
   font-family: var(--mono);
   font-size: var(--fs-xs);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-quiet);
   margin-bottom: 1.75rem;
@@ -454,7 +454,7 @@ body {
 .section-label {
   font-family: var(--mono);
   font-size: var(--fs-xs);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-quiet);
   margin-bottom: 1.5rem;
@@ -530,7 +530,7 @@ a.inline-link:hover {
 .status:hover { border-color: var(--accent-soft); }
 .status__title {
   font-size: var(--fs-xs);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-quiet);
   margin-bottom: 1.5rem;
@@ -577,7 +577,7 @@ a.inline-link:hover {
     background: var(--bg-elev);
   }
   .status__title {
-    font-size: 0.6875rem;
+    font-size: var(--fs-xs);
     margin-bottom: 1rem;
     padding-bottom: 0.875rem;
     border-bottom: 1px solid var(--line-soft);
@@ -595,7 +595,7 @@ a.inline-link:hover {
   .status__leader { display: none; }
   .status__label {
     font-family: var(--sans);
-    font-size: 0.8125rem;
+    font-size: var(--fs-xs);
     font-weight: 400;
     text-transform: none;
     letter-spacing: 0;
@@ -626,7 +626,7 @@ a.inline-link:hover {
   }
   .status__row--wide .status__label {
     font-family: var(--mono);
-    font-size: 0.6875rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--ink-quiet);
@@ -634,7 +634,7 @@ a.inline-link:hover {
   .status__foot {
     margin-top: 0.875rem;
     padding-top: 0.875rem;
-    font-size: 0.6875rem;
+    font-size: var(--fs-xs);
   }
 }
 .status__value {
@@ -732,8 +732,8 @@ a.inline-link:hover {
   letter-spacing: -0.012em;
 }
 .service p {
-  line-height: 1.75;
-  max-width: 42rem;
+  line-height: 1.65;
+  max-width: 36rem;
 }
 @media (max-width: 720px) {
   .service { grid-template-columns: 1fr; gap: 0.75rem; padding: 2rem 0; }
@@ -742,7 +742,7 @@ a.inline-link:hover {
 .service__tag {
   font-family: var(--mono);
   font-size: var(--fs-xs);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
   display: inline-flex;
@@ -796,7 +796,7 @@ a.inline-link:hover {
   display: block;
   font-family: var(--mono);
   font-size: var(--fs-xs);
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-quiet);
   margin-top: 1rem;
@@ -829,7 +829,7 @@ a.inline-link:hover {
 .contact-form .form-row { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
 .contact-form label {
   font-family: var(--sans);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   font-weight: 500;
   color: var(--ink-soft);
   letter-spacing: 0.01em;
@@ -867,7 +867,7 @@ a.inline-link:hover {
 .contact-form button[type="submit"] { margin-top: 0.5rem; cursor: pointer; }
 .form-note {
   font-family: var(--sans);
-  font-size: var(--fs-xs);
+  font-size: var(--fs-base);
   color: var(--ink-quiet);
   margin-top: 1rem;
 }
@@ -972,20 +972,20 @@ a.inline-link:hover {
   line-height: 1.3;
   max-width: none;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-quiet);
   margin-bottom: 1rem;
 }
 .site-footer ul li { margin-bottom: 0.45rem; }
 .site-footer a {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   color: var(--ink-soft);
   transition: color 220ms var(--ease);
 }
 .site-footer a:hover { color: var(--accent); }
 .site-footer__addr {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   color: var(--ink-soft);
   line-height: 1.6;
 }
@@ -1017,7 +1017,7 @@ a.inline-link:hover {
   display: inline-block;
   font-family: var(--mono);
   font-size: var(--fs-xs);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
   padding: 0.25rem 0.7rem;
@@ -1056,7 +1056,7 @@ a.inline-link:hover {
 }
 .card:hover::before { transform: scaleX(1); }
 .card h3 { margin-bottom: 0.5rem; }
-.card p { font-size: var(--fs-sm); margin-bottom: 1rem; flex: 1; }
+.card p { font-size: var(--fs-base); margin-bottom: 1rem; flex: 1; }
 .card .arrow-link {
   font-family: var(--sans);
   font-size: var(--fs-sm);
@@ -1156,7 +1156,7 @@ a.inline-link:hover {
 .framework strong {
   font-family: var(--mono);
   font-size: var(--fs-xs);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: var(--accent);
   font-weight: 500;
   text-transform: uppercase;
@@ -1165,7 +1165,7 @@ a.inline-link:hover {
 .framework:hover strong { color: var(--accent-deep); }
 .framework span {
   font-family: var(--sans);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   color: var(--ink);
   line-height: 1.45;
 }
@@ -1178,7 +1178,7 @@ a.inline-link:hover {
   padding: 1.5rem 1.75rem;
   margin-top: 2rem;
   font-family: var(--mono);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.85rem 1.5rem;
@@ -1188,7 +1188,7 @@ a.inline-link:hover {
 .legal-block .legal-label {
   font-size: var(--fs-xs);
   color: var(--ink-quiet);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 .legal-block .legal-value { color: var(--ink); font-weight: 500; }
@@ -1304,7 +1304,7 @@ a.inline-link:hover {
   z-index: 90;
   font-family: var(--mono);
   font-size: var(--fs-xs);
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-quiet);
   background: rgba(247, 244, 238, 0.92);
@@ -1563,9 +1563,9 @@ a.inline-link:hover {
   .quick-button:active::before { transform: scaleY(1); }
   .quick-button__num {
     font-family: var(--mono);
-    font-size: 0.75rem;
+    font-size: var(--fs-xs);
     color: var(--accent);
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     font-weight: 500;
   }
   .quick-button__body {
@@ -1584,7 +1584,7 @@ a.inline-link:hover {
   }
   .quick-button__sub {
     font-family: var(--sans);
-    font-size: 0.7rem;
+    font-size: var(--fs-xs);
     color: var(--ink-quiet);
     letter-spacing: 0.01em;
     line-height: 1.3;
@@ -1730,7 +1730,7 @@ a.inline-link:hover {
 
 /* Extra narrow (≤380px): tiny adjustments */
 @media (max-width: 380px) {
-  .brand { font-size: 12px; }
+  .brand { font-size: var(--fs-xs); }
   .cta-donate { padding: 0.5rem 0.85rem; }
   .hero h1 { font-size: clamp(1.85rem, 9vw, 2.5rem); }
 }
@@ -2110,7 +2110,7 @@ a.inline-link:hover {
   gap: 0.625rem;
   font-family: var(--mono);
   font-size: var(--fs-xs);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgb(105, 100, 92);
   margin: 0;
@@ -2230,6 +2230,7 @@ body.home .audience-line .rotator {
   text-align: center;
   text-decoration: none;
   padding: 0 0.06em 0.08em;
+  color: #A84F30;
 }
 @media (prefers-reduced-motion: reduce) {
   body.home .section--statement.is-rippling::after { animation: none; }
@@ -2261,8 +2262,8 @@ body.home .status--ledger::before {
   pointer-events: none;
 }
 body.home .status--ledger .status__title {
-  font-size: 0.8125rem;
-  letter-spacing: 0.2em;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
   color: var(--ink-soft);
   margin-bottom: clamp(1.5rem, 2.5vw, 2.25rem);
 }
@@ -2316,7 +2317,7 @@ body.home .status--ledger .status__foot {
   margin-top: clamp(1.5rem, 2.5vw, 2rem);
   padding-top: 1.1rem;
   border-top: 1px solid rgba(21, 20, 15, 0.12);
-  font-size: 0.8125rem;
+  font-size: var(--fs-xs);
   letter-spacing: 0.06em;
   color: var(--ink-soft);
 }
@@ -2331,7 +2332,7 @@ body.home .status--ledger .status__foot {
   body.home .status--ledger .status__label,
   body.home .status--ledger .status__row--wide .status__label {
     font-family: var(--mono);
-    font-size: 0.8125rem;
+    font-size: var(--fs-xs);
     text-transform: none;
     letter-spacing: 0.01em;
     color: var(--ink-soft);
