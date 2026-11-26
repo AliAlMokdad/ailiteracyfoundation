@@ -34,9 +34,9 @@ function daArtifact(label){ return ARTIFACT_NAMES[label]||String(label).replace(
   var el=document.getElementById('aeiStats'); if(!el)return;
   var s=D.snapshot||{};
   var cards=[
-    {n:(s.USA&&s.USA.usage_per_capita_index?s.USA.usage_per_capita_index.toFixed(2).replace('.',','):'3,87')+'×', k:"USA's brugsindeks, maj 2026"},
-    {n:(s.DNK&&s.DNK.usage_per_capita_index?s.DNK.usage_per_capita_index.toFixed(2).replace('.',','):'3,57')+'×', k:'Danmarks brugsindeks'},
-    {n:Math.round(s.global&&s.global.collaboration_bucket_augmentation_pct?s.global.collaboration_bucket_augmentation_pct:51)+'%', k:'Samarbejdende brug, globalt'},
+    {n:(s.USA&&s.USA.usage_per_capita_index?s.USA.usage_per_capita_index.toFixed(2).replace('.',','):'3,87')+'×', k:"USA's brugs\u00adindeks, maj 2026"},
+    {n:(s.DNK&&s.DNK.usage_per_capita_index?s.DNK.usage_per_capita_index.toFixed(2).replace('.',','):'3,57')+'×', k:'Danmarks brugs\u00adindeks'},
+    {n:Math.round(s.global&&s.global.collaboration_bucket_augmentation_pct?s.global.collaboration_bucket_augmentation_pct:51)+'%', k:'Samarbej\u00addende brug, globalt'},
     {n:(D.meta&&D.meta.n_countries?D.meta.n_countries:D.countries.length), k:'Lande målt'}
   ];
   el.innerHTML=cards.map(function(c){return '<div class="aei-stat"><div class="n"><b>'+esc(c.n)+'</b></div><div class="k">'+esc(c.k)+'</div></div>';}).join('');

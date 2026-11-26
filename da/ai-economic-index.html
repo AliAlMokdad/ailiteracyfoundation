@@ -26,7 +26,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="../styles.css?v=polish13">
+<link rel="stylesheet" href="../styles.css?v=polish14">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"AI-økonomiindeks","url":"https://ailiteracyfoundation.eu/da/ai-economic-index.html","inLanguage":"da","description":"En interaktiv, offentlig gennemgang af den åbne Anthropic Economic Index: brugen af Claude fordelt på amerikanske delstater, lande og typer af arbejde.","isPartOf":{"@type":"WebSite","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"publisher":{"@type":"NonprofitOrganization","name":"AI Literacy Foundation","url":"https://ailiteracyfoundation.eu"},"mainEntity":{"@type":"Dataset","name":"Anthropic Economic Index","creator":{"@type":"Organization","name":"Anthropic"},"license":"https://creativecommons.org/licenses/by/4.0/","isBasedOn":"https://www.anthropic.com/research/economic-index-june-2026-report","temporalCoverage":"2026-05","description":"Claude.ai-brugsmålinger aggregeret efter geografi og opgave, udgivet 2026-06-26."}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Forside","item":"https://ailiteracyfoundation.eu/da/"},{"@type":"ListItem","position":2,"name":"AI-økonomiindeks","item":"https://ailiteracyfoundation.eu/da/ai-economic-index.html"}]}</script>
 <style>
@@ -278,7 +278,11 @@
 @media(max-width:760px){
   .aei-labonly{display:none}
   .aei-mobile-note{display:block;font-family:var(--sans);font-size:var(--fs-base);color:var(--ink-soft);background:var(--bg-elev);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:1.1rem 1.2rem;line-height:1.65;margin:1.5rem 0}
-  .aei-stats{grid-template-columns:1fr 1fr}
+  .aei-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .aei-stat .k{overflow-wrap:break-word}
+}
+@media(max-width:380px){
+  .aei-stat{padding:1.1rem 1rem}
 }
 @media(prefers-reduced-motion:reduce){
   .aei *{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
@@ -555,7 +559,7 @@
 </footer>
 <script>const toggle=document.getElementById('navToggle'),nav=document.getElementById('nav');if(toggle&&nav){toggle.addEventListener('click',()=>{const o=nav.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(o));});document.addEventListener('click',e=>{if(!nav.contains(e.target)&&!toggle.contains(e.target)&&nav.classList.contains('is-open')){nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}});}</script>
 <script src="../ai-economic-index.data.js?v=1"></script>
-<script src="ai-economic-index.js?v=5" defer></script>
+<script src="ai-economic-index.js?v=6" defer></script>
 <script src="../motion.js?v=polish6" defer></script>
 </body>
 </html>
