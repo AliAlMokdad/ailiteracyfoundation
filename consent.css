@@ -1,0 +1,240 @@
+/* Cookie consent (consent.js). Loaded by consent.js with the same ?v= as the script. */
+
+.ailf-consent {
+  position: fixed;
+  z-index: 150;
+  /* bottom-right: this site's content is left-aligned, so the right corner covers the least */
+  right: clamp(1rem, 2.2vw, 1.75rem);
+  bottom: clamp(1rem, 2.2vw, 1.75rem);
+  width: min(24.5rem, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1.25rem 1.25rem 1.25rem;
+  border-radius: 20px;
+  color: var(--ink, #15140F);
+  font-family: var(--sans, "Inter", system-ui, sans-serif);
+  /* solid fallback first: no blur support means no translucency */
+  background: var(--bg-elev, #FDFBF6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 0 0 1px rgba(21, 20, 15, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 1px 0 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(21, 20, 15, 0.05),
+    0 1px 2px rgba(21, 20, 15, 0.06),
+    0 12px 28px -10px rgba(21, 20, 15, 0.18),
+    0 32px 64px -24px rgba(21, 20, 15, 0.24);
+  isolation: isolate;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 360ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), transform 560ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.ailf-consent[hidden] { display: none; }
+.ailf-consent:focus { outline: none; }
+.ailf-consent:focus-visible { outline: 2px solid var(--accent, #B05433); outline-offset: 3px; }
+.ailf-consent.ailf-consent--in { opacity: 1; transform: none; }
+.ailf-consent.ailf-consent--out {
+  opacity: 0;
+  transform: translateY(8px);
+  transition-duration: 200ms, 240ms;
+  transition-timing-function: ease-in, ease-in;
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .ailf-consent {
+    /* the header's glass, lit from the top left; dense enough that text holds AA over any section */
+    background:
+      linear-gradient(140deg, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.14) 42%, rgba(255, 255, 255, 0) 70%),
+      rgba(247, 244, 238, 0.66);
+    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+    backdrop-filter: blur(20px) saturate(1.8);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .ailf-consent {
+    background: var(--bg-elev, #FDFBF6);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* light catching the glass once as it settles */
+.ailf-consent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.55) 50%, transparent 62%);
+  transform: translateX(-110%);
+  opacity: 0;
+}
+.ailf-consent.ailf-consent--in::before {
+  animation: ailf-consent-sheen 1600ms cubic-bezier(0.45, 0, 0.2, 1) 220ms 1 both;
+}
+@keyframes ailf-consent-sheen {
+  0% { transform: translateX(-110%); opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateX(110%); opacity: 0; }
+}
+
+.ailf-consent__head {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0 0 0.5rem;
+}
+.ailf-consent__mark {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: var(--accent, #B05433);
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ailf-consent__mark path { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.ailf-consent__mark path:nth-child(2) { opacity: 0.72; }
+.ailf-consent__mark path:nth-child(3) { opacity: 0.48; }
+.ailf-consent.ailf-consent--in .ailf-consent__mark path {
+  animation: ailf-consent-draw 900ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)) both;
+}
+.ailf-consent.ailf-consent--in .ailf-consent__mark path:nth-child(1) { animation-delay: 120ms; }
+.ailf-consent.ailf-consent--in .ailf-consent__mark path:nth-child(2) { animation-delay: 260ms; }
+.ailf-consent.ailf-consent--in .ailf-consent__mark path:nth-child(3) { animation-delay: 400ms; }
+@keyframes ailf-consent-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+.ailf-consent__title {
+  margin: 0;
+  max-width: none;
+  font-family: var(--serif, "Source Serif 4", Georgia, serif);
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink, #15140F);
+}
+.ailf-consent__text {
+  margin: 0;
+  max-width: none;
+  font-family: var(--sans, "Inter", system-ui, sans-serif);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink, #15140F);
+  text-wrap: pretty;
+}
+
+.ailf-consent__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.625rem;
+  margin-top: 1.125rem;
+}
+/* Accept and Reject share one rule: same size, weight and prominence. */
+.ailf-consent__btn {
+  min-height: 44px;
+  margin: 0;
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--ink, #15140F);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+  color: var(--ink, #15140F);
+  font-family: var(--sans, "Inter", system-ui, sans-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 200ms var(--ease, ease), color 200ms var(--ease, ease), transform 160ms var(--ease, ease);
+}
+.ailf-consent__btn:hover {
+  background: var(--ink, #15140F);
+  color: var(--bg, #F7F4EE);
+}
+.ailf-consent__btn:active { transform: scale(0.98); }
+.ailf-consent__btn:focus-visible {
+  outline: 2px solid var(--accent, #B05433);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+/* Phones: a bottom sheet, and the page keeps room for it so nothing stays hidden under it. */
+@media (max-width: 560px) {
+  .ailf-consent {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    padding: 1rem var(--gutter, 1.25rem) calc(1rem + env(safe-area-inset-bottom, 0px));
+    border-radius: 20px 20px 0 0;
+    border-bottom: 0;
+    transform: translateY(24px);
+  }
+  .ailf-consent__head { margin-bottom: 0.375rem; }
+  .ailf-consent__mark { width: 26px; height: 26px; }
+  .ailf-consent__title { font-size: 1.25rem; }
+  .ailf-consent__actions { margin-top: 0.875rem; }
+  .ailf-consent-open body { padding-bottom: var(--ailf-consent-h, 0px); }
+  .ailf-consent-open .scroll-top { bottom: calc(var(--ailf-consent-h, 0px) + 1rem); }
+  /* the roadmap's chapter label would sit under the sheet */
+  .ailf-consent-open .chapter-indicator { opacity: 0 !important; }
+}
+/* while the choice is open, the page scrolls a focused link clear of it, and the
+   back-to-top button moves above it */
+.ailf-consent-open { scroll-padding-bottom: calc(var(--ailf-consent-h, 0px) + 2.5rem); }
+@media (min-width: 561px) {
+  .ailf-consent-open body { padding-bottom: calc(var(--ailf-consent-h, 0px) + clamp(1rem, 2.2vw, 1.75rem)); }
+  .ailf-consent-open .scroll-top { bottom: calc(var(--ailf-consent-h, 0px) + clamp(1rem, 2.2vw, 1.75rem) + 0.75rem); }
+}
+
+/* Footer control that reopens the choice */
+.ailf-consent-link {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: currentColor;
+  transition: color 200ms var(--ease, ease);
+}
+.ailf-consent-link::after {
+  content: "";
+  position: absolute;
+  inset: -12px -6px;
+}
+.ailf-consent-link:hover { color: var(--accent-deep, #8E3F22); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ailf-consent,
+  .ailf-consent.ailf-consent--out {
+    transform: none;
+    transition: none;
+  }
+  .ailf-consent.ailf-consent--in::before,
+  .ailf-consent.ailf-consent--in .ailf-consent__mark path { animation: none; }
+  .ailf-consent__btn { transition: none; }
+  .ailf-consent__btn:active { transform: none; }
+}
+
+@media (forced-colors: active) {
+  .ailf-consent { border: 1px solid CanvasText; }
+  .ailf-consent__btn { border: 1px solid ButtonText; }
+  .ailf-consent::before { display: none; }
+}
+
+@media print {
+  .ailf-consent, .ailf-consent-link { display: none !important; }
+}

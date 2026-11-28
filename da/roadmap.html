@@ -69,6 +69,23 @@
 }
 </script>
 
+<!-- Consent Mode v2: all denied until the visitor chooses; a stored choice is applied here -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', wait_for_update: 500 });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+  (function () {
+    try {
+      var c = JSON.parse(localStorage.getItem('ailf-consent'));
+      var age = c && typeof c.ts === 'number' ? Date.now() - c.ts : -1;
+      if (c && c.v === 1 && c.choice === 'granted' && age >= 0 && age < 31536e6) {
+        gtag('consent', 'update', { ad_storage: 'granted', analytics_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
+      }
+    } catch (e) {}
+  })();
+</script>
 <!-- Google tag (GA4 + Google Ads) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELL147GRCZ"></script>
 <script>
@@ -87,6 +104,7 @@
     if (a) window.ailfConv('email');
   });
 </script>
+<script src="/consent.js?v=1" defer></script>
 
 <style id="rmglobe-css">
 /* Roadmap hero globe. Scoped under .hero--globe / .rmglobe, AI Literacy Foundation tokens only. */
