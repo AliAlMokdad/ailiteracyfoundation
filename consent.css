@@ -42,22 +42,77 @@
   transition-timing-function: ease-in, ease-in;
 }
 
+/* The warm light the glass sits in front of: terracotta and sand, behind the card and a
+   little past its edges, so the frosted surface has colour to bend. Clipped to the screen. */
+.ailf-consent-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 149;
+  overflow: hidden;
+  pointer-events: none;
+  display: none;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.ailf-consent-glow__light {
+  position: absolute;
+  right: clamp(1rem, 2.2vw, 1.75rem);
+  bottom: clamp(1rem, 2.2vw, 1.75rem);
+  width: min(24.5rem, calc(100vw - 2rem));
+  height: var(--ailf-consent-h, 13rem);
+}
+.ailf-consent-glow__light::before {
+  content: "";
+  position: absolute;
+  /* every ellipse below fades to nothing inside this box, so no edge ever shows */
+  inset: -84px -64px -44px -84px;
+  background:
+    radial-gradient(30% 34% at 33% 64%, rgba(176, 84, 51, 0.46) 0%, rgba(176, 84, 51, 0.22) 45%, rgba(176, 84, 51, 0) 100%),
+    radial-gradient(26% 32% at 73% 34%, rgba(214, 168, 112, 0.52) 0%, rgba(214, 168, 112, 0.20) 50%, rgba(214, 168, 112, 0) 100%),
+    radial-gradient(22% 18% at 58% 80%, rgba(208, 134, 103, 0.32) 0%, rgba(208, 134, 103, 0) 100%);
+}
+
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .ailf-consent {
-    /* the header's glass, lit from the top left; dense enough that text holds AA over any section */
+    /* the header's glass, lit from the top left; text contrast measured over the darkest
+       surface the site has (ink) before this tint was set */
     background:
-      linear-gradient(140deg, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.14) 42%, rgba(255, 255, 255, 0) 70%),
-      rgba(247, 244, 238, 0.66);
+      linear-gradient(140deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.10) 40%, rgba(255, 255, 255, 0) 65%),
+      rgba(250, 247, 241, 0.52);
     -webkit-backdrop-filter: blur(20px) saturate(1.8);
     backdrop-filter: blur(20px) saturate(1.8);
+    border: 0;
+    box-shadow:
+      0 0 0 1px rgba(21, 20, 15, 0.08),
+      0 1px 2px rgba(21, 20, 15, 0.06),
+      0 12px 28px -10px rgba(21, 20, 15, 0.18),
+      0 32px 64px -24px rgba(21, 20, 15, 0.22);
   }
+  /* rim: a bright hairline at the top left that cools to a faint terracotta at the bottom right */
+  .ailf-consent::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.55) 30%, rgba(255, 255, 255, 0.18) 62%, rgba(176, 84, 51, 0.30) 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  }
+  .ailf-consent:not([hidden]) + .ailf-consent-glow { display: block; }
+  .ailf-consent.ailf-consent--in + .ailf-consent-glow { opacity: 1; }
 }
 @media (prefers-reduced-transparency: reduce) {
   .ailf-consent {
     background: var(--bg-elev, #FDFBF6);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
+    border: 1px solid var(--line, #E0D9C9);
   }
+  .ailf-consent::after,
+  .ailf-consent:not([hidden]) + .ailf-consent-glow { display: none; }
 }
 
 /* light catching the glass once as it settles */
@@ -181,6 +236,14 @@
   .ailf-consent__mark { width: 26px; height: 26px; }
   .ailf-consent__title { font-size: 1.25rem; }
   .ailf-consent__actions { margin-top: 0.875rem; }
+  .ailf-consent-glow__light { right: 0; bottom: 0; width: 100%; }
+  .ailf-consent-glow__light::before {
+    inset: -64px 0 0 0;
+    background:
+      radial-gradient(34% 40% at 28% 58%, rgba(176, 84, 51, 0.42) 0%, rgba(176, 84, 51, 0.20) 45%, rgba(176, 84, 51, 0) 100%),
+      radial-gradient(30% 36% at 76% 38%, rgba(214, 168, 112, 0.50) 0%, rgba(214, 168, 112, 0.20) 50%, rgba(214, 168, 112, 0) 100%),
+      radial-gradient(24% 18% at 56% 80%, rgba(208, 134, 103, 0.30) 0%, rgba(208, 134, 103, 0) 100%);
+  }
   .ailf-consent-open body { padding-bottom: var(--ailf-consent-h, 0px); }
   .ailf-consent-open .scroll-top { bottom: calc(var(--ailf-consent-h, 0px) + 1rem); }
   /* the roadmap's chapter label would sit under the sheet */
@@ -227,14 +290,17 @@
   .ailf-consent.ailf-consent--in .ailf-consent__mark path { animation: none; }
   .ailf-consent__btn { transition: none; }
   .ailf-consent__btn:active { transform: none; }
+  .ailf-consent-glow { transition: none; }
 }
 
 @media (forced-colors: active) {
   .ailf-consent { border: 1px solid CanvasText; }
   .ailf-consent__btn { border: 1px solid ButtonText; }
-  .ailf-consent::before { display: none; }
+  .ailf-consent::before,
+  .ailf-consent::after,
+  .ailf-consent-glow { display: none !important; }
 }
 
 @media print {
-  .ailf-consent, .ailf-consent-link { display: none !important; }
+  .ailf-consent, .ailf-consent-link, .ailf-consent-glow { display: none !important; }
 }

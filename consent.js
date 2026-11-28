@@ -177,6 +177,13 @@
     if (skip && skip.parentNode) skip.parentNode.insertBefore(box, skip.nextSibling);
     else doc.body.insertBefore(box, doc.body.firstChild);
 
+    // the warm light behind the glass; follows the card through CSS (.ailf-consent + .ailf-consent-glow)
+    var glow = doc.createElement('div');
+    glow.className = 'ailf-consent-glow';
+    glow.setAttribute('aria-hidden', 'true');
+    glow.innerHTML = '<div class="ailf-consent-glow__light"></div>';
+    box.parentNode.insertBefore(glow, box.nextSibling);
+
     live = doc.createElement('div');
     live.className = 'ailf-consent-live';
     // visually hidden inline, so it stays hidden even if the stylesheet never arrives
