@@ -20,13 +20,13 @@
 
   var T = da ? {
     title: 'Cookies',
-    text: 'Vi bruger cookies til at se, hvordan siden bruges, og om vores Google-annoncer virker. Kun hvis du siger ja.',
+    text: 'Vi bruger cookies til at se, hvordan siden bruges, kun hvis du siger ja.',
     accept: 'Accepter',
     reject: 'Afvis',
     settings: 'Cookieindstillinger'
   } : {
     title: 'Cookies',
-    text: 'We use cookies to see how the site is used and whether our Google ads work. Only if you agree.',
+    text: 'We use cookies to see how the site is used, only if you agree.',
     accept: 'Accept',
     reject: 'Reject',
     settings: 'Cookie settings'
